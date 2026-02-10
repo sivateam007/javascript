@@ -1,0 +1,655 @@
+﻿<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Array Iterations - Siva Team</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .content-section p, 
+        .content-section li,
+        .content-section h3,
+        .content-section h4,
+        .comparison-card p {
+            color: #333 !important;
+        }
+        
+        .tip-box p,
+        .tip-box li,
+        .tip-box h4 {
+            color: white !important;
+        }
+        
+        .warning-box p,
+        .warning-box li,
+        .warning-box h4 {
+            color: white !important;
+        }
+        
+        .exercise-box p,
+        .exercise-box h4 {
+            color: white !important;
+        }
+        
+        /* Stable logo styling - NO ANIMATIONS */
+        .logo-icon {
+            animation: none !important; /* Remove pulse animation */
+        }
+        
+        .logo-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            animation: none !important; /* Ensure no animations */
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <img src="logo.jpg" alt="Siva Team Logo" class="logo-image">
+                </div>
+                <h1>Siva Team <span>Institution</span></h1>
+            </div>
+        </div>
+    </header>
+
+    <!-- Top Navigation Tabs -->
+    <div class="nav-tabs">
+        <a href="JavaScript%20Array%20Sort.html" class="nav-tab prev">
+            <i class="fas fa-arrow-left"></i>
+            <span>முந்தைய</span>
+        </a>
+        <a href="JavaScript%20Array%20Reference.html" class="nav-tab next">
+            <span>அடுத்தது</span>
+            <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2>JavaScript Array Iterations</h2>
+            <p>JavaScript வரிசை மறு செய்கை முறைகளைக் கற்றுக்கொள்ளுங்கள்</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Introduction -->
+        <section class="content-section" id="introduction">
+            <h2>JavaScript Array Iteration Methods</h2>
+            
+            <p>வரிசை மறு செய்கை முறைகள் ஒவ்வொரு வரிசை உருப்படியிலும் செயல்படுகின்றன.</p>
+            
+            <div class="examples-grid">
+                <div class="example-card">
+                    <div class="example-icon">
+                        <i class="fas fa-redo"></i>
+                    </div>
+                    <h4>Array forEach()</h4>
+                    <p>ஒவ்வொரு உறுப்புக்கும் ஒரு செயல்பாட்டை அழைக்கிறது</p>
+                </div>
+                
+                <div class="example-card">
+                    <div class="example-icon">
+                        <i class="fas fa-map"></i>
+                    </div>
+                    <h4>Array map()</h4>
+                    <p>புதிய வரிசையை உருவாக்குகிறது</p>
+                </div>
+                
+                <div class="example-card">
+                    <div class="example-icon">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <h4>Array flatMap()</h4>
+                    <p>வரிசையை மேப்பிங் செய்து தட்டையாக்குகிறது</p>
+                </div>
+                
+                <div class="example-card">
+                    <div class="example-icon">
+                        <i class="fas fa-filter"></i>
+                    </div>
+                    <h4>Array filter()</h4>
+                    <p>சோதனையில் தேர்ச்சி பெறும் உறுப்புகளை வடிகட்டுகிறது</p>
+                </div>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">💡</span> குறிப்பு:</h4>
+                <p>மறு செய்கை முறைகள் அசல் வரிசையை மாற்றாமல் புதிய வரிசைகளை உருவாக்குகின்றன.</p>
+            </div>
+        </section>
+
+        <!-- Array forEach() -->
+        <section class="content-section" id="foreach">
+            <h2>JavaScript Array forEach()</h2>
+            
+            <p>forEach() முறை ஒவ்வொரு வரிசை உறுப்புக்கும் ஒரு முறை செயல்பாட்டை (ஒரு திரும்ப அழைப்பு செயல்பாடு) அழைக்கிறது.</p>
+            
+            <h3>Example</h3>
+            <div class="code-example">
+                <pre><code>const numbers = [45, 4, 9, 16, 25];
+let txt = "";
+numbers.forEach(myFunction);
+
+function myFunction(value, index, array) {
+  txt += value + "<br>";
+}</code></pre>
+            </div>
+            
+            <p>செயல்பாடு 3 வாதங்களை எடுக்கும் என்பதை கவனிக்கவும்:</p>
+            
+            <div class="best-practice-list">
+                <div class="practice-item positive">
+                    <i class="fas fa-check-circle"></i>
+                    <div>உருப்படி மதிப்பு</div>
+                </div>
+                
+                <div class="practice-item positive">
+                    <i class="fas fa-check-circle"></i>
+                    <div>உருப்படி குறியீட்டு எண்</div>
+                </div>
+                
+                <div class="practice-item positive">
+                    <i class="fas fa-check-circle"></i>
+                    <div>வரிசை தானே</div>
+                </div>
+            </div>
+            
+            <p>மேலே உள்ள எடுத்துக்காட்டு மதிப்பு அளவுருவை மட்டுமே பயன்படுத்துகிறது:</p>
+            
+            <h3>Example</h3>
+            <div class="code-example">
+                <pre><code>const numbers = [45, 4, 9, 16, 25];
+let txt = "";
+numbers.forEach(myFunction);
+
+function myFunction(value) {
+  txt += value + "<br>";
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- Array map() -->
+        <section class="content-section" id="map">
+            <h2>JavaScript Array map()</h2>
+            
+            <p>map() முறை ஒவ்வொரு வரிசை உறுப்பிலும் ஒரு செயல்பாட்டைச் செய்வதன் மூலம் புதிய வரிசையை உருவாக்குகிறது.</p>
+            
+            <h3>Example</h3>
+            <div class="code-example">
+                <pre><code>const numbers1 = [45, 4, 9, 16, 25];
+const numbers2 = numbers1.map(myFunction);
+
+function myFunction(value, index, array) {
+  return value * 2;
+}</code></pre>
+            </div>
+            
+            <div class="warning-box">
+                <h4><span class="warning-icon">⚠️</span> கவனிக்க:</h4>
+                <p>map() முறை மதிப்புகள் இல்லாத வரிசை உறுப்புகளுக்கு செயல்பாட்டை இயக்காது.</p>
+                <p>map() முறை அசல் வரிசையை மாற்றாது.</p>
+            </div>
+        </section>
+
+        <!-- Array flatMap() -->
+        <section class="content-section" id="flatmap">
+            <h2>JavaScript Array flatMap()</h2>
+            
+            <p>ES2019 JavaScript இல் Array flatMap() முறையை சேர்த்தது.</p>
+            
+            <p>flatMap() முறை முதலில் ஒரு வரிசையின் அனைத்து உறுப்புகளையும் மேப்பிங் செய்து, பின்னர் வரிசையை தட்டையாக்குவதன் மூலம் புதிய வரிசையை உருவாக்குகிறது.</p>
+            
+            <h3>Example</h3>
+            <div class="code-example">
+                <pre><code>const myArr = [1, 2, 3, 4, 5, 6];
+const newArr = myArr.flatMap((x) => x * 2);</code></pre>
+            </div>
+            
+            <div class="comparison-table">
+                <table>
+                    <tr>
+                        <th>Browser</th>
+                        <th>Version</th>
+                        <th>Release Date</th>
+                    </tr>
+                    <tr>
+                        <td>Chrome</td>
+                        <td>66</td>
+                        <td>Apr 2018</td>
+                    </tr>
+                    <tr>
+                        <td>Edge</td>
+                        <td>79</td>
+                        <td>Jan 2020</td>
+                    </tr>
+                    <tr>
+                        <td>Firefox</td>
+                        <td>61</td>
+                        <td>Jun 2018</td>
+                    </tr>
+                    <tr>
+                        <td>Safari</td>
+                        <td>12</td>
+                        <td>Sep 2018</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <!-- Array filter() -->
+        <section class="content-section" id="filter">
+            <h2>JavaScript Array filter()</h2>
+            
+            <p>filter() முறை ஒரு சோதனையில் தேர்ச்சி பெறும் வரிசை உறுப்புகளுடன் புதிய வரிசையை உருவாக்குகிறது.</p>
+            
+            <h3>Example</h3>
+            <div class="code-example">
+                <pre><code>const numbers = [45, 4, 9, 16, 25];
+const over18 = numbers.filter(myFunction);
+
+function myFunction(value, index, array) {
+  return value > 18;
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- Array reduce() -->
+        <section class="content-section" id="reduce">
+            <h2>JavaScript Array reduce()</h2>
+            
+            <p>reduce() முறை ஒரு தனி மதிப்பை உற்பத்தி செய்ய ஒவ்வொரு வரிசை உறுப்பிலும் ஒரு செயல்பாட்டை இயக்குகிறது.</p>
+            
+            <h3>Example</h3>
+            <div class="code-example">
+                <pre><code>const numbers = [45, 4, 9, 16, 25];
+let sum = numbers.reduce(myFunction);
+
+function myFunction(total, value, index, array) {
+  return total + value;
+}</code></pre>
+            </div>
+            
+            <div class="warning-box">
+                <h4><span class="warning-icon">📌</span> குறிப்பு:</h4>
+                <p>reduce() முறை அசல் வரிசையைக் குறைக்காது.</p>
+                <p>reduce() முறை வரிசையில் இடமிருந்து-வலமாக வேலை செய்கிறது.</p>
+            </div>
+        </section>
+
+        <!-- Array reduceRight() -->
+        <section class="content-section" id="reduceright">
+            <h2>JavaScript Array reduceRight()</h2>
+            
+            <p>reduceRight() முறை ஒரு தனி மதிப்பை உற்பத்தி செய்ய ஒவ்வொரு வரிசை உறுப்பிலும் ஒரு செயல்பாட்டை இயக்குகிறது.</p>
+            
+            <h3>Example</h3>
+            <div class="code-example">
+                <pre><code>const numbers = [45, 4, 9, 16, 25];
+let sum = numbers.reduceRight(myFunction);
+
+function myFunction(total, value) {
+  return total + value;
+}</code></pre>
+            </div>
+            
+            <p>reduceRight() வரிசையில் வலமிருந்து-இடமாக வேலை செய்கிறது.</p>
+        </section>
+
+        <!-- Array every() -->
+        <section class="content-section" id="every">
+            <h2>JavaScript Array every()</h2>
+            
+            <p>every() முறை அனைத்து வரிசை மதிப்புகளும் ஒரு சோதனையில் தேர்ச்சி பெறுகின்றனவா என சரிபார்க்கிறது.</p>
+            
+            <h3>Example</h3>
+            <div class="code-example">
+                <pre><code>const numbers = [45, 4, 9, 16, 25];
+let allOver18 = numbers.every(myFunction);
+
+function myFunction(value) {
+  return value > 18;
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- Array some() -->
+        <section class="content-section" id="some">
+            <h2>JavaScript Array some()</h2>
+            
+            <p>some() முறை சில வரிசை மதிப்புகள் ஒரு சோதனையில் தேர்ச்சி பெறுகின்றனவா என சரிபார்க்கிறது.</p>
+            
+            <h3>Example</h3>
+            <div class="code-example">
+                <pre><code>const numbers = [45, 4, 9, 16, 25];
+let someOver18 = numbers.some(myFunction);
+
+function myFunction(value, index, array) {
+  return value > 18;
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- Array from() -->
+        <section class="content-section" id="from">
+            <h2>JavaScript Array.from()</h2>
+            
+            <p>Array.from() முறை இவற்றிலிருந்து ஒரு Array பொருளைத் தருகிறது:</p>
+            
+            <div class="best-practice-list">
+                <div class="practice-item positive">
+                    <i class="fas fa-check-circle"></i>
+                    <div>எந்தவொரு மறு செய்கை செய்யக்கூடிய பொருளும்</div>
+                </div>
+                
+                <div class="practice-item positive">
+                    <i class="fas fa-check-circle"></i>
+                    <div>நீள பண்பு கொண்ட எந்த பொருளும்</div>
+                </div>
+            </div>
+            
+            <h3>Example</h3>
+            <div class="code-example">
+                <pre><code>let text = "ABCDEFG";
+Array.from(text);</code></pre>
+            </div>
+        </section>
+
+        <!-- Array keys() and entries() -->
+        <section class="content-section" id="keys-entries">
+            <h2>Array keys() மற்றும் entries()</h2>
+            
+            <div class="code-comparison">
+                <div class="code-column">
+                    <h4>Array.keys()</h4>
+                    <div class="code-example">
+                        <pre><code>const fruits = ["Banana", "Orange", "Apple", "Mango"];
+const keys = fruits.keys();
+
+for (let x of keys) {
+  text += x + "<br>";
+}</code></pre>
+                    </div>
+                </div>
+                
+                <div class="code-column">
+                    <h4>Array.entries()</h4>
+                    <div class="code-example">
+                        <pre><code>const fruits = ["Banana", "Orange", "Apple", "Mango"];
+const f = fruits.entries();
+
+for (let x of f) {
+  document.getElementById("demo").innerHTML += x;
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+            
+            <p>entries() முறை விசை/மதிப்பு ஜோடிகளுடன் ஒரு Array Iterator பொருளைத் தருகிறது.</p>
+        </section>
+
+        <!-- Array with() -->
+        <section class="content-section" id="with">
+            <h2>JavaScript Array with() Method</h2>
+            
+            <p>ES2023 அசல் வரிசையை மாற்றாமல் ஒரு வரிசையில் உறுப்புகளைப் புதுப்பிக்கப் பாதுகாப்பான வழியாக Array with() முறையைச் சேர்த்தது.</p>
+            
+            <h3>Example</h3>
+            <div class="code-example">
+                <pre><code>const months = ["Januar", "Februar", "Mar", "April"];
+const myMonths = months.with(2, "March");</code></pre>
+            </div>
+        </section>
+
+        <!-- Array Spread and Rest -->
+        <section class="content-section" id="spread-rest">
+            <h2>Array Spread (...) மற்றும் Rest (...)</h2>
+            
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-expand-alt"></i>
+                        <h4>Spread Operator</h4>
+                    </div>
+                    <p>ஒரு வரிசையை தனிப்பட்ட உறுப்புகளாக விரிவாக்குகிறது</p>
+                    <div class="code-example">
+                        <pre><code>const arr1 = [1, 2, 3];
+const arr2 = [4, 5, 6];
+const arr3 = [...arr1, ...arr2];</code></pre>
+                    </div>
+                </div>
+                
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-compress-alt"></i>
+                        <h4>Rest Operator</h4>
+                    </div>
+                    <p>ஒரு வரிசையை அழிக்கவும் மீதமுள்ளவற்றை சேகரிக்கவும் அனுமதிக்கிறது</p>
+                    <div class="code-example">
+                        <pre><code>let a, rest;
+const arr1 = [1,2,3,4,5,6,7,8];
+[a, ...rest] = arr1;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Exercise Section (ONLY ONE EXERCISE) -->
+        <section class="content-section" id="exercises">
+            <h2>JavaScript Array பயிற்சி</h2>
+            
+            <p>இந்த டுடோரியலில் உள்ள பல அத்தியாயங்கள் உங்கள் அறிவு நிலையைச் சரிபார்க்கக்கூடிய பயிற்சியுடன் முடிகின்றன.</p>
+            
+            <div class="exercise-box">
+                <h4><span class="exercise-icon">❓</span> பின்வரும் குறியீட்டைக் கவனியுங்கள்:</h4>
+                
+                <div class="code-example" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.3);">
+                    <pre><code>const x = [45, 4, 9, 16, 25];
+let y = x.every(myfunc);
+function myfunc(val) {
+  return val > 20;
+}</code></pre>
+                </div>
+                
+                <p style="margin-top: 1.5rem;">y இன் முடிவு என்னவாக இருக்கும்?</p>
+                
+                <div class="options-grid">
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">[45, 25]</div>
+                            <div class="option-feedback incorrect">✗ தவறு! every() முறை ஒரு பூலியன் மதிப்பைத் தருகிறது, வரிசையைத் தராது</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="true">
+                        <div class="option-content">
+                            <div class="option-text">false</div>
+                            <div class="option-feedback correct">✓ சரி! every() முறை அனைத்து உறுப்புகளும் 20 ஐ விட அதிகமாக இருந்தால் மட்டுமே true தரும்</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">[]</div>
+                            <div class="option-feedback incorrect">✗ தவறு! every() முறை வெற்று வரிசையைத் தராது</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">NaN</div>
+                            <div class="option-feedback incorrect">✗ தவறு! every() முறை எண்ணாக இல்லாத மதிப்பைத் தராது</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Complete Reference -->
+        <section class="content-section" id="reference">
+            <h2>முழுமையான JavaScript குறிப்பு</h2>
+            
+            <p>முழுமையான விளக்கங்கள் மற்றும் பல எடுத்துக்காட்டுகளுடன் அனைத்து JavaScript பண்புகள் மற்றும் முறைகளுக்கான முழுமையான குறிப்புக்கு, செல்லவும்:</p>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">📚</span> Siva Team இன் முழு JavaScript குறிப்பு</h4>
+                <p>குறிப்பு 1999 முதல் 2025 வரையிலான அனைத்து JavaScript புதுப்பிப்புகளையும் உள்ளடக்கியது.</p>
+            </div>
+            
+            <div class="examples-grid">
+                <div class="example-card">
+                    <div class="example-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h4>Array Tutorial</h4>
+                    <p>வரிசை டுடோரியல்</p>
+                </div>
+                
+                <div class="example-card">
+                    <div class="example-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h4>Array Search Methods</h4>
+                    <p>வரிசை தேடல் முறைகள்</p>
+                </div>
+                
+                <div class="example-card">
+                    <div class="example-icon">
+                        <i class="fas fa-sort"></i>
+                    </div>
+                    <h4>Array Sort Methods</h4>
+                    <p>வரிசை வரிசைப்படுத்தும் முறைகள்</p>
+                </div>
+                
+                <div class="example-card">
+                    <div class="example-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h4>Array Reference</h4>
+                    <p>வரிசை குறிப்பு</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bottom Navigation -->
+        <div class="bottom-nav">
+            <a href="JavaScript%20Array%20Sort.html" class="nav-tab prev">
+                <i class="fas fa-arrow-left"></i>
+                <span>முந்தைய</span>
+            </a>
+            <a href="JavaScript%20Array%20Reference.html" class="nav-tab next">
+                <span>அடுத்தது</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Siva Team Institution</h3>
+                <p>Leading educational institution providing quality programming education in Tamil.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#introduction">Array Iteration Methods</a></li>
+                    <li><a href="#foreach">forEach() முறை</a></li>
+                    <li><a href="#map">map() முறை</a></li>
+                    <li><a href="#filter">filter() முறை</a></li>
+                    <li><a href="#reduce">reduce() முறை</a></li>
+                    <li><a href="#exercises">Array பயிற்சி</a></li>
+                    <li><a href="#reference">முழு குறிப்பு</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Location & Hours</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <ul>
+                    <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Siva Team Institution. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all content sections for animation
+        document.querySelectorAll('.content-section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Exercise interaction
+        document.querySelectorAll('.option-card').forEach(card => {
+            card.addEventListener('click', function() {
+                // Show feedback for all options
+                document.querySelectorAll('.option-card').forEach(c => {
+                    c.querySelector('.option-feedback').style.display = 'block';
+                });
+            });
+        });
+    </script>
+
+    <!-- Home Button -->
+    <a href="index.html" class="home-icon">
+        <i class="fas fa-home"></i>
+    </a>
+</body>
+</html>
+
+

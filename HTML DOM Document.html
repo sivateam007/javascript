@@ -1,0 +1,683 @@
+﻿<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML DOM Document - Siva Team</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .content-section p, 
+        .content-section li,
+        .content-section h3,
+        .content-section h4,
+        .comparison-card p {
+            color: #333 !important;
+        }
+        
+        .tip-box p,
+        .tip-box li,
+        .tip-box h4 {
+            color: white !important;
+        }
+        
+        .warning-box p,
+        .warning-box li,
+        .warning-box h4 {
+            color: white !important;
+        }
+        
+        .exercise-box p,
+        .exercise-box h4 {
+            color: white !important;
+        }
+        
+        /* Stable logo styling - NO ANIMATIONS */
+        .logo-icon {
+            animation: none !important; /* Remove pulse animation */
+        }
+        
+        .logo-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            animation: none !important; /* Ensure no animations */
+        }
+        
+        /* Document properties table styles */
+        .document-table {
+            margin: 2rem 0;
+            overflow-x: auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .document-table table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+        
+        .document-table th {
+            background: linear-gradient(135deg, var(--git-color), #e74c3c);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            position: sticky;
+            top: 0;
+        }
+        
+        .document-table td {
+            padding: 0.8rem 1rem;
+            border-bottom: 1px solid #f0f0f0;
+            vertical-align: top;
+        }
+        
+        .document-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .document-table tr:hover {
+            background-color: #f0f7ff;
+        }
+        
+        .deprecated {
+            color: #dc3545;
+            font-weight: 600;
+        }
+        
+        .property-name {
+            color: var(--git-color);
+            font-weight: 600;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .document-demo {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--git-color);
+        }
+        
+        .demo-output {
+            background: white;
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+            border: 1px solid #ddd;
+        }
+        
+        .demo-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+            margin: 0.5rem 0;
+        }
+        
+        .demo-btn:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <img src="logo.jpg" alt="Siva Team Logo" class="logo-image">
+                </div>
+                <h1>Siva Team <span>Institution</span></h1>
+            </div>
+        </div>
+    </header>
+
+    <!-- Top Navigation Tabs -->
+    <div class="nav-tabs">
+        <a href="HTML%20DOM%20Animation.html" class="nav-tab prev">
+            <i class="fas fa-arrow-left"></i>
+            <span>முந்தைய</span>
+        </a>
+        <a href="HTML%20DOM%20Reference.html" class="nav-tab next">
+            <span>அடுத்தது</span>
+            <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2>HTML DOM Document</h2>
+            <p>HTML DOM ஆவண பண்புகள் மற்றும் முறைகளைக் கற்றுக்கொள்ளுங்கள்</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Introduction -->
+        <section class="content-section" id="introduction">
+            <h2>HTML DOM ஆவணம்</h2>
+            
+            <p>ஆவண பண்புகள் மற்றும் முறைகள்.</p>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">📅</span> புதுப்பிக்கப்பட்டது:</h4>
+                <p>ஜனவரி 2026</p>
+            </div>
+        </section>
+
+        <!-- Document Properties and Methods Table -->
+        <section class="content-section" id="document-properties">
+            <h2>ஆவண பண்புகள் மற்றும் முறைகள்</h2>
+            
+            <div class="document-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>பெயர்</th>
+                            <th>விளக்கம்</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="property-name">activeElement</td>
+                            <td>ஆவணத்தில் தற்போது கவனம் செலுத்தப்பட்ட உறுப்பைத் திருப்பித் தருகிறது</td>
+                        </tr>
+                        <tr>
+                            <td class="property-name">addEventListener()</td>
+                            <td>ஆவணத்தில் ஒரு நிகழ்வு கையாளுநரை இணைக்கிறது</td>
+                        </tr>
+                        <tr>
+                            <td class="property-name">adoptNode()</td>
+                            <td>மற்றொரு ஆவணத்திலிருந்து ஒரு முனையை ஏற்கிறது</td>
+                        </tr>
+                        <tr>
+                            <td class="property-name deprecated">anchors</td>
+                            <td class="deprecated">பழையது (DEPRECATED)</td>
+                        </tr>
+                        <tr>
+                            <td class="property-name deprecated">applets</td>
+                            <td class="deprecated">பழையது (DEPRECATED)</td>
+                        </tr>
+                        <tr>
+                            <td class="property-name">baseURI</td>
+                            <td>ஒரு ஆவணத்தின் முழுமையான அடிப்படை URI ஐத் திருப்பித் தருகிறது</td>
+                        </tr>
+                        <tr>
+                            <td class="property-name">body</td>
+                            <td>ஆவணத்தின் body ஐ அமைக்கிறது அல்லது திருப்பித் தருகிறது (&lt;body&gt; உறுப்பு)</td>
+                        </tr>
+                        <tr>
+                            <td class="property-name deprecated">charset</td>
+                            <td class="deprecated">பழையது (DEPRECATED)</td>
+                        </tr>
+                        <tr>
+                            <td class="property-name">characterSet</td>
+                            <td>ஆவணத்திற்கான எழுத்து குறியீட்டைத் திருப்பித் தருகிறது</td>
+                        </tr>
+                        <tr>
+                            <td class="property-name">close()</td>
+                            <td>முன்பு document.open() உடன் திறக்கப்பட்ட வெளியீட்டு ஸ்ட்ரீமை மூடுகிறது</td>
+                        </tr>
+                        <tr>
+                            <td class="property-name">cookie</td>
+                            <td>ஆவணத்தில் உள்ள குக்கீகளின் அனைத்து பெயர்/மதிப்பு ஜோடிகளையும் திருப்பித் தருகிறது</td>
+                        </tr>
+                        <tr>
+                            <td class="property-name">createAttribute()</td>
+                            <td>பண்புக்கூறு முனையை உருவாக்குகிறது</td>
+                        </tr>
+                        <tr>
+                            <td class="property-name">createComment()</td>
+                            <td>குறிப்பிட்ட உரையுடன் Comment முனையை உருவாக்குகிறது</td>
+                        </tr>
+                        <tr>
+                            <td class="property-name">createDocumentFragment()</td>
+                            <td>வெற்று DocumentFragment முனையை உருவாக்குகிறது</td>
+                        </tr>
+                        <tr>
+                            <td class="property-name">createElement()</td>
+                            <td>உறுப்பு முனையை உருவாக்குகிறது</td>
+                        </tr>
+                        <tr>
+                            <td class="property-name">createEvent()</td>
+                            <td>புதிய நிகழ்வை உருவாக்குகிறது</td>
+                        </tr>
+                        <tr>
+                            <td class="property-name">createTextNode()</td>
+                            <td>உரை முனையை உருவாக்குகிறது</td>
+                        </tr>
+                        <tr>
+                            <td class="property-name">defaultView</td>
+                            <td>ஒரு ஆவணத்துடன் தொடர்புடைய window பொருளைத் திருப்பித் தருகிறது, அல்லது எதுவும் கிடைக்கவில்லை என்றால் null</td>
+                        </tr>
+                        <tr>
+                            <td class="property-name">designMode</td>
+                            <td>முழு ஆவணமும் திருத்தக்கூடியதாக இருக்க வேண்டுமா இல்லையா என்பதைக் கட்டுப்படுத்துகிறது</td>
+                        </tr>
+                        <tr>
+                            <td class="property-name">doctype</td>
+                            <td>ஆவணத்துடன் தொடர்புடைய ஆவண வகை அறிவிப்பைத் திருப்பித் தருகிறது</td>
+                        </tr>
+                        <tr>
+                            <td class="property-name">documentElement</td>
+                            <td>ஆவணத்தின் ஆவண உறுப்பைத் திருப்பித் தருகிறது (&lt;html&gt; உறுப்பு)</td>
+                        </tr>
+                        <tr>
+                            <td class="property-name deprecated">documentMode</td>
+                            <td class="deprecated">பழையது (DEPRECATED)</td>
+                        </tr>
+                        <tr>
+                            <td class="property-name">documentURI</td>
+                            <td>ஆவணத்தின் இடத்தை அமைக்கிறது அல்லது திருப்பித் தருகிறது</td>
+                        </tr>
+                        <tr>
+                            <td class="property-name">domain</td>
+                            <td>ஆவணத்தை ஏற்றிய சேவையகத்தின் டொமைன் பெயரைத் திருப்பித் தருகிறது</td>
+                        </tr>
+                        <tr>
+                            <td class="property-name deprecated">domConfig</td>
+                            <td class="deprecated">பழையது (DEPRECATED)</td>
+                        </tr>
+                        <tr>
+                            <td class="property-name">embeds</td>
+                            <td>ஆவணத்தில் உள்ள அனைத்து &lt;embed&gt; உறுப்புகளின் தொகுப்பைத் திருப்பித் தருகிறது</td>
+                        </tr>
+                        <tr>
+                            <td class="property-name deprecated">execCommand()</td>
+                            <td class="deprecated">பழையது (DEPRECATED)</td>
+                        </tr>
+                        <tr>
+                            <td class="property-name">forms</td>
+                            <td>ஆவணத்தில் உள்ள அனைத்து &lt;form&gt; உறுப்புகளின் தொகுப்பைத் திருப்பித் தருகிறது</td>
+                        </tr>
+                        <tr>
+                            <td class="property-name">getElementById()</td>
+                            <td>குறிப்பிட்ட மதிப்புடன் ID பண்புக்கூறைக் கொண்ட உறுப்பைத் திருப்பித் தருகிறது</td>
+                        </tr>
+                        <tr>
+                            <td class="property-name">getElementsByClassName()</td>
+                            <td>குறிப்பிட்ட வகுப்புப் பெயருடன் அனைத்து உறுப்புகளையும் கொண்ட HTMLCollection ஐத் திருப்பித் தருகிறது</td>
+                        </tr>
+                        <tr>
+                            <td class="property-name">getElementsByName()</td>
+                            <td>குறிப்பிட்ட பெயருடன் அனைத்து உறுப்புகளையும் கொண்ட நேரடி NodeList ஐத் திருப்பித் தருகிறது</td>
+                        </tr>
+                        <tr>
+                            <td class="property-name">getElementsByTagName()</td>
+                            <td>குறிப்பிட்ட டேக் பெயருடன் அனைத்து உறுப்புகளையும் கொண்ட HTMLCollection ஐத் திருப்பித் தருகிறது</td>
+                        </tr>
+                        <tr>
+                            <td class="property-name">hasFocus()</td>
+                            <td>ஆவணத்தில் கவனம் உள்ளதா இல்லையா என்பதைக் குறிக்கும் பூலியன் மதிப்பைத் திருப்பித் தருகிறது</td>
+                        </tr>
+                        <tr>
+                            <td class="property-name">head</td>
+                            <td>ஆவணத்தின் &lt;head&gt; உறுப்பைத் திருப்பித் தருகிறது</td>
+                        </tr>
+                        <tr>
+                            <td class="property-name">images</td>
+                            <td>ஆவணத்தில் உள்ள அனைத்து &lt;img&gt; உறுப்புகளின் தொகுப்பைத் திருப்பித் தருகிறது</td>
+                        </tr>
+                        <tr>
+                            <td class="property-name">implementation</td>
+                            <td>இந்த ஆவணத்தைக் கையாளும் DOMImplementation பொருளைத் திருப்பித் தருகிறது</td>
+                        </tr>
+                        <tr>
+                            <td class="property-name">importNode()</td>
+                            <td>மற்றொரு ஆவணத்திலிருந்து ஒரு முனையை இறக்குமதி செய்கிறது</td>
+                        </tr>
+                        <tr>
+                            <td class="property-name deprecated">inputEncoding</td>
+                            <td class="deprecated">பழையது (DEPRECATED)</td>
+                        </tr>
+                        <tr>
+                            <td class="property-name">lastModified</td>
+                            <td>ஆவணம் கடைசியாக மாற்றியமைக்கப்பட்ட தேதி மற்றும் நேரத்தைத் திருப்பித் தருகிறது</td>
+                        </tr>
+                        <tr>
+                            <td class="property-name">links</td>
+                            <td>ஆவணத்தில் உள்ள href பண்புக்கூறைக் கொண்ட அனைத்து &lt;a&gt; மற்றும் &lt;area&gt; உறுப்புகளின் தொகுப்பைத் திருப்பித் தருகிறது</td>
+                        </tr>
+                        <tr>
+                            <td class="property-name">normalize()</td>
+                            <td>வெற்று உரை முனைகளை அகற்றி, அருகிலுள்ள முனைகளை இணைக்கிறது</td>
+                        </tr>
+                        <tr>
+                            <td class="property-name deprecated">normalizeDocument()</td>
+                            <td class="deprecated">பழையது (DEPRECATED)</td>
+                        </tr>
+                        <tr>
+                            <td class="property-name">open()</td>
+                            <td>document.write() இலிருந்து வெளியீட்டைச் சேகரிக்க HTML வெளியீட்டு ஸ்ட்ரீமைத் திறக்கிறது</td>
+                        </tr>
+                        <tr>
+                            <td class="property-name">querySelector()</td>
+                            <td>ஆவணத்தில் குறிப்பிட்ட CSS தேர்ந்தெடுப்பாளர்(களுடன்) பொருந்தும் முதல் உறுப்பைத் திருப்பித் தருகிறது</td>
+                        </tr>
+                        <tr>
+                            <td class="property-name">querySelectorAll()</td>
+                            <td>ஆவணத்தில் குறிப்பிட்ட CSS தேர்ந்தெடுப்பாளர்(களுடன்) பொருந்தும் அனைத்து உறுப்புகளையும் கொண்ட நிலையான NodeList ஐத் திருப்பித் தருகிறது</td>
+                        </tr>
+                        <tr>
+                            <td class="property-name">readyState</td>
+                            <td>ஆவணத்தின் (லோடிங்) நிலையைத் திருப்பித் தருகிறது</td>
+                        </tr>
+                        <tr>
+                            <td class="property-name">referrer</td>
+                            <td>தற்போதைய ஆவணத்தை ஏற்றிய ஆவணத்தின் URL ஐத் திருப்பித் தருகிறது</td>
+                        </tr>
+                        <tr>
+                            <td class="property-name">removeEventListener()</td>
+                            <td>ஆவணத்திலிருந்து ஒரு நிகழ்வு கையாளுநரை அகற்றுகிறது (addEventListener() முறையுடன் இணைக்கப்பட்டது)</td>
+                        </tr>
+                        <tr>
+                            <td class="property-name deprecated">renameNode()</td>
+                            <td class="deprecated">பழையது (DEPRECATED)</td>
+                        </tr>
+                        <tr>
+                            <td class="property-name">scripts</td>
+                            <td>ஆவணத்தில் உள்ள &lt;script&gt; உறுப்புகளின் தொகுப்பைத் திருப்பித் தருகிறது</td>
+                        </tr>
+                        <tr>
+                            <td class="property-name deprecated">strictErrorChecking</td>
+                            <td class="deprecated">பழையது (DEPRECATED)</td>
+                        </tr>
+                        <tr>
+                            <td class="property-name">title</td>
+                            <td>ஆவணத்தின் தலைப்பை அமைக்கிறது அல்லது திருப்பித் தருகிறது</td>
+                        </tr>
+                        <tr>
+                            <td class="property-name">URL</td>
+                            <td>HTML ஆவணத்தின் முழு URL ஐத் திருப்பித் தருகிறது</td>
+                        </tr>
+                        <tr>
+                            <td class="property-name">write()</td>
+                            <td>ஆவணத்திற்கு HTML வெளிப்பாடுகள் அல்லது JavaScript குறியீட்டை எழுதுகிறது</td>
+                        </tr>
+                        <tr>
+                            <td class="property-name">writeln()</td>
+                            <td>write() போலவே, ஆனால் ஒவ்வொரு அறிக்கைக்குப் பிறகும் புதிய வரி எழுத்தைச் சேர்க்கிறது</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Document Properties Demo -->
+        <section class="content-section" id="document-demo">
+            <h2>ஆவண பண்புகள் ஆர்ப்பாட்டம்</h2>
+            
+            <div class="document-demo">
+                <h4>தற்போதைய ஆவணப் பண்புகளைக் காண்க:</h4>
+                
+                <button class="demo-btn" onclick="showDocumentProperties()">
+                    <i class="fas fa-file-alt"></i> ஆவணப் பண்புகளைக் காண்பி
+                </button>
+                
+                <div id="docPropertiesOutput" class="demo-output">
+                    பொத்தானைக் கிளிக் செய்வதன் மூலம் ஆவணப் பண்புகளைக் காண்பி
+                </div>
+            </div>
+            
+            <div class="document-demo">
+                <h4>ஆவண உறுப்புகளை எண்ணிக்கை செய்யுங்கள்:</h4>
+                
+                <button class="demo-btn" onclick="countDocumentElements()">
+                    <i class="fas fa-calculator"></i> உறுப்புகளை எண்ணுங்கள்
+                </button>
+                
+                <div id="docElementsOutput" class="demo-output">
+                    பொத்தானைக் கிளிக் செய்வதன் மூலம் உறுப்புகளை எண்ணுங்கள்
+                </div>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">💡</span> உதவிக்குறிப்பு:</h4>
+                <p>document பொருள் என்பது வலைப்பக்கத்தின் மூல நுழைவு புள்ளியாகும். இது பக்கத்தில் உள்ள அனைத்து உறுப்புகளுக்கும் மேலாளர் மற்றும் நிர்வாகி ஆகும்.</p>
+            </div>
+        </section>
+
+        <!-- Commonly Used Methods -->
+        <section class="content-section" id="common-methods">
+            <h2>பொதுவாகப் பயன்படுத்தப்படும் முறைகள்</h2>
+            
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-search"></i>
+                        <h4>உறுப்புகளைத் தேடுதல்</h4>
+                    </div>
+                    <p class="property-name">getElementById()<br>querySelector()<br>getElementsByClassName()<br>getElementsByTagName()</p>
+                    <p>வலைப்பக்கத்தில் உறுப்புகளைக் கண்டறிய மிகவும் அடிக்கடி பயன்படுத்தப்படும் முறைகள்</p>
+                </div>
+                
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-plus-circle"></i>
+                        <h4>உறுப்புகளை உருவாக்குதல்</h4>
+                    </div>
+                    <p class="property-name">createElement()<br>createTextNode()<br>createAttribute()</p>
+                    <p>புதிய உறுப்புகள், உரை முனைகள் மற்றும் பண்புக்கூறுகளை உருவாக்குவதற்கான முறைகள்</p>
+                </div>
+                
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-headphones"></i>
+                        <h4>நிகழ்வு கையாளுதல்</h4>
+                    </div>
+                    <p class="property-name">addEventListener()<br>removeEventListener()</p>
+                    <p>நிகழ்வுகளைக் கையாளுவதற்கான நவீன மற்றும் பரிந்துரைக்கப்பட்ட முறை</p>
+                </div>
+                
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-info-circle"></i>
+                        <h4>ஆவணத் தகவல்</h4>
+                    </div>
+                    <p class="property-name">title<br>URL<br>lastModified<br>readyState</p>
+                    <p>தற்போதைய ஆவணம் பற்றிய தகவலைப் பெறுவதற்கான பண்புகள்</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Deprecated Methods Warning -->
+        <section class="content-section" id="deprecated-warning">
+            <h2>பழைய முறைகள் எச்சரிக்கை</h2>
+            
+            <div class="warning-box">
+                <h4><span class="warning-icon">⚠️</span> முக்கியமான எச்சரிக்கை:</h4>
+                <p>பட்டியலில் "DEPRECATED" எனக் குறிக்கப்பட்ட முறைகள் மற்றும் பண்புகள் HTML DOM இன் நவீன தரநிலைகளில் இன்னும் ஆதரிக்கப்படவில்லை.</p>
+                
+                <ul>
+                    <li>இந்த பழைய அம்சங்களைப் பயன்படுத்த வேண்டாம்</li>
+                    <li>அவை எதிர்கால உலாவி பதிப்புகளில் அகற்றப்படலாம்</li>
+                    <li>சமமான நவீன மாற்றுகளைப் பயன்படுத்தவும்</li>
+                </ul>
+                
+                <p><strong>எடுத்துக்காட்டு:</strong> <span class="property-name">getElementById()</span> க்கு பதிலாக <span class="property-name">querySelector()</span> ஐப் பயன்படுத்தவும், ஏனெனில் இது அதிக நெகிழ்வுத்தன்மையை வழங்குகிறது.</p>
+            </div>
+        </section>
+
+        <!-- Exercise - ONLY ONE EXERCISE -->
+        <section class="content-section" id="exercise">
+            <h2>பயிற்சி</h2>
+            
+            <div class="exercise-box">
+                <h4><span class="exercise-icon">❓</span> எது சட்டபூர்வமான HTML DOM ஆவண முறை அல்ல?</h4>
+                
+                <div class="options-grid">
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">getElementsByClassName()</div>
+                            <div class="option-feedback incorrect">✗ இது சட்டபூர்வமான முறை! குறிப்பிட்ட வகுப்புப் பெயருடன் அனைத்து உறுப்புகளையும் திருப்பித் தருகிறது</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">getElementsByTagName()</div>
+                            <div class="option-feedback incorrect">✗ இது சட்டபூர்வமான முறை! குறிப்பிட்ட டேக் பெயருடன் அனைத்து உறுப்புகளையும் திருப்பித் தருகிறது</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="true">
+                        <div class="option-content">
+                            <div class="option-text">getElementsByAttributeName()</div>
+                            <div class="option-feedback correct">✓ சரி! getElementsByAttributeName() என்பது HTML DOM இல் சட்டபூர்வமான முறை அல்ல. பண்புக்கூறுகள் மூலம் தேடுவதற்கு querySelector() அல்லது querySelectorAll() ஐப் பயன்படுத்தவும்</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bottom Navigation -->
+        <div class="bottom-nav">
+            <a href="HTML%20DOM%20Animation.html" class="nav-tab prev">
+                <i class="fas fa-arrow-left"></i>
+                <span>முந்தைய</span>
+            </a>
+            <a href="HTML%20DOM%20Reference.html" class="nav-tab next">
+                <span>அடுத்தது</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Siva Team Institution</h3>
+                <p>Leading educational institution providing quality programming education in Tamil.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#introduction">HTML DOM ஆவணம்</a></li>
+                    <li><a href="#document-properties">ஆவண பண்புகள்</a></li>
+                    <li><a href="#document-demo">ஆர்ப்பாட்டம்</a></li>
+                    <li><a href="#common-methods">பொதுவான முறைகள்</a></li>
+                    <li><a href="#deprecated-warning">பழைய முறைகள்</a></li>
+                    <li><a href="#exercise">பயிற்சி</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Location & Hours</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <ul>
+                    <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Siva Team Institution. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all content sections for animation
+        document.querySelectorAll('.content-section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Exercise interaction
+        document.querySelectorAll('.option-card').forEach(card => {
+            card.addEventListener('click', function() {
+                // Show feedback for all options
+                document.querySelectorAll('.option-card').forEach(c => {
+                    c.querySelector('.option-feedback').style.display = 'block';
+                });
+            });
+        });
+
+        // Document properties demo functions
+        function showDocumentProperties() {
+            const output = document.getElementById('docPropertiesOutput');
+            const properties = `
+            📄 ஆவணத் தலைப்பு: "${document.title}"
+            🔗 முழு URL: ${document.URL}
+            📅 கடைசியாக மாற்றியமைக்கப்பட்டது: ${document.lastModified}
+            🎯 எழுத்து குறியீடு: ${document.characterSet}
+            📊 ஆவண நிலை: ${document.readyState}
+            🌐 டொமைன்: ${document.domain}
+            👁️ ஆவணம் கவனத்தில் உள்ளதா?: ${document.hasFocus() ? 'ஆம்' : 'இல்லை'}
+            `;
+            output.innerHTML = properties.replace(/\n/g, '<br>');
+        }
+
+        function countDocumentElements() {
+            const output = document.getElementById('docElementsOutput');
+            const counts = `
+            📋 படிவங்கள்: ${document.forms.length}
+            🖼️ படங்கள்: ${document.images.length}
+            🔗 இணைப்புகள்: ${document.links.length}
+            📜 ஸ்கிரிப்ட்கள்: ${document.scripts.length}
+            🎬 எம்பெட்கள்: ${document.embeds.length}
+            `;
+            output.innerHTML = counts.replace(/\n/g, '<br>');
+        }
+    </script>
+
+    <!-- Home Button -->
+    <a href="index.html" class="home-icon">
+        <i class="fas fa-home"></i>
+    </a>
+</body>
+</html>
+
+

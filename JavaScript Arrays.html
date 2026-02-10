@@ -1,0 +1,744 @@
+﻿<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Arrays - Siva Team</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .content-section p, 
+        .content-section li,
+        .content-section h3,
+        .content-section h4,
+        .comparison-card p {
+            color: #333 !important;
+        }
+        
+        .tip-box p,
+        .tip-box li,
+        .tip-box h4 {
+            color: white !important;
+        }
+        
+        .warning-box p,
+        .warning-box li,
+        .warning-box h4 {
+            color: white !important;
+        }
+        
+        .exercise-box p,
+        .exercise-box h4 {
+            color: white !important;
+        }
+        
+        /* Stable logo styling - NO ANIMATIONS */
+        .logo-icon {
+            animation: none !important; /* Remove pulse animation */
+        }
+        
+        .logo-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            animation: none !important; /* Ensure no animations */
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <img src="logo.jpg" alt="Siva Team Logo" class="logo-image">
+                </div>
+                <h1>Siva Team <span>Institution</span></h1>
+            </div>
+        </div>
+    </header>
+
+    <!-- Top Navigation Tabs -->
+    <div class="nav-tabs">
+        <a href="JavaScript%20Date%20Reference.html" class="nav-tab prev">
+            <i class="fas fa-arrow-left"></i>
+            <span>முந்தைய</span>
+        </a>
+        <a href="JavaScript%20Array%20Methods.html" class="nav-tab next">
+            <span>அடுத்தது</span>
+            <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2>JavaScript Arrays</h2>
+            <p>JavaScript வரிசைகள் பற்றி அறிக</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Introduction -->
+        <section class="content-section" id="introduction">
+            <h2>JavaScript Arrays</h2>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <div class="code-example">
+                <pre><code>const cars = ["Saab", "Volvo", "BMW"];</code></pre>
+            </div>
+            
+            <p>ஒரு Array என்பது தரவு தொகுப்புகளைச் சேமிக்க வடிவமைக்கப்பட்ட ஒரு பொருள் வகையாகும்.</p>
+            
+            <p>JavaScript வரிசைகளின் முக்கிய பண்புகள்:</p>
+            
+            <ul>
+                <li><strong>Elements:</strong> ஒரு வரிசை என்பது மதிப்புகளின் பட்டியல், இது elements என்று அழைக்கப்படுகிறது.</li>
+                <li><strong>Ordered:</strong> வரிசை உறுப்புகள் அவற்றின் குறியீட்டின் அடிப்படையில் வரிசைப்படுத்தப்பட்டுள்ளன.</li>
+                <li><strong>Zero indexed:</strong> முதல் உறுப்பு குறியீடு 0 இல் உள்ளது, இரண்டாவது குறியீடு 1 இல் உள்ளது, மேலும் பல.</li>
+                <li><strong>Dynamic size:</strong> வரிசைகள் உறுப்புகள் சேர்க்கப்படும்போது அல்லது நீக்கப்படும்போது வளரலாம் அல்லது சுருங்கலாம்.</li>
+                <li><strong>Heterogeneous:</strong> வரிசைகள் வெவ்வேறு தரவு வகைகளை (எண்கள், சரங்கள், பொருள்கள் மற்றும் பிற வரிசைகள்) சேமிக்க முடியும்.</li>
+            </ul>
+        </section>
+
+        <!-- Why Use Arrays? -->
+        <section class="content-section" id="why-use-arrays">
+            <h2>Why Use Arrays?</h2>
+            
+            <p>உங்களிடம் உருப்படிகளின் பட்டியல் இருந்தால் (எடுத்துக்காட்டாக, கார் பெயர்களின் பட்டியல்), பெயர்களை ஒற்றை மாறிகளில் சேமிப்பது இப்படி இருக்கலாம்:</p>
+            
+            <div class="code-example">
+                <pre><code>let car1 = "Saab";
+let car2 = "Volvo";
+let car3 = "BMW";</code></pre>
+            </div>
+            
+            <p>இருப்பினும், நீங்கள் கார்கள் வழியாக வளையமிட்டு ஒரு குறிப்பிட்ட ஒன்றைக் கண்டுபிடிக்க விரும்பினால் என்ன செய்வது? மேலும் உங்களிடம் 3 கார்கள் இல்லாமல் 300 இருந்தால் என்ன செய்வது?</p>
+            
+            <p>தீர்வு ஒரு வரிசை!</p>
+            
+            <p>ஒரு வரிசை பல மதிப்புகளை ஒரு பெயரின் கீழ் வைத்திருக்க முடியும், மேலும் நீங்கள் ஒரு குறியீடு எண்ணைக் குறிப்பிடுவதன் மூலம் மதிப்புகளை அணுகலாம்.</p>
+        </section>
+
+        <!-- Creating an Array -->
+        <section class="content-section" id="creating-arrays">
+            <h2>Creating an Array</h2>
+            
+            <p>ஒரு வரிசை நேரடியைப் பயன்படுத்துவது JavaScript வரிசையை உருவாக்க எளிதான வழியாகும்.</p>
+            
+            <h3>தொடரியல்:</h3>
+            <div class="code-example">
+                <pre><code>const array_name = [item1, item2, ...];</code></pre>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">📝</span> குறிப்பு:</h4>
+                <p>வரிசைகளை const வார்த்தையுடன் அறிவிப்பது பொதுவான நடைமுறையாகும்.</p>
+                <p>JS Array Const அத்தியாயத்தில் வரிசைகளுடன் const பற்றி மேலும் அறிக.</p>
+            </div>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <div class="code-example">
+                <pre><code>const cars = ["Saab", "Volvo", "BMW"];</code></pre>
+            </div>
+            
+            <p>இடைவெளிகள் மற்றும் வரி இடைவெளிகள் முக்கியமானவை அல்ல. ஒரு அறிவிப்பு பல வரிகளைக் கொண்டிருக்கலாம்:</p>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <div class="code-example">
+                <pre><code>const cars = [
+  "Saab",
+  "Volvo",
+  "BMW"
+];</code></pre>
+            </div>
+            
+            <p>நீங்கள் ஒரு காலி வரிசையையும் உருவாக்கலாம், மேலும் பிறகு உறுப்புகளை வழங்கலாம்:</p>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <div class="code-example">
+                <pre><code>const cars = [];
+cars[0]= "Saab";
+cars[1]= "Volvo";
+cars[2]= "BMW";</code></pre>
+            </div>
+        </section>
+
+        <!-- Using the JavaScript Keyword new -->
+        <section class="content-section" id="using-new">
+            <h2>Using the JavaScript Keyword new</h2>
+            
+            <p>பின்வரும் எடுத்துக்காட்டும் ஒரு வரிசையை உருவாக்குகிறது, மேலும் அதற்கு மதிப்புகளை ஒதுக்குகிறது:</p>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <div class="code-example">
+                <pre><code>const cars = new Array("Saab", "Volvo", "BMW");</code></pre>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">💡</span> குறிப்பு:</h4>
+                <p>மேலே உள்ள இரண்டு எடுத்துக்காட்டுகளும் சரியாக ஒரே மாதிரியாக செயல்படுகின்றன.</p>
+                <p>new Array() பயன்படுத்த வேண்டிய அவசியமில்லை.</p>
+                <p>எளிமை, வாசிப்புத்தன்மை மற்றும் செயல்படுத்தும் வேகத்திற்காக, வரிசை நேரடி முறையைப் பயன்படுத்தவும்.</p>
+            </div>
+        </section>
+
+        <!-- Accessing Array Elements -->
+        <section class="content-section" id="accessing-elements">
+            <h2>Accessing Array Elements</h2>
+            
+            <p>குறியீடு எண்ணைக் குறிப்பிடுவதன் மூலம் நீங்கள் ஒரு வரிசை உறுப்பை அணுகலாம்:</p>
+            
+            <div class="code-example">
+                <pre><code>const cars = ["Saab", "Volvo", "BMW"];
+let car = cars[0];</code></pre>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">📝</span> குறிப்பு:</h4>
+                <p>வரிசை குறியீடுகள் 0 உடன் தொடங்குகின்றன.</p>
+                <p>[0] என்பது முதல் உறுப்பு. [1] என்பது இரண்டாவது உறுப்பு.</p>
+            </div>
+        </section>
+
+        <!-- Changing an Array Element -->
+        <section class="content-section" id="changing-elements">
+            <h2>Changing an Array Element</h2>
+            
+            <p>இந்த அறிக்கை cars இல் முதல் உறுப்பின் மதிப்பை மாற்றுகிறது:</p>
+            
+            <div class="code-example">
+                <pre><code>cars[0] = "Opel";</code></pre>
+            </div>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <div class="code-example">
+                <pre><code>const cars = ["Saab", "Volvo", "BMW"];
+cars[0] = "Opel";</code></pre>
+            </div>
+        </section>
+
+        <!-- Converting an Array to a String -->
+        <section class="content-section" id="array-to-string">
+            <h2>Converting an Array to a String</h2>
+            
+            <p>JavaScript முறை toString() ஒரு வரிசையை (காற்புள்ளியால் பிரிக்கப்பட்ட) வரிசை மதிப்புகளின் சரமாக மாற்றுகிறது.</p>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <div class="code-example">
+                <pre><code>const fruits = ["Banana", "Orange", "Apple", "Mango"];
+document.getElementById("demo").innerHTML = fruits.toString();</code></pre>
+            </div>
+            
+            <p>முடிவு:</p>
+            <div class="code-example">
+                <pre><code>Banana,Orange,Apple,Mango</code></pre>
+            </div>
+        </section>
+
+        <!-- Access the Full Array -->
+        <section class="content-section" id="full-array">
+            <h2>Access the Full Array</h2>
+            
+            <p>JavaScript உடன், முழு வரிசையும் வரிசை பெயரைக் குறிப்பிடுவதன் மூலம் அணுக முடியும்:</p>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <div class="code-example">
+                <pre><code>const cars = ["Saab", "Volvo", "BMW"];
+document.getElementById("demo").innerHTML = cars;</code></pre>
+            </div>
+        </section>
+
+        <!-- Arrays are Objects -->
+        <section class="content-section" id="arrays-objects">
+            <h2>Arrays are Objects</h2>
+            
+            <p>வரிசைகள் ஒரு சிறப்பு வகை பொருள்கள். JavaScript இல் typeof செயலி வரிசைகளுக்கு "object" ஐ வழங்குகிறது.</p>
+            
+            <p>ஆனால், JavaScript வரிசைகள் வரிசைகள் என்று சிறப்பாக விவரிக்கப்படுகின்றன.</p>
+            
+            <p>வரிசைகள் அதன் "உறுப்புகளை" அணுக எண்களைப் பயன்படுத்துகின்றன. இந்த எடுத்துக்காட்டில், person[0] John ஐ வழங்குகிறது:</p>
+            
+            <h3>வரிசை:</h3>
+            <div class="code-example">
+                <pre><code>const person = ["John", "Doe", 46];</code></pre>
+            </div>
+            
+            <p>பொருள்கள் அதன் "உறுப்பினர்களை" அணுக பெயர்களைப் பயன்படுத்துகின்றன. இந்த எடுத்துக்காட்டில், person.firstName John ஐ வழங்குகிறது:</p>
+            
+            <h3>Object:</h3>
+            <div class="code-example">
+                <pre><code>const person = {firstName:"John", lastName:"Doe", age:46};</code></pre>
+            </div>
+        </section>
+
+        <!-- Array Elements Can Be Objects -->
+        <section class="content-section" id="elements-objects">
+            <h2>Array Elements Can Be Objects</h2>
+            
+            <p>JavaScript மாறிகள் பொருள்களாக இருக்கலாம். வரிசைகள் சிறப்பு வகையான பொருள்கள்.</p>
+            
+            <p>இதன் காரணமாக, நீங்கள் ஒரே வரிசையில் வெவ்வேறு வகைகளின் மாறிகளைக் கொண்டிருக்கலாம்.</p>
+            
+            <p>ஒரு வரிசையில் பொருள்களைக் கொண்டிருக்கலாம். ஒரு வரிசையில் செயல்பாடுகளைக் கொண்டிருக்கலாம். ஒரு வரிசையில் வரிசைகளைக் கொண்டிருக்கலாம்:</p>
+            
+            <div class="code-example">
+                <pre><code>myArray[0] = Date.now;
+myArray[1] = myFunction;
+myArray[2] = myCars;</code></pre>
+            </div>
+        </section>
+
+        <!-- Array Properties and Methods -->
+        <section class="content-section" id="array-properties-methods">
+            <h2>Array Properties and Methods</h2>
+            
+            <p>JavaScript வரிசைகளின் உண்மையான வலிமை உள்ளமைக்கப்பட்ட வரிசை பண்புகள் மற்றும் முறைகள்:</p>
+            
+            <div class="code-example">
+                <pre><code>cars.length   // Returns the number of elements
+cars.sort()   // Sorts the array</code></pre>
+            </div>
+            
+            <p>வரிசை முறைகள் அடுத்த அத்தியாயங்களில் உள்ளடக்கப்பட்டுள்ளன.</p>
+        </section>
+
+        <!-- The length Property -->
+        <section class="content-section" id="length-property">
+            <h2>The length Property</h2>
+            
+            <p>ஒரு வரிசையின் length பண்பு ஒரு வரிசையின் நீளத்தை (வரிசை உறுப்புகளின் எண்ணிக்கை) வழங்குகிறது.</p>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <div class="code-example">
+                <pre><code>const fruits = ["Banana", "Orange", "Apple", "Mango"];
+let length = fruits.length;</code></pre>
+            </div>
+            
+            <p>length பண்பு எப்போதும் அதிக வரிசை குறியீட்டை விட ஒன்று அதிகமாக இருக்கும்.</p>
+        </section>
+
+        <!-- Accessing the First Array Element -->
+        <section class="content-section" id="first-element">
+            <h2>Accessing the First Array Element</h2>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <div class="code-example">
+                <pre><code>const fruits = ["Banana", "Orange", "Apple", "Mango"];
+let fruit = fruits[0];</code></pre>
+            </div>
+        </section>
+
+        <!-- Accessing the Last Array Element -->
+        <section class="content-section" id="last-element">
+            <h2>Accessing the Last Array Element</h2>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <div class="code-example">
+                <pre><code>const fruits = ["Banana", "Orange", "Apple", "Mango"];
+let fruit = fruits[fruits.length - 1];</code></pre>
+            </div>
+        </section>
+
+        <!-- Looping Array Elements -->
+        <section class="content-section" id="looping-arrays">
+            <h2>Looping Array Elements</h2>
+            
+            <p>ஒரு வரிசை வழியாக வளையமிடும் ஒரு வழி, for loop பயன்படுத்துவது:</p>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <div class="code-example">
+                <pre><code>const fruits = ["Banana", "Orange", "Apple", "Mango"];
+let fLen = fruits.length;
+
+let text = "<ul>";
+for (let i = 0; i < fLen; i++) {
+  text += "<li>" + fruits[i] + "</li>";
+}
+text += "</ul>";</code></pre>
+            </div>
+            
+            <p>நீங்கள் Array.forEach() செயல்பாட்டையும் பயன்படுத்தலாம்:</p>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <div class="code-example">
+                <pre><code>const fruits = ["Banana", "Orange", "Apple", "Mango"];
+
+let text = "<ul>";
+fruits.forEach(myFunction);
+text += "</ul>";
+
+function myFunction(value) {
+  text += "<li>" + value + "</li>";
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- Adding Array Elements -->
+        <section class="content-section" id="adding-elements">
+            <h2>Adding Array Elements</h2>
+            
+            <p>ஒரு வரிசையில் புதிய உறுப்பைச் சேர்க்க எளிதான வழி push() முறையைப் பயன்படுத்துவது:</p>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <div class="code-example">
+                <pre><code>const fruits = ["Banana", "Orange", "Apple"];
+fruits.push("Lemon");  // Adds a new element (Lemon) to fruits</code></pre>
+            </div>
+            
+            <p>புதிய உறுப்பு length பண்பைப் பயன்படுத்தி ஒரு வரிசையில் சேர்க்கப்படலாம்:</p>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <div class="code-example">
+                <pre><code>const fruits = ["Banana", "Orange", "Apple"];
+fruits[fruits.length] = "Lemon";  // Adds "Lemon" to fruits</code></pre>
+            </div>
+            
+            <div class="warning-box">
+                <h4><span class="warning-icon">⚠️</span> எச்சரிக்கை!</h4>
+                <p>அதிக குறியீடுகளுடன் உறுப்புகளைச் சேர்ப்பது வரிசையில் வரையறுக்கப்படாத "துளைகளை" உருவாக்கலாம்:</p>
+                <div class="code-example">
+                    <pre><code>const fruits = ["Banana", "Orange", "Apple"];
+fruits[6] = "Lemon";  // Creates undefined "holes" in fruits</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Associative Arrays -->
+        <section class="content-section" id="associative-arrays">
+            <h2>Associative Arrays</h2>
+            
+            <p>பல நிரலாக்க மொழிகள் பெயரிடப்பட்ட குறியீடுகளுடன் வரிசைகளை ஆதரிக்கின்றன.</p>
+            
+            <p>பெயரிடப்பட்ட குறியீடுகளுடன் கூடிய வரிசைகள் associative arrays (அல்லது hashes) என்று அழைக்கப்படுகின்றன.</p>
+            
+            <p>JavaScript பெயரிடப்பட்ட குறியீடுகளுடன் வரிசைகளை ஆதரிக்காது.</p>
+            
+            <p>JavaScript இல், வரிசைகள் எப்போதும் எண்ணிடப்பட்ட குறியீடுகளைப் பயன்படுத்துகின்றன.</p>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <div class="code-example">
+                <pre><code>const person = [];
+person[0] = "John";
+person[1] = "Doe";
+person[2] = 46;
+person.length;    // Will return 3
+person[0];        // Will return "John"</code></pre>
+            </div>
+            
+            <div class="warning-box">
+                <h4><span class="warning-icon">⚠️</span> எச்சரிக்கை!!</h4>
+                <p>நீங்கள் பெயரிடப்பட்ட குறியீடுகளைப் பயன்படுத்தினால், JavaScript வரிசையை ஒரு பொருளாக மறுவரையறுக்கும்.</p>
+                <p>அதன் பிறகு, சில வரிசை முறைகள் மற்றும் பண்புகள் தவறான முடிவுகளை உருவாக்கும்.</p>
+                <div class="code-example">
+                    <pre><code>const person = [];
+person["firstName"] = "John";
+person["lastName"] = "Doe";
+person["age"] = 46;
+person.length;     // Will return 0
+person[0];         // Will return undefined</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Difference Between Arrays and Objects -->
+        <section class="content-section" id="arrays-vs-objects">
+            <h2>The Difference Between Arrays and Objects</h2>
+            
+            <p>JavaScript இல், வரிசைகள் எண்ணிடப்பட்ட குறியீடுகளைப் பயன்படுத்துகின்றன.</p>
+            <p>JavaScript இல், பொருள்கள் பெயரிடப்பட்ட குறியீடுகளைப் பயன்படுத்துகின்றன.</p>
+            <p>வரிசைகள் எண்ணிடப்பட்ட குறியீடுகளுடன் கூடிய ஒரு சிறப்பு வகை பொருள்கள்.</p>
+            
+            <h3>When to Use Arrays. When to use Objects.</h3>
+            <ul>
+                <li>JavaScript associative arrays ஐ ஆதரிக்காது.</li>
+                <li>உறுப்பு பெயர்கள் சரங்களாக (உரை) இருக்க வேண்டுமென்றால் பொருள்களைப் பயன்படுத்த வேண்டும்.</li>
+                <li>உறுப்பு பெயர்கள் எண்களாக இருக்க வேண்டுமென்றால் வரிசைகளைப் பயன்படுத்த வேண்டும்.</li>
+            </ul>
+        </section>
+
+        <!-- JavaScript new Array() -->
+        <section class="content-section" id="new-array">
+            <h2>JavaScript new Array()</h2>
+            
+            <p>JavaScript ஒரு உள்ளமைக்கப்பட்ட வரிசை constructor new Array() கொண்டுள்ளது.</p>
+            <p>ஆனால் நீங்கள் பதிலாக [] பாதுகாப்பாகப் பயன்படுத்தலாம்.</p>
+            
+            <p>இந்த இரண்டு வெவ்வேறு அறிக்கைகளும் புள்ளிகள் என்ற புதிய காலி வரிசையை உருவாக்குகின்றன:</p>
+            <div class="code-example">
+                <pre><code>const points = new Array();
+const points = [];</code></pre>
+            </div>
+            
+            <p>இந்த இரண்டு வெவ்வேறு அறிக்கைகளும் 6 எண்களைக் கொண்ட புதிய வரிசையை உருவாக்குகின்றன:</p>
+            <div class="code-example">
+                <pre><code>const points = new Array(40, 100, 1, 5, 25, 10);
+const points = [40, 100, 1, 5, 25, 10];</code></pre>
+            </div>
+            
+            <p>new வார்த்தை சில எதிர்பாராத முடிவுகளை உருவாக்கலாம்:</p>
+            <div class="code-example">
+                <pre><code>// Create an array with three elements:
+const points = new Array(40, 100, 1);
+// Create an array with two elements:
+const points = new Array(40, 100);
+// Create an array with one element ???
+const points = new Array(40);</code></pre>
+            </div>
+        </section>
+
+        <!-- A Common Error -->
+        <section class="content-section" id="common-error">
+            <h2>A Common Error</h2>
+            
+            <div class="code-example">
+                <pre><code>const points = [40];</code></pre>
+            </div>
+            
+            <p>இதற்கு சமமாக இல்லை:</p>
+            <div class="code-example">
+                <pre><code>const points = new Array(40);</code></pre>
+            </div>
+            
+            <div class="code-example">
+                <pre><code>// Create an array with one element:
+const points = [40];
+// Create an array with 40 undefined elements:
+const points = new Array(40);</code></pre>
+            </div>
+        </section>
+
+        <!-- How to Recognize an Array -->
+        <section class="content-section" id="recognize-array">
+            <h2>How to Recognize an Array</h2>
+            
+            <p>ஒரு பொதுவான கேள்வி: ஒரு மாறி ஒரு வரிசையா என்பதை நான் எப்படி அறிவது?</p>
+            
+            <p>சிக்கல் என்னவென்றால் JavaScript செயலி typeof "object" ஐ வழங்குகிறது:</p>
+            
+            <div class="code-example">
+                <pre><code>const fruits = ["Banana", "Orange", "Apple"];
+let type = typeof fruits;</code></pre>
+            </div>
+            
+            <p>typeof செயலி object ஐ வழங்குகிறது ஏனெனில் ஒரு JavaScript வரிசை ஒரு பொருளாகும்.</p>
+            
+            <h3>Solution 1:</h3>
+            <p>இந்த சிக்கலைத் தீர்க்க ECMAScript 5 (JavaScript 2009) ஒரு புதிய முறையை வரையறுத்தது Array.isArray():</p>
+            <div class="code-example">
+                <pre><code>Array.isArray(fruits);</code></pre>
+            </div>
+            
+            <h3>Solution 2:</h3>
+            <p>instanceof செயலி ஒரு பொருள் கொடுக்கப்பட்ட constructor மூலம் உருவாக்கப்பட்டால் true ஐ வழங்குகிறது:</p>
+            <div class="code-example">
+                <pre><code>const fruits = ["Banana", "Orange", "Apple"];
+
+(fruits instanceof Array);</code></pre>
+            </div>
+        </section>
+
+        <!-- Nested Arrays and Objects -->
+        <section class="content-section" id="nested-arrays">
+            <h2>Nested Arrays and Objects</h2>
+            
+            <p>பொருள்களில் உள்ள மதிப்புகள் வரிசைகளாக இருக்கலாம், மற்றும் வரிசைகளில் உள்ள மதிப்புகள் பொருள்களாக இருக்கலாம்:</p>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <div class="code-example">
+                <pre><code>const myObj = {
+  name: "John",
+  age: 30,
+  cars: [
+    {name:"Ford", models:["Fiesta", "Focus", "Mustang"]},
+    {name:"BMW", models:["320", "X3", "X5"]},
+    {name:"Fiat", models:["500", "Panda"]}
+  ]
+}</code></pre>
+            </div>
+            
+            <p>வரிசைகளுக்குள் வரிசைகளை அணுக, ஒவ்வொரு வரிசைக்கும் for-in loop பயன்படுத்தவும்:</p>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <div class="code-example">
+                <pre><code>for (let i in myObj.cars) {
+  x += "<h1>" + myObj.cars[i].name + "</h1>";
+  for (let j in myObj.cars[i].models) {
+    x += myObj.cars[i].models[j];
+  }
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- Learn More -->
+        <section class="content-section" id="learn-more">
+            <h2>Learn More:</h2>
+            <ul>
+                <li>Basic Array Methods</li>
+                <li>Array Search Methods</li>
+                <li>Array Sort Methods</li>
+                <li>Array Iteration Methods</li>
+                <li>JavaScript Array Reference</li>
+            </ul>
+        </section>
+
+        <!-- Exercise Section (Only One Exercise) -->
+        <section class="content-section" id="exercise">
+            <h2>Exercise</h2>
+            
+            <p>ஒரு வரிசையை உருவாக்க சட்டப்பூர்வமான வழி எது அல்ல?</p>
+            
+            <div class="exercise-box">
+                <h4><span class="exercise-icon">❓</span> எந்த வரிசை உருவாக்கும் முறை சட்டப்பூர்வமானது அல்ல?</h4>
+                
+                <div class="options-grid">
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">const fruits = ['Orange', 'Banana', 'Apple'];</div>
+                            <div class="option-feedback incorrect">✗ தவறு! இது வரிசை நேரடி முறை மற்றும் JavaScript இல் வரிசையை உருவாக்க சரியான வழியாகும்.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">const fruits = new Array ('Orange', 'Banana', 'Apple');</div>
+                            <div class="option-feedback incorrect">✗ தவறு! new Array() constructor சரியானது, ஆனால் வரிசை நேரடி முறையைப் பயன்படுத்த பரிந்துரைக்கப்படுகிறது.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="true">
+                        <div class="option-content">
+                            <div class="option-text">const fruits = ('Orange', 'Banana', 'Apple');</div>
+                            <div class="option-feedback correct">✓ சரி! இது சரியான வரிசை தொடரியல் அல்ல. வரிசைகள் சதுர அடைப்புக்குறிகளுடன் [] அல்லது new Array() constructor உடன் உருவாக்கப்பட வேண்டும்.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bottom Navigation -->
+        <div class="bottom-nav">
+            <a href="JavaScript%20Date%20Reference.html" class="nav-tab prev">
+                <i class="fas fa-arrow-left"></i>
+                <span>முந்தைய</span>
+            </a>
+            <a href="JavaScript%20Array%20Methods.html" class="nav-tab next">
+                <span>அடுத்தது</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Siva Team Institution</h3>
+                <p>Leading educational institution providing quality programming education in Tamil.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#introduction">Arrays Introduction</a></li>
+                    <li><a href="#why-use-arrays">Why Use Arrays?</a></li>
+                    <li><a href="#creating-arrays">Creating Arrays</a></li>
+                    <li><a href="#accessing-elements">Accessing Elements</a></li>
+                    <li><a href="#changing-elements">Changing Elements</a></li>
+                    <li><a href="#array-to-string">Array to String</a></li>
+                    <li><a href="#arrays-objects">Arrays are Objects</a></li>
+                    <li><a href="#length-property">length Property</a></li>
+                    <li><a href="#looping-arrays">Looping Arrays</a></li>
+                    <li><a href="#adding-elements">Adding Elements</a></li>
+                    <li><a href="#associative-arrays">Associative Arrays</a></li>
+                    <li><a href="#arrays-vs-objects">Arrays vs Objects</a></li>
+                    <li><a href="#new-array">new Array()</a></li>
+                    <li><a href="#recognize-array">Recognize Array</a></li>
+                    <li><a href="#nested-arrays">Nested Arrays</a></li>
+                    <li><a href="#learn-more">Learn More</a></li>
+                    <li><a href="#exercise">Exercise</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Location & Hours</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <ul>
+                    <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Siva Team Institution. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all content sections for animation
+        document.querySelectorAll('.content-section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Exercise interaction
+        document.querySelectorAll('.option-card').forEach(card => {
+            card.addEventListener('click', function() {
+                // Show feedback for all options
+                document.querySelectorAll('.option-card').forEach(c => {
+                    c.querySelector('.option-feedback').style.display = 'block';
+                });
+            });
+        });
+    </script>
+
+    <!-- Home Button -->
+    <a href="index.html" class="home-icon">
+        <i class="fas fa-home"></i>
+    </a>
+</body>
+</html>
+
+

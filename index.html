@@ -1,0 +1,450 @@
+﻿<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siva Team Tutorials - Home Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Fix logo size */
+        .logo-image {
+            width: 40px !important;
+            height: 40px !important;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        /* Simple index styles */
+        .tutorial-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .category-box {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #f05033;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .category-title {
+            color: #f05033;
+            margin: 0 0 10px 0;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .tutorial-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .tutorial-list li {
+            margin: 5px 0;
+            padding-left: 15px;
+            position: relative;
+        }
+        
+        .tutorial-list li:before {
+            content: '›';
+            color: #f05033;
+            position: absolute;
+            left: 0;
+        }
+        
+        .tutorial-list a {
+            color: #333;
+            text-decoration: none;
+            display: block;
+            padding: 3px 0;
+        }
+        
+        .tutorial-list a:hover {
+            color: #f05033;
+            padding-left: 5px;
+        }
+        
+        .welcome-banner {
+            background: linear-gradient(135deg, #f05033, #e74c3c);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .featured-box {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .featured-item {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .featured-item i {
+            font-size: 40px;
+            color: #f05033;
+            margin-bottom: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .tutorial-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <img src="logo.jpg" alt="Siva Team Logo" class="logo-image">
+                </div>
+                <h1 style="font-size: 20px;">Siva Team <span style="font-size: 16px;">Institution</span></h1>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Welcome Banner -->
+        <div class="welcome-banner">
+            <h2 style="margin-bottom: 10px;">Siva Team Tutorials</h2>
+            <p>JavaScript Tutorials</p>
+        </div>
+
+        <!-- Featured Tutorials -->
+        <div class="featured-box">
+            <a href="JavaScript%20Tutorial.html" style="text-decoration: none;">
+                <div class="featured-item">
+                    <i class="fab fa-js-square"></i>
+                    <h3>JavaScript Tutorial</h3>
+                    <p>JavaScript Basics</p>
+                </div>
+            </a>
+            <a href="JavaScript%20Arrays.html" style="text-decoration: none;">
+                <div class="featured-item">
+                    <i class="fas fa-layer-group"></i>
+                    <h3>JavaScript Arrays</h3>
+                    <p>Array Methods and Operations</p>
+                </div>
+            </a>
+            <a href="JavaScript%20Functions.html" style="text-decoration: none;">
+                <div class="featured-item">
+                    <i class="fas fa-cogs"></i>
+                    <h3>JavaScript Functions</h3>
+                    <p>Functions and Scope</p>
+                </div>
+            </a>
+        </div>
+
+        <!-- All Tutorials Grid -->
+        <section class="content-section">
+            <h2>All JavaScript Tutorials</h2>
+            <p>150+ Tutorials Available for Free</p>
+            
+            <div class="tutorial-container">
+                <!-- JavaScript Basics -->
+                <div class="category-box">
+                    <h3 class="category-title"><i class="fab fa-js-square"></i> JavaScript Basics</h3>
+                    <ul class="tutorial-list">
+                        <li><a href="JavaScript%20Tutorial.html">JavaScript Tutorial</a></li>
+                        <li><a href="JavaScript%20Introduction.html">JavaScript Introduction</a></li>
+                        <li><a href="JavaScript%20Where%20To.html">JavaScript Where To</a></li>
+                        <li><a href="JavaScript%20Syntax.html">JavaScript Syntax</a></li>
+                        <li><a href="JavaScript%20Variables.html">JavaScript Variables</a></li>
+                        <li><a href="JavaScript%20Let.html">JavaScript Let</a></li>
+                        <li><a href="JavaScript%20Const.html">JavaScript Const</a></li>
+                        <li><a href="JavaScript%20Use%20Strict.html">JavaScript Use Strict</a></li>
+                    </ul>
+                </div>
+
+                <!-- Data Types & Operators -->
+                <div class="category-box" style="border-left-color: #3498db;">
+                    <h3 class="category-title" style="color: #3498db;"><i class="fas fa-calculator"></i> Data Types & Operators</h3>
+                    <ul class="tutorial-list">
+                        <li><a href="JavaScript%20Datatypes.html">JavaScript Datatypes</a></li>
+                        <li><a href="JavaScript%20Data%20Types.html">JavaScript Data Types</a></li>
+                        <li><a href="JavaScript%20Operators.html">JavaScript Operators</a></li>
+                        <li><a href="JavaScript%20Arithmetic.html">JavaScript Arithmetic</a></li>
+                        <li><a href="JavaScript%20Assignment.html">JavaScript Assignment</a></li>
+                        <li><a href="JavaScript%20Comparison.html">JavaScript Comparison</a></li>
+                        <li><a href="JavaScript%20Logical%20Operators.html">JavaScript Logical Operators</a></li>
+                        <li><a href="JavaScript%20Bitwise%20Operations.html">JavaScript Bitwise Operations</a></li>
+                    </ul>
+                </div>
+
+                <!-- Control Flow -->
+                <div class="category-box" style="border-left-color: #27ae60;">
+                    <h3 class="category-title" style="color: #27ae60;"><i class="fas fa-code-branch"></i> Control Flow</h3>
+                    <ul class="tutorial-list">
+                        <li><a href="JavaScript%20if%20Statement.html">JavaScript if Statement</a></li>
+                        <li><a href="JavaScript%20else.html">JavaScript else</a></li>
+                        <li><a href="JavaScript%20Conditionals.html">JavaScript Conditionals</a></li>
+                        <li><a href="JavaScript%20Switch%20Statement.html">JavaScript Switch Statement</a></li>
+                        <li><a href="The%20Conditional%20(Ternary)%20Operator.html">Conditional (Ternary) Operator</a></li>
+                        <li><a href="JavaScript%20For%20Loop.html">JavaScript For Loop</a></li>
+                        <li><a href="JavaScript%20While%20Loops.html">JavaScript While Loops</a></li>
+                        <li><a href="JavaScript%20Break.html">JavaScript Break</a></li>
+                        <li><a href="JavaScript%20Continue.html">JavaScript Continue</a></li>
+                    </ul>
+                </div>
+
+                <!-- Functions -->
+                <div class="category-box" style="border-left-color: #9b59b6;">
+                    <h3 class="category-title" style="color: #9b59b6;"><i class="fas fa-cogs"></i> Functions</h3>
+                    <ul class="tutorial-list">
+                        <li><a href="JavaScript%20Functions.html">JavaScript Functions</a></li>
+                        <li><a href="JavaScript%20Function%20Parameters.html">Function Parameters</a></li>
+                        <li><a href="JavaScript%20Function%20Arguments.html">Function Arguments</a></li>
+                        <li><a href="JavaScript%20Function%20Return.html">Function Return</a></li>
+                        <li><a href="JavaScript%20Arrow%20Functions.html">Arrow Functions</a></li>
+                        <li><a href="JavaScript%20Function%20Expressions.html">Function Expressions</a></li>
+                        <li><a href="Invoking%20JavaScript%20Functions.html">Invoking Functions</a></li>
+                        <li><a href="JavaScript%20Functions%20Quiz.html">Functions Quiz</a></li>
+                    </ul>
+                </div>
+
+                <!-- Arrays -->
+                <div class="category-box" style="border-left-color: #e74c3c;">
+                    <h3 class="category-title" style="color: #e74c3c;"><i class="fas fa-layer-group"></i> Arrays</h3>
+                    <ul class="tutorial-list">
+                        <li><a href="JavaScript%20Arrays.html">JavaScript Arrays</a></li>
+                        <li><a href="JavaScript%20Array%20Methods.html">Array Methods</a></li>
+                        <li><a href="JavaScript%20Array%20Sort.html">Array Sort</a></li>
+                        <li><a href="JavaScript%20Array%20Search.html">Array Search</a></li>
+                        <li><a href="JavaScript%20Array%20Iterations.html">Array Iterations</a></li>
+                        <li><a href="JavaScript%20Array%20Const.html">Array Const</a></li>
+                        <li><a href="JavaScript%20Array%20Reference.html">Array Reference</a></li>
+                    </ul>
+                </div>
+
+                <!-- Objects -->
+                <div class="category-box" style="border-left-color: #f39c12;">
+                    <h3 class="category-title" style="color: #f39c12;"><i class="fas fa-cube"></i> Objects</h3>
+                    <ul class="tutorial-list">
+                        <li><a href="JavaScript%20Objects.html">JavaScript Objects</a></li>
+                        <li><a href="JavaScript%20Object%20Properties.html">Object Properties</a></li>
+                        <li><a href="JavaScript%20Object%20Methods.html">Object Methods</a></li>
+                        <li><a href="JavaScript%20Display%20Objects.html">Display Objects</a></li>
+                    </ul>
+                </div>
+
+                <!-- Strings & Numbers -->
+                <div class="category-box" style="border-left-color: #1abc9c;">
+                    <h3 class="category-title" style="color: #1abc9c;"><i class="fas fa-font"></i> Strings & Numbers</h3>
+                    <ul class="tutorial-list">
+                        <li><a href="JavaScript%20Strings.html">JavaScript Strings</a></li>
+                        <li><a href="JavaScript%20String%20Methods.html">String Methods</a></li>
+                        <li><a href="JavaScript%20String%20Search.html">String Search</a></li>
+                        <li><a href="JavaScript%20String%20Templates.html">String Templates</a></li>
+                        <li><a href="JavaScript%20Numbers.html">JavaScript Numbers</a></li>
+                        <li><a href="JavaScript%20Number%20Methods.html">Number Methods</a></li>
+                        <li><a href="JavaScript%20BigInt.html">JavaScript BigInt</a></li>
+                    </ul>
+                </div>
+
+                <!-- Dates -->
+                <div class="category-box" style="border-left-color: #3498db;">
+                    <h3 class="category-title" style="color: #3498db;"><i class="fas fa-calendar-alt"></i> Dates</h3>
+                    <ul class="tutorial-list">
+                        <li><a href="JavaScript%20Dates.html">JavaScript Dates</a></li>
+                        <li><a href="JavaScript%20Date%20Formats.html">Date Formats</a></li>
+                        <li><a href="JavaScript%20Get%20Date%20Methods.html">Get Date Methods</a></li>
+                        <li><a href="JavaScript%20Set%20Date%20Methods.html">Set Date Methods</a></li>
+                        <li><a href="JavaScript%20Date%20Reference.html">Date Reference</a></li>
+                    </ul>
+                </div>
+
+                <!-- DOM -->
+                <div class="category-box" style="border-left-color: #8e44ad;">
+                    <h3 class="category-title" style="color: #8e44ad;"><i class="fas fa-code"></i> HTML DOM</h3>
+                    <ul class="tutorial-list">
+                        <li><a href="The%20HTML%20DOM.html">The HTML DOM</a></li>
+                        <li><a href="HTML%20DOM%20Document.html">HTML DOM Document</a></li>
+                        <li><a href="Selecting%20DOM%20Elements.html">Selecting DOM Elements</a></li>
+                        <li><a href="HTML%20DOM%20-%20Changing%20HTML.html">Changing HTML</a></li>
+                        <li><a href="HTML%20DOM%20-%20Changing%20CSS.html">Changing CSS</a></li>
+                        <li><a href="HTML%20DOM%20Animation.html">DOM Animation</a></li>
+                        <li><a href="HTML%20DOM%20Reference.html">DOM Reference</a></li>
+                    </ul>
+                </div>
+
+                <!-- Events -->
+                <div class="category-box" style="border-left-color: #e67e22;">
+                    <h3 class="category-title" style="color: #e67e22;"><i class="fas fa-bolt"></i> Events</h3>
+                    <ul class="tutorial-list">
+                        <li><a href="JavaScript%20Events.html">JavaScript Events</a></li>
+                        <li><a href="JavaScript%20HTML%20DOM%20Events.html">HTML DOM Events</a></li>
+                        <li><a href="JavaScript%20HTML%20DOM%20EventListener.html">DOM EventListener</a></li>
+                        <li><a href="JavaScript%20Mouse%20Events.html">Mouse Events</a></li>
+                        <li><a href="JavaScript%20Keyboard%20Events.html">Keyboard Events</a></li>
+                        <li><a href="JavaScript%20Load%20Events.html">Load Events</a></li>
+                        <li><a href="JavaScript%20Timing%20Events.html">Timing Events</a></li>
+                    </ul>
+                </div>
+
+                <!-- Advanced JavaScript -->
+                <div class="category-box" style="border-left-color: #c0392b;">
+                    <h3 class="category-title" style="color: #c0392b;"><i class="fas fa-rocket"></i> Advanced JavaScript</h3>
+                    <ul class="tutorial-list">
+                        <li><a href="JavaScript%20Maps.html">JavaScript Maps</a></li>
+                        <li><a href="JavaScript%20Sets.html">JavaScript Sets</a></li>
+                        <li><a href="JavaScript%20WeakMap.html">JavaScript WeakMap</a></li>
+                        <li><a href="JavaScript%20WeakSet.html">JavaScript WeakSet</a></li>
+                        <li><a href="JavaScript%20Iterables.html">JavaScript Iterables</a></li>
+                        <li><a href="JavaScript%20Iterators.html">JavaScript Iterators</a></li>
+                        <li><a href="JavaScript%20Generators.html">JavaScript Generators</a></li>
+                    </ul>
+                </div>
+
+                <!-- Math & Random -->
+                <div class="category-box" style="border-left-color: #16a085;">
+                    <h3 class="category-title" style="color: #16a085;"><i class="fas fa-calculator"></i> Math & Random</h3>
+                    <ul class="tutorial-list">
+                        <li><a href="JavaScript%20Math%20Object.html">Math Object</a></li>
+                        <li><a href="JavaScript%20Random.html">JavaScript Random</a></li>
+                        <li><a href="JavaScript%20Math%20Reference.html">Math Reference</a></li>
+                    </ul>
+                </div>
+
+                <!-- Regular Expressions -->
+                <div class="category-box" style="border-left-color: #7f8c8d;">
+                    <h3 class="category-title" style="color: #7f8c8d;"><i class="fas fa-filter"></i> Regular Expressions</h3>
+                    <ul class="tutorial-list">
+                        <li><a href="JavaScript%20RegExp.html">JavaScript RegExp</a></li>
+                        <li><a href="RegExp%20Patterns.html">RegExp Patterns</a></li>
+                        <li><a href="RegExp%20Character%20Classes.html">Character Classes</a></li>
+                        <li><a href="RegExp%20Meta%20Characters.html">Meta Characters</a></li>
+                        <li><a href="RegExp%20Quantifiers.html">Quantifiers</a></li>
+                        <li><a href="Regular%20Expression%20Assertions.html">Assertions</a></li>
+                        <li><a href="RegExp%20Methods.html">RegExp Methods</a></li>
+                    </ul>
+                </div>
+
+                <!-- Error Handling -->
+                <div class="category-box" style="border-left-color: #d35400;">
+                    <h3 class="category-title" style="color: #d35400;"><i class="fas fa-exclamation-triangle"></i> Error Handling</h3>
+                    <ul class="tutorial-list">
+                        <li><a href="JavaScript%20Errors.html">JavaScript Errors</a></li>
+                        <li><a href="JavaScript%20Error%20Statements.html">Error Statements</a></li>
+                        <li><a href="JavaScript%20Error%20Reference.html">Error Reference</a></li>
+                        <li><a href="JavaScript%20Debugging.html">JavaScript Debugging</a></li>
+                        <li><a href="JavaScript%20Silent%20Errors.html">Silent Errors</a></li>
+                    </ul>
+                </div>
+
+                <!-- Versions & History -->
+                <div class="category-box" style="border-left-color: #2c3e50;">
+                    <h3 class="category-title" style="color: #2c3e50;"><i class="fas fa-history"></i> Versions & History</h3>
+                    <ul class="tutorial-list">
+                        <li><a href="JavaScript%20Versions.html">JavaScript Versions</a></li>
+                        <li><a href="JavaScript%20History.html">JavaScript History</a></li>
+                        <li><a href="JavaScript%201999%20(ES3).html">JavaScript 1999 (ES3)</a></li>
+                        <li><a href="JavaScript%202009%20(ES5).html">JavaScript 2009 (ES5)</a></li>
+                        <li><a href="JavaScript%202015%20(ES6).html">JavaScript 2015 (ES6)</a></li>
+                        <li><a href="ECMAScript%202016.html">ECMAScript 2016</a></li>
+                        <li><a href="ECMAScript%202017.html">ECMAScript 2017</a></li>
+                        <li><a href="ECMAScript%202018.html">ECMAScript 2018</a></li>
+                        <li><a href="ECMAScript%202019.html">ECMAScript 2019</a></li>
+                        <li><a href="ECMAScript%202020.html">ECMAScript 2020</a></li>
+                        <li><a href="ECMAScript%202021.html">ECMAScript 2021</a></li>
+                        <li><a href="ECMAScript%202022.html">ECMAScript 2022</a></li>
+                        <li><a href="ECMAScript%202023.html">ECMAScript 2023</a></li>
+                        <li><a href="ECMAScript%202024.html">ECMAScript 2024</a></li>
+                        <li><a href="ECMAScript%202025.html">ECMAScript 2025</a></li>
+                        <li><a href="ECMAScript%202026.html">ECMAScript 2026</a></li>
+                    </ul>
+                </div>
+
+                <!-- Projects -->
+                <div class="category-box" style="border-left-color: #9b59b6;">
+                    <h3 class="category-title" style="color: #9b59b6;"><i class="fas fa-laptop-code"></i> Projects</h3>
+                    <ul class="tutorial-list">
+                        <li><a href="Project%20-%20Event%20Listener.html">Project - Event Listener</a></li>
+                        <li><a href="Project%20-%20localStorage%20Counter.html">Project - localStorage Counter</a></li>
+                        <li><a href="Project%20-%20Modal%20Popup.html">Project - Modal Popup</a></li>
+                        <li><a href="Project%20-%20To-Do%20List.html">Project - To-Do List</a></li>
+                    </ul>
+                </div>
+
+                <!-- References & Guides -->
+                <div class="category-box" style="border-left-color: #34495e;">
+                    <h3 class="category-title" style="color: #34495e;"><i class="fas fa-book"></i> References & Guides</h3>
+                    <ul class="tutorial-list">
+                        <li><a href="JavaScript%20Style%20Guide.html">JavaScript Style Guide</a></li>
+                        <li><a href="JavaScript%20Best%20Practices.html">Best Practices</a></li>
+                        <li><a href="JavaScript%20Common%20Mistakes.html">Common Mistakes</a></li>
+                        <li><a href="JavaScript%20Performance.html">JavaScript Performance</a></li>
+                        <li><a href="JavaScript%20Reserved%20Words.html">Reserved Words</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="content-section" style="background: #f8f9fa; border-radius: 10px; padding: 25px;">
+            <h2 style="text-align: center; color: #f05033;">Siva Team Institution</h2>
+            <p style="text-align: center; line-height: 1.6;">
+                Premier educational institution providing quality JavaScript programming education.<br>
+                Suitable for everyone from beginner students to advanced programmers.<br>
+                <strong style="color: #f05033;">All tutorials are free! No registration required.</strong>
+            </p>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Siva Team Institution</h3>
+                <p>Quality JavaScript programming education</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="JavaScript%20Tutorial.html">JavaScript Tutorial</a></li>
+                    <li><a href="JavaScript%20Arrays.html">JavaScript Arrays</a></li>
+                    <li><a href="JavaScript%20Functions.html">JavaScript Functions</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Siva Team Institution. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Home Button -->
+    <a href="index.html" class="home-icon">
+        <i class="fas fa-home"></i>
+    </a>
+</body>
+</html>
+
+
