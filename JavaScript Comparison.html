@@ -1,0 +1,578 @@
+﻿<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Comparison - Siva Team</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .content-section p, 
+        .content-section li,
+        .content-section h3,
+        .content-section h4,
+        .comparison-card p {
+            color: #333 !important;
+        }
+        
+        .tip-box p,
+        .tip-box li,
+        .tip-box h4 {
+            color: white !important;
+        }
+        
+        .warning-box p,
+        .warning-box li,
+        .warning-box h4 {
+            color: white !important;
+        }
+        
+        .exercise-box p,
+        .exercise-box h4 {
+            color: white !important;
+        }
+        
+        /* Stable logo styling - NO ANIMATIONS */
+        .logo-icon {
+            animation: none !important; /* Remove pulse animation */
+        }
+        
+        .logo-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            animation: none !important; /* Ensure no animations */
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <img src="logo.jpg" alt="Siva Team Logo" class="logo-image">
+                </div>
+                <h1>Siva Team <span>Institution</span></h1>
+            </div>
+        </div>
+    </header>
+
+    <!-- Top Navigation Tabs -->
+    <div class="nav-tabs">
+        <a href="JavaScript Assignment.html" class="nav-tab prev">
+            <i class="fas fa-arrow-left"></i>
+            <span>Previous</span>
+        </a>
+        <a href="JavaScript Conditionals.html" class="nav-tab next">
+            <span>Next</span>
+            <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2>JavaScript Comparison</h2>
+            <p>ஒப்பீட்டு ஆபரேட்டர்களைக் கற்றுக்கொள்ளுங்கள்</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Introduction -->
+        <section class="content-section" id="introduction">
+            <h2>Comparison Operators</h2>
+            
+            <p>ஒப்பீட்டு ஆபரேட்டர்கள் இரண்டு மதிப்புகளை ஒப்பிட பயன்படுகின்றன.</p>
+            
+            <p>ஒப்பீட்டு ஆபரேட்டர்கள் எப்போதும் <code>true</code> அல்லது <code>false</code> தருகின்றன.</p>
+            
+            <p><code>x = 5</code> என்று கொடுக்கப்பட்டால், கீழே உள்ள அட்டவணை ஒப்பீட்டு ஆபரேட்டர்களை விளக்குகிறது:</p>
+        </section>
+
+        <!-- Comparison Operators Table -->
+        <section class="content-section" id="operators-table">
+            <h3>Comparison Operators</h3>
+            
+            <div class="comparison-table">
+                <table>
+                    <tr>
+                        <th>Operator</th>
+                        <th>Description</th>
+                        <th>Comparing</th>
+                        <th>Returns</th>
+                    </tr>
+                    <tr>
+                        <td><code>==</code></td>
+                        <td>equal to</td>
+                        <td><code>x == 8</code></td>
+                        <td><code>false</code></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td><code>x == 5</code></td>
+                        <td><code>true</code></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td><code>x == "5"</code></td>
+                        <td><code>true</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>===</code></td>
+                        <td>equal value and equal type</td>
+                        <td><code>x === 5</code></td>
+                        <td><code>true</code></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td><code>x === "5"</code></td>
+                        <td><code>false</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>!=</code></td>
+                        <td>not equal</td>
+                        <td><code>x != 8</code></td>
+                        <td><code>true</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>!==</code></td>
+                        <td>not equal value or not equal type</td>
+                        <td><code>x !== 5</code></td>
+                        <td><code>false</code></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td><code>x !== "5"</code></td>
+                        <td><code>true</code></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td><code>x !== 8</code></td>
+                        <td><code>true</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>></code></td>
+                        <td>greater than</td>
+                        <td><code>x > 8</code></td>
+                        <td><code>false</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>&lt;</code></td>
+                        <td>less than</td>
+                        <td><code>x &lt; 8</code></td>
+                        <td><code>true</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>>=</code></td>
+                        <td>greater than or equal to</td>
+                        <td><code>x >= 8</code></td>
+                        <td><code>false</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>&lt;=</code></td>
+                        <td>less than or equal to</td>
+                        <td><code>x &lt;= 8</code></td>
+                        <td><code>true</code></td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">💡</span> == vs === வித்தியாசம்:</h4>
+                <p><code>==</code> (loose equality) - மதிப்பை மட்டும் சரிபார்க்கிறது, வகையை மாற்ற முயற்சிக்கிறது</p>
+                <p><code>===</code> (strict equality) - மதிப்பு மற்றும் வகை இரண்டையும் சரிபார்க்கிறது</p>
+            </div>
+        </section>
+
+        <!-- Usage in Conditional Statements -->
+        <section class="content-section" id="conditional-usage">
+            <h3>Usage in Conditional Statements</h3>
+            <p>மதிப்புகளை ஒப்பிட்டு முடிவின் அடிப்படையில் செயல்களை எடுக்க நிபந்தனை அறிக்கைகளில் ஒப்பீட்டு ஆபரேட்டர்களைப் பயன்படுத்தலாம்:</p>
+            
+            <div class="code-example">
+                <h4>Example: Comparison in if statement</h4>
+                <pre><code>if (age < 18) {
+  text = "Too young to buy alcohol";
+}</code></pre>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">📚</span> கற்றல்:</h4>
+                <p>நிபந்தனை அறிக்கைகளின் பயன்பாட்டைப் பற்றி இந்த டுடோரியலின் <code>if...else</code> அத்தியாயத்தில் மேலும் அறிவீர்கள்.</p>
+            </div>
+        </section>
+
+        <!-- JavaScript String Comparison -->
+        <section class="content-section" id="string-comparison">
+            <h3>JavaScript String Comparison</h3>
+            <p>மேலே உள்ள அனைத்து ஒப்பீட்டு ஆபரேட்டர்களும் சரங்களிலும் பயன்படுத்தப்படலாம்:</p>
+            
+            <div class="code-example">
+                <h4>Example: String Comparison</h4>
+                <pre><code>let text1 = "A";
+let text2 = "B";
+let result = text1 < text2;  // true</code></pre>
+            </div>
+            
+            <p>சரங்கள் அகரவரிசையில் ஒப்பிடப்படுகின்றன என்பதைக் கவனிக்கவும்:</p>
+            
+            <div class="code-example">
+                <h4>Example: Alphabetical Comparison</h4>
+                <pre><code>let text1 = "20";
+let text2 = "5";
+let result = text1 < text2;  // true</code></pre>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">🔤</span> அகரவரிசை ஒப்பீடு:</h4>
+                <p>சரங்கள் ஒப்பிடப்படும்போது, JavaScript ஒவ்வொரு எழுத்தின் Unicode மதிப்பையும் ஒப்பிடுகிறது. "20" < "5" என்பது உண்மை, ஏனெனில் "2" (Unicode 50) "5" (Unicode 53) ஐ விட குறைவாக உள்ளது.</p>
+            </div>
+        </section>
+
+        <!-- Comparing Different Types -->
+        <section class="content-section" id="different-types">
+            <h3>Comparing Different Types</h3>
+            <p>வெவ்வேறு வகையான தரவுகளை ஒப்பிடுவது எதிர்பாராத முடிவுகளைத் தரலாம்.</p>
+            
+            <p>ஒரு சரத்தை ஒரு எண்ணுடன் ஒப்பிடும்போது, JavaScript ஒப்பீடு செய்யும் போது சரத்தை எண்ணாக மாற்றும். ஒரு காலி சரம் 0 ஆக மாற்றப்படும். எண்ணல்லாத சரம் NaN ஆக மாற்றப்படும், இது எப்போதும் false ஆகும்.</p>
+            
+            <div class="comparison-table">
+                <table>
+                    <tr>
+                        <th>Case</th>
+                        <th>Value</th>
+                        <th>Result</th>
+                        <th>Explanation</th>
+                    </tr>
+                    <tr>
+                        <td><code>2 &lt; 12</code></td>
+                        <td><code>true</code></td>
+                        <td><code>true</code></td>
+                        <td>இரண்டும் எண்கள், 2 < 12 உண்மை</td>
+                    </tr>
+                    <tr>
+                        <td><code>2 &lt; "12"</code></td>
+                        <td><code>true</code></td>
+                        <td><code>true</code></td>
+                        <td>"12" எண்ணாக மாற்றப்பட்டு 12 ஆகிறது, 2 < 12 உண்மை</td>
+                    </tr>
+                    <tr>
+                        <td><code>2 &lt; "John"</code></td>
+                        <td><code>false</code></td>
+                        <td><code>false</code></td>
+                        <td>"John" NaN ஆக மாற்றப்படுகிறது, எந்த எண்ணும் NaN ஐ விட குறைவாக இல்லை</td>
+                    </tr>
+                    <tr>
+                        <td><code>2 > "John"</code></td>
+                        <td><code>false</code></td>
+                        <td><code>false</code></td>
+                        <td>"John" NaN ஆக மாற்றப்படுகிறது, எந்த எண்ணும் NaN ஐ விட அதிகமாக இல்லை</td>
+                    </tr>
+                    <tr>
+                        <td><code>2 == "John"</code></td>
+                        <td><code>false</code></td>
+                        <td><code>false</code></td>
+                        <td>"John" NaN ஆக மாற்றப்படுகிறது, 2 == NaN பொய்</td>
+                    </tr>
+                    <tr>
+                        <td><code>"2" &lt; "12"</code></td>
+                        <td><code>false</code></td>
+                        <td><code>false</code></td>
+                        <td>சர ஒப்பீடு: "2" (Unicode 50) "1" (Unicode 49) ஐ விட அதிகம்</td>
+                    </tr>
+                    <tr>
+                        <td><code>"2" > "12"</code></td>
+                        <td><code>true</code></td>
+                        <td><code>true</code></td>
+                        <td>சர ஒப்பீடு: "2" > "1" உண்மை</td>
+                    </tr>
+                    <tr>
+                        <td><code>"2" == "12"</code></td>
+                        <td><code>false</code></td>
+                        <td><code>false</code></td>
+                        <td>சரங்கள் வெவ்வேறானவை</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div class="warning-box">
+                <h4><span class="warning-icon">⚠️</span> முக்கியமான குறிப்பு:</h4>
+                <p>இரண்டு சரங்களை ஒப்பிடும்போது, <code>"2"</code> என்பது <code>"12"</code> ஐ விட அதிகமாக இருக்கும்.</p>
+                <p>அகரவரிசையில் 1 என்பது 2 ஐ விட குறைவு (Unicode மதிப்புகள்: "1" = 49, "2" = 50).</p>
+            </div>
+        </section>
+
+        <!-- Type Conversion for Proper Comparison -->
+        <section class="content-section" id="type-conversion">
+            <h3>Type Conversion for Proper Comparison</h3>
+            <p>சரியான முடிவைப் பெற, ஒப்பீட்டுக்கு முன் மாறிகள் சரியான வகையாக மாற்றப்பட வேண்டும்:</p>
+            
+            <div class="code-example">
+                <h4>Example: Proper Type Conversion</h4>
+                <pre><code>age = Number(age);
+if (isNaN(age)) {
+  voteable = "Input is not a number";
+} else {
+  voteable = (age < 18) ? "Too young" : "Old enough";
+}</code></pre>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">🏆</span> சிறந்த நடைமுறை:</h4>
+                <p>எப்போதும் கலப்பு வகை ஒப்பீடுகளைத் தவிர்க்கவும். ஒப்பீட்டுக்கு முன் வெளிப்படையாக வகைகளை மாற்றவும்.</p>
+                <p>கடுமையான சமத்துவத்திற்கு (<code>===</code> மற்றும் <code>!==</code>) சாதகமான முன்னுரிமை அளிக்கவும்.</p>
+            </div>
+        </section>
+
+        <!-- == vs === Deep Comparison -->
+        <section class="content-section" id="strict-vs-loose">
+            <h3>== vs === Deep Comparison</h3>
+            
+            <div class="comparison-table">
+                <table>
+                    <tr>
+                        <th>Comparison</th>
+                        <th><code>==</code> Result</th>
+                        <th><code>===</code> Result</th>
+                        <th>Explanation</th>
+                    </tr>
+                    <tr>
+                        <td><code>5 == 5</code></td>
+                        <td><code>true</code></td>
+                        <td><code>true</code></td>
+                        <td>ஒரே மதிப்பு மற்றும் வகை</td>
+                    </tr>
+                    <tr>
+                        <td><code>5 == "5"</code></td>
+                        <td><code>true</code></td>
+                        <td><code>false</code></td>
+                        <td><code>==</code> வகையை மாற்றுகிறது, <code>===</code> வகையை சரிபார்க்கிறது</td>
+                    </tr>
+                    <tr>
+                        <td><code>0 == false</code></td>
+                        <td><code>true</code></td>
+                        <td><code>false</code></td>
+                        <td><code>==</code> false ஐ 0 ஆக மாற்றுகிறது</td>
+                    </tr>
+                    <tr>
+                        <td><code>1 == true</code></td>
+                        <td><code>true</code></td>
+                        <td><code>false</code></td>
+                        <td><code>==</code> true ஐ 1 ஆக மாற்றுகிறது</td>
+                    </tr>
+                    <tr>
+                        <td><code>"" == false</code></td>
+                        <td><code>true</code></td>
+                        <td><code>false</code></td>
+                        <td><code>==</code> இரண்டையும் 0 ஆக மாற்றுகிறது</td>
+                    </tr>
+                    <tr>
+                        <td><code>null == undefined</code></td>
+                        <td><code>true</code></td>
+                        <td><code>false</code></td>
+                        <td><code>==</code> சிறப்பு விதி, <code>===</code> வெவ்வேறு வகைகள்</td>
+                    </tr>
+                    <tr>
+                        <td><code>null == 0</code></td>
+                        <td><code>false</code></td>
+                        <td><code>false</code></td>
+                        <td><code>null</code> 0 க்கு சமமாக இல்லை</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <!-- Comparison with NaN -->
+        <section class="content-section" id="nan-comparison">
+            <h3>Comparison with NaN</h3>
+            <p>NaN (Not a Number) என்பது ஒரு சிறப்பு மதிப்பு, இது எந்த ஒப்பீட்டிலும் வித்தியாசமாக செயல்படுகிறது:</p>
+            
+            <div class="code-example">
+                <h4>Example: NaN Comparisons</h4>
+                <pre><code>NaN == NaN;      // false
+NaN === NaN;     // false
+NaN != NaN;      // true
+NaN !== NaN;     // true
+NaN < 5;         // false
+NaN > 5;         // false
+NaN == 5;        // false</code></pre>
+            </div>
+            
+            <div class="warning-box">
+                <h4><span class="warning-icon">🚫</span> NaN ஒப்பீடு விதிகள்:</h4>
+                <p>NaN எந்த மதிப்புக்கும் சமமாக இல்லை, NaN உட்பட! NaN உடன் ஒப்பிட <code>isNaN()</code> செயல்பாட்டைப் பயன்படுத்தவும்:</p>
+                <div class="code-example">
+                    <pre><code>let x = NaN;
+isNaN(x);        // true
+Number.isNaN(x); // true</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Exercise Section (Only One) -->
+        <section class="content-section" id="exercises">
+            <h2>Exercise</h2>
+            
+            <div class="exercise-box">
+                <h4><span class="exercise-icon">❓</span> பின்வரும் ஒப்பீட்டின் முடிவு என்ன?</h4>
+                
+                <div class="code-example">
+                    <pre><code>5 === "5"</code></pre>
+                </div>
+                
+                <div class="options-grid">
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">true</div>
+                            <div class="option-feedback incorrect">✗ தவறு! <code>===</code> ஆபரேட்டர் கடுமையான சமத்துவத்தைச் சரிபார்க்கிறது. இடது பக்கம் எண் (5), வலது பக்கம் சரம் ("5") - வகைகள் வித்தியாசமாக உள்ளன</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="true">
+                        <div class="option-content">
+                            <div class="option-text">false</div>
+                            <div class="option-feedback correct">✓ சரி! <code>===</code> ஆபரேட்டர் மதிப்பு மற்றும் வகை இரண்டையும் சரிபார்க்கிறது. 5 (எண்) மற்றும் "5" (சரம்) வெவ்வேறு வகைகள், எனவே முடிவு false</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">TypeError</div>
+                            <div class="option-feedback incorrect">✗ தவறு! ஒப்பீட்டு ஆபரேட்டர்கள் TypeError ஐ வீசாது. அவை எப்போதும் true அல்லது false தரும். வெவ்வேறு வகைகளை ஒப்பிடலாம், ஆனால் <code>===</code> வகை வேறுபாட்டிற்காக false தரும்</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">undefined</div>
+                            <div class="option-feedback incorrect">✗ தவறு! ஒப்பீட்டு ஆபரேட்டர்கள் எப்போதும் boolean மதிப்பை (true/false) தரும். அவை undefined தராது</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bottom Navigation -->
+        <div class="bottom-nav">
+            <a href="JavaScript Assignment.html" class="nav-tab prev">
+                <i class="fas fa-arrow-left"></i>
+                <span>Previous</span>
+            </a>
+            <a href="JavaScript Conditionals.html" class="nav-tab next">
+                <span>Next</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Siva Team Institution</h3>
+                <p>Leading educational institution providing quality programming education in Tamil.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#introduction">Introduction</a></li>
+                    <li><a href="#operators-table">Comparison Operators Table</a></li>
+                    <li><a href="#conditional-usage">Conditional Statements Usage</a></li>
+                    <li><a href="#string-comparison">String Comparison</a></li>
+                    <li><a href="#different-types">Comparing Different Types</a></li>
+                    <li><a href="#type-conversion">Type Conversion</a></li>
+                    <li><a href="#strict-vs-loose">== vs === Comparison</a></li>
+                    <li><a href="#nan-comparison">NaN Comparisons</a></li>
+                    <li><a href="#exercises">Exercise</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Location & Hours</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <ul>
+                    <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Siva Team Institution. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all content sections for animation
+        document.querySelectorAll('.content-section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Exercise interaction
+        document.querySelectorAll('.option-card').forEach(card => {
+            card.addEventListener('click', function() {
+                // Show feedback for all options
+                document.querySelectorAll('.option-card').forEach(c => {
+                    c.querySelector('.option-feedback').style.display = 'block';
+                });
+            });
+        });
+    </script>
+
+    <!-- Home Button -->
+    <a href="index.html" class="home-icon">
+        <i class="fas fa-home"></i>
+    </a>
+</body>
+</html>
+
+

@@ -1,0 +1,667 @@
+﻿<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Const - Siva Team</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .content-section p, 
+        .content-section li,
+        .content-section h3,
+        .content-section h4,
+        .comparison-card p {
+            color: #333 !important;
+        }
+        
+        .tip-box p,
+        .tip-box li,
+        .tip-box h4 {
+            color: white !important;
+        }
+        
+        .warning-box p,
+        .warning-box li,
+        .warning-box h4 {
+            color: white !important;
+        }
+        
+        .exercise-box p,
+        .exercise-box h4 {
+            color: white !important;
+        }
+        
+        /* Stable logo styling - NO ANIMATIONS */
+        .logo-icon {
+            animation: none !important; /* Remove pulse animation */
+        }
+        
+        .logo-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            animation: none !important; /* Ensure no animations */
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <img src="logo.jpg" alt="Siva Team Logo" class="logo-image">
+                </div>
+                <h1>Siva Team <span>Institution</span></h1>
+            </div>
+        </div>
+    </header>
+
+    <!-- Top Navigation Tabs -->
+    <div class="nav-tabs">
+        <a href="JavaScript Let.html" class="nav-tab prev">
+            <i class="fas fa-arrow-left"></i>
+            <span>Previous</span>
+        </a>
+        <a href="JavaScript Datatypes.html" class="nav-tab next">
+            <span>Next</span>
+            <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2>JavaScript Const</h2>
+            <p>நிலையான மாறிகளைக் கையாள ES6 const ஐக் கற்றுக்கொள்ளுங்கள்</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Introduction -->
+        <section class="content-section" id="introduction">
+            <h2>JavaScript Const</h2>
+            
+            <p><code>const</code> கீவேர்டு ES6 (2015) இல் அறிமுகப்படுத்தப்பட்டது</p>
+            
+            <div class="best-practice-list">
+                <div class="practice-item positive">
+                    <i class="fas fa-ban"></i>
+                    <div><strong>Cannot be Redeclared:</strong> <code>const</code> உடன் வரையறுக்கப்பட்ட மாறிகள் மீண்டும் அறிவிக்க முடியாது</div>
+                </div>
+                
+                <div class="practice-item positive">
+                    <i class="fas fa-lock"></i>
+                    <div><strong>Cannot be Reassigned:</strong> <code>const</code> உடன் வரையறுக்கப்பட்ட மாறிகள் மீண்டும் ஒதுக்க முடியாது</div>
+                </div>
+                
+                <div class="practice-item positive">
+                    <i class="fas fa-cube"></i>
+                    <div><strong>Block Scope:</strong> <code>const</code> உடன் வரையறுக்கப்பட்ட மாறிகள் Block Scope கொண்டிருக்கும்</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cannot be Reassigned -->
+        <section class="content-section" id="cannot-reassign">
+            <h3>Cannot be Reassigned</h3>
+            <p><code>const</code> கீவேர்டுடன் வரையறுக்கப்பட்ட மாறி மீண்டும் ஒதுக்க முடியாது:</p>
+            
+            <div class="code-example">
+                <h4>Example: const cannot be reassigned</h4>
+                <pre><code>const PI = 3.141592653589793;
+PI = 3.14;      // ❌ This will give an error
+PI = PI + 10;   // ❌ This will also give an error</code></pre>
+            </div>
+        </section>
+
+        <!-- Must be Assigned -->
+        <section class="content-section" id="must-assigned">
+            <h3>Must be Assigned</h3>
+            <p>JavaScript <code>const</code> மாறிகள் அறிவிக்கப்படும்போது ஒரு மதிப்பை ஒதுக்க வேண்டும்:</p>
+            
+            <div class="code-comparison">
+                <div class="code-column">
+                    <h4>✅ Correct</h4>
+                    <div class="code-example">
+                        <pre><code>const PI = 3.14159265359;</code></pre>
+                    </div>
+                    <p>மாறி அறிவிப்பில் மதிப்பு ஒதுக்கப்பட்டுள்ளது</p>
+                </div>
+                
+                <div class="code-column">
+                    <h4>❌ Incorrect</h4>
+                    <div class="code-example">
+                        <pre><code>const PI;  // ❌ Error
+PI = 3.14159265359;</code></pre>
+                    </div>
+                    <p>மாறி அறிவிப்பில் மதிப்பு ஒதுக்கப்படவில்லை</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- When to use JavaScript const -->
+        <section class="content-section" id="when-to-use">
+            <h3>When to use JavaScript const?</h3>
+            <p>மதிப்பு மாறக்கூடாது என்று உங்களுக்குத் தெரிந்தால் எப்போதும் ஒரு மாறியை <code>const</code> உடன் அறிவிக்கவும்.</p>
+            
+            <p>நீங்கள் அறிவிக்கும்போது <code>const</code> பயன்படுத்தவும்:</p>
+            
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-layer-group"></i>
+                        <h4>Array</h4>
+                    </div>
+                    <p>புதிய வரிசை (Array)</p>
+                </div>
+                
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-cube"></i>
+                        <h4>Object</h4>
+                    </div>
+                    <p>புதிய பொருள் (Object)</p>
+                </div>
+                
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-code"></i>
+                        <h4>Function</h4>
+                    </div>
+                    <p>புதிய செயல்பாடு (Function)</p>
+                </div>
+                
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-expand-alt"></i>
+                        <h4>RegExp</h4>
+                    </div>
+                    <p>புதிய வழக்கமான வெளிப்பாடு (Regular Expression)</p>
+                </div>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">🏆</span> சிறந்த நடைமுறை:</h4>
+                <p>எப்போதும் முதலில் <code>const</code> பயன்படுத்தவும், பின்னர் மட்டுமே நீங்கள் மறுஒதுக்கம் செய்ய வேண்டியிருந்தால் <code>let</code> க்கு மாறவும். <code>var</code> ஐ ஒருபோதும் பயன்படுத்தாதீர்கள்.</p>
+            </div>
+        </section>
+
+        <!-- Constant Objects and Arrays -->
+        <section class="content-section" id="constant-ref">
+            <h3>Constant Objects and Arrays</h3>
+            <p><code>const</code> கீவேர்டு சிறிது தவறாக புரிந்து கொள்ளப்படுகிறது.</p>
+            
+            <p>இது ஒரு நிலையான மதிப்பை வரையறுக்காது. இது ஒரு மதிப்புக்கான நிலையான குறிப்பை வரையறுக்கிறது.</p>
+            
+            <div class="comparison-table">
+                <table>
+                    <tr>
+                        <th>You can NOT:</th>
+                        <th>But you CAN:</th>
+                    </tr>
+                    <tr>
+                        <td>நிலையான மதிப்பை மீண்டும் ஒதுக்கவும்</td>
+                        <td>நிலையான வரிசையின் உறுப்புகளை மாற்றவும்</td>
+                    </tr>
+                    <tr>
+                        <td>நிலையான வரிசையை மீண்டும் ஒதுக்கவும்</td>
+                        <td>நிலையான பொருளின் பண்புகளை மாற்றவும்</td>
+                    </tr>
+                    <tr>
+                        <td>நிலையான பொருளை மீண்டும் ஒதுக்கவும்</td>
+                        <td>வரிசைக்கு உறுப்புகளைச் சேர்க்கவும்</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <!-- Constant Arrays -->
+        <section class="content-section" id="constant-arrays">
+            <h3>Constant Arrays</h3>
+            <p>நீங்கள் ஒரு நிலையான வரிசையின் உறுப்புகளை மாற்றலாம்:</p>
+            
+            <div class="code-example">
+                <h4>Example: Modifying constant array</h4>
+                <pre><code>// You can create a constant array:
+const cars = ["Saab", "Volvo", "BMW"];
+
+// You can change an element:
+cars[0] = "Toyota";  // ✅ Allowed
+
+// You can add an element:
+cars.push("Audi");    // ✅ Allowed</code></pre>
+            </div>
+            
+            <p>ஆனால் நீங்கள் வரிசையை மீண்டும் ஒதுக்க முடியாது:</p>
+            
+            <div class="code-example">
+                <h4>Example: Cannot reassign constant array</h4>
+                <pre><code>const cars = ["Saab", "Volvo", "BMW"];
+
+cars = ["Toyota", "Volvo", "Audi"];  // ❌ ERROR</code></pre>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">💡</span> புரிதல்:</h4>
+                <p><code>const</code> வரிசை மாறி எதைச் சுட்டிக்காட்டுகிறது என்பதை மாற்றாது - இது வரிசையை மாற்றுவதைத் தடுக்காது.</p>
+            </div>
+        </section>
+
+        <!-- Constant Objects -->
+        <section class="content-section" id="constant-objects">
+            <h3>Constant Objects</h3>
+            <p>நீங்கள் ஒரு நிலையான பொருளின் பண்புகளை மாற்றலாம்:</p>
+            
+            <div class="code-example">
+                <h4>Example: Modifying constant object</h4>
+                <pre><code>// You can create a const object:
+const car = {type:"Fiat", model:"500", color:"white"};
+
+// You can change a property:
+car.color = "red";  // ✅ Allowed
+
+// You can add a property:
+car.owner = "Johnson";  // ✅ Allowed</code></pre>
+            </div>
+            
+            <p>ஆனால் நீங்கள் பொருளை மீண்டும் ஒதுக்க முடியாது:</p>
+            
+            <div class="code-example">
+                <h4>Example: Cannot reassign constant object</h4>
+                <pre><code>const car = {type:"Fiat", model:"500", color:"white"};
+
+car = {type:"Volvo", model:"EX60", color:"red"};  // ❌ ERROR</code></pre>
+            </div>
+        </section>
+
+        <!-- Difference Between var, let and const -->
+        <section class="content-section" id="comparison">
+            <h3>Difference Between var, let and const</h3>
+            
+            <div class="comparison-table">
+                <table>
+                    <tr>
+                        <th>Feature</th>
+                        <th>var</th>
+                        <th>let</th>
+                        <th>const</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Scope</strong></td>
+                        <td>No Block Scope</td>
+                        <td>Block Scope</td>
+                        <td>Block Scope</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Redeclare</strong></td>
+                        <td>Yes</td>
+                        <td>No</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Reassign</strong></td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Hoisted</strong></td>
+                        <td>Yes</td>
+                        <td>No</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Binds this</strong></td>
+                        <td>Yes</td>
+                        <td>No</td>
+                        <td>No</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <!-- What is Good? -->
+        <section class="content-section" id="good-practices">
+            <h3>What is Good?</h3>
+            
+            <div class="best-practice-list">
+                <div class="practice-item positive">
+                    <i class="fas fa-check-circle"></i>
+                    <div><code>let</code> மற்றும் <code>const</code> Block Scope கொண்டிருக்கின்றன</div>
+                </div>
+                
+                <div class="practice-item positive">
+                    <i class="fas fa-check-circle"></i>
+                    <div><code>let</code> மற்றும் <code>const</code> மீண்டும் அறிவிக்க முடியாது</div>
+                </div>
+                
+                <div class="practice-item positive">
+                    <i class="fas fa-check-circle"></i>
+                    <div><code>let</code> மற்றும் <code>const</code> பயன்படுத்துவதற்கு முன் அறிவிக்கப்பட வேண்டும்</div>
+                </div>
+                
+                <div class="practice-item positive">
+                    <i class="fas fa-check-circle"></i>
+                    <div><code>let</code> மற்றும் <code>const</code> <code>this</code> உடன் bind செய்யாது</div>
+                </div>
+                
+                <div class="practice-item positive">
+                    <i class="fas fa-check-circle"></i>
+                    <div><code>let</code> மற்றும் <code>const</code> hoist செய்யப்படுவதில்லை</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- What is Not Good? -->
+        <section class="content-section" id="bad-practices">
+            <h3>What is Not Good?</h3>
+            
+            <div class="best-practice-list">
+                <div class="practice-item negative">
+                    <i class="fas fa-times-circle"></i>
+                    <div><code>var</code> அறிவிக்கப்பட வேண்டியதில்லை (டிஃபால்ட் global)</div>
+                </div>
+                
+                <div class="practice-item negative">
+                    <i class="fas fa-times-circle"></i>
+                    <div><code>var</code> hoist செய்யப்படுகிறது (அறிவிப்புக்கு முன் பயன்படுத்தலாம்)</div>
+                </div>
+                
+                <div class="practice-item negative">
+                    <i class="fas fa-times-circle"></i>
+                    <div><code>var</code> <code>this</code> உடன் bind செய்கிறது</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Browser Support -->
+        <section class="content-section" id="browser-support">
+            <h3>Browser Support</h3>
+            
+            <p><code>let</code> மற்றும் <code>const</code> கீவேர்டுகள் Internet Explorer 11 அல்லது அதற்கு முந்தைய பதிப்புகளில் ஆதரிக்கப்படவில்லை.</p>
+            
+            <div class="comparison-table">
+                <table>
+                    <tr>
+                        <th>Browser</th>
+                        <th>Version</th>
+                        <th>Release Date</th>
+                    </tr>
+                    <tr>
+                        <td>Chrome</td>
+                        <td>49</td>
+                        <td>Mar, 2016</td>
+                    </tr>
+                    <tr>
+                        <td>Edge</td>
+                        <td>12</td>
+                        <td>Jul, 2015</td>
+                    </tr>
+                    <tr>
+                        <td>Firefox</td>
+                        <td>36</td>
+                        <td>Jan, 2015</td>
+                    </tr>
+                    <tr>
+                        <td>Safari</td>
+                        <td>11</td>
+                        <td>Sep, 2017</td>
+                    </tr>
+                    <tr>
+                        <td>Opera</td>
+                        <td>36</td>
+                        <td>Mar, 2016</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <!-- Block Scope -->
+        <section class="content-section" id="block-scope">
+            <h3>Block Scope</h3>
+            <p><code>const</code> உடன் ஒரு மாறியை அறிவிப்பது Block Scope பற்றி <code>let</code> போன்றது.</p>
+            
+            <div class="code-example">
+                <h4>Example: Block Scope with const</h4>
+                <pre><code>const x = 10;
+// Here x is 10
+
+{
+  const x = 2;
+  // Here x is 2
+}
+
+// Here x is 10</code></pre>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">📚</span> கற்றல்:</h4>
+                <p>Block Scope பற்றி மேலும் அறிய JavaScript Scope அத்தியாயத்தைப் படியுங்கள்.</p>
+            </div>
+        </section>
+
+        <!-- Redeclaring Rules -->
+        <section class="content-section" id="redeclaring-rules">
+            <h3>Redeclaring Rules</h3>
+            
+            <p>ஒரு JavaScript <code>var</code> மாறியை மீண்டும் அறிவிப்பது ஒரு நிரலில் எங்கும் அனுமதிக்கப்படுகிறது:</p>
+            
+            <div class="code-example">
+                <h4>Example: Allowed with var</h4>
+                <pre><code>var x = 2;     // Allowed
+var x = 3;     // Allowed
+x = 4;         // Allowed</code></pre>
+            </div>
+            
+            <p>அதே scope இல் இருக்கும் ஒரு இருக்கும் <code>var</code> அல்லது <code>let</code> மாறியை <code>const</code> ஆக மீண்டும் அறிவிப்பது அனுமதிக்கப்படவில்லை:</p>
+            
+            <div class="code-example">
+                <h4>Example: Not allowed to redeclare as const</h4>
+                <pre><code>var x = 2;     // Allowed
+const x = 2;   // ❌ Not allowed
+
+{
+  let x = 2;   // Allowed
+  const x = 2; // ❌ Not allowed
+}
+
+{
+  const x = 2; // Allowed
+  const x = 2; // ❌ Not allowed
+}</code></pre>
+            </div>
+            
+            <p>மற்றொரு scope இல், அல்லது மற்றொரு தொகுதியில், <code>const</code> உடன் ஒரு மாறியை மீண்டும் அறிவிப்பது அனுமதிக்கப்படுகிறது:</p>
+            
+            <div class="code-example">
+                <h4>Example: Allowed in different scopes</h4>
+                <pre><code>const x = 2;       // Allowed
+
+{
+  const x = 3;   // Allowed (different block)
+}
+
+{
+  const x = 4;   // Allowed (different block)
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- Hoisting -->
+        <section class="content-section" id="hoisting">
+            <h3>Hoisting</h3>
+            
+            <p><code>var</code> உடன் வரையறுக்கப்பட்ட மாறிகள் மேலே hoist செய்யப்படுகின்றன மற்றும் எந்த நேரத்திலும் துவக்கப்படலாம்.</p>
+            
+            <div class="code-example">
+                <h4>Example: var Hoisting</h4>
+                <pre><code>carName = "Volvo";
+var carName; // ✅ Allowed (hoisted)</code></pre>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">📚</span> கற்றல்:</h4>
+                <p>Hoisting பற்றி மேலும் அறிய விரும்பினால், JavaScript Hoisting அத்தியாயத்தைப் படியுங்கள்.</p>
+            </div>
+            
+            <p><code>const</code> உடன் வரையறுக்கப்பட்ட மாறிகள் மேலே hoist செய்யப்படுகின்றன, ஆனால் துவக்கப்படவில்லை.</p>
+            
+            <div class="code-example">
+                <h4>Example: const Hoisting (Temporal Dead Zone)</h4>
+                <pre><code>alert(carName);    // ❌ ReferenceError
+const carName = "Volvo";</code></pre>
+            </div>
+            
+            <div class="warning-box">
+                <h4><span class="warning-icon">⏳</span> Temporal Dead Zone:</h4>
+                <p><code>const</code> மாறிகள் hoist செய்யப்படுகின்றன, ஆனால் "temporal dead zone" இல் இருக்கும். அறிவிப்புக்கு முன் அவற்றைப் பயன்படுத்த முயற்சிப்பது ReferenceError ஐ ஏற்படுத்தும்.</p>
+            </div>
+        </section>
+
+        <!-- Exercise Section (Only One) -->
+        <section class="content-section" id="exercises">
+            <h2>Exercise</h2>
+            
+            <div class="exercise-box">
+                <h4><span class="exercise-icon">❓</span> உண்மை அல்லது பொய்.</h4>
+                <h4 style="margin-top: 10px; color: white;">String அல்லது Number வகை மாறிகள், <code>const</code> கீவேர்டுடன் உருவாக்கப்பட்டவை, அவற்றின் மதிப்பை ஒருபோதும் மாற்ற முடியாது.</h4>
+                
+                <div class="options-grid">
+                    <div class="option-card" data-correct="true">
+                        <div class="option-content">
+                            <div class="option-text">True</div>
+                            <div class="option-feedback correct">✓ சரி! String மற்றும் Number போன்ற பிரிமிடிவ் மதிப்புகளுக்கு, <code>const</code> உண்மையில் நிலையானதாக இருக்கும். அவற்றின் மதிப்பை மாற்ற முடியாது.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">False</div>
+                            <div class="option-feedback incorrect">✗ தவறு! String மற்றும் Number பிரிமிடிவ் மதிப்புகள். <code>const</code> உடன் பிரிமிடிவ் மதிப்புகளை வரையறுக்கும்போது, அந்த மதிப்பு முற்றிலும் மாறாததாக இருக்கும். Objects மற்றும் Arrays க்கு மட்டுமே உள் உள்ளடக்கங்களை மாற்றலாம்.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bottom Navigation -->
+        <div class="bottom-nav">
+            <a href="JavaScript Let.html" class="nav-tab prev">
+                <i class="fas fa-arrow-left"></i>
+                <span>Previous</span>
+            </a>
+            <a href="JavaScript Datatypes.html" class="nav-tab next">
+                <span>Next</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Siva Team Institution</h3>
+                <p>Leading educational institution providing quality programming education in Tamil.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#introduction">Introduction</a></li>
+                    <li><a href="#cannot-reassign">Cannot Reassign</a></li>
+                    <li><a href="#must-assigned">Must be Assigned</a></li>
+                    <li><a href="#when-to-use">When to Use const</a></li>
+                    <li><a href="#constant-ref">Constant Reference</a></li>
+                    <li><a href="#constant-arrays">Constant Arrays</a></li>
+                    <li><a href="#constant-objects">Constant Objects</a></li>
+                    <li><a href="#comparison">var vs let vs const</a></li>
+                    <li><a href="#block-scope">Block Scope</a></li>
+                    <li><a href="#exercises">Exercise</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Location & Hours</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <ul>
+                    <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Siva Team Institution. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all content sections for animation
+        document.querySelectorAll('.content-section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Exercise interaction
+        document.querySelectorAll('.option-card').forEach(card => {
+            card.addEventListener('click', function() {
+                // Show feedback for all options
+                document.querySelectorAll('.option-card').forEach(c => {
+                    c.querySelector('.option-feedback').style.display = 'block';
+                });
+            });
+        });
+    </script>
+
+    <!-- Home Button -->
+    <a href="index.html" class="home-icon">
+        <i class="fas fa-home"></i>
+    </a>
+</body>
+</html>
+
+

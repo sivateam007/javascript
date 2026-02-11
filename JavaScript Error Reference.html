@@ -1,0 +1,804 @@
+﻿<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Error Reference - Siva Team</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .content-section p, 
+        .content-section li,
+        .content-section h3,
+        .content-section h4,
+        .comparison-card p {
+            color: #333 !important;
+        }
+        
+        .tip-box p,
+        .tip-box li,
+        .tip-box h4 {
+            color: white !important;
+        }
+        
+        .warning-box p,
+        .warning-box li,
+        .warning-box h4 {
+            color: white !important;
+        }
+        
+        .exercise-box p,
+        .exercise-box h4 {
+            color: white !important;
+        }
+        
+        /* Stable logo styling - NO ANIMATIONS */
+        .logo-icon {
+            animation: none !important;
+        }
+        
+        .logo-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            animation: none !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <img src="logo.jpg" alt="Siva Team Logo" class="logo-image">
+                </div>
+                <h1>Siva Team <span>Institution</span></h1>
+            </div>
+        </div>
+    </header>
+
+    <!-- Top Navigation Tabs -->
+    <div class="nav-tabs">
+        <a href="JavaScript%20Error%20Statements.html" class="nav-tab prev">
+            <i class="fas fa-arrow-left"></i>
+            <span>முந்தைய</span>
+        </a>
+        <a href="JavaScript%20Debugging.html" class="nav-tab next">
+            <span>அடுத்தது</span>
+            <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2>JavaScript Error Reference</h2>
+            <p>JavaScript பிழை பொருள் மற்றும் அதன் பண்புகளைக் கற்றுக்கொள்ளுங்கள்</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Introduction -->
+        <section class="content-section" id="introduction">
+            <h2>Error பொருள்</h2>
+            
+            <p>JavaScript ஒரு உள்ளமைக்கப்பட்ட பிழை பொருளைக் கொண்டுள்ளது, இது பிழை ஏற்படும் போது பிழைத் தகவலை வழங்குகிறது.</p>
+            
+            <p>பிழை பொருள் இரண்டு பயனுள்ள பண்புகளை வழங்குகிறது: name மற்றும் message.</p>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">🔧</span> Error Object உருவாக்கம்:</h4>
+                <p>JavaScript தானாகவே Error பொருளை உருவாக்குகிறது, அல்லது நீங்கள் new Error() மூலம் ஒரு புதிய Error பொருளை உருவாக்கலாம்:</p>
+                <div class="code-example">
+                    <pre><code>// JavaScript தானாக உருவாக்குகிறது
+try {
+  let x = y;  // ReferenceError
+} catch(err) {
+  console.log(err.name);     // "ReferenceError"
+  console.log(err.message);  // "y is not defined"
+}
+
+// நீங்கள் உருவாக்கலாம்
+let customError = new Error("Custom error message");
+console.log(customError.name);     // "Error"
+console.log(customError.message);  // "Custom error message"</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Error Object Properties -->
+        <section class="content-section" id="properties">
+            <h2>Error Object பண்புகள்</h2>
+            
+            <div class="comparison-table">
+                <table>
+                    <tr>
+                        <th>பண்பு</th>
+                        <th>விளக்கம்</th>
+                    </tr>
+                    <tr>
+                        <td><strong>name</strong></td>
+                        <td>பிழைப் பெயரை அமைக்கிறது அல்லது வழங்குகிறது</td>
+                    </tr>
+                    <tr>
+                        <td><strong>message</strong></td>
+                        <td>பிழைச் செய்தியை அமைக்கிறது அல்லது வழங்குகிறது (ஒரு சரம்)</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <h3>எடுத்துக்காட்டு:</h3>
+            <div class="code-example">
+                <pre><code>try {
+  // ஒரு ReferenceError ஐ உருவாக்குவோம்
+  let x = undefinedVariable;
+} catch(error) {
+  console.log("Error name:", error.name);        // "ReferenceError"
+  console.log("Error message:", error.message);  // "undefinedVariable is not defined"
+  console.log("Full error:", error);             // முழு Error பொருள்
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- Error Names -->
+        <section class="content-section" id="error-names">
+            <h2>Error Names</h2>
+            
+            <p>பிழைப் பெயர் பண்பு ஆறு வெவ்வேறு மதிப்புகளை வழங்கலாம்:</p>
+            
+            <div class="comparison-table">
+                <table>
+                    <tr>
+                        <th>பிழை பெயர்</th>
+                        <th>விளக்கம்</th>
+                        <th>முயற்சிக்க</th>
+                    </tr>
+                    <tr>
+                        <td><strong>EvalError</strong></td>
+                        <td>காலாவதியானது - அதற்குப் பதிலாக SyntaxError ஐப் பயன்படுத்தவும்</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><strong>RangeError</strong></td>
+                        <td>ஒரு எண் "வரம்பிற்கு வெளியே" நடந்துள்ளது</td>
+                        <td><button onclick="demoRangeError()" class="demo-btn">முயற்சி</button></td>
+                    </tr>
+                    <tr>
+                        <td><strong>ReferenceError</strong></td>
+                        <td>சட்டவிரோத குறிப்பு நடந்துள்ளது</td>
+                        <td><button onclick="demoReferenceError()" class="demo-btn">முயற்சி</button></td>
+                    </tr>
+                    <tr>
+                        <td><strong>SyntaxError</strong></td>
+                        <td>தொடரியல் பிழை நடந்துள்ளது</td>
+                        <td><button onclick="demoSyntaxError()" class="demo-btn">முயற்சி</button></td>
+                    </tr>
+                    <tr>
+                        <td><strong>TypeError</strong></td>
+                        <td>வகைப் பிழை நடந்துள்ளது</td>
+                        <td><button onclick="demoTypeError()" class="demo-btn">முயற்சி</button></td>
+                    </tr>
+                    <tr>
+                        <td><strong>URIError</strong></td>
+                        <td>encodeURI() இல் பிழை நடந்துள்ளது</td>
+                        <td><button onclick="demoURIError()" class="demo-btn">முயற்சி</button></td>
+                    </tr>
+                </table>
+            </div>
+            
+            <style>
+                .demo-btn {
+                    padding: 5px 10px;
+                    background: var(--git-color);
+                    color: white;
+                    border: none;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    font-size: 0.9rem;
+                }
+                .demo-btn:hover {
+                    background: #e74c3c;
+                }
+                .demo-output {
+                    margin-top: 10px;
+                    padding: 10px;
+                    background: #f8f9fa;
+                    border-left: 4px solid var(--git-color);
+                    font-family: monospace;
+                    display: none;
+                }
+            </style>
+            
+            <h3>ஒவ்வொரு பிழை வகைக்கான எடுத்துக்காட்டுகள்:</h3>
+            
+            <div class="code-comparison">
+                <div class="code-column">
+                    <h4>RangeError</h4>
+                    <div class="code-example">
+                        <pre><code>// தவறான வரிசை நீளம்
+try {
+  let arr = new Array(-1);
+} catch(err) {
+  console.log(err.name);    // "RangeError"
+  console.log(err.message); // "Invalid array length"
+}</code></pre>
+                    </div>
+                </div>
+                <div class="code-column">
+                    <h4>ReferenceError</h4>
+                    <div class="code-example">
+                        <pre><code>// வரையறுக்கப்படாத மாறி
+try {
+  let x = undefinedVariable;
+} catch(err) {
+  console.log(err.name);    // "ReferenceError"
+  console.log(err.message); // "undefinedVariable is not defined"
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="code-comparison">
+                <div class="code-column">
+                    <h4>TypeError</h4>
+                    <div class="code-example">
+                        <pre><code>// தவறான வகை செயல்பாடு
+try {
+  let num = 5;
+  num.toUpperCase();
+} catch(err) {
+  console.log(err.name);    // "TypeError"
+  console.log(err.message); // "num.toUpperCase is not a function"
+}</code></pre>
+                    </div>
+                </div>
+                <div class="code-column">
+                    <h4>URIError</h4>
+                    <div class="code-example">
+                        <pre><code>// தவறான URI
+try {
+  decodeURI("%%%");
+} catch(err) {
+  console.log(err.name);    // "URIError"
+  console.log(err.message); // "URI malformed"
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">🔍</span> SyntaxError குறிப்பு:</h4>
+                <p>SyntaxError விதிவிலக்குகள் try...catch மூலம் பிடிக்க முடியாது, ஏனெனில் அவை குறியீடு பாகுபடுத்தப்படுவதற்கு முன்பே நிகழ்கின்றன:</p>
+                <div class="code-example">
+                    <pre><code>// இது பிழையை வீசாது - குறியீடு இயக்கப்படுவதற்கு முன்பே தோல்வியடைகிறது
+try {
+  let x = "unclosed string;
+} catch(err) {
+  // இந்த குறியீடு ஒருபோதும் இயங்காது
+  console.log("Caught:", err);
+}</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Custom Error Objects -->
+        <section class="content-section" id="custom-errors">
+            <h2>தனிப்பயன் பிழை பொருள்கள்</h2>
+            
+            <p>நீங்கள் உங்கள் சொந்த பிழை வகைகளை உருவாக்கலாம்:</p>
+            
+            <div class="code-example">
+                <pre><code>// அடிப்படை தனிப்பயன் பிழை
+class ValidationError extends Error {
+  constructor(message) {
+    super(message);
+    this.name = "ValidationError";
+    this.timestamp = new Date().toISOString();
+  }
+}
+
+// பயன்பாடு
+try {
+  let age = 15;
+  if (age < 18) {
+    throw new ValidationError("User must be at least 18 years old");
+  }
+} catch(err) {
+  if (err instanceof ValidationError) {
+    console.log(err.name);       // "ValidationError"
+    console.log(err.message);    // "User must be at least 18 years old"
+    console.log(err.timestamp);  // ISO timestamp
+  }
+}</code></pre>
+            </div>
+            
+            <h3>மேலும் தனிப்பயன் பிழை எடுத்துக்காட்டுகள்:</h3>
+            <div class="code-example">
+                <pre><code>// NetworkError வகை
+class NetworkError extends Error {
+  constructor(url, status) {
+    super(`Failed to fetch ${url}: Status ${status}`);
+    this.name = "NetworkError";
+    this.url = url;
+    this.status = status;
+  }
+}
+
+// DatabaseError வகை
+class DatabaseError extends Error {
+  constructor(operation, table, details) {
+    super(`Database operation failed: ${operation} on ${table}`);
+    this.name = "DatabaseError";
+    this.operation = operation;
+    this.table = table;
+    this.details = details;
+  }
+}
+
+// பயன்பாடு
+try {
+  throw new NetworkError("https://api.example.com/data", 404);
+} catch(err) {
+  if (err instanceof NetworkError) {
+    console.log(`Network error for ${err.url}: ${err.status}`);
+  }
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- Non-Standard Properties and Methods -->
+        <section class="content-section" id="non-standard">
+            <h2>தரநிலையற்ற பண்புகள் மற்றும் முறைகள்</h2>
+            
+            <div class="warning-box">
+                <h4><span class="warning-icon">🚫</span> முக்கிய எச்சரிக்கை:</h4>
+                <p>பொது வலைத்தளங்களில் இந்த பண்புகள் மற்றும் முறைகளைப் பயன்படுத்த வேண்டாம். அவை அனைத்து உலாவிகளிலும் வேலை செய்யாது.</p>
+            </div>
+            
+            <div class="comparison-table">
+                <table>
+                    <tr>
+                        <th>பண்பு</th>
+                        <th>விளக்கம்</th>
+                    </tr>
+                    <tr>
+                        <td><strong>arguments</strong></td>
+                        <td>காலாவதியானது</td>
+                    </tr>
+                    <tr>
+                        <td><strong>caller</strong></td>
+                        <td>காலாவதியானது</td>
+                    </tr>
+                    <tr>
+                        <td><strong>columnNumber</strong></td>
+                        <td>Firefox மட்டும்</td>
+                    </tr>
+                    <tr>
+                        <td><strong>description</strong></td>
+                        <td>Microsoft மட்டும்</td>
+                    </tr>
+                    <tr>
+                        <td><strong>displayName</strong></td>
+                        <td>Firefox மட்டும்</td>
+                    </tr>
+                    <tr>
+                        <td><strong>fileName</strong></td>
+                        <td>Firefox மட்டும்</td>
+                    </tr>
+                    <tr>
+                        <td><strong>lineNumber</strong></td>
+                        <td>Firefox மட்டும்</td>
+                    </tr>
+                    <tr>
+                        <td><strong>number</strong></td>
+                        <td>Microsoft மட்டும்</td>
+                    </tr>
+                    <tr>
+                        <td><strong>stack</strong></td>
+                        <td>Firefox மட்டும்</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div class="comparison-table">
+                <table>
+                    <tr>
+                        <th>முறைகள்</th>
+                        <th>விளக்கம்</th>
+                    </tr>
+                    <tr>
+                        <td><strong>evalError()</strong></td>
+                        <td>காலாவதியானது</td>
+                    </tr>
+                    <tr>
+                        <td><strong>internalError()</strong></td>
+                        <td>Firefox மட்டும்</td>
+                    </tr>
+                    <tr>
+                        <td><strong>toSource()</strong></td>
+                        <td>தரநிலையற்றது</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div class="warning-box">
+                <h4><span class="warning-icon">⚠️</span> மீண்டும் எச்சரிக்கை:</h4>
+                <p>பொது வலைத்தளங்களில் இந்த பண்புகளைப் பயன்படுத்த வேண்டாம். அவை அனைத்து உலாவிகளிலும் வேலை செய்யாது.</p>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">🌐</span> குறுக்கு-உலாவி இணக்கத்தன்மை:</h4>
+                <p>நவீன JavaScript இல், stack பண்பு பெரும்பாலான உலாவிகளில் ஆதரிக்கப்படுகிறது மற்றும் பிழை நிவாரணத்திற்கு பயனுள்ளதாக இருக்கிறது:</p>
+                <div class="code-example">
+                    <pre><code>try {
+  let x = y;  // ReferenceError
+} catch(err) {
+  console.log(err.stack);  
+  // குவிப்பு தடத்தைக் காட்டுகிறது:
+  // ReferenceError: y is not defined
+  //   at filename.js:2:9
+  //   at HTMLButtonElement.onclick (index.html:15:45)
+}</code></pre>
+                </div>
+                <p><strong>குறிப்பு:</strong> stack பண்பு இப்போது Chrome, Firefox, Edge, மற்றும் Safari ஆகியவற்றில் ஆதரிக்கப்படுகிறது, ஆனால் அதன் வடிவமைப்பு உலாவிகளுக்கு இடையே மாறுபடலாம்.</p>
+            </div>
+        </section>
+
+        <!-- Error Object Methods -->
+        <section class="content-section" id="methods">
+            <h2>Error Object முறைகள்</h2>
+            
+            <div class="code-example">
+                <pre><code>// Error பொருள்கள் toString() முறையைக் கொண்டுள்ளன
+try {
+  let x = undefinedVariable;
+} catch(err) {
+  console.log(err.toString());  
+  // "ReferenceError: undefinedVariable is not defined"
+  
+  console.log(String(err));     
+  // "ReferenceError: undefinedVariable is not defined"
+  
+  console.log('' + err);        
+  // "ReferenceError: undefinedVariable is not defined"
+}</code></pre>
+            </div>
+            
+            <h3>Custom toString() முறை:</h3>
+            <div class="code-example">
+                <pre><code>class CustomError extends Error {
+  constructor(code, message) {
+    super(message);
+    this.name = "CustomError";
+    this.code = code;
+  }
+  
+  toString() {
+    return `${this.name} [${this.code}]: ${this.message}`;
+  }
+}
+
+// பயன்பாடு
+let err = new CustomError(404, "Resource not found");
+console.log(err.toString());  // "CustomError [404]: Resource not found"
+console.log(String(err));     // "CustomError [404]: Resource not found"</code></pre>
+            </div>
+        </section>
+
+        <!-- Practical Usage Examples -->
+        <section class="content-section" id="practical">
+            <h2>நடைமுறை பயன்பாடு எடுத்துக்காட்டுகள்</h2>
+            
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-bug"></i>
+                        <h4>பிழை வகை அடிப்படையில் கையாளுதல்</h4>
+                    </div>
+                    <div class="code-example">
+                        <pre><code>try {
+  riskyOperation();
+} catch(err) {
+  switch(err.name) {
+    case 'TypeError':
+      handleTypeError(err);
+      break;
+    case 'ReferenceError':
+      handleReferenceError(err);
+      break;
+    case 'RangeError':
+      handleRangeError(err);
+      break;
+    default:
+      handleUnknownError(err);
+  }
+}</code></pre>
+                    </div>
+                </div>
+                
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-file-alt"></i>
+                        <h4>பிழை லாக்கிங்</h4>
+                    </div>
+                    <div class="code-example">
+                        <pre><code>function logError(error) {
+  const errorLog = {
+    timestamp: new Date().toISOString(),
+    name: error.name,
+    message: error.message,
+    stack: error.stack,
+    url: window.location.href,
+    userAgent: navigator.userAgent
+  };
+  
+  // சேவையகத்திற்கு அனுப்பவும் அல்லது localStorage இல் சேமிக்கவும்
+  console.error('Error logged:', errorLog);
+  return errorLog;
+}</code></pre>
+                    </div>
+                </div>
+                
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-user-friends"></i>
+                        <h4>பயனர் நட்பு பிழை செய்திகள்</h4>
+                    </div>
+                    <div class="code-example">
+                        <pre><code>function showUserFriendlyError(error) {
+  const messages = {
+    'TypeError': 'Something went wrong with the data type.',
+    'ReferenceError': 'A reference error occurred.',
+    'RangeError': 'The value is out of acceptable range.',
+    'NetworkError': 'Unable to connect to the server.',
+    'default': 'An unexpected error occurred. Please try again.'
+  };
+  
+  return messages[error.name] || messages.default;
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- See Also -->
+        <section class="content-section" id="see-also">
+            <h2>மேலும் பார்க்க:</h2>
+            
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <h4>JavaScript Errors</h4>
+                    </div>
+                    <p>பல்வேறு JavaScript பிழை வகைகள் பற்றி அறியவும்</p>
+                </div>
+                
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-volume-mute"></i>
+                        <h4>JavaScript Silent Errors</h4>
+                    </div>
+                    <p>விதிவிலக்குகளை வீசாத அமைதியான பிழைகள் பற்றி அறியவும்</p>
+                </div>
+                
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-terminal"></i>
+                        <h4>JavaScript Error Statements</h4>
+                    </div>
+                    <p>try, catch, finally, மற்றும் throw அறிக்கைகள் பற்றி அறியவும்</p>
+                </div>
+                
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-bug"></i>
+                        <h4>JavaScript Debugging</h4>
+                    </div>
+                    <p>JavaScript பிழைகளைக் கண்டறிந்து சரிசெய்வது பற்றி அறியவும்</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Single Exercise Section -->
+        <section class="content-section" id="exercises">
+            <h2>JavaScript Error Reference பயிற்சி</h2>
+            
+            <p>JavaScript பிழை பொருள் பற்றிய உங்கள் அறிவைச் சோதிக்க இந்தப் பயிற்சியை முயற்சிக்கவும்.</p>
+            
+            <div class="exercise-box">
+                <h4><span class="exercise-icon">❓</span> பின்வரும் எந்த இரண்டு பண்புகள் அனைத்து உலாவிகளிலும் ஆதரிக்கப்படும் JavaScript Error பொருளின் தரநிலை பண்புகள்?</h4>
+                
+                <div class="options-grid">
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">lineNumber மற்றும் fileName</div>
+                            <div class="option-feedback incorrect">✗ தவறு! lineNumber மற்றும் fileName ஆகியவை தரநிலையற்ற பண்புகள் மற்றும் Firefox இல் மட்டுமே ஆதரிக்கப்படுகின்றன</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">arguments மற்றும் caller</div>
+                            <div class="option-feedback incorrect">✗ தவறு! arguments மற்றும் caller ஆகியவை காலாவதியான பண்புகள் மற்றும் புதிய JavaScript பதிப்புகளில் ஆதரிக்கப்படாது</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="true">
+                        <div class="option-content">
+                            <div class="option-text">name மற்றும் message</div>
+                            <div class="option-feedback correct">✓ சரி! name மற்றும் message ஆகியவை அனைத்து உலாவிகளிலும் ஆதரிக்கப்படும் JavaScript Error பொருளின் இரண்டு தரநிலை பண்புகள். name பிழை வகையைக் குறிக்கிறது, message பிழை விளக்கத்தைக் கொண்டுள்ளது</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">stack மற்றும் description</div>
+                            <div class="option-feedback incorrect">✗ தவறு! stack மற்றும் description ஆகியவை தரநிலையற்ற பண்புகள்; stack Firefox இல் மட்டுமே ஆதரிக்கப்படுகிறது, description Microsoft இல் மட்டுமே ஆதரிக்கப்படுகிறது</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bottom Navigation -->
+        <div class="bottom-nav">
+            <a href="JavaScript%20Error%20Statements.html" class="nav-tab prev">
+                <i class="fas fa-arrow-left"></i>
+                <span>முந்தைய</span>
+            </a>
+            <a href="JavaScript%20Debugging.html" class="nav-tab next">
+                <span>அடுத்தது</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Siva Team Institution</h3>
+                <p>Leading educational institution providing quality programming education in Tamil.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#introduction">Error பொருள்</a></li>
+                    <li><a href="#properties">பிழை பண்புகள்</a></li>
+                    <li><a href="#error-names">பிழை பெயர்கள்</a></li>
+                    <li><a href="#custom-errors">தனிப்பயன் பிழைகள்</a></li>
+                    <li><a href="#non-standard">தரநிலையற்ற பண்புகள்</a></li>
+                    <li><a href="#practical">நடைமுறை பயன்பாடு</a></li>
+                    <li><a href="#see-also">மேலும் பார்க்க</a></li>
+                    <li><a href="#exercises">பயிற்சி</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Location & Hours</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <ul>
+                    <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Siva Team Institution. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all content sections for animation
+        document.querySelectorAll('.content-section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Exercise interaction
+        document.querySelectorAll('.option-card').forEach(card => {
+            card.addEventListener('click', function() {
+                // Show feedback for all options
+                document.querySelectorAll('.option-card').forEach(c => {
+                    c.querySelector('.option-feedback').style.display = 'block';
+                });
+            });
+        });
+
+        // Demo functions for error examples
+        function demoRangeError() {
+            try {
+                let arr = new Array(-1);
+                console.log("RangeError created:", arr);
+            } catch(err) {
+                alert(`RangeError: ${err.message}`);
+            }
+        }
+
+        function demoReferenceError() {
+            try {
+                let x = undefinedVariable;
+                console.log("ReferenceError created:", x);
+            } catch(err) {
+                alert(`ReferenceError: ${err.message}`);
+            }
+        }
+
+        function demoSyntaxError() {
+            // Note: Syntax errors cannot be caught in try-catch
+            alert("SyntaxError: முயற்சிக்க முடியாது - தொடரியல் பிழைகள் try...catch மூலம் பிடிக்க முடியாது");
+        }
+
+        function demoTypeError() {
+            try {
+                let num = 5;
+                num.toUpperCase();
+                console.log("TypeError created");
+            } catch(err) {
+                alert(`TypeError: ${err.message}`);
+            }
+        }
+
+        function demoURIError() {
+            try {
+                decodeURI("%%%");
+                console.log("URIError created");
+            } catch(err) {
+                alert(`URIError: ${err.message}`);
+            }
+        }
+    </script>
+
+    <!-- Home Button -->
+    <a href="index.html" class="home-icon">
+        <i class="fas fa-home"></i>
+    </a>
+</body>
+</html>
+
+

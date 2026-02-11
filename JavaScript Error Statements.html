@@ -1,0 +1,613 @@
+﻿<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Error Statements - Siva Team</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .content-section p, 
+        .content-section li,
+        .content-section h3,
+        .content-section h4,
+        .comparison-card p {
+            color: #333 !important;
+        }
+        
+        .tip-box p,
+        .tip-box li,
+        .tip-box h4 {
+            color: white !important;
+        }
+        
+        .warning-box p,
+        .warning-box li,
+        .warning-box h4 {
+            color: white !important;
+        }
+        
+        .exercise-box p,
+        .exercise-box h4 {
+            color: white !important;
+        }
+        
+        /* Stable logo styling - NO ANIMATIONS */
+        .logo-icon {
+            animation: none !important;
+        }
+        
+        .logo-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            animation: none !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <img src="logo.jpg" alt="Siva Team Logo" class="logo-image">
+                </div>
+                <h1>Siva Team <span>Institution</span></h1>
+            </div>
+        </div>
+    </header>
+
+    <!-- Top Navigation Tabs -->
+    <div class="nav-tabs">
+        <a href="JavaScript%20Silent%20Errors.html" class="nav-tab prev">
+            <i class="fas fa-arrow-left"></i>
+            <span>முந்தைய</span>
+        </a>
+        <a href="JavaScript%20Error%20Reference.html" class="nav-tab next">
+            <span>அடுத்தது</span>
+            <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2>JavaScript Error Statements</h2>
+            <p>பிழை அறிக்கைகளைப் பயன்படுத்தி நிரல்களைக் கையாள கற்றுக்கொள்ளுங்கள்</p>
+        </div>
+</section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Introduction -->
+        <section class="content-section" id="introduction">
+            <h2>try அறிக்கை</h2>
+            
+            <p>JavaScript இல், try அறிக்கை குறியீட்டு இயக்கத்தின் போது ஏற்படக்கூடிய பிழைகளை (விதிவிலக்குகள் என்றும் அழைக்கப்படுகின்றன) கையாள பயன்படுத்தப்படுகிறது - முழு நிரலையும் நிறுத்தாமல்.</p>
+            
+            <p>try அறிக்கை catch உடன் சேர்ந்து வேலை செய்கிறது.</p>
+            
+            <p>சில நேரங்களில் இது finally உடன் வேலை செய்கிறது.</p>
+            
+            <p>மற்றும் சில நேரங்களில் இது throw உடன் வேலை செய்கிறது.</p>
+        </section>
+
+        <!-- Try Block -->
+        <section class="content-section" id="try-block">
+            <h2>Try தொகுதி</h2>
+            
+            <p>try தொகுதி பிழையை வீசக்கூடிய குறியீட்டைக் கொண்டுள்ளது.</p>
+            
+            <p>பிழை எதுவும் ஏற்படாவிட்டால், catch தொகுதி தவிர்க்கப்படும்.</p>
+            
+            <h3>தொடரியல்</h3>
+            <div class="code-example">
+                <pre><code>try {
+  // பிழையை ஏற்படுத்தக்கூடிய குறியீடு
+} catch (error) {
+  // பிழையைக் கையாளும் குறியீடு
+}</code></pre>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">🛡️</span> பாதுகாப்பான குறியீட்டிற்கான Try:</h4>
+                <p>try தொகுதி நம்பகமற்ற அல்லது பிழைக்கு உள்ளாகக்கூடிய செயல்பாடுகளை இணைக்கப் பயன்படுகிறது, இதனால் பிழை நிரலின் மற்ற பகுதிகளை பாதிக்காது.</p>
+            </div>
+        </section>
+
+        <!-- Catch Block -->
+        <section class="content-section" id="catch-block">
+            <h2>Catch தொகுதி</h2>
+            
+            <p>try தொகுதியில் பிழை ஏற்பட்டால் மட்டுமே catch தொகுதி செயல்படுத்தப்படும்.</p>
+            
+            <p>பிழை பொருள் என்ன தவறு நடந்தது என்பதைப் பற்றிய விவரங்களை வழங்குகிறது.</p>
+            
+            <h3>தொடரியல்</h3>
+            <div class="code-example">
+                <pre><code>try {
+  // பிழையை ஏற்படுத்தக்கூடிய குறியீடு
+} catch (error) {
+  // பிழையைக் கையாளும் குறியீடு
+}</code></pre>
+            </div>
+            
+            <h3>பிழை பொருள் பண்புகள்:</h3>
+            <div class="code-example">
+                <pre><code>try {
+  // பிழையை ஏற்படுத்தக்கூடிய குறியீடு
+} catch (err) {
+  console.log(err.name);     // பிழை வகை (எ.கா., "TypeError")
+  console.log(err.message);  // பிழை செய்தி
+  console.log(err.stack);    // குவிப்பு தடம் (debugging)
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- Finally Block -->
+        <section class="content-section" id="finally-block">
+            <h2>Finally தொகுதி (விருப்பத்தேர்வு)</h2>
+            
+            <p>finally தொகுதி try மற்றும் catch தொகுதிகளுக்குப் பிறகு, பிழை ஏற்பட்டாலும் இல்லையென்றாலும் செயல்படுத்தப்படுகிறது.</p>
+            
+            <p>இது பொதுவாக சுத்தம் செய்யும் பணிகளுக்குப் பயன்படுத்தப்படுகிறது (எ.கா., கோப்புகளை மூடுதல், லோடர்களை நிறுத்துதல், போன்றவை).</p>
+            
+            <h3>தொடரியல்</h3>
+            <div class="code-example">
+                <pre><code>try {
+  // பிழையை ஏற்படுத்தக்கூடிய குறியீடு
+} catch (error) {
+  // பிழையைக் கையாளும் குறியீடு
+} finally {
+  // எப்படியும் எப்போதும் இயங்கும் குறியீடு
+}</code></pre>
+            </div>
+            
+            <div class="warning-box">
+                <h4><span class="warning-icon">💡</span> Finally இன் முக்கியத்துவம்:</h4>
+                <p>finally தொகுதி வளங்களை சரியாக வெளியிட உறுதி செய்கிறது, பிழை ஏற்பட்டாலும் இல்லையென்றாலும். இது மெமரி கசிவு மற்றும் பிற வள மேலாண்மை பிரச்சினைகளைத் தடுக்க உதவுகிறது.</p>
+            </div>
+        </section>
+
+        <!-- JavaScript Throws Errors -->
+        <section class="content-section" id="throws">
+            <h2>JavaScript பிழைகளை வீசுகிறது</h2>
+            
+            <p>பிழை ஏற்பட்டால், JavaScript பொதுவாக நின்று ஒரு பிழை செய்தியை உருவாக்கும்.</p>
+            
+            <p>இதற்கான தொழில்நுட்ப சொல்: JavaScript ஒரு விதிவிலக்கை வீசும் (பிழையை வீசும்).</p>
+            
+            <p>JavaScript உண்மையில் இரண்டு பண்புகளுடன் ஒரு Error பொருளை உருவாக்கும்: name மற்றும் message.</p>
+            
+            <div class="code-example">
+                <pre><code>// JavaScript தானாகவே பிழைகளை வீசுகிறது
+let x = y;  // ReferenceError: y is not defined
+let num = 5;
+num.toUpperCase();  // TypeError: num.toUpperCase is not a function</code></pre>
+            </div>
+        </section>
+
+        <!-- Throw Statement -->
+        <section class="content-section" id="throw">
+            <h2>throw அறிக்கை</h2>
+            
+            <p>throw அறிக்கை நீங்கள் ஒரு தனிப்பயன் பிழையை உருவாக்க அனுமதிக்கிறது.</p>
+            
+            <p>தொழில்நுட்ப ரீதியாக நீங்கள் ஒரு விதிவிலக்கை வீசலாம் (பிழையை வீசலாம்).</p>
+            
+            <p>விதிவிலக்கு ஒரு JavaScript String, Number, Boolean அல்லது Object ஆக இருக்கலாம்:</p>
+            
+            <div class="code-example">
+                <pre><code>throw "Too big";    // உரையை வீசவும்
+throw 500;          // எண்ணை வீசவும்
+throw true;         // boolean ஐ வீசவும்
+throw {name: "CustomError", message: "Something went wrong"};  // பொருளை வீசவும்</code></pre>
+            </div>
+            
+            <p>நீங்கள் throw ஐ try மற்றும் catch உடன் சேர்த்துப் பயன்படுத்தினால், நிரல் ஓட்டத்தைக் கட்டுப்படுத்தலாம் மற்றும் தனிப்பயன் பிழை செய்திகளை உருவாக்கலாம்.</p>
+        </section>
+
+        <!-- Input Validation Example -->
+        <section class="content-section" id="input-validation">
+            <h2>உள்ளீட்டு சரிபார்ப்பு எடுத்துக்காட்டு</h2>
+            
+            <p>இந்த எடுத்துக்காட்டு உள்ளீட்டை ஆய்வு செய்கிறது. மதிப்பு தவறாக இருந்தால், ஒரு விதிவிலக்கு (err) வீசப்படுகிறது.</p>
+            
+            <p>விதிவிலக்கு (err) catch அறிக்கையால் பிடிக்கப்படுகிறது மற்றும் ஒரு தனிப்பயன் பிழை செய்தி காட்டப்படுகிறது:</p>
+            
+            <div class="code-example">
+                <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+
+&lt;p&gt;Please input a number between 5 and 10:&lt;/p&gt;
+
+&lt;input id="demo" type="text"&gt;
+&lt;button type="button" onclick="myFunction()"&gt;Test Input&lt;/button&gt;
+&lt;p id="p01"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+function myFunction() {
+  const message = document.getElementById("p01");
+  message.innerHTML = "";
+  let x = document.getElementById("demo").value;
+  try {
+    if(x.trim() == "") throw "empty";
+    if(isNaN(x)) throw "not a number";
+    x = Number(x);
+    if(x < 5) throw "too low";
+    if(x > 10) throw "too high";
+  } catch(err) {
+    message.innerHTML = "Input is " + err;
+  }
+}
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            </div>
+            
+            <h3>விளக்கம்:</h3>
+            <div class="best-practice-list">
+                <div class="practice-item positive">
+                    <i class="fas fa-check-circle"></i>
+                    <div><strong>வெற்று சரிபார்ப்பு:</strong> if(x.trim() == "") throw "empty" - வெற்று உள்ளீட்டை சரிபார்க்கிறது</div>
+                </div>
+                
+                <div class="practice-item positive">
+                    <i class="fas fa-check-circle"></i>
+                    <div><strong>எண் சரிபார்ப்பு:</strong> if(isNaN(x)) throw "not a number" - எண் அல்லாத உள்ளீட்டை சரிபார்க்கிறது</div>
+                </div>
+                
+                <div class="practice-item positive">
+                    <i class="fas fa-check-circle"></i>
+                    <div><strong>மாற்றம்:</strong> x = Number(x) - சரத்தை எண்ணாக மாற்றுகிறது</div>
+                </div>
+                
+                <div class="practice-item positive">
+                    <i class="fas fa-check-circle"></i>
+                    <div><strong>வரம்பு சரிபார்ப்பு:</strong> if(x < 5) throw "too low" - குறைந்த வரம்பை சரிபார்க்கிறது</div>
+                </div>
+                
+                <div class="practice-item positive">
+                    <i class="fas fa-check-circle"></i>
+                    <div><strong>வரம்பு சரிபார்ப்பு:</strong> if(x > 10) throw "too high" - உயர் வரம்பை சரிபார்க்கிறது</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- HTML Validation -->
+        <section class="content-section" id="html-validation">
+            <h2>HTML சரிபார்ப்பு</h2>
+            
+            <p>மேலே உள்ள குறியீடு ஒரு எடுத்துக்காட்டு மட்டுமே.</p>
+            
+            <p>நவீன உலாவிகள் பெரும்பாலும் JavaScript மற்றும் உள்ளமைக்கப்பட்ட HTML சரிபார்ப்பு ஆகியவற்றின் கலவையைப் பயன்படுத்தும், HTML பண்புகளில் வரையறுக்கப்பட்ட முன்னரே வரையறுக்கப்பட்ட சரிபார்ப்பு விதிகளைப் பயன்படுத்தும்:</p>
+            
+            <div class="code-example">
+                <pre><code>&lt;input id="demo" type="number" min="5" max="10" step="1"&gt;</code></pre>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">🌐</span> HTML5 சரிபார்ப்பு பண்புகள்:</h4>
+                <p>HTML5 பல உள்ளமைக்கப்பட்ட சரிபார்ப்பு பண்புகளை வழங்குகிறது:</p>
+                <div class="code-example">
+                    <pre><code>&lt;input type="email" required&gt;
+&lt;input type="number" min="1" max="100"&gt;
+&lt;input type="text" pattern="[A-Za-z]{3}"&gt;
+&lt;input type="url"&gt;
+&lt;input type="date" min="2023-01-01"&gt;</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Finally Example -->
+        <section class="content-section" id="finally-example">
+            <h2>Finally எடுத்துக்காட்டு</h2>
+            
+            <p>finally அறிக்கை try மற்றும் catch க்குப் பிறகு, முடிவைப் பொருட்படுத்தாமல் குறியீட்டை இயக்க உங்களை அனுமதிக்கிறது:</p>
+            
+            <h3>தொடரியல்</h3>
+            <div class="code-example">
+                <pre><code>try {
+  // சோதிக்கப்பட வேண்டிய குறியீடு தொகுதி
+} catch(err) {
+  // பிழைகளைக் கையாளும் குறியீடு தொகுதி
+} finally {
+  // try / catch முடிவைப் பொருட்படுத்தாமல் இயக்கப்பட வேண்டிய குறியீடு தொகுதி
+}</code></pre>
+            </div>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <div class="code-example">
+                <pre><code>function myFunction() {
+  const message = document.getElementById("p01");
+  message.innerHTML = "";
+  let x = document.getElementById("demo").value;
+  try {
+    if(x.trim() == "") throw "is empty";
+    if(isNaN(x)) throw "is not a number";
+    x = Number(x);
+    if(x > 10) throw "is too high";
+    if(x < 5) throw "is too low";
+  } catch(err) {
+    message.innerHTML = "Error: " + err + ".";
+  } finally {
+    document.getElementById("demo").value = "";
+  }
+}</code></pre>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">🧹</span> Finally இன் நடைமுறை பயன்பாடுகள்:</h4>
+                <p>finally தொகுதி பின்வரும் சூழ்நிலைகளில் பயனுள்ளதாக இருக்கும்:</p>
+                <div class="code-example">
+                    <pre><code>// கோப்பு செயல்பாடுகள்
+let file;
+try {
+  file = openFile("data.txt");
+  processFile(file);
+} catch(err) {
+  console.error("File error:", err);
+} finally {
+  if(file) closeFile(file);  // எப்போதும் கோப்பை மூடவும்
+}
+
+// தரவுத்தள இணைப்புகள்
+let connection;
+try {
+  connection = connectToDatabase();
+  executeQuery(connection);
+} catch(err) {
+  logError(err);
+} finally {
+  if(connection) connection.close();  // எப்போதும் இணைப்பை மூடவும்
+}
+
+// UI லோடர்கள்
+showLoader();
+try {
+  fetchData();
+} catch(err) {
+  showError(err);
+} finally {
+  hideLoader();  // எப்போதும் லோடரை மறைக்கவும்
+}</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Try-Catch-Flow Diagram -->
+        <section class="content-section" id="flow-diagram">
+            <h2>Try-Catch-Finally ஓட்ட வரைபடம்</h2>
+            
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-play-circle"></i>
+                        <h4>try தொகுதி தொடங்குகிறது</h4>
+                    </div>
+                    <p>குறியீடு செயல்படுத்தப்படுகிறது</p>
+                    <p>பிழை ஏற்பட்டால் → catch க்கு செல்லவும்</p>
+                    <p>பிழை இல்லை என்றால் → finally க்கு செல்லவும்</p>
+                </div>
+                
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <h4>catch தொகுதி (விருப்பம்)</h4>
+                    </div>
+                    <p>try இல் பிழை ஏற்பட்டால் மட்டுமே இயங்கும்</p>
+                    <p>பிழை விவரங்களைக் கையாளுகிறது</p>
+                    <p>பின்னர் → finally க்கு செல்லவும்</p>
+                </div>
+                
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-flag-checkered"></i>
+                        <h4>finally தொகுதி (விருப்பம்)</h4>
+                    </div>
+                    <p>எப்போதும் இயங்கும் (பிழை/இல்லை)</p>
+                    <p>சுத்தம் செய்யும் பணிகளுக்கு</p>
+                    <p>நிரல் தொடர்கிறது</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- See Also -->
+        <section class="content-section" id="see-also">
+            <h2>மேலும் பார்க்க:</h2>
+            
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <h4>JavaScript Errors</h4>
+                    </div>
+                    <p>பல்வேறு JavaScript பிழை வகைகள் பற்றி அறியவும்</p>
+                </div>
+                
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-volume-mute"></i>
+                        <h4>JavaScript Silent Errors</h4>
+                    </div>
+                    <p>விதிவிலக்குகளை வீசாத அமைதியான பிழைகள் பற்றி அறியவும்</p>
+                </div>
+                
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-code"></i>
+                        <h4>JavaScript Error Object</h4>
+                    </div>
+                    <p>Error பொருள் மற்றும் அதன் முறைகள் பற்றி அறியவும்</p>
+                </div>
+                
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-bug"></i>
+                        <h4>JavaScript Debugging</h4>
+                    </div>
+                    <p>JavaScript பிழைகளைக் கண்டறிந்து சரிசெய்வது பற்றி அறியவும்</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Single Exercise Section -->
+        <section class="content-section" id="exercises">
+            <h2>JavaScript Error Statements பயிற்சி</h2>
+            
+            <p>பிழை அறிக்கைகள் பற்றிய உங்கள் அறிவைச் சோதிக்க இந்தப் பயிற்சியை முயற்சிக்கவும்.</p>
+            
+            <div class="exercise-box">
+                <h4><span class="exercise-icon">❓</span> பின்வரும் எந்த தொகுதி try...catch கட்டமைப்பில் எப்போதும் இயங்கும், பிழை ஏற்பட்டாலும் இல்லையென்றாலும்?</h4>
+                
+                <div class="options-grid">
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">try தொகுதி</div>
+                            <div class="option-feedback incorrect">✗ தவறு! try தொகுதி பிழை ஏற்பட்டால் மட்டுமே இயங்கும் அல்லது நிற்கும்</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">catch தொகுதி</div>
+                            <div class="option-feedback incorrect">✗ தவறு! catch தொகுதி try தொகுதியில் பிழை ஏற்பட்டால் மட்டுமே இயங்கும்</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="true">
+                        <div class="option-content">
+                            <div class="option-text">finally தொகுதி</div>
+                            <div class="option-feedback correct">✓ சரி! finally தொகுதி எப்போதும் இயங்கும், try தொகுதியில் பிழை ஏற்பட்டாலும் இல்லையென்றாலும். இது சுத்தம் செய்யும் பணிகள் மற்றும் வள வெளியீட்டிற்கு பயன்படுத்தப்படுகிறது</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">throw அறிக்கை</div>
+                            <div class="option-feedback incorrect">✗ தவறு! throw அறிக்கை ஒரு பிழையை வீச பயன்படுகிறது, ஆனால் எப்போதும் இயங்காது</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bottom Navigation -->
+        <div class="bottom-nav">
+            <a href="JavaScript%20Silent%20Errors.html" class="nav-tab prev">
+                <i class="fas fa-arrow-left"></i>
+                <span>முந்தைய</span>
+            </a>
+            <a href="JavaScript%20Error%20Reference.html" class="nav-tab next">
+                <span>அடுத்தது</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Siva Team Institution</h3>
+                <p>Leading educational institution providing quality programming education in Tamil.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#introduction">try அறிக்கை</a></li>
+                    <li><a href="#try-block">Try தொகுதி</a></li>
+                    <li><a href="#catch-block">Catch தொகுதி</a></li>
+                    <li><a href="#finally-block">Finally தொகுதி</a></li>
+                    <li><a href="#throw">throw அறிக்கை</a></li>
+                    <li><a href="#input-validation">உள்ளீட்டு சரிபார்ப்பு</a></li>
+                    <li><a href="#finally-example">Finally எடுத்துக்காட்டு</a></li>
+                    <li><a href="#exercises">பயிற்சி</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Location & Hours</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <ul>
+                    <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Siva Team Institution. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all content sections for animation
+        document.querySelectorAll('.content-section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Exercise interaction
+        document.querySelectorAll('.option-card').forEach(card => {
+            card.addEventListener('click', function() {
+                // Show feedback for all options
+                document.querySelectorAll('.option-card').forEach(c => {
+                    c.querySelector('.option-feedback').style.display = 'block';
+                });
+            });
+        });
+    </script>
+
+    <!-- Home Button -->
+    <a href="index.html" class="home-icon">
+        <i class="fas fa-home"></i>
+    </a>
+</body>
+</html>
+
+

@@ -1,0 +1,627 @@
+﻿<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Break - Siva Team</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .content-section p, 
+        .content-section li,
+        .content-section h3,
+        .content-section h4,
+        .comparison-card p {
+            color: #333 !important;
+        }
+        
+        .tip-box p,
+        .tip-box li,
+        .tip-box h4 {
+            color: white !important;
+        }
+        
+        .warning-box p,
+        .warning-box li,
+        .warning-box h4 {
+            color: white !important;
+        }
+        
+        .exercise-box p,
+        .exercise-box h4 {
+            color: white !important;
+        }
+        
+        /* Stable logo styling - NO ANIMATIONS */
+        .logo-icon {
+            animation: none !important;
+        }
+        
+        .logo-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            animation: none !important;
+        }
+        
+        .break-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .break-table th {
+            background: linear-gradient(135deg, var(--git-color), #e74c3c);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .break-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .break-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .break-table tr:hover {
+            background-color: #f0f0f0;
+        }
+        
+        .flow-diagram {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        
+        .flow-item {
+            text-align: center;
+            padding: 1rem;
+            margin: 0.5rem;
+            min-width: 150px;
+        }
+        
+        .flow-icon {
+            font-size: 2rem;
+            color: var(--git-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .flow-arrow {
+            color: var(--git-color);
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <img src="logo.jpg" alt="Siva Team Logo" class="logo-image">
+                </div>
+                <h1>Siva Team <span>Institution</span></h1>
+            </div>
+        </div>
+    </header>
+
+    <!-- Top Navigation Tabs -->
+    <div class="nav-tabs">
+        <a href="JavaScript%20While%20Loops.html" class="nav-tab prev">
+            <i class="fas fa-arrow-left"></i>
+            <span>முந்தைய</span>
+        </a>
+        <a href="JavaScript%20Continue.html" class="nav-tab next">
+            <span>அடுத்தது</span>
+            <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2>JavaScript Break</h2>
+            <p>JavaScript break அறிக்கையைக் கற்றுக்கொள்ளுங்கள்</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- The Break Statement -->
+        <section class="content-section" id="break-statement">
+            <h2>break அறிக்கை</h2>
+            <p>break அறிக்கை லூப்கள் மற்றும் switch களிலிருந்து "வெளியே குதிக்கிறது".</p>
+            
+            <p>break அறிக்கை ஒரு லூப் அல்லது switch அறிக்கையின் செயல்பாட்டை முடிக்கிறது.</p>
+            
+            <div class="flow-diagram">
+                <div class="flow-item">
+                    <div class="flow-icon">
+                        <i class="fas fa-play-circle"></i>
+                    </div>
+                    <h4>லூப் தொடங்குகிறது</h4>
+                </div>
+                
+                <i class="fas fa-arrow-right flow-arrow"></i>
+                
+                <div class="flow-item">
+                    <div class="flow-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h4>மறு செய்கைகள்</h4>
+                </div>
+                
+                <i class="fas fa-arrow-right flow-arrow"></i>
+                
+                <div class="flow-item">
+                    <div class="flow-icon">
+                        <i class="fas fa-stop-circle"></i>
+                    </div>
+                    <h4>break சந்திக்கப்படுகிறது</h4>
+                </div>
+                
+                <i class="fas fa-arrow-right flow-arrow"></i>
+                
+                <div class="flow-item">
+                    <div class="flow-icon">
+                        <i class="fas fa-flag-checkered"></i>
+                    </div>
+                    <h4>லூப் முடிந்தது</h4>
+                </div>
+            </div>
+        </section>
+
+        <!-- Break in Loops -->
+        <section class="content-section" id="break-in-loops">
+            <h2>லூப்களில் break</h2>
+            <p>ஒரு லூப்பில் break சந்திக்கப்படும் போது, லூப் உடனடியாக முடிவடைகிறது.</p>
+            
+            <p>நிரல் கட்டுப்பாடு லூப்பைத் தொடர்ந்து வரும் அறிக்கைகளுக்கு மாற்றப்படும்.</p>
+            
+            <p>மேலும் லூப் மறு செய்கைகள் செயல்படுத்தப்படாது.</p>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <p>லூப் கவுண்டர் (i) 3 ஆக இருக்கும் போது லூப்பை முடிக்கவும் (லூப்பை உடைக்கவும்):</p>
+            
+            <div class="code-example">
+                <pre><code>for (let i = 0; i < 10; i++) {
+  if (i === 3) { break; }
+  text += "The number is " + i + "<br>";
+}
+// இது 0, 1, 2 மட்டுமே அச்சிடும்</code></pre>
+            </div>
+            
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-code"></i>
+                        <h4>break இல்லாமல்</h4>
+                    </div>
+                    <p>லூப் 0 முதல் 9 வரை இயங்கும்</p>
+                    <p>10 மறு செய்கைகள்</p>
+                </div>
+                
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-code"></i>
+                        <h4>break உடன்</h4>
+                    </div>
+                    <p>லூப் 0 முதல் 2 வரை மட்டுமே இயங்கும்</p>
+                    <p>3 மறு செய்கைகள்</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Break in a Switch -->
+        <section class="content-section" id="break-in-switch">
+            <h2>Switch இல் break</h2>
+            <p>ஒரு switch அறிக்கையில், ஒரு break அறிக்கை பொருந்தக்கூடிய case செயல்படுத்தப்பட்ட பிறகு switch தொகுதியிலிருந்து வெளியேறும். break இல்லாமல், செயல்பாடு அடுத்தடுத்த case தொகுதிகளுக்கு "விழும்".</p>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <p>வார நாள் பெயரைக் கணக்கிட வார நாள் எண்ணைப் பயன்படுத்தவும்:</p>
+            
+            <div class="code-example">
+                <pre><code>switch (new Date().getDay()) {
+  case 0:
+    day = "Sunday";
+    break;
+  case 1:
+    day = "Monday";
+    break;
+  case 2:
+    day = "Tuesday";
+    break;
+  case 3:
+    day = "Wednesday";
+    break;
+  case 4:
+    day = "Thursday";
+    break;
+  case 5:
+    day = "Friday";
+    break;
+  case 6:
+    day = "Saturday";
+    break;
+}</code></pre>
+            </div>
+            
+            <div class="warning-box">
+                <h4><span class="warning-icon">⚠️</span> முக்கிய குறிப்பு:</h4>
+                <p>break முக்கிய சொல் switch "வீழ்ச்சி" தடுக்க முக்கியமானது. break இல்லாமல், குறியீடு அவற்றின் மதிப்புகள் வெளிப்பாட்டுடன் பொருந்தாவிட்டாலும் அடுத்த case தொகுதிகளை (மற்றும் default தொகுதி இருந்தால்) செயல்படுத்தத் தொடரும்.</p>
+            </div>
+            
+            <h4>break இல்லாமல் switch வீழ்ச்சி:</h4>
+            <div class="code-example">
+                <pre><code>let dayNumber = 1;
+switch (dayNumber) {
+  case 1:
+    console.log("Monday");
+    // break விடுபட்டது!
+  case 2:
+    console.log("Tuesday");
+    break;
+  case 3:
+    console.log("Wednesday");
+    break;
+}
+// வெளியீடு: "Monday" "Tuesday"</code></pre>
+            </div>
+        </section>
+
+        <!-- JavaScript Labels -->
+        <section class="content-section" id="javascript-labels">
+            <h2>JavaScript லேபிள்கள்</h2>
+            <p>ஒரு லேபிள் ஒரு அறிக்கைக்கு அல்லது அறிக்கைகளின் தொகுதிக்கு ஒரு பெயரை வழங்குகிறது, குறிப்பாக லூப்களில் நிரல் ஓட்டக் கட்டுப்பாட்டிற்காக அறிக்கைகளைக் குறிப்பிட அனுமதிக்கிறது.</p>
+            
+            <h3>தொடரியல்</h3>
+            <p>ஒரு லேபிள் என்பது ஒரு குட் (:) ஆல் பின்தொடரப்படும் ஒரு அடையாளங்காட்டியாகும்.</p>
+            
+            <div class="code-example">
+                <pre><code>labelname: statement;</code></pre>
+            </div>
+            
+            <p>ஒரு லேபிள் ஒரு அறிக்கை அல்லது குறியீட்டுத் தொகுதிக்கு முன் வரும்.</p>
+            
+            <div class="code-example">
+                <pre><code>labelname: {
+  statements
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- Labeled Break -->
+        <section class="content-section" id="labeled-break">
+            <h2>லேபிளிடப்பட்ட break</h2>
+            <h3>தொடரியல்</h3>
+            <div class="code-example">
+                <pre><code>break labelname;</code></pre>
+            </div>
+            
+            <p>break அறிக்கை ஒரு லூப் அல்லது தொகுதியிலிருந்து வெளியேறி கட்டுப்பாட்டை லேபிளிடப்பட்ட அறிக்கைக்கு மாற்றுகிறது.</p>
+            
+            <p>break அறிக்கை கூடு கட்டப்பட்ட லூப்களிலிருந்து உள் அல்லது வெளி லூப்களிலிருந்து வெளியேறுவதற்கு குறிப்பாக பயனுள்ளதாக இருக்கும்.</p>
+            
+            <div class="code-comparison">
+                <div class="code-column">
+                    <h4>எடுத்துக்காட்டு 1</h4>
+                    <p>loop1 க்கு break:</p>
+                    <div class="code-example">
+                        <pre><code>let text = "";
+
+loop1: for (let j = 1; j < 5; j++) {
+  loop2: for (let i = 1; i < 5; i++) {
+    if (i === 3) { break loop1; }
+    text += i;
+  }
+}
+// முடிவு: "12" (வெளி லூப்பும் உடைக்கப்பட்டது)</code></pre>
+                    </div>
+                </div>
+                
+                <div class="code-column">
+                    <h4>எடுத்துக்காட்டு 2</h4>
+                    <p>loop2 க்கு break:</p>
+                    <div class="code-example">
+                        <pre><code>let text = "";
+
+loop1: for (let j = 1; j < 5; j++) {
+  loop2: for (let i = 1; i < 5; i++) {
+    if (i === 3) { break loop2; }
+    text += i;
+  }
+}
+// முடிவு: "12121212" (உள் லூப் மட்டுமே உடைக்கப்பட்டது)</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Break with and without Labels -->
+        <section class="content-section" id="break-comparison">
+            <h2>லேபிள்கள் மூலமாகவும் இல்லாமலும் break</h2>
+            
+            <table class="break-table">
+                <thead>
+                    <tr>
+                        <th>break வகை</th>
+                        <th>தொடரியல்</th>
+                        <th>பயன்பாடு</th>
+                        <th>விளக்கம்</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>எளிய break</strong></td>
+                        <td><code>break;</code></td>
+                        <td>லூப்கள்/switch</td>
+                        <td>தற்போதைய லூப்/switch இலிருந்து வெளியேறுகிறது</td>
+                    </tr>
+                    <tr>
+                        <td><strong>லேபிளிடப்பட்ட break</strong></td>
+                        <td><code>break labelname;</code></td>
+                        <td>எந்த குறியீட்டுத் தொகுதியும்</td>
+                        <td>குறிப்பிட்ட லேபிளிடப்பட்ட தொகுதியிலிருந்து வெளியேறுகிறது</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">🎯</span> முக்கிய குறிப்பு:</h4>
+                <p><code>break</code> மற்றும் <code>continue</code> ஆகியவை ஒரு குறியீட்டுத் தொகுதியிலிருந்து "வெளியே குதிக்க" முடிந்த ஒரே JavaScript அறிக்கைகளாகும். ஒரு குறியீட்டுத் தொகுதி என்பது { மற்றும் } க்கு இடையே உள்ள குறியீட்டுத் தொகுதியாகும்.</p>
+                
+                <ul>
+                    <li>லேபிள் குறிப்பு இல்லாமல், break ஒரு லூப் அல்லது switch இலிருந்து மட்டுமே வெளியே குதிக்க முடியும்</li>
+                    <li>லேபிள் குறிப்புடன், break எந்த குறியீட்டுத் தொகுதியிலிருந்தும் வெளியே குதிக்க முடியும்</li>
+                </ul>
+            </div>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <p>இரண்டாவது காருக்குப் பிறகு தொகுதியிலிருந்து வெளியேறவும்:</p>
+            
+            <div class="code-example">
+                <pre><code>const cars = ["BMW", "Volvo", "Saab", "Ford"];
+list: {
+  text += cars[0] + "<br>";  // இயக்கப்படும்
+  text += cars[1] + "<br>";  // இயக்கப்படும்
+  break list;                // தொகுதியிலிருந்து வெளியேறுகிறது
+  text += cars[2] + "<br>";  // இயக்கப்படாது
+  text += cars[3] + "<br>";  // இயக்கப்படாது
+}
+// வெளியீடு: "BMW<br>Volvo<br>"</code></pre>
+            </div>
+        </section>
+
+        <!-- Practical Examples -->
+        <section class="content-section" id="practical-examples">
+            <h2>நடைமுறை எடுத்துக்காட்டுகள்</h2>
+            
+            <div class="examples-grid">
+                <div class="example-card">
+                    <div class="example-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h4>தேடலில் break</h4>
+                    <div class="code-example" style="padding: 0.5rem; margin: 0.5rem 0; background: #f8f9fa;">
+                        <pre style="margin: 0;"><code>let numbers = [1, 3, 5, 7, 9];
+let searchFor = 5;
+let found = false;
+
+for (let num of numbers) {
+  if (num === searchFor) {
+    found = true;
+    break;  // மதிப்பு கண்டுபிடிக்கப்பட்டதும் நிறுத்தவும்
+  }
+}</code></pre>
+                    </div>
+                </div>
+                
+                <div class="example-card">
+                    <div class="example-icon">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <h4>கூடு கட்டப்பட்ட லூப்கள்</h4>
+                    <div class="code-example" style="padding: 0.5rem; margin: 0.5rem 0; background: #f8f9fa;">
+                        <pre style="margin: 0;"><code>outerLoop: for (let i = 0; i < 3; i++) {
+  for (let j = 0; j < 3; j++) {
+    if (i === 1 && j === 1) {
+      break outerLoop;  // இரண்டு லூப்களிலிருந்தும் வெளியேறவும்
+    }
+  }
+}</code></pre>
+                    </div>
+                </div>
+                
+                <div class="example-card">
+                    <div class="example-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <h4>பிழை கையாளுதல்</h4>
+                    <div class="code-example" style="padding: 0.5rem; margin: 0.5rem 0; background: #f8f9fa;">
+                        <pre style="margin: 0;"><code>let data = [10, 20, "invalid", 40];
+let sum = 0;
+
+for (let value of data) {
+  if (typeof value !== 'number') {
+    console.log("Invalid data found");
+    break;  // சரியற்ற தரவு கண்டுபிடிக்கப்பட்டதும் நிறுத்தவும்
+  }
+  sum += value;
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Exercise Section (ONLY ONE) -->
+        <section class="content-section" id="exercise">
+            <h2>பயிற்சி</h2>
+            
+            <div class="exercise-box">
+                <h4><span class="exercise-icon">❓</span> பின்வரும் குறியீட்டைக் கவனியுங்கள்:</h4>
+                <div class="code-example" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.3);">
+                    <pre><code style="color: white;">const fruits = ['Apple', 'Banana', 'Cherry'];
+let x = '';
+myfavorite: {
+  x = fruits[0];
+  break myfavorite;
+  x = fruits[1];
+  x = fruits[2];
+}
+alert(x);</code></pre>
+                </div>
+                <h4>எச்சரிக்கை செய்தியில் என்ன முடிவு வரும்?</h4>
+                
+                <div class="options-grid">
+                    <div class="option-card" data-correct="true">
+                        <div class="option-content">
+                            <div class="option-text">Apple</div>
+                            <div class="option-feedback correct">✓ சரி! லேபிளிடப்பட்ட break அறிக்கை <code>myfavorite</code> தொகுதியிலிருந்து வெளியேறுகிறது. முதல் வரி <code>x = fruits[0]</code> செயல்படுத்தப்படுகிறது, இது x க்கு 'Apple' ஒதுக்குகிறது. break தொகுதியை உடைக்கிறது, எனவே மீதமுள்ள வரிகள் (<code>x = fruits[1]</code> மற்றும் <code>x = fruits[2]</code>) செயல்படுத்தப்படாது. alert(x) 'Apple' ஐக் காட்டுகிறது</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">Banana</div>
+                            <div class="option-feedback incorrect">✗ தவறு! break அறிக்கை <code>myfavorite</code> தொகுதியிலிருந்து வெளியேறுகிறது மற்றும் <code>x = fruits[1]</code> வரி செயல்படுத்தப்படாது. <code>x = fruits[0]</code> மட்டுமே செயல்படுத்தப்படுகிறது, x க்கு 'Apple' ஒதுக்குகிறது</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">Cherry</div>
+                            <div class="option-feedback incorrect">✗ தவறு! break தொகுதியை <code>x = fruits[2]</code> வரிக்கு முன்பே உடைக்கிறது. <code>x = fruits[0]</code> இல் x க்கு 'Apple' ஒதுக்கப்பட்ட பிறகு, break அறிக்கை உடனடியாக தொகுதியிலிருந்து வெளியேறுகிறது, மீதமுள்ள குறியீட்டைத் தவிர்க்கிறது</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bottom Navigation -->
+        <div class="bottom-nav">
+            <a href="JavaScript%20While%20Loops.html" class="nav-tab prev">
+                <i class="fas fa-arrow-left"></i>
+                <span>முந்தைய</span>
+            </a>
+            <a href="JavaScript%20Continue.html" class="nav-tab next">
+                <span>அடுத்தது</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Siva Team Institution</h3>
+                <p>Leading educational institution providing quality programming education in Tamil.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#break-statement">break அறிக்கை</a></li>
+                    <li><a href="#break-in-loops">லூப்களில் break</a></li>
+                    <li><a href="#break-in-switch">Switch இல் break</a></li>
+                    <li><a href="#javascript-labels">JavaScript லேபிள்கள்</a></li>
+                    <li><a href="#labeled-break">லேபிளிடப்பட்ட break</a></li>
+                    <li><a href="#break-comparison">break ஒப்பீடு</a></li>
+                    <li><a href="#exercise">பயிற்சி</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Location & Hours</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <ul>
+                    <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Siva Team Institution. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all content sections for animation
+        document.querySelectorAll('.content-section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Exercise interaction
+        document.querySelectorAll('.option-card').forEach(card => {
+            card.addEventListener('click', function() {
+                // Show feedback for all options
+                document.querySelectorAll('.option-card').forEach(c => {
+                    c.querySelector('.option-feedback').style.display = 'block';
+                });
+            });
+        });
+    </script>
+
+    <!-- Home Button -->
+    <a href="index.html" class="home-icon">
+        <i class="fas fa-home"></i>
+    </a>
+</body>
+</html>
+
+

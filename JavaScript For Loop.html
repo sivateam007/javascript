@@ -1,0 +1,610 @@
+﻿<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript For Loop - Siva Team</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .content-section p, 
+        .content-section li,
+        .content-section h3,
+        .content-section h4,
+        .comparison-card p {
+            color: #333 !important;
+        }
+        
+        .tip-box p,
+        .tip-box li,
+        .tip-box h4 {
+            color: white !important;
+        }
+        
+        .warning-box p,
+        .warning-box li,
+        .warning-box h4 {
+            color: white !important;
+        }
+        
+        .exercise-box p,
+        .exercise-box h4 {
+            color: white !important;
+        }
+        
+        /* Stable logo styling - NO ANIMATIONS */
+        .logo-icon {
+            animation: none !important;
+        }
+        
+        .logo-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            animation: none !important;
+        }
+        
+        .expression-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .expression-table th {
+            background: linear-gradient(135deg, var(--git-color), #e74c3c);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .expression-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .expression-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .expression-table tr:hover {
+            background-color: #f0f0f0;
+        }
+        
+        .loop-flow {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid var(--git-color);
+        }
+        
+        .flow-step {
+            display: flex;
+            align-items: center;
+            margin: 0.5rem 0;
+            width: 100%;
+        }
+        
+        .step-number {
+            background: var(--git-color);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 1rem;
+        }
+        
+        .step-content {
+            flex: 1;
+            padding: 0.8rem;
+            background: white;
+            border-radius: 5px;
+            border: 1px solid #dee2e6;
+        }
+        
+        .arrow-down {
+            color: var(--git-color);
+            font-size: 1.5rem;
+            margin: 0.5rem 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <img src="logo.jpg" alt="Siva Team Logo" class="logo-image">
+                </div>
+                <h1>Siva Team <span>Institution</span></h1>
+            </div>
+        </div>
+    </header>
+
+    <!-- Top Navigation Tabs -->
+    <div class="nav-tabs">
+        <a href="JavaScript%20Loop.html" class="nav-tab prev">
+            <i class="fas fa-arrow-left"></i>
+            <span>முந்தைய</span>
+        </a>
+        <a href="JavaScript%20While%20Loops.html" class="nav-tab next">
+            <span>அடுத்தது</span>
+            <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2>JavaScript For Loop</h2>
+            <p>JavaScript For லூப்பைக் கற்றுக்கொள்ளுங்கள்</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Introduction -->
+        <section class="content-section" id="introduction">
+            <h2>For லூப்</h2>
+            <p>For லூப்கள் ஒரு குறியீட்டுத் தொகுதியை பல முறை செயல்படுத்த முடியும்.</p>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">🎯</span> முக்கியத்துவம்:</h4>
+                <p>For லூப்கள் ஒரு செயலை பல முறை செய்வது போன்ற பணிகளுக்கு அடிப்படையானவை.</p>
+            </div>
+        </section>
+
+        <!-- The For Loop Structure -->
+        <section class="content-section" id="for-loop-structure">
+            <h2>For லூப் கட்டமைப்பு</h2>
+            <p>for அறிக்கை 3 விருப்ப வெளிப்பாடுகளுடன் ஒரு லூப்பை உருவாக்குகிறது:</p>
+            
+            <div class="code-example">
+                <pre><code>for (exp1; exp2; exp3) {
+  // செயல்படுத்தப்பட வேண்டிய குறியீட்டுத் தொகுதி
+}</code></pre>
+            </div>
+            
+            <table class="expression-table">
+                <thead>
+                    <tr>
+                        <th>வெளிப்பாடு</th>
+                        <th>பொறுப்பு</th>
+                        <th>செயல்பாடு நேரம்</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>exp1</strong></td>
+                        <td>லூப்பில் பயன்படுத்தப்படும் மாறி(களை) துவக்குகிறது</td>
+                        <td>குறியீட்டுத் தொகுதியின் செயல்பாட்டிற்கு முன் (ஒரு முறை)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>exp2</strong></td>
+                        <td>குறியீட்டுத் தொகுதியை செயல்படுத்துவதற்கான நிபந்தனையை மதிப்பீடு செய்கிறது</td>
+                        <td>ஒவ்வொரு மறு செய்கையிலும் (நிபந்தனை சோதனை)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>exp3</strong></td>
+                        <td>துவக்க மாறியின் மதிப்பை அதிகரிக்கிறது/மாற்றுகிறது</td>
+                        <td>குறியீட்டுத் தொகுதி செயல்படுத்தப்பட்ட பிறகு (ஒவ்வொரு முறையும்)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Basic Example -->
+        <section class="content-section" id="basic-example">
+            <h2>அடிப்படை எடுத்துக்காட்டு</h2>
+            
+            <div class="code-example">
+                <pre><code>for (let i = 0; i < 5; i++) {
+  text += "The number is " + i + "<br>";
+}</code></pre>
+            </div>
+            
+            <div class="loop-flow">
+                <div class="flow-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <strong>exp1</strong>: லூப் தொடங்குவதற்கு முன் ஒரு மாறியை அமைக்கிறது (<code>let i = 0</code>)
+                    </div>
+                </div>
+                
+                <div class="arrow-down">↓</div>
+                
+                <div class="flow-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <strong>exp2</strong>: லூப்பை இயக்குவதற்கான நிபந்தனையை வரையறுக்கிறது (<code>i</code> 5 ஐ விடக் குறைவாக இருக்க வேண்டும்)
+                    </div>
+                </div>
+                
+                <div class="arrow-down">↓</div>
+                
+                <div class="flow-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <strong>exp3</strong>: குறியீட்டுத் தொகுதி செயல்படுத்தப்பட்ட ஒவ்வொரு முறையும் ஒரு மதிப்பை அதிகரிக்கிறது (<code>i++</code>)
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Array Example -->
+        <section class="content-section" id="array-example">
+            <h2>வரிசை எடுத்துக்காட்டு</h2>
+            <p>cars வரிசையிலிருந்து கார் பெயர்களை சேகரிக்க for லூப்பைப் பயன்படுத்தவும்:</p>
+            
+            <div class="code-example">
+                <pre><code>const cars = ["BMW", "Volvo", "Saab", "Ford"];
+let len = cars.length;
+
+let text = "";
+for (let i = 0; i < len; i++) {
+  text += cars[i] + " ";
+}
+// முடிவு: "BMW Volvo Saab Ford "</code></pre>
+            </div>
+        </section>
+
+        <!-- How to use exp1 -->
+        <section class="content-section" id="using-exp1">
+            <h2>exp1 ஐ எவ்வாறு பயன்படுத்துவது</h2>
+            <p>exp1 லூப்பில் பயன்படுத்தப்படும் மாறி(களை) துவக்க பயன்படுகிறது (<code>let i = 0</code>).</p>
+            
+            <p>exp1 விருப்பமானது.</p>
+            
+            <p>மதிப்பு லூப் தொடங்குவதற்கு முன் அமைக்கப்பட்டிருந்தால், நீங்கள் exp1 ஐ விடலாம்:</p>
+            
+            <div class="code-example">
+                <pre><code>const cars = ["BMW", "Volvo", "Saab", "Ford"];
+let len = cars.length;
+
+let i = 2;  // மதிப்பு லூப்பிற்கு வெளியே அமைக்கப்பட்டுள்ளது
+
+let text = "";
+for (; i < len; i++) {
+  text += cars[i] + "<br>";
+}
+// இந்த லூப் குறியீடுகள் 2, 3, 4 (மொத்தம் 3 கார்கள்) ஆகியவற்றிலிருந்து கார்களை மட்டுமே சேர்க்கும்</code></pre>
+            </div>
+        </section>
+
+        <!-- How to use exp2 -->
+        <section class="content-section" id="using-exp2">
+            <h2>exp2 ஐ எவ்வாறு பயன்படுத்துவது</h2>
+            <p>exp2 ஆரம்ப மாறியின் நிபந்தனையை மதிப்பீடு செய்ய பயன்படுகிறது (<code>i < len</code>).</p>
+            
+            <p>exp2 விருப்பமானது.</p>
+            
+            <p>exp2 false ஐ வழங்கினால், லூப் முடிவடையும்.</p>
+            
+            <div class="warning-box">
+                <h4><span class="warning-icon">⚠️</span> கவனத்திற்கு:</h4>
+                <p>நீங்கள் exp2 ஐ விட்டுவிட்டால், லூப்பிற்குள் ஒரு break வழங்க வேண்டும். இல்லையெனில் லூப் ஒருபோதும் முடியாது. இது உங்கள் உலாவியை செயலிழக்கச் செய்யும்.</p>
+            </div>
+            
+            <div class="code-example">
+                <pre><code>// exp2 இல்லாமல் - break தேவை
+for (let i = 0; ; i++) {
+  if (i >= 5) {
+    break;  // லூப்பை நிறுத்த break தேவை
+  }
+  text += "Number: " + i + "<br>";
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- How to use exp3 -->
+        <section class="content-section" id="using-exp3">
+            <h2>exp3 ஐ எவ்வாறு பயன்படுத்துவது</h2>
+            <p>exp3 ஆரம்ப மாறியின் மதிப்பை அதிகரிக்கிறது (<code>i++</code>).</p>
+            
+            <p>exp3 விருப்பமானது.</p>
+            
+            <p>exp3 எதையும் செய்ய முடியும், எதிர்மறை அதிகரிப்பு (<code>i--</code>), நேர்மறை அதிகரிப்பு (<code>i = i + 15</code>), அல்லது வேறு எதையும்.</p>
+            
+            <p>exp3 விடப்படலாம் (லூப்பிற்குள் மதிப்பை அதிகரித்தால்):</p>
+            
+            <div class="code-example">
+                <pre><code>const cars = ["BMW", "Volvo", "Saab", "Ford"];
+let len = cars.length;
+
+let i = 0;
+
+let text = "";
+for (; i < len; ) {
+  text += cars[i] + "<br>";
+  i++;  // லூப்பிற்குள் அதிகரிப்பு
+}</code></pre>
+            </div>
+            
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-plus"></i>
+                        <h4>i++</h4>
+                    </div>
+                    <p>ஒவ்வொரு மறு செய்கையிலும் 1 ஆல் அதிகரிக்கிறது</p>
+                </div>
+                
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-minus"></i>
+                        <h4>i--</h4>
+                    </div>
+                    <p>ஒவ்வொரு மறு செய்கையிலும் 1 ஆல் குறைகிறது</p>
+                </div>
+                
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-plus-square"></i>
+                        <h4>i += 2</h4>
+                    </div>
+                    <p>ஒவ்வொரு மறு செய்கையிலும் 2 ஆல் அதிகரிக்கிறது</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Loop Scope -->
+        <section class="content-section" id="loop-scope">
+            <h2>லூப் நோக்கம்</h2>
+            
+            <div class="code-comparison">
+                <div class="code-column">
+                    <h4>var ஐப் பயன்படுத்துதல்:</h4>
+                    <div class="code-example">
+                        <pre><code>var i = 5;
+
+for (var i = 0; i < 10; i++) {
+  // சில குறியீடு
+}
+
+// இங்கே i 10 ஆகும்</code></pre>
+                    </div>
+                </div>
+                
+                <div class="code-column">
+                    <h4>let ஐப் பயன்படுத்துதல்:</h4>
+                    <div class="code-example">
+                        <pre><code>let i = 5;
+
+for (let i = 0; i < 10; i++) {
+  // சில குறியீடு
+}
+
+// இங்கே i 5 ஆகும்</code></pre>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">🎯</span> நோக்கம் வேறுபாடு:</h4>
+                <ul>
+                    <li>முதல் எடுத்துக்காட்டில், <code>var</code> ஐப் பயன்படுத்தி, லூப்பில் அறிவிக்கப்பட்ட மாறி லூப்பிற்கு வெளியே உள்ள மாறியை மீண்டும் அறிவிக்கிறது</li>
+                    <li>இரண்டாவது எடுத்துக்காட்டில், <code>let</code> ஐப் பயன்படுத்தி, லூப்பில் அறிவிக்கப்பட்ட மாறி லூப்பிற்கு வெளியே உள்ள மாறியை மீண்டும் அறிவிக்காது</li>
+                    <li><code>let</code> ஒரு லூப்பில் i மாறியை அறிவிக்கப் பயன்படுத்தப்படும் போது, i மாறி லூப்பிற்குள் மட்டுமே தெரியும்</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Different For Loop Variations -->
+        <section class="content-section" id="loop-variations">
+            <h2>வெவ்வேறு For லூப் மாறுபாடுகள்</h2>
+            
+            <div class="examples-grid">
+                <div class="example-card">
+                    <div class="example-icon">
+                        <i class="fas fa-arrow-down"></i>
+                    </div>
+                    <h4>பின்னோக்கி எண்ணுதல்</h4>
+                    <div class="code-example" style="padding: 0.5rem; margin: 0.5rem 0; background: #f8f9fa;">
+                        <pre style="margin: 0;"><code>for (let i = 5; i > 0; i--) {
+  console.log(i);
+}
+// 5,4,3,2,1</code></pre>
+                    </div>
+                </div>
+                
+                <div class="example-card">
+                    <div class="example-icon">
+                        <i class="fas fa-fast-forward"></i>
+                    </div>
+                    <h4>2 ஆல் அதிகரித்தல்</h4>
+                    <div class="code-example" style="padding: 0.5rem; margin: 0.5rem 0; background: #f8f9fa;">
+                        <pre style="margin: 0;"><code>for (let i = 0; i < 10; i += 2) {
+  console.log(i);
+}
+// 0,2,4,6,8</code></pre>
+                    </div>
+                </div>
+                
+                <div class="example-card">
+                    <div class="example-icon">
+                        <i class="fas fa-infinity"></i>
+                    </div>
+                    <h4>முடிவிலி லூப்</h4>
+                    <div class="code-example" style="padding: 0.5rem; margin: 0.5rem 0; background: #f8f9fa;">
+                        <pre style="margin: 0;"><code>for (;;) {
+  // break அறிக்கை இல்லாமல் முடிவில்லாது
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Exercise Section (ONLY ONE) -->
+        <section class="content-section" id="exercise">
+            <h2>பயிற்சி</h2>
+            
+            <div class="exercise-box">
+                <h4><span class="exercise-icon">❓</span> பின்வரும் குறியீட்டைக் கவனியுங்கள்:</h4>
+                <div class="code-example" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.3);">
+                    <pre><code style="color: white;">let i, x = '';
+for (i = 0; i <= 5; i++) {
+  x += i;
+}</code></pre>
+                </div>
+                <h4>x இன் முடிவு என்னவாக இருக்கும்?</h4>
+                
+                <div class="options-grid">
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">01234</div>
+                            <div class="option-feedback incorrect">✗ தவறு! நிபந்தனை <code>i <= 5</code> என்பது i 5 ஐ விடக் குறைவாக அல்லது சமமாக இருக்கும். i = 5 ஆக இருக்கும் போது, லூப் இன்னும் இயங்கும், எனவே x க்கு "5" சேர்க்கப்படும்</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="true">
+                        <div class="option-content">
+                            <div class="option-text">012345</div>
+                            <div class="option-feedback correct">✓ சரி! for லூப் i = 0, 1, 2, 3, 4, மற்றும் 5 ஆக இருக்கும் போது இயங்கும் (கடைசி மதிப்பு உட்பட, ஏனெனில் நிபந்தனை <code>i <= 5</code>). ஒவ்வொரு மறு செய்கையிலும், i இன் தற்போதைய மதிப்பு x க்கு சேர்க்கப்படுகிறது, இறுதி முடிவை "012345" ஆக மாற்றுகிறது</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">1234</div>
+                            <div class="option-feedback incorrect">✗ தவறு! லூப் i = 0 இலிருந்து தொடங்குகிறது, மேலும் 0 x க்கு சேர்க்கப்படுகிறது. மேலும், நிபந்தனை <code>i <= 5</code> இறுதி மதிப்பு 5 ஐ உள்ளடக்கியது</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">12345</div>
+                            <div class="option-feedback incorrect">✗ தவறு! லூப் i = 0 இலிருந்து தொடங்குகிறது, எனவே 0 முதல் மறு செய்கையில் x க்கு சேர்க்கப்படுகிறது. இது "0" உடன் தொடங்குகிறது, "1" அல்ல</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bottom Navigation -->
+        <div class="bottom-nav">
+            <a href="JavaScript%20Loop.html" class="nav-tab prev">
+                <i class="fas fa-arrow-left"></i>
+                <span>முந்தைய</span>
+            </a>
+            <a href="JavaScript%20While%20Loops.html" class="nav-tab next">
+                <span>அடுத்தது</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Siva Team Institution</h3>
+                <p>Leading educational institution providing quality programming education in Tamil.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#introduction">For லூப் அறிமுகம்</a></li>
+                    <li><a href="#for-loop-structure">லூப் கட்டமைப்பு</a></li>
+                    <li><a href="#basic-example">அடிப்படை எடுத்துக்காட்டு</a></li>
+                    <li><a href="#using-exp1">exp1 பயன்பாடு</a></li>
+                    <li><a href="#using-exp2">exp2 பயன்பாடு</a></li>
+                    <li><a href="#using-exp3">exp3 பயன்பாடு</a></li>
+                    <li><a href="#exercise">பயிற்சி</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Location & Hours</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <ul>
+                    <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Siva Team Institution. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all content sections for animation
+        document.querySelectorAll('.content-section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Exercise interaction
+        document.querySelectorAll('.option-card').forEach(card => {
+            card.addEventListener('click', function() {
+                // Show feedback for all options
+                document.querySelectorAll('.option-card').forEach(c => {
+                    c.querySelector('.option-feedback').style.display = 'block';
+                });
+            });
+        });
+    </script>
+
+    <!-- Home Button -->
+    <a href="index.html" class="home-icon">
+        <i class="fas fa-home"></i>
+    </a>
+</body>
+</html>
+
+

@@ -1,0 +1,936 @@
+﻿<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript BigInt - Siva Team</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .content-section p, 
+        .content-section li,
+        .content-section h3,
+        .content-section h4,
+        .comparison-card p {
+            color: #333 !important;
+        }
+        
+        .tip-box p,
+        .tip-box li,
+        .tip-box h4 {
+            color: white !important;
+        }
+        
+        .warning-box p,
+        .warning-box li,
+        .warning-box h4 {
+            color: white !important;
+        }
+        
+        .exercise-box p,
+        .exercise-box h4 {
+            color: white !important;
+        }
+        
+        /* Stable logo styling - NO ANIMATIONS */
+        .logo-icon {
+            animation: none !important;
+        }
+        
+        .logo-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            animation: none !important;
+        }
+        
+        /* BigInt styling */
+        .datatype-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .datatype-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-top: 4px solid #3498db;
+        }
+        
+        .datatype-card.bigint {
+            border-top-color: #e74c3c;
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(231, 76, 60, 0.2);
+        }
+        
+        .datatype-card h5 {
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+        
+        .datatype-card code {
+            color: var(--git-color);
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        
+        .bigint-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .comparison-table th {
+            background: var(--git-color);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .comparison-table td {
+            padding: 0.8rem 1rem;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .demo-container {
+            background: #f8f9fa;
+            border: 2px solid #dee2e6;
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .demo-output {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--git-color);
+            margin: 1.5rem 0;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            border-left: 4px solid var(--git-color);
+            min-height: 60px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .demo-button {
+            background: linear-gradient(135deg, var(--git-color), #e74c3c);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .demo-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            background: linear-gradient(135deg, #e74c3c, var(--git-color));
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .code-example {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .bigint-number {
+            color: #ff79c6;
+            font-weight: bold;
+        }
+        
+        .browser-support {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .browser-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        
+        .browser-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .browser-chrome { color: #4285F4; }
+        .browser-firefox { color: #FF7139; }
+        .browser-safari { color: #000000; }
+        .browser-edge { color: #0078D7; }
+        .browser-opera { color: #FF1B2D; }
+        
+        .precision-demo {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .limit-box {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .not-allowed {
+            background: #f8d7da;
+            border-left: 4px solid #dc3545;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .base-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .base-card {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border: 2px solid #dee2e6;
+        }
+        
+        .base-card h5 {
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        .base-card code {
+            color: var(--git-color);
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <img src="logo.jpg" alt="Siva Team Logo" class="logo-image">
+                </div>
+                <h1>Siva Team <span>Institution</span></h1>
+            </div>
+        </div>
+    </header>
+
+    <!-- Top Navigation Tabs -->
+    <div class="nav-tabs">
+        <a href="JavaScript%20Bitwise%20Operations.html" class="nav-tab prev">
+            <i class="fas fa-arrow-left"></i>
+            <span>முந்தைய</span>
+        </a>
+        <a href="JavaScript%20Function%20Learning%20Path.html" class="nav-tab next">
+            <span>அடுத்தது</span>
+            <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2>JavaScript BigInt</h2>
+            <p>பெரிய முழு எண்களைக் கையாளுதல்</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- What is JavaScript BigInt? -->
+        <section class="content-section" id="what-is-bigint">
+            <h2>JavaScript BigInt என்றால் என்ன?</h2>
+            
+            <p>BigInt என்பது பெரிய முழு எண் மதிப்புகளைக் கையாளவும் சேமிக்கவும் ஒரு JavaScript தரவு வகை.</p>
+            
+            <p>BigInt எண்களின் வரம்புக்கு அப்பாற்பட்ட பெரிய முழு எண்களுடன் வேலை செய்ய உங்களை அனுமதிக்கிறது.</p>
+            
+            <p>BigInt எந்த அளவிலான முழு எண்ணையும் குறிக்க முடியும், கிடைக்கும் நினைவகத்தால் மட்டுமே வரையறுக்கப்படுகிறது.</p>
+        </section>
+
+        <!-- JavaScript Accuracy -->
+        <section class="content-section" id="javascript-accuracy">
+            <h2>JavaScript துல்லியம்</h2>
+            
+            <p>JavaScript எண்கள் 15 இலக்கங்கள் வரை மட்டுமே துல்லியமானவை:</p>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <div class="code-example">
+                <span class="comment">// 15 இலக்கங்கள்:</span><br>
+                <span class="keyword">let</span> <span class="identifier">x</span> <span class="operator">=</span> <span class="bigint-number">999999999999999</span>; <span class="comment">// சரி</span><br><br>
+                
+                <span class="comment">// 16 இலக்கங்கள்:</span><br>
+                <span class="keyword">let</span> <span class="identifier">y</span> <span class="operator">=</span> <span class="bigint-number">9999999999999999</span>; <span class="comment">// துல்லியம் இழக்கும்</span>
+            </div>
+        </section>
+
+        <!-- Numbers are 64-bits Floating Point -->
+        <section class="content-section" id="64-bit-floating">
+            <h2>எண்கள் 64-பிட் மிதவை புள்ளி</h2>
+            
+            <p>அனைத்து JavaScript எண்களும் 64-பிட் மிதவை-புள்ளி வடிவமைப்பில் சேமிக்கப்படுகின்றன (IEEE 754 தரநிலை).</p>
+            
+            <p>இந்த தரநிலையுடன், பெரிய எண்களை சரியாக குறிப்பிட முடியாது, ஆனால் வட்டமிடப்படும்.</p>
+            
+            <div class="limit-box">
+                <h4>பாதுகாப்பான எண் வரம்புகள்:</h4>
+                <p>JavaScript 2⁵³-1 (9007199254740991) வரை மட்டுமே பாதுகாப்பாக முழு எண்களைக் குறிக்க முடியும்.</p>
+                <p>JavaScript -2⁵³-1 (-9007199254740991) வரை மட்டுமே பாதுகாப்பாக முழு எண்களைக் குறிக்க முடியும்.</p>
+            </div>
+            
+            <h3>எடுத்துக்காட்டுகள்</h3>
+            <div class="code-example">
+                <span class="comment">// MAX = 9007199254740991</span><br>
+                <span class="keyword">let</span> <span class="identifier">x</span> <span class="operator">=</span> <span class="identifier">Number</span>.<span class="identifier">MAX_SAFE_INTEGER</span>;<br><br>
+                
+                <span class="comment">// MIN = -9007199254740991</span><br>
+                <span class="keyword">let</span> <span class="identifier">y</span> <span class="operator">=</span> <span class="identifier">Number</span>.<span class="identifier">MIN_SAFE_INTEGER</span>;
+            </div>
+            
+            <p>Number.MAX_SAFE_INTEGER ஐ விட பெரிய முழு எண்கள் துல்லியத்தை இழக்கும்:</p>
+            
+            <div class="code-example">
+                <span class="comment">// Max (துல்லியமானது)</span><br>
+                <span class="keyword">let</span> <span class="identifier">x</span> <span class="operator">=</span> <span class="bigint-number">9007199254740991</span>;<br><br>
+                
+                <span class="comment">// Max + 10 (துல்லியமற்றது)</span><br>
+                <span class="keyword">let</span> <span class="identifier">y</span> <span class="operator">=</span> <span class="identifier">x</span> <span class="operator">+</span> <span class="bigint-number">10</span>; <span class="comment">// துல்லியம் இழக்கும்!</span>
+            </div>
+            
+            <div class="warning-box">
+                <h4><span class="warning-icon">⚠️</span> குறிப்பு:</h4>
+                <p>JavaScript Integer என்று எதுவும் இல்லை.</p>
+                <p>அனைத்து JavaScript எண்களும் 64-பிட் மிதவை புள்ளி.</p>
+            </div>
+        </section>
+
+        <!-- How to Create a BigInt -->
+        <section class="content-section" id="create-bigint">
+            <h2>BigInt ஐ எவ்வாறு உருவாக்குவது</h2>
+            
+            <p>நீங்கள் இரண்டு வழிகளில் ஒரு BigInt ஐ உருவாக்கலாம்:</p>
+            
+            <ol>
+                <li>ஒரு முழு எண் மாறிலியை n பின்னொட்டுடன் பயன்படுத்துதல்</li>
+                <li>BigInt() கட்டமைப்பாளரை சரத்துடன் பயன்படுத்துதல்</li>
+            </ol>
+            
+            <h3>எடுத்துக்காட்டுகள்</h3>
+            <div class="code-example">
+                <span class="comment">// n பின்னொட்டுடன் முழு எண் மாறிலியைப் பயன்படுத்துதல்:</span><br>
+                <span class="keyword">let</span> <span class="identifier">x</span> <span class="operator">=</span> <span class="bigint-number">999999999999999n</span>;<br><br>
+                
+                <span class="comment">// சரத்துடன் BigInt() கட்டமைப்பாளரைப் பயன்படுத்துதல்:</span><br>
+                <span class="keyword">let</span> <span class="identifier">y</span> <span class="operator">=</span> <span class="identifier">BigInt</span>(<span class="string">"999999999999999"</span>);<br>
+                <span class="keyword">let</span> <span class="identifier">x</span> <span class="operator">=</span> <span class="bigint-number">12345678901234567890n</span>;<br>
+                <span class="keyword">let</span> <span class="identifier">y</span> <span class="operator">=</span> <span class="identifier">BigInt</span>(<span class="string">"12345678901234567890"</span>)
+            </div>
+            
+            <div class="warning-box">
+                <h4><span class="warning-icon">⚠️</span> எச்சரிக்கை:</h4>
+                <p>எண்ணுடன் Bigint() கட்டமைப்பாளரைப் பயன்படுத்துவது பரிந்துரைக்கப்படாது. எண்கள் 15 இலக்கங்கள் வரை மட்டுமே துல்லியமானவை.</p>
+            </div>
+            
+            <div class="demo-container">
+                <h4>BigInt உருவாக்குதல் டெமோ:</h4>
+                <div id="creation-demo" class="demo-output">BigInt உருவாக்கப்பட்டது: </div>
+                <div class="button-group">
+                    <button class="demo-button" onclick="demoCreateWithN()">n பின்னொட்டுடன்</button>
+                    <button class="demo-button" onclick="demoCreateWithConstructor()">BigInt() கட்டமைப்பாளருடன்</button>
+                    <button class="demo-button" onclick="demoVeryLarge()">மிகப்பெரிய BigInt</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- BigInt is a JavaScript Datatype -->
+        <section class="content-section" id="bigint-datatype">
+            <h2>BigInt ஒரு JavaScript தரவு வகை</h2>
+            
+            <p>ஒரு BigInt இன் JavaScript typeof "bigint" ஆகும்:</p>
+            
+            <div class="code-example">
+                <span class="keyword">let</span> <span class="identifier">x</span> <span class="operator">=</span> <span class="identifier">BigInt</span>(<span class="bigint-number">999999999999999</span>);<br><br>
+                
+                <span class="keyword">let</span> <span class="identifier">type</span> <span class="operator">=</span> <span class="keyword">typeof</span> <span class="identifier">x</span>; <span class="comment">// "bigint"</span>
+            </div>
+            
+            <p>BigInt என்பது JavaScript இல் இரண்டாவது எண் தரவு வகை (Number க்குப் பிறகு).</p>
+            
+            <p>BigInt உடன் JavaScript இல் ஆதரிக்கப்படும் மொத்த தரவு வகைகளின் எண்ணிக்கை 8:</p>
+            
+            <div class="datatype-grid">
+                <div class="datatype-card">
+                    <h5>String</h5>
+                    <code>"Hello"</code>
+                </div>
+                <div class="datatype-card">
+                    <h5>Number</h5>
+                    <code>123</code>
+                </div>
+                <div class="datatype-card bigint">
+                    <div class="bigint-badge">புதியது</div>
+                    <h5>Bigint</h5>
+                    <code>123n</code>
+                </div>
+                <div class="datatype-card">
+                    <h5>Boolean</h5>
+                    <code>true/false</code>
+                </div>
+                <div class="datatype-card">
+                    <h5>Undefined</h5>
+                    <code>undefined</code>
+                </div>
+                <div class="datatype-card">
+                    <h5>Null</h5>
+                    <code>null</code>
+                </div>
+                <div class="datatype-card">
+                    <h5>Symbol</h5>
+                    <code>Symbol()</code>
+                </div>
+                <div class="datatype-card">
+                    <h5>Object</h5>
+                    <code>{}</code>
+                </div>
+            </div>
+        </section>
+
+        <!-- Arithmetic Operators -->
+        <section class="content-section" id="arithmetic-operators">
+            <h2>கணித செயலிகள்</h2>
+            
+            <p>BigInt நிலையான JavaScript கணித செயலிகளை ஆதரிக்கிறது.</p>
+            
+            <p>(+, -, ++, --, *, /, %, **)</p>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <div class="code-example">
+                <span class="comment">// பெருக்கல்:</span><br><br>
+                <span class="keyword">let</span> <span class="identifier">x</span> <span class="operator">=</span> <span class="bigint-number">9007199254740995n</span>;<br>
+                <span class="keyword">let</span> <span class="identifier">y</span> <span class="operator">=</span> <span class="bigint-number">9007199254740995n</span>;<br><br>
+                
+                <span class="keyword">let</span> <span class="identifier">z</span> <span class="operator">=</span> <span class="identifier">x</span> <span class="operator">*</span> <span class="identifier">y</span>; <span class="comment">// BigInt பெருக்கல்</span>
+            </div>
+        </section>
+
+        <!-- Mixing BigInt and Numbers -->
+        <section class="content-section" id="mixing-bigint-numbers">
+            <h2>BigInt மற்றும் எண்களை கலத்தல்</h2>
+            
+            <p>BigInt மற்றும் Number க்கு இடையேயான கணிதம் அனுமதிக்கப்படாது (TypeError ஏற்படும்).</p>
+            
+            <p>முதலில் வெளிப்படையான மாற்றம் செய்யப்பட வேண்டும்.</p>
+            
+            <div class="not-allowed">
+                <h4>❌ அனுமதிக்கப்படாது:</h4>
+                <div class="code-example">
+                    <span class="keyword">let</span> <span class="identifier">x</span> <span class="operator">=</span> <span class="bigint-number">10n</span>;<br>
+                    <span class="keyword">let</span> <span class="identifier">y</span> <span class="operator">=</span> <span class="bigint-number">5</span>;<br><br>
+                    
+                    <span class="keyword">let</span> <span class="identifier">z</span> <span class="operator">=</span> <span class="identifier">x</span> <span class="operator">+</span> <span class="identifier">y</span>; <span class="comment">// ❌ TypeError</span>
+                </div>
+            </div>
+            
+            <div class="limit-box">
+                <h4>✓ சரி செய்யப்பட்டது:</h4>
+                <div class="code-example">
+                    <span class="keyword">let</span> <span class="identifier">x</span> <span class="operator">=</span> <span class="bigint-number">10n</span>;<br>
+                    <span class="keyword">let</span> <span class="identifier">y</span> <span class="operator">=</span> <span class="bigint-number">5</span>;<br><br>
+                    
+                    <span class="keyword">let</span> <span class="identifier">z</span> <span class="operator">=</span> <span class="identifier">Number</span>(<span class="identifier">x</span>) <span class="operator">+</span> <span class="identifier">y</span>; <span class="comment">// வெளிப்படையான மாற்றம்</span>
+                </div>
+            </div>
+            
+            <div class="demo-container">
+                <h4>மாற்றுதல் டெமோ:</h4>
+                <div id="conversion-demo" class="demo-output">மாற்றல் முடிவுகள்: </div>
+                <div class="button-group">
+                    <button class="demo-button" onclick="demoBigIntToNumber()">BigInt → Number</button>
+                    <button class="demo-button" onclick="demoNumberToBigInt()">Number → BigInt</button>
+                    <button class="demo-button" onclick="demoMixedOperation()">கலந்த செயல்பாடு</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- BigInt Decimals -->
+        <section class="content-section" id="bigint-decimals">
+            <h2>BigInt தசமங்கள்</h2>
+            
+            <p>ஒரு BigInt க்கு தசமங்கள் இருக்க முடியாது.</p>
+            
+            <div class="not-allowed">
+                <div class="code-example">
+                    <span class="keyword">let</span> <span class="identifier">x</span> <span class="operator">=</span> <span class="bigint-number">1.5n</span>; <span class="comment">// ❌ TypeError</span>
+                </div>
+            </div>
+            
+            <div class="warning-box">
+                <h4><span class="warning-icon">⚠️</span> குறிப்பு:</h4>
+                <p>பகுதியளவு பகுதி கொண்ட எண்ணை BigInt ஆக மாற்ற முயற்சிப்பது பிழையை ஏற்படுத்தும்.</p>
+            </div>
+        </section>
+
+        <!-- Comparison Operators -->
+        <section class="content-section" id="comparison-operators">
+            <h2>ஒப்பீட்டு செயலிகள்</h2>
+            
+            <p>Bigint நிலையான JavaScript ஒப்பீட்டு செயலிகளை ஆதரிக்கிறது.</p>
+            
+            <p>(&lt;, &gt; ==, ===, !==, &lt;=, &gt;=)</p>
+            
+            <p>நிலையான ஒப்பீட்டு செயலிகளைப் பயன்படுத்தி BigInt களை எண்களுடன் ஒப்பிடலாம்.</p>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <div class="code-example">
+                <span class="comment">// true</span><br>
+                <span class="keyword">let</span> <span class="identifier">x</span> <span class="operator">=</span> (<span class="bigint-number">10n</span> <span class="operator">&gt;</span> <span class="bigint-number">5n</span>);<br><br>
+                
+                <span class="comment">// false (வெவ்வேறு வகைகள்)</span><br>
+                <span class="keyword">let</span> <span class="identifier">y</span> <span class="operator">=</span> (<span class="bigint-number">10n</span> <span class="operator">===</span> <span class="bigint-number">10</span>);<br><br>
+                
+                <span class="comment">// true (தளர்வான சமன்பாடு)</span><br>
+                <span class="keyword">let</span> <span class="identifier">z</span> <span class="operator">=</span> (<span class="bigint-number">10n</span> <span class="operator">==</span> <span class="bigint-number">10</span>);
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">📝</span> குறிப்பு:</h4>
+                <p>BigInt மற்றும் Number க்கு இடையேயான கண்டிப்பான சமன்பாடு (===) எப்போதும் false ஆக இருக்கும், ஏனெனில் அவை வெவ்வேறு வகைகள்.</p>
+            </div>
+        </section>
+
+        <!-- BigInt Hex, Octal and Binary -->
+        <section class="content-section" id="bigint-bases">
+            <h2>BigInt ஹெக்ஸா, ஆக்டல் மற்றும் பைனரி</h2>
+            
+            <p>BigInt ஐ ஹெக்ஸாடெசிமல், ஆக்டல் அல்லது பைனரி குறியீட்டிலும் எழுதலாம்:</p>
+            
+            <div class="base-grid">
+                <div class="base-card">
+                    <h5>சாதாரணம்</h5>
+                    <code>256n</code>
+                </div>
+                <div class="base-card">
+                    <h5>ஆக்டல்</h5>
+                    <code>0o400n</code>
+                </div>
+                <div class="base-card">
+                    <h5>ஹெக்ஸாடெசிமல்</h5>
+                    <code>0x100n</code>
+                </div>
+                <div class="base-card">
+                    <h5>பைனரி</h5>
+                    <code>0b100000000n</code>
+                </div>
+            </div>
+            
+            <h3>எடுத்துக்காட்டுகள்</h3>
+            <div class="code-example">
+                <span class="keyword">let</span> <span class="identifier">num</span> <span class="operator">=</span> <span class="bigint-number">256n</span>;<br>
+                <span class="keyword">let</span> <span class="identifier">oct</span> <span class="operator">=</span> <span class="bigint-number">0o400n</span>; <span class="comment">// ஆக்டல்</span><br>
+                <span class="keyword">let</span> <span class="identifier">hex</span> <span class="operator">=</span> <span class="bigint-number">0x100n</span>; <span class="comment">// ஹெக்ஸாடெசிமல்</span><br>
+                <span class="keyword">let</span> <span class="identifier">bin</span> <span class="operator">=</span> <span class="bigint-number">0b100000000n</span>; <span class="comment">// பைனரி</span><br>
+                <span class="keyword">let</span> <span class="identifier">hex</span> <span class="operator">=</span> <span class="bigint-number">0x20000000000003n</span>;<br>
+                <span class="keyword">let</span> <span class="identifier">oct</span> <span class="operator">=</span> <span class="bigint-number">0o400000000000000003n</span>;<br>
+                <span class="keyword">let</span> <span class="identifier">bin</span> <span class="operator">=</span> <span class="bigint-number">0b100000000000000000000000000000000000000000000000000011n</span>;
+            </div>
+        </section>
+
+        <!-- Precision Curiosity -->
+        <section class="content-section" id="precision-curiosity">
+            <h2>துல்லிய கவர்ச்சி</h2>
+            
+            <p>JavaScript இல் அதிகபட்ச பாதுகாப்பான முழு எண் 9007199254740991.</p>
+            
+            <p>வட்டமிடல் நிரல் பாதுகாப்பை சீர்குலைக்கலாம்:</p>
+            
+            <div class="precision-demo">
+                <h4>MAX_SAFE_INTEGER எடுத்துக்காட்டுகள்</h4>
+                <div class="code-example">
+                    <span class="bigint-number">9007199254740992</span> <span class="operator">===</span> <span class="bigint-number">9007199254740993</span>; <span class="comment">// true !!! (தவறு)</span><br>
+                    <span class="bigint-number">9007199254740992n</span> <span class="operator">===</span> <span class="bigint-number">9007199254740993n</span>; <span class="comment">// false !!! (சரி)</span>
+                </div>
+            </div>
+            
+            <div class="demo-container">
+                <h4>துல்லிய சிக்கல் டெமோ:</h4>
+                <div id="precision-demo" class="demo-output">ஒப்பீடு முடிவுகள்: </div>
+                <button class="demo-button" onclick="demoPrecisionIssue()">துல்லிய சிக்கலைக் காட்டு</button>
+            </div>
+        </section>
+
+        <!-- Browser Support -->
+        <section class="content-section" id="browser-support">
+            <h2>உலாவி ஆதரவு</h2>
+            
+            <p>BigInt() ஒரு ES2020 அம்சமாகும்.</p>
+            
+            <p>ES2020 செப்டம்பர் 2020 முதல் அனைத்து நவீன உலாவிகளிலும் முழுமையாக ஆதரிக்கப்படுகிறது:</p>
+            
+            <div class="browser-support">
+                <div class="browser-card">
+                    <div class="browser-icon browser-chrome">
+                        <i class="fab fa-chrome"></i>
+                    </div>
+                    <h5>Chrome 85</h5>
+                    <p>ஆகஸ்ட் 2020</p>
+                </div>
+                
+                <div class="browser-card">
+                    <div class="browser-icon browser-edge">
+                        <i class="fab fa-edge"></i>
+                    </div>
+                    <h5>Edge 85</h5>
+                    <p>ஆகஸ்ட் 2020</p>
+                </div>
+                
+                <div class="browser-card">
+                    <div class="browser-icon browser-firefox">
+                        <i class="fab fa-firefox"></i>
+                    </div>
+                    <h5>Firefox 79</h5>
+                    <p>மார்ச் 2020</p>
+                </div>
+                
+                <div class="browser-card">
+                    <div class="browser-icon browser-safari">
+                        <i class="fab fa-safari"></i>
+                    </div>
+                    <h5>Safari 14</h5>
+                    <p>செப்டம்பர் 2020</p>
+                </div>
+                
+                <div class="browser-card">
+                    <div class="browser-icon browser-opera">
+                        <i class="fab fa-opera"></i>
+                    </div>
+                    <h5>Opera 71</h5>
+                    <p>செப்டம்பர் 2020</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Summary -->
+        <section class="content-section" id="summary">
+            <h2>சுருக்கம்</h2>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>அம்சம்</th>
+                        <th>விளக்கம்</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>தன்னிச்சையான-துல்லிய முழு எண்கள்</strong></td>
+                        <td>BigInt தன்னிச்சையான-துல்லிய முழு எண்களை அனுமதிக்கிறது</td>
+                    </tr>
+                    <tr>
+                        <td><strong>அளவு வரம்பு</strong></td>
+                        <td>BigInt எண்கள் உங்கள் நினைவகம் அனுமதிக்கும் அளவுக்கு பெரியதாக (அல்லது சிறியதாக) இருக்கலாம்</td>
+                    </tr>
+                    <tr>
+                        <td><strong>பயன்பாடுகள்</strong></td>
+                        <td>BigInt மிகப் பெரிய முழு எண்களுக்கு பயன்படுத்தப்படுகிறது (குறியாக்கவியல், IDs, நேர முத்திரைகள், போன்றவை)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>தசமங்கள்</strong></td>
+                        <td>BigInt தசமங்களுக்கு ஏற்றதல்ல - முழு எண்கள் மட்டுமே</td>
+                    </tr>
+                    <tr>
+                        <td><strong>கணித செயல்பாடுகள்</strong></td>
+                        <td>கணித செயல்பாடுகள் (Math.sqrt() போன்றவை) BigInt களுடன் வேலை செய்யாது</td>
+                    </tr>
+                    <tr>
+                        <td><strong>JSON</strong></td>
+                        <td>JSON.stringify() BigInt களைக் கையாள முடியாது - பிழையை ஏற்படுத்தும்</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Exercise - ONLY ONE EXERCISE -->
+        <section class="content-section" id="exercises">
+            <h2>JavaScript பயிற்சிகள்</h2>
+            
+            <p>இந்த டுடோரியலில் உள்ள பல அத்தியாயங்கள் உங்கள் அறிவு நிலையைச் சரிபார்க்கக்கூடிய பயிற்சியுடன் முடிகின்றன.</p>
+            
+            <div class="exercise-box">
+                <h4><span class="exercise-icon">❓</span> BigInt எண்ணை உருவாக்க சட்டபூர்வமான JavaScript தொடரியல் எது?</h4>
+                
+                <div class="options-grid">
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">1234567890123456789m</div>
+                            <div class="option-feedback incorrect">✗ தவறு! 'm' பின்னொட்டு JavaScript இல் BigInt க்கு பயன்படுத்தப்படுவதில்லை</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">1234567890123456789max</div>
+                            <div class="option-feedback incorrect">✗ தவறு! 'max' பின்னொட்டு JavaScript இல் BigInt க்கு பயன்படுத்தப்படுவதில்லை</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="true">
+                        <div class="option-content">
+                            <div class="option-text">1234567890123456789n</div>
+                            <div class="option-feedback correct">✓ சரி! 'n' பின்னொட்டு JavaScript இல் BigInt ஐ உருவாக்குவதற்கான சரியான தொடரியல்</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bottom Navigation -->
+        <div class="bottom-nav">
+            <a href="JavaScript%20Bitwise%20Operations.html" class="nav-tab prev">
+                <i class="fas fa-arrow-left"></i>
+                <span>முந்தைய</span>
+            </a>
+            <a href="JavaScript%20Function%20Learning%20Path.html" class="nav-tab next">
+                <span>அடுத்தது</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Siva Team Institution</h3>
+                <p>Leading educational institution providing quality programming education in Tamil.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#what-is-bigint">BigInt என்றால் என்ன?</a></li>
+                    <li><a href="#javascript-accuracy">JavaScript துல்லியம்</a></li>
+                    <li><a href="#64-bit-floating">64-பிட் மிதவை புள்ளி</a></li>
+                    <li><a href="#create-bigint">BigInt உருவாக்குதல்</a></li>
+                    <li><a href="#bigint-datatype">BigInt தரவு வகை</a></li>
+                    <li><a href="#arithmetic-operators">கணித செயலிகள்</a></li>
+                    <li><a href="#mixing-bigint-numbers">BigInt மற்றும் எண்கள் கலத்தல்</a></li>
+                    <li><a href="#bigint-decimals">BigInt தசமங்கள்</a></li>
+                    <li><a href="#comparison-operators">ஒப்பீட்டு செயலிகள்</a></li>
+                    <li><a href="#bigint-bases">BigInt ஹெக்ஸா, ஆக்டல், பைனரி</a></li>
+                    <li><a href="#precision-curiosity">துல்லிய கவர்ச்சி</a></li>
+                    <li><a href="#browser-support">உலாவி ஆதரவு</a></li>
+                    <li><a href="#summary">சுருக்கம்</a></li>
+                    <li><a href="#exercises">JavaScript பயிற்சிகள்</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Location & Hours</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <ul>
+                    <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Siva Team Institution. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all content sections for animation
+        document.querySelectorAll('.content-section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Exercise interaction
+        document.querySelectorAll('.option-card').forEach(card => {
+            card.addEventListener('click', function() {
+                // Show feedback for all options
+                document.querySelectorAll('.option-card').forEach(c => {
+                    c.querySelector('.option-feedback').style.display = 'block';
+                });
+            });
+        });
+        
+        // Demo Functions
+        function demoCreateWithN() {
+            let x = 999999999999999n;
+            document.getElementById("creation-demo").innerHTML = 
+                `let x = 999999999999999n;<br>` +
+                `typeof x = "${typeof x}"<br>` +
+                `x = ${x}`;
+        }
+        
+        function demoCreateWithConstructor() {
+            let y = BigInt("999999999999999");
+            document.getElementById("creation-demo").innerHTML = 
+                `let y = BigInt("999999999999999");<br>` +
+                `typeof y = "${typeof y}"<br>` +
+                `y = ${y}`;
+        }
+        
+        function demoVeryLarge() {
+            let huge = 1234567890123456789012345678901234567890n;
+            document.getElementById("creation-demo").innerHTML = 
+                `let huge = 1234567890123456789012345678901234567890n;<br>` +
+                `மிகப்பெரிய BigInt: ${huge}<br>` +
+                `(Number.MAX_SAFE_INTEGER = ${Number.MAX_SAFE_INTEGER})`;
+        }
+        
+        function demoBigIntToNumber() {
+            let bigIntValue = 9007199254740993n;
+            let numberValue = Number(bigIntValue);
+            
+            document.getElementById("conversion-demo").innerHTML = 
+                `BigInt: ${bigIntValue}<br>` +
+                `Number(BigInt): ${numberValue}<br>` +
+                `கவனம்: துல்லியம் இழக்கலாம்!`;
+        }
+        
+        function demoNumberToBigInt() {
+            let numberValue = 9007199254740993;
+            let bigIntValue = BigInt(numberValue);
+            
+            document.getElementById("conversion-demo").innerHTML = 
+                `Number: ${numberValue}<br>` +
+                `BigInt(Number): ${bigIntValue}n`;
+        }
+        
+        function demoMixedOperation() {
+            let bigInt = 10n;
+            let number = 5;
+            
+            // Correct way
+            let result = Number(bigInt) + number;
+            
+            document.getElementById("conversion-demo").innerHTML = 
+                `let bigInt = 10n;<br>` +
+                `let number = 5;<br>` +
+                `Number(bigInt) + number = ${result}<br>` +
+                `(bigInt + number ❌ TypeError ஏற்படுத்தும்)`;
+        }
+        
+        function demoPrecisionIssue() {
+            let num1 = 9007199254740992;
+            let num2 = 9007199254740993;
+            let bigInt1 = 9007199254740992n;
+            let bigInt2 = 9007199254740993n;
+            
+            document.getElementById("precision-demo").innerHTML = 
+                `Number: ${num1} === ${num2} = ${num1 === num2}<br>` +
+                `(true - துல்லியம் இழந்தது!)<br><br>` +
+                `BigInt: ${bigInt1}n === ${bigInt2}n = ${bigInt1 === bigInt2}<br>` +
+                `(false - சரியான ஒப்பீடு)`;
+        }
+    </script>
+
+    <!-- Home Button -->
+    <a href="index.html" class="home-icon">
+        <i class="fas fa-home"></i>
+    </a>
+</body>
+</html>
+
+
