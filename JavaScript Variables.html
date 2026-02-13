@@ -1,0 +1,825 @@
+﻿<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Variables - Siva Team</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .content-section p, 
+        .content-section li,
+        .content-section h3,
+        .content-section h4,
+        .comparison-card p {
+            color: #333 !important;
+        }
+        
+        .tip-box p,
+        .tip-box li,
+        .tip-box h4 {
+            color: white !important;
+        }
+        
+        .warning-box p,
+        .warning-box li,
+        .tip-box h4 {
+            color: white !important;
+        }
+        
+        .exercise-box p,
+        .exercise-box h4 {
+            color: white !important;
+        }
+        
+        /* Stable logo styling - NO ANIMATIONS */
+        .logo-icon {
+            animation: none !important;
+        }
+        
+        .logo-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            animation: none !important;
+        }
+        
+        /* Syntax highlighting */
+        .syntax-example {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .comment {
+            color: #6272a4;
+            font-style: italic;
+        }
+        
+        .keyword {
+            color: #ff79c6;
+            font-weight: bold;
+        }
+        
+        .string {
+            color: #f1fa8c;
+        }
+        
+        .number {
+            color: #bd93f9;
+        }
+        
+        .operator {
+            color: #ff79c6;
+        }
+        
+        .identifier {
+            color: #50fa7b;
+        }
+        
+        .demo-container {
+            background: #f8f9fa;
+            border: 2px solid #dee2e6;
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .demo-output {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--git-color);
+            margin: 1.5rem 0;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            border-left: 4px solid var(--git-color);
+            min-height: 60px;
+        }
+        
+        .demo-button {
+            background: linear-gradient(135deg, var(--git-color), #e74c3c);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .demo-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            background: linear-gradient(135deg, #e74c3c, var(--git-color));
+        }
+        
+        .variable-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .variable-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            border-top: 4px solid;
+        }
+        
+        .variable-card.let-card {
+            border-top-color: #3498db;
+        }
+        
+        .variable-card.const-card {
+            border-top-color: #27ae60;
+        }
+        
+        .variable-card.var-card {
+            border-top-color: #f39c12;
+        }
+        
+        .variable-card.auto-card {
+            border-top-color: #e74c3c;
+        }
+        
+        .variable-card h4 {
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+        
+        .keyword-badge {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background: var(--git-color);
+            color: white;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .comparison-table th {
+            background: var(--git-color);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+        }
+        
+        .comparison-table td {
+            padding: 0.8rem 1rem;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .good-practice {
+            color: #27ae60;
+            font-weight: bold;
+        }
+        
+        .bad-practice {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        
+        .data-types {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .data-type {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            flex: 1;
+            min-width: 150px;
+            text-align: center;
+            border-left: 4px solid #3498db;
+        }
+        
+        .data-type h5 {
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        .data-type code {
+            color: var(--git-color);
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <img src="logo.jpg" alt="Siva Team Logo" class="logo-image">
+                </div>
+                <h1>Siva Team <span>Institution</span></h1>
+            </div>
+        </div>
+    </header>
+
+    <!-- Top Navigation Tabs -->
+    <div class="nav-tabs">
+        <a href="JavaScript%20Comments.html" class="nav-tab prev">
+            <i class="fas fa-arrow-left"></i>
+            <span>முந்தைய</span>
+        </a>
+        <a href="JavaScript%20Let.html" class="nav-tab next">
+            <span>அடுத்தது</span>
+            <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2>JavaScript Variables</h2>
+            <p>JavaScript மாறிகள் - தரவு கொள்கலன்கள்</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Variables = Data Containers -->
+        <section class="content-section" id="data-containers">
+            <h2>மாறிகள் = தரவு கொள்கலன்கள்</h2>
+            
+            <p>JavaScript மாறிகள் தரவுக்கான கொள்கலன்கள்.</p>
+            
+            <p>JavaScript மாறிகளை 4 வழிகளில் அறிவிக்கலாம்:</p>
+            
+            <div class="variable-grid">
+                <div class="variable-card let-card">
+                    <div class="keyword-badge">let</div>
+                    <h4>நவீன JavaScript</h4>
+                    <p>மாற்றக்கூடிய மாறிகளுக்கு</p>
+                </div>
+                
+                <div class="variable-card const-card">
+                    <div class="keyword-badge">const</div>
+                    <h4>நவீன JavaScript</h4>
+                    <p>மாறாத மாறிகளுக்கு</p>
+                </div>
+                
+                <div class="variable-card var-card">
+                    <div class="keyword-badge">var</div>
+                    <h4>பழைய JavaScript</h4>
+                    <p>பரிந்துரைக்கப்படாது</p>
+                </div>
+                
+                <div class="variable-card auto-card">
+                    <div class="keyword-badge">தானாக</div>
+                    <h4>பழைய JavaScript</h4>
+                    <p>பரிந்துரைக்கப்படாது</p>
+                </div>
+            </div>
+            
+            <h3>let பயன்படுத்தி எடுத்துக்காட்டு</h3>
+            <div class="syntax-example">
+                <span class="keyword">let</span> <span class="identifier">x</span> <span class="operator">=</span> <span class="number">5</span>;<br>
+                <span class="keyword">let</span> <span class="identifier">y</span> <span class="operator">=</span> <span class="number">6</span>;<br>
+                <span class="keyword">let</span> <span class="identifier">z</span> <span class="operator">=</span> <span class="identifier">x</span> <span class="operator">+</span> <span class="identifier">y</span>;
+            </div>
+            
+            <h3>const பயன்படுத்தி எடுத்துக்காட்டு</h3>
+            <div class="syntax-example">
+                <span class="keyword">const</span> <span class="identifier">x</span> <span class="operator">=</span> <span class="number">5</span>;<br>
+                <span class="keyword">const</span> <span class="identifier">y</span> <span class="operator">=</span> <span class="number">6</span>;<br>
+                <span class="keyword">const</span> <span class="identifier">z</span> <span class="operator">=</span> <span class="identifier">x</span> <span class="operator">+</span> <span class="identifier">y</span>;
+            </div>
+            
+            <div class="demo-container">
+                <h4>மாறி மதிப்புகள் டெமோ:</h4>
+                <div id="variable-demo" class="demo-output">மாறி மதிப்புகள்: </div>
+                <button class="demo-button" onclick="showVariableValues()">மாறி மதிப்புகளைக் காட்டு</button>
+            </div>
+            
+            <p>எடுத்துக்காட்டுகளிலிருந்து நீங்கள் யூகிக்கலாம்:</p>
+            <ul>
+                <li>x கொண்டுள்ளது (அல்லது சேமிக்கிறது) மதிப்பு 5</li>
+                <li>y கொண்டுள்ளது (அல்லது சேமிக்கிறது) மதிப்பு 6</li>
+                <li>z கொண்டுள்ளது (அல்லது சேமிக்கிறது) மதிப்பு 11</li>
+            </ul>
+            
+            <p>மாறிகள் தரவு மதிப்புகளுக்கான லேபிள்கள்.</p>
+            <p>மாறிகள் தரவைச் சேமிக்கும் கொள்கலன்கள்.</p>
+        </section>
+
+        <!-- JavaScript Identifiers -->
+        <section class="content-section" id="javascript-identifiers">
+            <h2>JavaScript அடையாளங்காட்டிகள்</h2>
+            
+            <p>மாறிகள் அடையாளங்காட்டிகள் என்ற தனித்துவமான பெயர்களால் அடையாளம் காணப்படுகின்றன.</p>
+            
+            <p>பெயர்கள் x, y, z போன்ற குறுகியதாக இருக்கலாம்.</p>
+            
+            <p>பெயர்கள் age, sum, carName போன்ற விளக்கமானதாக இருக்கலாம்.</p>
+            
+            <p>பெயர்களை உருவாக்குவதற்கான விதிகள் (அடையாளங்காட்டிகள்):</p>
+            
+            <ul>
+                <li>பெயர்களில் எழுத்துகள், இலக்கங்கள், அடிக்கோடுகள் மற்றும் டாலர் அடையாளங்கள் இருக்கலாம்.</li>
+                <li>பெயர்கள் ஒரு எழுத்து, $ அடையாளம் அல்லது அடிக்கோடு (_) உடன் தொடங்க வேண்டும்.</li>
+                <li>பெயர்கள் வழக்கு-உணர்திறன் கொண்டவை (X என்பது x இலிருந்து வேறுபட்டது).</li>
+                <li>முக்கிய சொற்களை (JavaScript முக்கிய சொற்கள்) பெயர்களாகப் பயன்படுத்த முடியாது.</li>
+            </ul>
+            
+            <div class="warning-box">
+                <h4><span class="warning-icon">📝</span> குறிப்பு:</h4>
+                <p>எண்கள் பெயர்களின் முதல் எழுத்தாக அனுமதிக்கப்படாது.</p>
+                <p>இந்த வழியில் JavaScript அடையாளங்காட்டிகளை எண்களிலிருந்து எளிதாக வேறுபடுத்தும்.</p>
+            </div>
+            
+            <div class="demo-container">
+                <h4>சரியான மாறி பெயர் எடுத்துக்காட்டுகள்:</h4>
+                <div class="syntax-example">
+                    <span class="keyword">let</span> <span class="identifier">firstName</span> <span class="operator">=</span> <span class="string">"ராஜ்"</span>;<br>
+                    <span class="keyword">let</span> <span class="identifier">age</span> <span class="operator">=</span> <span class="number">25</span>;<br>
+                    <span class="keyword">let</span> <span class="identifier">total_price</span> <span class="operator">=</span> <span class="number">1000</span>;<br>
+                    <span class="keyword">let</span> <span class="identifier">$amount</span> <span class="operator">=</span> <span class="number">500</span>;
+                </div>
+            </div>
+        </section>
+
+        <!-- JavaScript Underscore (_) -->
+        <section class="content-section" id="underscore">
+            <h2>JavaScript அடிக்கோடு (_)</h2>
+            
+            <p>JavaScript அடிக்கோடு (_) ஐ ஒரு எழுத்தாகக் கருதுகிறது.</p>
+            
+            <p>_ கொண்ட அடையாளங்காட்டிகள் சரியான மாறி பெயர்கள்:</p>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <div class="syntax-example">
+                <span class="keyword">let</span> <span class="identifier">_lastName</span> <span class="operator">=</span> <span class="string">"Johnson"</span>;<br>
+                <span class="keyword">let</span> <span class="identifier">_x</span> <span class="operator">=</span> <span class="number">2</span>;<br>
+                <span class="keyword">let</span> <span class="identifier">_100</span> <span class="operator">=</span> <span class="number">5</span>;
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">👨‍💻</span> நிரலாக்கர் மரபு:</h4>
+                <p>"தனிப்பட்ட" மாறிகளுக்கு அடிக்கோடு (_) உடன் பெயரைத் தொடங்குவது தொழில்முறை நிரலாளர்களிடையே ஒரு மரபு.</p>
+            </div>
+        </section>
+
+        <!-- JavaScript Dollar Sign $ -->
+        <section class="content-section" id="dollar-sign">
+            <h2>JavaScript டாலர் அடையாளம் $</h2>
+            
+            <p>JavaScript டாலர் அடையாளத்தையும் ($) ஒரு எழுத்தாகக் கருதுகிறது.</p>
+            
+            <p>$ கொண்ட அடையாளங்காட்டிகள் சரியான மாறி பெயர்கள்:</p>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <div class="syntax-example">
+                <span class="keyword">let</span> <span class="identifier">$</span> <span class="operator">=</span> <span class="string">"Hello World"</span>;<br>
+                <span class="keyword">let</span> <span class="identifier">$$$</span> <span class="operator">=</span> <span class="number">2</span>;<br>
+                <span class="keyword">let</span> <span class="identifier">$myMoney</span> <span class="operator">=</span> <span class="number">5</span>;
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">📚</span> நூலக மரபு:</h4>
+                <p>$ பயன்படுத்துவது JavaScript இல் மிகவும் பொதுவானது அல்ல, ஆனால் தொழில்முறை நிரலாளர்கள் பெரும்பாலும் JavaScript நூலகங்களில் முக்கிய செயல்பாட்டிற்கான மாற்றுப் பெயராக இதைப் பயன்படுத்துகின்றனர்.</p>
+            </div>
+        </section>
+
+        <!-- Declaring JavaScript Variables -->
+        <section class="content-section" id="declaring-variables">
+            <h2>JavaScript மாறிகளை அறிவித்தல்</h2>
+            
+            <p>JavaScript இல் ஒரு மாறியை உருவாக்குவது மாறியை அறிவிப்பது என்று அழைக்கப்படுகிறது.</p>
+            
+            <p>நீங்கள் ஒரு JavaScript மாறியை let முக்கிய சொல் அல்லது const முக்கிய சொல்லுடன் அறிவிக்கிறீர்கள்.</p>
+            
+            <h3>let பயன்படுத்தி மாறியை அறிவித்தல்</h3>
+            <div class="syntax-example">
+                <span class="keyword">let</span> <span class="identifier">carName</span>;
+            </div>
+            
+            <p>அறிவிப்புக்குப் பிறகு, மாறிக்கு எந்த மதிப்பும் இல்லை (தொழில்நுட்ப ரீதியாக இது வரையறுக்கப்படவில்லை).</p>
+            
+            <p>மாறிக்கு ஒரு மதிப்பை ஒதுக்க, சம அடையாளத்தைப் பயன்படுத்தவும்:</p>
+            
+            <div class="syntax-example">
+                <span class="identifier">carName</span> <span class="operator">=</span> <span class="string">"Volvo"</span>;
+            </div>
+            
+            <p>பெரும்பாலும் நீங்கள் மாறியை அறிவிக்கும் போது அதற்கு ஒரு மதிப்பை ஒதுக்குவீர்கள்:</p>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <div class="syntax-example">
+                <span class="keyword">let</span> <span class="identifier">carName</span> <span class="operator">=</span> <span class="string">"Volvo"</span>; <span class="comment">// carName என்ற மாறியை உருவாக்கி "Volvo" மதிப்பை ஒதுக்குகிறது</span>
+            </div>
+            
+            <h3>const பயன்படுத்தி மாறியை அறிவித்தல்</h3>
+            <div class="syntax-example">
+                <span class="keyword">const</span> <span class="identifier">carName</span> <span class="operator">=</span> <span class="string">"Volvo"</span>; <span class="comment">// மதிப்பு மாறக்கூடாது என்றால் எப்போதும் const பயன்படுத்தவும்</span>
+            </div>
+            
+            <h3>கலப்பு எடுத்துக்காட்டு</h3>
+            <div class="syntax-example">
+                <span class="keyword">const</span> <span class="identifier">price1</span> <span class="operator">=</span> <span class="number">5</span>;<br>
+                <span class="keyword">const</span> <span class="identifier">price2</span> <span class="operator">=</span> <span class="number">6</span>;<br>
+                <span class="keyword">let</span> <span class="identifier">total</span> <span class="operator">=</span> <span class="identifier">price1</span> <span class="operator">+</span> <span class="identifier">price2</span>;
+            </div>
+            
+            <p>இரு மாறிகள் price1 மற்றும் price2 const முக்கிய சொல்லுடன் அறிவிக்கப்படுகின்றன.</p>
+            <p>price1 மற்றும் price2 இன் மதிப்புகளை மாற்ற முடியாது.</p>
+            <p>total மாறி let முக்கிய சொல்லுடன் அறிவிக்கப்படுகிறது.</p>
+            <p>total இன் மதிப்பை மாற்ற முடியும்.</p>
+        </section>
+
+        <!-- When to Use var, let, or const? -->
+        <section class="content-section" id="when-to-use">
+            <h2>var, let, அல்லது const எப்போது பயன்படுத்துவது?</h2>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>விதி</th>
+                        <th>விளக்கம்</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td class="good-practice">எப்போதும் மாறிகளை அறிவிக்கவும்</td>
+                        <td>தானாக அறிவிப்பு தவிர்க்கவும்</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td class="good-practice">மதிப்பு மாறக்கூடாது என்றால் எப்போதும் const பயன்படுத்தவும்</td>
+                        <td>மாறிலிகளுக்கு (constants)</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td class="good-practice">வகை மாறக்கூடாது என்றால் எப்போதும் const பயன்படுத்தவும்</td>
+                        <td>வரிசைகள் மற்றும் பொருள்களுக்கு</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td class="good-practice">const பயன்படுத்த முடியாவிட்டால் மட்டுமே let பயன்படுத்தவும்</td>
+                        <td>மாற்றக்கூடிய மாறிகளுக்கு</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td class="bad-practice">let அல்லது const பயன்படுத்த முடியுமானால் var ஒருபோதும் பயன்படுத்தாதீர்கள்</td>
+                        <td>var பழையது, சிக்கல்கள் உள்ளது</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="demo-container">
+                <h4>மாறி வகைகள் டெமோ:</h4>
+                <div id="type-demo" class="demo-output">மாறி வகைகள் மற்றும் மதிப்புகள்: </div>
+                <button class="demo-button" onclick="showVariableTypes()">மாறி வகைகளைக் காட்டு</button>
+            </div>
+        </section>
+
+        <!-- JavaScript Data Types -->
+        <section class="content-section" id="data-types">
+            <h2>JavaScript தரவு வகைகள்</h2>
+            
+            <p>JavaScript மாறிகள் 8 தரவு வகைகளைக் கொண்டிருக்கலாம், ஆனால் இப்போதைக்கு, எண்கள் மற்றும் சரங்களைப் பற்றி மட்டும் சிந்திக்கவும்.</p>
+            
+            <p>சரங்கள் மேற்கோள்களுக்குள் எழுதப்பட்ட உரை.</p>
+            
+            <p>எண்கள் மேற்கோள்கள் இல்லாமல் எழுதப்படுகின்றன.</p>
+            
+            <p>நீங்கள் ஒரு எண்ணை மேற்கோள்களில் வைத்தால், அது உரை சரமாகக் கருதப்படும்.</p>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <div class="syntax-example">
+                <span class="keyword">const</span> <span class="identifier">pi</span> <span class="operator">=</span> <span class="number">3.14</span>;<br>
+                <span class="keyword">let</span> <span class="identifier">person</span> <span class="operator">=</span> <span class="string">"John Doe"</span>;<br>
+                <span class="keyword">let</span> <span class="identifier">answer</span> <span class="operator">=</span> <span class="string">'Yes I am!'</span>;
+            </div>
+            
+            <div class="data-types">
+                <div class="data-type">
+                    <h5>எண்</h5>
+                    <code>let x = 5;</code>
+                    <p>மேற்கோள்கள் இல்லை</p>
+                </div>
+                <div class="data-type">
+                    <h5>சரம்</h5>
+                    <code>let name = "ராஜ்";</code>
+                    <p>மேற்கோள்களுடன்</p>
+                </div>
+                <div class="data-type">
+                    <h5>பூலியன்</h5>
+                    <code>let isTrue = true;</code>
+                    <p>true/false</p>
+                </div>
+            </div>
+            
+            <div class="demo-container">
+                <h4>தரவு வகைகள் டெமோ:</h4>
+                <div id="data-type-demo" class="demo-output">மாறி மதிப்புகள் மற்றும் வகைகள்: </div>
+                <button class="demo-button" onclick="showDataTypes()">தரவு வகைகளைக் காட்டு</button>
+            </div>
+        </section>
+
+        <!-- The Assignment Operator -->
+        <section class="content-section" id="assignment-operator">
+            <h2>ஒதுக்கீட்டு செயலி</h2>
+            
+            <p>JavaScript இல், சம அடையாளம் (=) ஒரு ஒதுக்கீட்டு செயலி, சமமான அடையாளம் அல்ல.</p>
+            
+            <p>இது இயற்கணிதத்திலிருந்து வேறுபட்டது. பின்வருவது இயற்கணிதத்தில் அர்த்தமில்லை:</p>
+            
+            <div class="syntax-example">
+                <span class="identifier">x</span> <span class="operator">=</span> <span class="identifier">x</span> <span class="operator">+</span> <span class="number">5</span>
+            </div>
+            
+            <p>இருப்பினும், JavaScript இல், இது சரியான அர்த்தத்தைத் தருகிறது: இது x + 5 இன் மதிப்பை x க்கு ஒதுக்குகிறது.</p>
+            
+            <p>(இது x + 5 இன் மதிப்பைக் கணக்கிட்டு x இல் விளைவை வைக்கிறது. x இன் மதிப்பு 5 ஆல் அதிகரிக்கப்படுகிறது.)</p>
+            
+            <div class="warning-box">
+                <h4><span class="warning-icon">⚠️</span> குறிப்பு:</h4>
+                <p>சமமான அடையாளம் JavaScript இல் == என எழுதப்படுகிறது.</p>
+            </div>
+        </section>
+
+        <!-- JavaScript Arithmetic -->
+        <section class="content-section" id="javascript-arithmetic">
+            <h2>JavaScript எண்கணிதம்</h2>
+            
+            <p>இயற்கணிதத்தைப் போலவே, நீங்கள் = மற்றும் + போன்ற செயலிகளைப் பயன்படுத்தி JavaScript மாறிகளுடன் எண்கணிதத்தைச் செய்யலாம்:</p>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <div class="syntax-example">
+                <span class="keyword">let</span> <span class="identifier">x</span> <span class="operator">=</span> <span class="number">5</span> <span class="operator">+</span> <span class="number">2</span> <span class="operator">+</span> <span class="number">3</span>;
+            </div>
+            
+            <p>நீங்கள் சரங்களையும் சேர்க்கலாம், ஆனால் சரங்கள் இணைக்கப்படும்:</p>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <div class="syntax-example">
+                <span class="keyword">let</span> <span class="identifier">x</span> <span class="operator">=</span> <span class="string">"John"</span> <span class="operator">+</span> <span class="string">" "</span> <span class="operator">+</span> <span class="string">"Doe"</span>;
+            </div>
+            
+            <div class="warning-box">
+                <h4><span class="warning-icon">💡</span> குறிப்பு:</h4>
+                <p>நீங்கள் ஒரு எண்ணை மேற்கோள்களில் வைத்தால், மீதமுள்ள எண்கள் சரங்களாகக் கருதப்பட்டு இணைக்கப்படும்.</p>
+            </div>
+            
+            <h3>எடுத்துக்காட்டுகள்</h3>
+            <div class="syntax-example">
+                <span class="keyword">let</span> <span class="identifier">x</span> <span class="operator">=</span> <span class="string">"5"</span> <span class="operator">+</span> <span class="number">2</span> <span class="operator">+</span> <span class="number">3</span>; <span class="comment">// "523" ஆகிறது</span><br>
+                <span class="keyword">let</span> <span class="identifier">y</span> <span class="operator">=</span> <span class="number">2</span> <span class="operator">+</span> <span class="number">3</span> <span class="operator">+</span> <span class="string">"5"</span>; <span class="comment">// "55" ஆகிறது</span>
+            </div>
+            
+            <div class="demo-container">
+                <h4>எண்கணிதம் மற்றும் இணைப்பு டெமோ:</h4>
+                <div id="arithmetic-demo" class="demo-output">கணக்கீட்டு முடிவுகள்: </div>
+                <div class="button-group">
+                    <button class="demo-button" onclick="showArithmetic()">எண்கணிதம் (5 + 2 + 3)</button>
+                    <button class="demo-button" onclick="showConcatenation()">இணைப்பு ("John" + " " + "Doe")</button>
+                    <button class="demo-button" onclick="showMixed()">கலப்பு ("5" + 2 + 3)</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Exercise - ONLY ONE EXERCISE -->
+        <section class="content-section" id="exercises">
+            <h2>JavaScript பயிற்சிகள்</h2>
+            
+            <p>இந்த டுடோரியலில் உள்ள பல அத்தியாயங்கள் உங்கள் அறிவு நிலையைச் சரிபார்க்கக்கூடிய பயிற்சியுடன் முடிகின்றன.</p>
+            
+            <div class="exercise-box">
+                <h4><span class="exercise-icon">❓</span> மாறிகளை அறிவிக்க சரியான தொடரியல் அல்லாதது எது?</h4>
+                
+                <div class="options-grid">
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">let x;</div>
+                            <div class="option-feedback incorrect">✗ இது சரியானது! let என்பது JavaScript இல் ஒரு சரியான மாறி அறிவிப்பு</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="true">
+                        <div class="option-content">
+                            <div class="option-text">dim x;</div>
+                            <div class="option-feedback correct">✓ இது சரியானது அல்ல! dim என்பது JavaScript இல் இல்லை (VB, VBScript இல் பயன்படுத்தப்படுகிறது)</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">var x;</div>
+                            <div class="option-feedback incorrect">✗ இது சரியானது! var என்பது JavaScript இல் ஒரு சரியான மாறி அறிவிப்பு (பழைய வழி)</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">const x;</div>
+                            <div class="option-feedback incorrect">✗ இது சரியானது! const என்பது JavaScript இல் ஒரு சரியான மாறி அறிவிப்பு (மாறாத மதிப்புகளுக்கு)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bottom Navigation -->
+        <div class="bottom-nav">
+            <a href="JavaScript%20Comments.html" class="nav-tab prev">
+                <i class="fas fa-arrow-left"></i>
+                <span>முந்தைய</span>
+            </a>
+            <a href="JavaScript%20Let.html" class="nav-tab next">
+                <span>அடுத்தது</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Siva Team Institution</h3>
+                <p>Leading educational institution providing quality programming education in Tamil.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#data-containers">மாறிகள் = தரவு கொள்கலன்கள்</a></li>
+                    <li><a href="#javascript-identifiers">JavaScript அடையாளங்காட்டிகள்</a></li>
+                    <li><a href="#underscore">JavaScript அடிக்கோடு (_)</a></li>
+                    <li><a href="#dollar-sign">JavaScript டாலர் அடையாளம் ($)</a></li>
+                    <li><a href="#declaring-variables">மாறிகளை அறிவித்தல்</a></li>
+                    <li><a href="#when-to-use">var, let, அல்லது const எப்போது பயன்படுத்துவது?</a></li>
+                    <li><a href="#data-types">JavaScript தரவு வகைகள்</a></li>
+                    <li><a href="#assignment-operator">ஒதுக்கீட்டு செயலி</a></li>
+                    <li><a href="#javascript-arithmetic">JavaScript எண்கணிதம்</a></li>
+                    <li><a href="#exercises">JavaScript பயிற்சிகள்</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Location & Hours</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <ul>
+                    <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Siva Team Institution. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all content sections for animation
+        document.querySelectorAll('.content-section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Exercise interaction
+        document.querySelectorAll('.option-card').forEach(card => {
+            card.addEventListener('click', function() {
+                // Show feedback for all options
+                document.querySelectorAll('.option-card').forEach(c => {
+                    c.querySelector('.option-feedback').style.display = 'block';
+                });
+            });
+        });
+        
+        // Demo Functions
+        function showVariableValues() {
+            let x = 5;
+            let y = 6;
+            let z = x + y;
+            
+            document.getElementById("variable-demo").innerHTML = 
+                `x = ${x}<br>y = ${y}<br>z = x + y = ${z}`;
+        }
+        
+        function showVariableTypes() {
+            const pi = 3.14;           // const - மாறாதது
+            let count = 0;             // let - மாறக்கூடியது
+            var oldWay = "பழையது";    // var - பரிந்துரைக்கப்படாதது
+            
+            document.getElementById("type-demo").innerHTML = 
+                `const pi = ${pi} (மாறாதது)<br>` +
+                `let count = ${count} (மாறக்கூடியது)<br>` +
+                `var oldWay = "${oldWay}" (பரிந்துரைக்கப்படாதது)`;
+        }
+        
+        function showDataTypes() {
+            const age = 25;
+            const name = "ராஜ்";
+            const isStudent = true;
+            
+            document.getElementById("data-type-demo").innerHTML = 
+                `age = ${age} (எண் வகை)<br>` +
+                `name = "${name}" (சரம் வகை)<br>` +
+                `isStudent = ${isStudent} (பூலியன் வகை)`;
+        }
+        
+        function showArithmetic() {
+            let x = 5 + 2 + 3;
+            document.getElementById("arithmetic-demo").innerHTML = 
+                `5 + 2 + 3 = ${x} (எண்கணித கூட்டல்)`;
+        }
+        
+        function showConcatenation() {
+            let x = "John" + " " + "Doe";
+            document.getElementById("arithmetic-demo").innerHTML = 
+                `"John" + " " + "Doe" = "${x}" (சரம் இணைப்பு)`;
+        }
+        
+        function showMixed() {
+            let x = "5" + 2 + 3;
+            let y = 2 + 3 + "5";
+            document.getElementById("arithmetic-demo").innerHTML = 
+                `"5" + 2 + 3 = "${x}"<br>` +
+                `2 + 3 + "5" = "${y}"<br>` +
+                `(எண்கள் சரங்களாக மாற்றப்படுகின்றன)`;
+        }
+    </script>
+
+    <!-- Home Button -->
+    <a href="index.html" class="home-icon">
+        <i class="fas fa-home"></i>
+    </a>
+</body>
+</html>
+
+

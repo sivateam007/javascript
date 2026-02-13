@@ -1,0 +1,562 @@
+﻿<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Strings - Siva Team</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .content-section p, 
+        .content-section li,
+        .content-section h3,
+        .content-section h4,
+        .comparison-card p {
+            color: #333 !important;
+        }
+        
+        .tip-box p,
+        .tip-box li,
+        .tip-box h4 {
+            color: white !important;
+        }
+        
+        .warning-box p,
+        .warning-box li,
+        .warning-box h4 {
+            color: white !important;
+        }
+        
+        .exercise-box p,
+        .exercise-box h4 {
+            color: white !important;
+        }
+        
+        /* Stable logo styling - NO ANIMATIONS */
+        .logo-icon {
+            animation: none !important; /* Remove pulse animation */
+        }
+        
+        .logo-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            animation: none !important; /* Ensure no animations */
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <img src="logo.jpg" alt="Siva Team Logo" class="logo-image">
+                </div>
+                <h1>Siva Team <span>Institution</span></h1>
+            </div>
+        </div>
+    </header>
+
+    <!-- Top Navigation Tabs -->
+    <div class="nav-tabs">
+        <a href="JavaScript%20Continue.html" class="nav-tab prev">
+            <i class="fas fa-arrow-left"></i>
+            <span>முந்தைய</span>
+        </a>
+        <a href="JavaScript%20String%20Templates.html" class="nav-tab next">
+            <span>அடுத்தது</span>
+            <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2>JavaScript Strings</h2>
+            <p>JavaScript சரங்களைக் கற்றுக்கொள்ளுங்கள்</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Introduction -->
+        <section class="content-section" id="introduction">
+            <h2>JavaScript Strings</h2>
+            
+            <p>சரங்கள் உரையைச் சேமிப்பதற்காகப் பயன்படுத்தப்படுகின்றன</p>
+            
+            <p>சரங்கள் மேற்கோள்களுடன் எழுதப்படுகின்றன</p>
+        </section>
+
+        <!-- Using Quotes -->
+        <section class="content-section" id="using-quotes">
+            <h2>Using Quotes</h2>
+            
+            <p>ஒரு JavaScript சரம் என்பது மேற்கோள்களுக்குள் எழுதப்பட்ட பூஜ்ஜியம் அல்லது அதற்கு மேற்பட்ட எழுத்துகள் ஆகும்.</p>
+            
+            <h3>Example</h3>
+            <div class="code-example">
+                <pre><code>let text = "John Doe";</code></pre>
+            </div>
+            
+            <p>நீங்கள் ஒற்றை அல்லது இரட்டை மேற்கோள்களைப் பயன்படுத்தலாம்:</p>
+            
+            <h3>Example</h3>
+            <div class="code-example">
+                <pre><code>let carName1 = "Volvo XC60";  // இரட்டை மேற்கோள்கள்
+let carName2 = 'Volvo XC60';  // ஒற்றை மேற்கோள்கள்</code></pre>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">💡</span> குறிப்பு:</h4>
+                <p>ஒற்றை அல்லது இரட்டை மேற்கோள்களுடன் உருவாக்கப்பட்ட சரங்கள் ஒரே மாதிரியாக வேலை செய்கின்றன.</p>
+                <p>இரண்டுக்கும் இடையே எந்த வித்தியாசமும் இல்லை.</p>
+            </div>
+        </section>
+
+        <!-- Quotes Inside Quotes -->
+        <section class="content-section" id="quotes-inside-quotes">
+            <h2>Quotes Inside Quotes</h2>
+            
+            <p>நீங்கள் ஒரு சரத்திற்குள் மேற்கோள்களைப் பயன்படுத்தலாம், அவை சரத்தைச் சுற்றியுள்ள மேற்கோள்களுடன் பொருந்தாத வரை:</p>
+            
+            <h3>Example</h3>
+            <div class="code-example">
+                <pre><code>let answer1 = "It's alright";
+let answer2 = "He is called 'Johnny'";
+let answer3 = 'He is called "Johnny"';</code></pre>
+            </div>
+        </section>
+
+        <!-- Template Strings -->
+        <section class="content-section" id="template-strings-intro">
+            <h2>Template Strings</h2>
+            
+            <p>டெம்ப்ளேட்டுகள் ES6 (JavaScript 2016) உடன் அறிமுகப்படுத்தப்பட்டன.</p>
+            
+            <p>டெம்ப்ளேட்டுகள் பின்டிக்குகளில் (``) இணைக்கப்பட்ட சரங்கள் (`இது ஒரு டெம்ப்ளேட் சரம்`).</p>
+            
+            <p>டெம்ப்ளேட்டுகள் ஒரு சரத்திற்குள் ஒற்றை மற்றும் இரட்டை மேற்கோள்களை அனுமதிக்கின்றன:</p>
+            
+            <h3>Example</h3>
+            <div class="code-example">
+                <pre><code>let text = `He's often called "Johnny"`;</code></pre>
+            </div>
+        </section>
+
+        <!-- String Length -->
+        <section class="content-section" id="string-length">
+            <h2>String Length</h2>
+            
+            <p>ஒரு சரத்தின் நீளத்தைக் கண்டறிய, உள்ளமைக்கப்பட்ட <code>length</code> பண்பைப் பயன்படுத்தவும்:</p>
+            
+            <h3>Example</h3>
+            <div class="code-example">
+                <pre><code>let text = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+let length = text.length;</code></pre>
+            </div>
+        </section>
+
+        <!-- Escape Characters -->
+        <section class="content-section" id="escape-characters">
+            <h2>Escape Characters</h2>
+            
+            <p>சரங்கள் மேற்கோள்களுக்குள் எழுதப்பட வேண்டும் என்பதால், JavaScript இந்த சரத்தைத் தவறாகப் புரிந்துகொள்ளும்:</p>
+            
+            <div class="code-example">
+                <pre><code>let text = "We are the so-called "Vikings" from the north.";</code></pre>
+            </div>
+            
+            <p>சரம் "We are the so-called " என பிளக்கப்படும்.</p>
+            
+            <p>இந்த சிக்கலைத் தீர்க்க, நீங்கள் ஒரு பின்சாய்வு எஸ்கேப் எழுத்தைப் பயன்படுத்தலாம்.</p>
+            
+            <p>பின்சாய்வு எஸ்கேப் எழுத்து (\) சிறப்பு எழுத்துகளை சர எழுத்துகளாக மாற்றுகிறது:</p>
+            
+            <div class="comparison-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>குறியீடு</th>
+                            <th>முடிவு</th>
+                            <th>விளக்கம்</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>\'</code></td>
+                            <td>'</td>
+                            <td>ஒற்றை மேற்கோள்</td>
+                        </tr>
+                        <tr>
+                            <td><code>\"</code></td>
+                            <td>"</td>
+                            <td>இரட்டை மேற்கோள்</td>
+                        </tr>
+                        <tr>
+                            <td><code>\\</code></td>
+                            <td>\</td>
+                            <td>பின்சாய்வு</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <h3>Examples</h3>
+            <div class="code-example">
+                <pre><code>// \" ஒரு சரத்தில் இரட்டை மேற்கோளைச் செருகுகிறது:
+let text = "We are the so-called \"Vikings\" from the north.";
+
+// \' ஒரு சரத்தில் ஒற்றை மேற்கோளைச் செருகுகிறது:
+let text= 'It\'s alright.';
+
+// \\ ஒரு சரத்தில் பின்சாய்வைச் செருகுகிறது:
+let text = "The character \\ is called backslash.";</code></pre>
+            </div>
+        </section>
+
+        <!-- Other Escape Sequences -->
+        <section class="content-section" id="other-escape-sequences">
+            <h2>Other Escape Sequences</h2>
+            
+            <p>மற்ற ஆறு எஸ்கேப் வரிசைகள் JavaScript இல் செல்லுபடியாகும்:</p>
+            
+            <div class="comparison-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>குறியீடு</th>
+                            <th>முடிவு</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>\b</code></td>
+                            <td>பேக்ஸ்பேஸ்</td>
+                        </tr>
+                        <tr>
+                            <td><code>\f</code></td>
+                            <td>படிவ உள்ளீடு</td>
+                        </tr>
+                        <tr>
+                            <td><code>\n</code></td>
+                            <td>புதிய வரி</td>
+                        </tr>
+                        <tr>
+                            <td><code>\r</code></td>
+                            <td>கர்ரியேஜ் ரிட்டர்ன்</td>
+                        </tr>
+                        <tr>
+                            <td><code>\t</code></td>
+                            <td>கிடைமட்ட டேபுலேட்டர்</td>
+                        </tr>
+                        <tr>
+                            <td><code>\v</code></td>
+                            <td>செங்குத்து டேபுலேட்டர்</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">📜</span> வரலாற்று குறிப்பு:</h4>
+                <p>மேலே உள்ள 6 எஸ்கேப் எழுத்துகள் முதலில் டைப்பிரைட்டர்கள், டெலிடைப்கள் மற்றும் ஃபாக்ஸ் இயந்திரங்களைக் கட்டுப்படுத்த வடிவமைக்கப்பட்டன. அவை HTML இல் எந்தப் பொருளும் இல்லை.</p>
+            </div>
+        </section>
+
+        <!-- Breaking Long Lines -->
+        <section class="content-section" id="breaking-long-lines">
+            <h2>Breaking Long Lines</h2>
+            
+            <p>வாசிப்புத் திறனுக்காக, நிரலாளர்கள் பெரும்பாலும் நீண்ட குறியீட்டு வரிகளைத் தவிர்க்க விரும்புகின்றனர்.</p>
+            
+            <p>ஒரு செயலியைத் தொடர்ந்து ஒரு அறிக்கையைப் பிரிப்பது பாதுகாப்பான வழியாகும்:</p>
+            
+            <h3>Example</h3>
+            <div class="code-example">
+                <pre><code>document.getElementById("demo").innerHTML =
+"Hello Dolly!";</code></pre>
+            </div>
+            
+            <p>ஒரு சரத்தைப் பிரிப்பதற்கான பாதுகாப்பான வழி, சர கூட்டலைப் பயன்படுத்துவதாகும்:</p>
+            
+            <h3>Example</h3>
+            <div class="code-example">
+                <pre><code>document.getElementById("demo").innerHTML = "Hello " +
+"Dolly!";</code></pre>
+            </div>
+        </section>
+
+        <!-- Template Strings for Multiline -->
+        <section class="content-section" id="template-multiline">
+            <h2>Template Strings for Multiline</h2>
+            
+            <p>டெம்ப்ளேட்டுகள் பல வரி சரங்களை அனுமதிக்கின்றன:</p>
+            
+            <h3>Example</h3>
+            <div class="code-example">
+                <pre><code>let text =
+`The quick
+brown fox
+jumps over
+the lazy dog`;</code></pre>
+            </div>
+        </section>
+
+        <!-- JavaScript Strings as Objects -->
+        <section class="content-section" id="strings-as-objects">
+            <h2>JavaScript Strings as Objects</h2>
+            
+            <p>பொதுவாக, JavaScript சரங்கள் இலக்கியங்களிலிருந்து உருவாக்கப்பட்ட பழமையான மதிப்புகள்:</p>
+            
+            <div class="code-example">
+                <pre><code>let x = "John";</code></pre>
+            </div>
+            
+            <p>ஆனால் சரங்கள் <code>new</code> முக்கிய சொல்லுடன் பொருள்களாகவும் வரையறுக்கப்படலாம்:</p>
+            
+            <div class="code-example">
+                <pre><code>let y = new String("John");</code></pre>
+            </div>
+            
+            <h3>Example</h3>
+            <div class="code-example">
+                <pre><code>let x = "John";
+let y = new String("John");</code></pre>
+            </div>
+            
+            <div class="warning-box">
+                <h4><span class="warning-icon">⚠️</span> எச்சரிக்கை:</h4>
+                <p>String objects ஐ உருவாக்க வேண்டாம்.</p>
+                <p><code>new</code> முக்கிய சொல் குறியீட்டை சிக்கலாக்குகிறது மற்றும் செயல்படுத்தும் வேகத்தை குறைக்கிறது.</p>
+                <p>String objects எதிர்பாராத முடிவுகளை உருவாக்கக்கூடும்:</p>
+            </div>
+        </section>
+
+        <!-- String Comparison -->
+        <section class="content-section" id="string-comparison">
+            <h2>String Comparison</h2>
+            
+            <h3>Using == operator</h3>
+            <div class="code-example">
+                <pre><code>let x = "John";
+let y = new String("John");
+
+// When using the == operator, x and y are equal:
+console.log(x == y);  // true</code></pre>
+            </div>
+            
+            <h3>Using === operator</h3>
+            <div class="code-example">
+                <pre><code>let x = "John";
+let y = new String("John");
+
+// When using the === operator, x and y are not equal:
+console.log(x === y);  // false</code></pre>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">🔍</span> குறிப்பு:</h4>
+                <p><code>(x==y)</code> மற்றும் <code>(x===y)</code> இடையே உள்ள வித்தியாசத்தைக் கவனியுங்கள்.</p>
+            </div>
+            
+            <h3>Object Comparison</h3>
+            <div class="code-example">
+                <pre><code>let x = new String("John");
+let y = new String("John");
+
+console.log(x == y);   // false
+console.log(x === y);  // false</code></pre>
+            </div>
+            
+            <p>இரண்டு JavaScript பொருள்களை ஒப்பிடுவது எப்போதும் <code>false</code> ஐத் தரும்.</p>
+        </section>
+
+        <!-- Learn More -->
+        <section class="content-section" id="learn-more">
+            <h2>Learn More</h2>
+            
+            <div class="examples-grid">
+                <div class="example-card">
+                    <div class="example-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h4>JavaScript String Methods</h4>
+                    <p>சர முறைகளைப் பற்றி மேலும் அறியவும்</p>
+                </div>
+                
+                <div class="example-card">
+                    <div class="example-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h4>JavaScript String Search</h4>
+                    <p>சரத்தில் தேடல் முறைகளைக் கற்றுக்கொள்ளுங்கள்</p>
+                </div>
+                
+                <div class="example-card">
+                    <div class="example-icon">
+                        <i class="fas fa-list"></i>
+                    </div>
+                    <h4>JavaScript String Reference</h4>
+                    <p>முழு சர குறிப்பு</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Single Exercise Section -->
+        <section class="content-section" id="exercises">
+            <h2>JavaScript Strings பயிற்சி</h2>
+            
+            <p>பின்வருவனவற்றில் எது சட்டபூர்வமான JavaScript சரம் அல்ல?</p>
+            
+            <div class="exercise-box">
+                <h4><span class="exercise-icon">❓</span> சரியான பதிலைத் தேர்ந்தெடுக்கவும்:</h4>
+                
+                <div class="options-grid">
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">"Hello world!"</div>
+                            <div class="option-feedback incorrect">✗ தவறு! இது சட்டபூர்வமான JavaScript சரம் - இரட்டை மேற்கோள்கள்</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="true">
+                        <div class="option-content">
+                            <div class="option-text">""Hello world!""</div>
+                            <div class="option-feedback correct">✓ சரி! இது சட்டபூர்வமானது அல்ல - இரட்டை மேற்கோள்களுக்குள் இரட்டை மேற்கோள்கள் சரியான எஸ்கேப் எழுத்து இல்லாமல்</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">'Hello world!'</div>
+                            <div class="option-feedback incorrect">✗ தவறு! இது சட்டபூர்வமான JavaScript சரம் - ஒற்றை மேற்கோள்கள்</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">`Hello world!`</div>
+                            <div class="option-feedback incorrect">✗ தவறு! இது சட்டபூர்வமான JavaScript சரம் - டெம்ப்ளேட் லிட்டரல் (பின்டிக்குகள்)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bottom Navigation -->
+        <div class="bottom-nav">
+            <a href="JavaScript%20Continue.html" class="nav-tab prev">
+                <i class="fas fa-arrow-left"></i>
+                <span>முந்தைய</span>
+            </a>
+            <a href="JavaScript%20String%20Templates.html" class="nav-tab next">
+                <span>அடுத்தது</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Siva Team Institution</h3>
+                <p>Leading educational institution providing quality programming education in Tamil.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#introduction">JavaScript Strings</a></li>
+                    <li><a href="#using-quotes">Using Quotes</a></li>
+                    <li><a href="#string-length">String Length</a></li>
+                    <li><a href="#escape-characters">Escape Characters</a></li>
+                    <li><a href="#template-multiline">Multiline Strings</a></li>
+                    <li><a href="#strings-as-objects">Strings as Objects</a></li>
+                    <li><a href="#exercises">பயிற்சி</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Location & Hours</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <ul>
+                    <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Siva Team Institution. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all content sections for animation
+        document.querySelectorAll('.content-section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Exercise interaction
+        document.querySelectorAll('.option-card').forEach(card => {
+            card.addEventListener('click', function() {
+                // Show feedback for all options
+                document.querySelectorAll('.option-card').forEach(c => {
+                    c.querySelector('.option-feedback').style.display = 'block';
+                });
+            });
+        });
+    </script>
+
+    <!-- Home Button -->
+    <a href="index.html" class="home-icon">
+        <i class="fas fa-home"></i>
+    </a>
+</body>
+</html>
+
+

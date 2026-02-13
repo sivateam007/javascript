@@ -1,0 +1,1140 @@
+﻿<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Timing Events - Siva Team</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .content-section p, 
+        .content-section li,
+        .content-section h3,
+        .content-section h4,
+        .comparison-card p {
+            color: #333 !important;
+        }
+        
+        .tip-box p,
+        .tip-box li,
+        .tip-box h4 {
+            color: white !important;
+        }
+        
+        .warning-box p,
+        .warning-box li,
+        .warning-box h4 {
+            color: white !important;
+        }
+        
+        .exercise-box p,
+        .exercise-box h4 {
+            color: white !important;
+        }
+        
+        /* Stable logo styling - NO ANIMATIONS */
+        .logo-icon {
+            animation: none !important; /* Remove pulse animation */
+        }
+        
+        .logo-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            animation: none !important; /* Ensure no animations */
+        }
+        
+        /* Timing event demo styles */
+        .timing-demo {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--git-color);
+        }
+        
+        .demo-output {
+            background: white;
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+            border: 1px solid #ddd;
+            min-height: 60px;
+        }
+        
+        .demo-btn {
+            background: linear-gradient(135deg, var(--git-color), #e74c3c);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+            margin: 0.5rem 0.5rem 0.5rem 0;
+            font-weight: 600;
+        }
+        
+        .demo-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .demo-btn.start {
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+        }
+        
+        .demo-btn.stop {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+        }
+        
+        .demo-btn.reset {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+        }
+        
+        .clock-display {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+            font-size: 2.5rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            border: 3px solid white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .counter-display {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+            font-size: 3rem;
+            font-weight: bold;
+            border: 3px solid #27ae60;
+        }
+        
+        .progress-container {
+            background: #e0e0e0;
+            border-radius: 10px;
+            height: 25px;
+            margin: 1.5rem 0;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            height: 100%;
+            width: 0%;
+            transition: width 0.1s linear;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        
+        .timer-display {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .timer-unit {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            min-width: 80px;
+            text-align: center;
+        }
+        
+        .timer-value {
+            font-size: 2rem;
+            font-weight: bold;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .timer-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .event-log {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            max-height: 250px;
+            overflow-y: auto;
+        }
+        
+        .log-entry {
+            margin-bottom: 0.3rem;
+            padding: 0.3rem;
+            border-bottom: 1px solid #444;
+        }
+        
+        .log-entry:last-child {
+            border-bottom: none;
+        }
+        
+        .demo-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+        
+        .timing-table {
+            margin: 2rem 0;
+            overflow-x: auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .timing-table table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+        
+        .timing-table th {
+            background: linear-gradient(135deg, var(--git-color), #e74c3c);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .timing-table td {
+            padding: 0.8rem 1rem;
+            border-bottom: 1px solid #f0f0f0;
+            vertical-align: top;
+        }
+        
+        .timing-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .timing-table tr:hover {
+            background-color: #f0f7ff;
+        }
+        
+        .function-name {
+            color: var(--git-color);
+            font-weight: 600;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .countdown-display {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+            font-size: 3rem;
+            font-weight: bold;
+            animation: pulse 1s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <img src="logo.jpg" alt="Siva Team Logo" class="logo-image">
+                </div>
+                <h1>Siva Team <span>Institution</span></h1>
+            </div>
+        </div>
+    </header>
+
+    <!-- Top Navigation Tabs -->
+    <div class="nav-tabs">
+        <a href="JavaScript%20Load%20Events.html" class="nav-tab prev">
+            <i class="fas fa-arrow-left"></i>
+            <span>முந்தைய</span>
+        </a>
+        <a href="JavaScript%20Event%20Management.html" class="nav-tab next">
+            <span>அடுத்தது</span>
+            <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2>JavaScript Timing Events</h2>
+            <p>காலக்கெடு நிகழ்வுகளைக் கற்றுக்கொள்ளுங்கள்</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Introduction -->
+        <section class="content-section" id="introduction">
+            <h2>JavaScript காலக்கெடு நிகழ்வுகள்</h2>
+            
+            <p>காலக்கெடு நிகழ்வுகள் குறியீட்டை இயக்க உங்களை அனுமதிக்கின்றன:</p>
+            
+            <ul>
+                <li>ஒரு தாமதத்திற்குப் பிறகு</li>
+                <li>அல்லது மீண்டும் மீண்டும்</li>
+            </ul>
+            
+            <p>காலக்கெடு என்பது கணினி கடிகாரத்தால் உருவாக்கப்படும் காலக்கெடு நிகழ்வுகளால் இயக்கப்படுகிறது.</p>
+        </section>
+
+        <!-- Timer Functions -->
+        <section class="content-section" id="timer-functions">
+            <h2>டைமர் செயல்பாடுகள்</h2>
+            
+            <div class="timing-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>செயல்பாடு</th>
+                            <th>விளக்கம்</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="function-name">setTimeout()</td>
+                            <td>ஒரு கடிகார காலாவதியை அமைக்கிறது (ஒரு முறை இயங்கும்)</td>
+                        </tr>
+                        <tr>
+                            <td class="function-name">setInterval()</td>
+                            <td>ஒரு கடிகார இடைவெளியை அமைக்கிறது (மீண்டும் மீண்டும் இயங்கும்)</td>
+                        </tr>
+                        <tr>
+                            <td class="function-name">clearTimeout()</td>
+                            <td>ஒரு காலாவதியை அழிக்கிறது</td>
+                        </tr>
+                        <tr>
+                            <td class="function-name">clearInterval()</td>
+                            <td>ஒரு இடைவெளியை அழிக்கிறது</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">ℹ️</span> குறிப்பு:</h4>
+                <p>டைமர் செயல்பாடுகள் window பொருளுக்கு சொந்தமானவை.</p>
+                <p><span class="function-name">setTimeout()</span> என்பது <span class="function-name">window.setTimeout()</span> போன்றதே.</p>
+            </div>
+        </section>
+
+        <!-- A Clock Example -->
+        <section class="content-section" id="clock-example">
+            <h2>ஒரு கடிகாரம்</h2>
+            
+            <div class="code-example">
+                <h3>எடுத்துக்காட்டு</h3>
+                <pre><code>&lt;p id="clock"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+// Call showTime every 1000 millisec
+setInterval(showTime, 1000);
+
+// Fuction to display the time
+function showTime() {
+  const d = new Date();
+  document.getElementById("clock").innerHTML =
+  d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+}
+&lt;/script&gt;</code></pre>
+            </div>
+        </section>
+
+        <!-- Live Clock Demo -->
+        <section class="content-section" id="live-clock">
+            <h2>நேரடி கடிகார ஆர்ப்பாட்டம்</h2>
+            
+            <div class="timing-demo">
+                <h4>JavaScript கடிகாரம்:</h4>
+                
+                <div class="clock-display" id="liveClock">
+                    --:--:--
+                </div>
+                
+                <div class="demo-output">
+                    <p><span class="function-name">setInterval(showTime, 1000)</span> ஒவ்வொரு 1000 மில்லி விநாடிகளிலும் (1 வினாடி) showTime செயல்பாட்டை அழைக்கிறது.</p>
+                </div>
+                
+                <div class="demo-controls">
+                    <button class="demo-btn start" onclick="startClock()">
+                        <i class="fas fa-play"></i> கடிகாரத்தைத் தொடங்கு
+                    </button>
+                    <button class="demo-btn stop" onclick="stopClock()">
+                        <i class="fas fa-stop"></i> கடிகாரத்தை நிறுத்து
+                    </button>
+                    <button class="demo-btn" onclick="toggleMilliseconds()">
+                        <i class="fas fa-stopwatch"></i> மில்லி விநாடிகளை மாற்று
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- The setTimeout() Method -->
+        <section class="content-section" id="settimeout">
+            <h2>The setTimeout() முறை</h2>
+            
+            <p><span class="function-name">setTimeout()</span> முறை மில்லி விநாடிகளில் ஒரு தாமதத்திற்குப் பிறகு ஒரு செயல்பாட்டை இயக்குகிறது.</p>
+            
+            <div class="code-example">
+                <pre><code>setTimeout(function, delay, p1,...,pN)</code></pre>
+            </div>
+            
+            <h3>அளவுருக்கள்</h3>
+            
+            <div class="timing-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>அளவுரு</th>
+                            <th>விளக்கம்</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="function-name">function</td>
+                            <td>தேவை. டைமர் காலாவதியானபோது அழைக்கப்பட வேண்டிய செயல்பாடு.</td>
+                        </tr>
+                        <tr>
+                            <td class="function-name">delay</td>
+                            <td>விருப்ப. டைமர் காத்திருக்க வேண்டிய மில்லி விநாடிகள். இயல்புநிலை 0 (உடனடியாக).</td>
+                        </tr>
+                        <tr>
+                            <td class="function-name">p1,...,pN</td>
+                            <td>விருப்ப. செயல்பாட்டிற்கு அனுப்பப்படும் வாதங்கள்.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <h3>திரும்பும் மதிப்பு</h3>
+            
+            <div class="timing-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>வகை</th>
+                            <th>விளக்கம்</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>முழு எண்</td>
+                            <td>டைமரை தனித்துவமாக அடையாளம் காணும் ஒரு முழு எண். இந்த "காலாவதி ஐடி" பின்னர் <span class="function-name">clearTimeout()</span> க்கு அனுப்பப்பட்டு டைமரை ரத்து செய்யலாம்.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="code-example">
+                <h3>எடுத்துக்காட்டு</h3>
+                <pre><code>&lt;button id="btn"&gt;Start&lt;/button&gt;
+
+&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+// let btn listen for a click
+document.getElementById("btn").addEventListener("click", function () {
+// Then call showMsg after 2 seconds
+  setTimeout(showMsg, 2000);
+});
+
+// Function to display message
+function showMsg() {
+  document.getElementById("demo").innerHTML = "Hello after 2 seconds!";
+}
+&lt;/script&gt;</code></pre>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">💡</span> குறிப்பு:</h4>
+                <p><span class="function-name">setTimeout()</span> முறை அசிங்க்ரோனஸ் JavaScript இன் முக்கிய பகுதியாகும், இது முக்கிய செயல்பாட்டு நூலைத் தடுக்காமல் குறியீட்டு இயக்கத்தை திட்டமிட அனுமதிக்கிறது.</p>
+            </div>
+        </section>
+
+        <!-- setTimeout Demo -->
+        <section class="content-section" id="settimeout-demo">
+            <h2>setTimeout ஆர்ப்பாட்டம்</h2>
+            
+            <div class="timing-demo">
+                <h4>தாமத இயக்கம் சோதனை:</h4>
+                
+                <div class="progress-container">
+                    <div class="progress-bar" id="timeoutProgress">0%</div>
+                </div>
+                
+                <div class="demo-output" id="timeoutOutput">
+                    setTimeout வெளியீடு இங்கே தோன்றும்...
+                </div>
+                
+                <div class="demo-controls">
+                    <button class="demo-btn" onclick="startTimeoutDemo(1000)">
+                        <i class="fas fa-hourglass-start"></i> 1 வினாடி தாமதம்
+                    </button>
+                    <button class="demo-btn" onclick="startTimeoutDemo(3000)">
+                        <i class="fas fa-hourglass-half"></i> 3 வினாடி தாமதம்
+                    </button>
+                    <button class="demo-btn" onclick="startTimeoutDemo(5000)">
+                        <i class="fas fa-hourglass-end"></i> 5 வினாடி தாமதம்
+                    </button>
+                    <button class="demo-btn stop" onclick="cancelTimeout()">
+                        <i class="fas fa-ban"></i> ரத்து செய்
+                    </button>
+                </div>
+                
+                <div class="event-log" id="timeoutLog">
+                    <div class="log-entry">⏱️ setTimeout நிகழ்வு பதிவு: இங்கே நிகழ்வுகள் தோன்றும்...</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The setInterval() Method -->
+        <section class="content-section" id="setinterval">
+            <h2>The setInterval() முறை</h2>
+            
+            <p><span class="function-name">setInterval()</span> முறை ஒரு செயல்பாட்டை மீண்டும் மீண்டும் அழைக்கிறது.</p>
+            
+            <div class="code-example">
+                <pre><code>setInterval(function, delay, p1,...,pN)</code></pre>
+            </div>
+            
+            <h3>அளவுருக்கள்</h3>
+            
+            <div class="timing-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>அளவுரு</th>
+                            <th>விளக்கம்</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="function-name">function</td>
+                            <td>தேவை. ஒவ்வொரு இடைவெளிக்கும் அழைக்கப்பட வேண்டிய செயல்பாடு.</td>
+                        </tr>
+                        <tr>
+                            <td class="function-name">delay</td>
+                            <td>விருப்ப. ஒவ்வொரு செயல்பாடு அழைப்புக்கும் இடையே உள்ள மில்லி விநாடிகள். இயல்புநிலை 0.</td>
+                        </tr>
+                        <tr>
+                            <td class="function-name">p1,...,pN</td>
+                            <td>விருப்ப. செயல்பாட்டிற்கு அனுப்பப்படும் வாதங்கள்.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <h3>திரும்பும் மதிப்பு</h3>
+            
+            <div class="timing-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>வகை</th>
+                            <th>விளக்கம்</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>முழு எண்</td>
+                            <td>டைமரை தனித்துவமாக அடையாளம் காணும் ஒரு முழு எண். இந்த "காலாவதி ஐடி" பின்னர் <span class="function-name">clearInterval()</span> க்கு அனுப்பப்பட்டு டைமரை ரத்து செய்யலாம்.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="code-example">
+                <h3>எடுத்துக்காட்டு</h3>
+                <p><span class="function-name">setInterval()</span> ஐ <span class="function-name">clearInterval()</span> உடன் பயன்படுத்துதல்:</p>
+                <pre><code>&lt;button id="start"&gt;Start Counter&lt;/button&gt;
+&lt;button id="stop"&gt;Stop&lt;/button&gt;
+
+&lt;p id="counter"&gt;0&lt;/p&gt;
+
+&lt;script&gt;
+let myInterval;
+let count = 0;
+
+const btnStart = document.getElementById("start");
+const btnStop = document.getElementById("stop");
+
+// let btnStart listen for a click
+document.getElementById("start").addEventListener("click", function () {
+// Then start counter
+  myInterval = setInterval(counter, 1000);
+});
+
+// let btnStop listen for a click
+document.getElementById("stop").addEventListener("click", function () {
+// Then stop counter
+  clearInterval(myInterval);
+});
+
+function counter() {
+  count++;
+  document.getElementById("counter").innerHTML = count;
+}
+&lt;/script&gt;</code></pre>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">💡</span> குறிப்பு:</h4>
+                <p><span class="function-name">setTimeout()</span> முறை ஒரு தாமதத்திற்குப் பிறகு ஒரு செயல்பாட்டை ஒரு முறை மட்டுமே இயக்குகிறது.</p>
+                <p><span class="function-name">setInterval()</span> முறை ஒவ்வொரு இடைவெளியிலும் ஒரு செயல்பாட்டை மீண்டும் மீண்டும் இயக்குகிறது.</p>
+            </div>
+        </section>
+
+        <!-- setInterval Counter Demo -->
+        <section class="content-section" id="counter-demo">
+            <h2>எண்ணும் ஆர்ப்பாட்டம்</h2>
+            
+            <div class="timing-demo">
+                <h4>எண்ணும் சோதனை:</h4>
+                
+                <div class="counter-display" id="counterDisplay">
+                    0
+                </div>
+                
+                <div class="demo-output">
+                    <p><span class="function-name">setInterval(counter, 1000)</span> ஒவ்வொரு 1000 மில்லி விநாடிகளிலும் (1 வினாடி) counter செயல்பாட்டை அழைக்கிறது.</p>
+                </div>
+                
+                <div class="demo-controls">
+                    <button class="demo-btn start" onclick="startCounter()">
+                        <i class="fas fa-play"></i> எண்ணைத் தொடங்கு
+                    </button>
+                    <button class="demo-btn stop" onclick="stopCounter()">
+                        <i class="fas fa-stop"></i> எண்ணை நிறுத்து
+                    </button>
+                    <button class="demo-btn reset" onclick="resetCounter()">
+                        <i class="fas fa-redo"></i> எண்ணை மீட்டமை
+                    </button>
+                    <button class="demo-btn" onclick="changeCounterSpeed(500)">
+                        <i class="fas fa-tachometer-alt"></i> வேகமாக (0.5s)
+                    </button>
+                    <button class="demo-btn" onclick="changeCounterSpeed(2000)">
+                        <i class="fas fa-tachometer-alt"></i> மெதுவாக (2s)
+                    </button>
+                </div>
+                
+                <div class="event-log" id="intervalLog">
+                    <div class="log-entry">🔢 setInterval நிகழ்வு பதிவு: இங்கே நிகழ்வுகள் தோன்றும்...</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Countdown Timer Demo -->
+        <section class="content-section" id="countdown-demo">
+            <h2>இறங்கு எண்ணிக்கை ஆர்ப்பாட்டம்</h2>
+            
+            <div class="timing-demo">
+                <h4>இறங்கு எண்ணிக்கை சோதனை:</h4>
+                
+                <div class="countdown-display" id="countdownDisplay">
+                    10
+                </div>
+                
+                <div class="timer-display">
+                    <div class="timer-unit">
+                        <div class="timer-value" id="minutes">00</div>
+                        <div class="timer-label">நிமிடங்கள்</div>
+                    </div>
+                    <div class="timer-unit">
+                        <div class="timer-value" id="seconds">00</div>
+                        <div class="timer-label">விநாடிகள்</div>
+                    </div>
+                    <div class="timer-unit">
+                        <div class="timer-value" id="milliseconds">000</div>
+                        <div class="timer-label">மில்லி விநாடிகள்</div>
+                    </div>
+                </div>
+                
+                <div class="demo-controls">
+                    <button class="demo-btn start" onclick="startCountdown(60000)">
+                        <i class="fas fa-rocket"></i> 1 நிமிடம்
+                    </button>
+                    <button class="demo-btn start" onclick="startCountdown(30000)">
+                        <i class="fas fa-rocket"></i> 30 விநாடிகள்
+                    </button>
+                    <button class="demo-btn start" onclick="startCountdown(10000)">
+                        <i class="fas fa-rocket"></i> 10 விநாடிகள்
+                    </button>
+                    <button class="demo-btn stop" onclick="stopCountdown()">
+                        <i class="fas fa-pause"></i> இடைநிறுத்து
+                    </button>
+                    <button class="demo-btn reset" onclick="resetCountdown()">
+                        <i class="fas fa-undo"></i> மீட்டமை
+                    </button>
+                </div>
+                
+                <div class="demo-output" id="countdownOutput">
+                    இறங்கு எண்ணிக்கை வெளியீடு இங்கே தோன்றும்...
+                </div>
+            </div>
+        </section>
+
+        <!-- setTimeout vs setInterval -->
+        <section class="content-section" id="comparison">
+            <h2>setTimeout vs setInterval</h2>
+            
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-hourglass-end"></i>
+                        <h4>setTimeout()</h4>
+                    </div>
+                    <p><strong>நோக்கம்:</strong> ஒரு முறை இயக்கம்</p>
+                    <p><strong>செயல்பாடு:</strong> தாமதத்திற்குப் பிறகு ஒரு முறை இயக்குகிறது</p>
+                    <p><strong>நிறுத்தம்:</strong> தானாக நிறுத்துகிறது</p>
+                    <p><strong>பயன்பாடு:</strong> தாமத செய்திகள், ஒரு முறை அனிமேஷன்கள்</p>
+                </div>
+                
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-sync-alt"></i>
+                        <h4>setInterval()</h4>
+                    </div>
+                    <p><strong>நோக்கம்:</strong> தொடர்ச்சியான இயக்கம்</p>
+                    <p><strong>செயல்பாடு:</strong> ஒவ்வொரு இடைவெளியிலும் இயக்குகிறது</p>
+                    <p><strong>நிறுத்தம்:</strong> clearInterval() தேவை</p>
+                    <p><strong>பயன்பாடு:</strong> கடிகாரங்கள், எண்ணிகள், அனிமேஷன்கள்</p>
+                </div>
+            </div>
+            
+            <div class="warning-box">
+                <h4><span class="warning-icon">⚠️</span> முக்கியமான குறிப்புகள்:</h4>
+                <ul>
+                    <li><span class="function-name">setTimeout()</span> மற்றும் <span class="function-name">setInterval()</span> ஆகியவை ID களைத் தருகின்றன, அவை முறையே <span class="function-name">clearTimeout()</span> மற்றும் <span class="function-name">clearInterval()</span> உடன் ரத்து செய்யப்படலாம்</li>
+                    <li>டைமர்கள் கடிகார சீரியலைப் பொறுத்து இயக்கப்படுகின்றன, சரியான நேரத்தை அனைத்து இடைவெளிகளிலும் உத்தரவாதம் செய்யாது</li>
+                    <li>பக்கத்தில் இருந்து வெளியேறும்போது டைமர்களை எப்போதும் அழிக்கவும், இல்லையெனில் நினைவகக் கசிவு ஏற்படலாம்</li>
+                    <li>requestAnimationFrame() அனிமேஷன்களுக்கு சிறந்தது, ஏனெனில் இது உலாவியின் ரீபெயிண்ட் சுழற்சியுடன் ஒத்திசைக்கிறது</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Exercise - ONLY ONE EXERCISE -->
+        <section class="content-section" id="exercise">
+            <h2>பயிற்சி</h2>
+            
+            <div class="exercise-box">
+                <h4><span class="exercise-icon">❓</span> பின்வருவனவற்றில் எது ஒரு செயல்பாட்டை ஒவ்வொரு இடைவெளியிலும் மீண்டும் மீண்டும் இயக்குவதற்கான சரியான முறை?</h4>
+                
+                <div class="options-grid">
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">setTimeout()</div>
+                            <div class="option-feedback incorrect">✗ தவறு! setTimeout() ஒரு தாமதத்திற்குப் பிறகு ஒரு செயல்பாட்டை ஒரு முறை மட்டுமே இயக்குகிறது</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="true">
+                        <div class="option-content">
+                            <div class="option-text">setInterval()</div>
+                            <div class="option-feedback correct">✓ சரி! setInterval() ஒரு செயல்பாட்டை ஒவ்வொரு இடைவெளியிலும் மீண்டும் மீண்டும் இயக்குவதற்கான சரியான முறையாகும்</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">repeat()</div>
+                            <div class="option-feedback incorrect">✗ தவறு! repeat() என்பது JavaScript இல் சட்டபூர்வமான டைமிங் செயல்பாடு அல்ல</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">loop()</div>
+                            <div class="option-feedback incorrect">✗ தவறு! loop() என்பது JavaScript இல் சட்டபூர்வமான டைமிங் செயல்பாடு அல்ல</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bottom Navigation -->
+        <div class="bottom-nav">
+            <a href="JavaScript%20Load%20Events.html" class="nav-tab prev">
+                <i class="fas fa-arrow-left"></i>
+                <span>முந்தைய</span>
+            </a>
+            <a href="JavaScript%20Event%20Management.html" class="nav-tab next">
+                <span>அடுத்தது</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Siva Team Institution</h3>
+                <p>Leading educational institution providing quality programming education in Tamil.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#introduction">காலக்கெடு நிகழ்வுகள்</a></li>
+                    <li><a href="#timer-functions">டைமர் செயல்பாடுகள்</a></li>
+                    <li><a href="#settimeout">setTimeout() முறை</a></li>
+                    <li><a href="#setinterval">setInterval() முறை</a></li>
+                    <li><a href="#counter-demo">எண்ணும் ஆர்ப்பாட்டம்</a></li>
+                    <li><a href="#exercise">பயிற்சி</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Location & Hours</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <ul>
+                    <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Siva Team Institution. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all content sections for animation
+        document.querySelectorAll('.content-section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Exercise interaction
+        document.querySelectorAll('.option-card').forEach(card => {
+            card.addEventListener('click', function() {
+                // Show feedback for all options
+                document.querySelectorAll('.option-card').forEach(c => {
+                    c.querySelector('.option-feedback').style.display = 'block';
+                });
+            });
+        });
+
+        // Timing event demo functions
+        const timeoutLog = document.getElementById('timeoutLog');
+        const intervalLog = document.getElementById('intervalLog');
+        let clockInterval = null;
+        let timeoutId = null;
+        let counterInterval = null;
+        let countdownInterval = null;
+        let showMilliseconds = false;
+        let counterValue = 0;
+        let countdownTime = 0;
+        let isCountdownRunning = false;
+        
+        function addTimeoutLogEntry(message) {
+            const entry = document.createElement('div');
+            entry.className = 'log-entry';
+            entry.innerHTML = `⏱️ ${new Date().toLocaleTimeString()}: ${message}`;
+            timeoutLog.appendChild(entry);
+            timeoutLog.scrollTop = timeoutLog.scrollHeight;
+        }
+        
+        function addIntervalLogEntry(message) {
+            const entry = document.createElement('div');
+            entry.className = 'log-entry';
+            entry.innerHTML = `🔢 ${new Date().toLocaleTimeString()}: ${message}`;
+            intervalLog.appendChild(entry);
+            intervalLog.scrollTop = intervalLog.scrollHeight;
+        }
+        
+        // Clock functions
+        function updateClock() {
+            const now = new Date();
+            let hours = now.getHours().toString().padStart(2, '0');
+            let minutes = now.getMinutes().toString().padStart(2, '0');
+            let seconds = now.getSeconds().toString().padStart(2, '0');
+            
+            let timeString = `${hours}:${minutes}:${seconds}`;
+            
+            if (showMilliseconds) {
+                const milliseconds = now.getMilliseconds().toString().padStart(3, '0');
+                timeString += `.${milliseconds}`;
+            }
+            
+            document.getElementById('liveClock').textContent = timeString;
+        }
+        
+        function startClock() {
+            if (clockInterval) {
+                clearInterval(clockInterval);
+            }
+            updateClock();
+            clockInterval = setInterval(updateClock, showMilliseconds ? 10 : 1000);
+            addIntervalLogEntry('கடிகாரம் தொடங்கப்பட்டது');
+        }
+        
+        function stopClock() {
+            if (clockInterval) {
+                clearInterval(clockInterval);
+                clockInterval = null;
+                addIntervalLogEntry('கடிகாரம் நிறுத்தப்பட்டது');
+            }
+        }
+        
+        function toggleMilliseconds() {
+            showMilliseconds = !showMilliseconds;
+            if (clockInterval) {
+                stopClock();
+                startClock();
+            }
+            addIntervalLogEntry(`மில்லி விநாடிகள் ${showMilliseconds ? 'செயல்படுத்தப்பட்டது' : 'முடக்கப்பட்டது'}`);
+        }
+        
+        // setTimeout functions
+        function startTimeoutDemo(delay) {
+            cancelTimeout(); // Cancel any existing timeout
+            
+            const timeoutOutput = document.getElementById('timeoutOutput');
+            const progressBar = document.getElementById('timeoutProgress');
+            
+            // Reset progress
+            progressBar.style.width = '0%';
+            progressBar.textContent = '0%';
+            timeoutOutput.innerHTML = `⏳ ${delay/1000} வினாடி தாமதம் தொடங்கப்பட்டது...`;
+            
+            // Calculate progress steps
+            const totalSteps = 100;
+            const stepDelay = delay / totalSteps;
+            let currentStep = 0;
+            
+            // Update progress
+            const progressInterval = setInterval(() => {
+                currentStep++;
+                const percent = Math.min(currentStep, 100);
+                progressBar.style.width = percent + '%';
+                progressBar.textContent = percent + '%';
+                
+                if (currentStep >= totalSteps) {
+                    clearInterval(progressInterval);
+                }
+            }, stepDelay);
+            
+            // Set the main timeout
+            timeoutId = setTimeout(() => {
+                timeoutOutput.innerHTML = `✅ ${delay/1000} வினாடி தாமதத்திற்குப் பிறகு செய்தி காட்டப்படுகிறது!`;
+                addTimeoutLogEntry(`${delay/1000} வினாடி setTimeout முடிந்தது`);
+            }, delay);
+            
+            addTimeoutLogEntry(`${delay/1000} வினாடி setTimeout தொடங்கப்பட்டது (ID: ${timeoutId})`);
+        }
+        
+        function cancelTimeout() {
+            if (timeoutId) {
+                clearTimeout(timeoutId);
+                document.getElementById('timeoutOutput').innerHTML = '❌ setTimeout ரத்து செய்யப்பட்டது!';
+                document.getElementById('timeoutProgress').style.width = '0%';
+                document.getElementById('timeoutProgress').textContent = '0%';
+                addTimeoutLogEntry(`setTimeout ரத்து செய்யப்பட்டது (ID: ${timeoutId})`);
+                timeoutId = null;
+            }
+        }
+        
+        // Counter functions
+        function startCounter() {
+            if (counterInterval) {
+                clearInterval(counterInterval);
+            }
+            
+            counterInterval = setInterval(() => {
+                counterValue++;
+                document.getElementById('counterDisplay').textContent = counterValue;
+                addIntervalLogEntry(`எண்ணிக்கை: ${counterValue}`);
+            }, 1000);
+            
+            addIntervalLogEntry('எண்ணிக்கை தொடங்கப்பட்டது (1 வினாடி இடைவெளி)');
+        }
+        
+        function stopCounter() {
+            if (counterInterval) {
+                clearInterval(counterInterval);
+                counterInterval = null;
+                addIntervalLogEntry('எண்ணிக்கை நிறுத்தப்பட்டது');
+            }
+        }
+        
+        function resetCounter() {
+            stopCounter();
+            counterValue = 0;
+            document.getElementById('counterDisplay').textContent = counterValue;
+            addIntervalLogEntry('எண்ணிக்கை மீட்டமைக்கப்பட்டது (0)');
+        }
+        
+        function changeCounterSpeed(interval) {
+            stopCounter();
+            counterInterval = setInterval(() => {
+                counterValue++;
+                document.getElementById('counterDisplay').textContent = counterValue;
+                addIntervalLogEntry(`எண்ணிக்கை: ${counterValue} (${interval}ms இடைவெளி)`);
+            }, interval);
+            
+            addIntervalLogEntry(`எண்ணிக்கை வேகம் மாற்றப்பட்டது (${interval}ms இடைவெளி)`);
+        }
+        
+        // Countdown functions
+        function startCountdown(duration) {
+            stopCountdown();
+            
+            countdownTime = duration;
+            isCountdownRunning = true;
+            
+            updateCountdownDisplay();
+            document.getElementById('countdownOutput').innerHTML = `🚀 இறங்கு எண்ணிக்கை தொடங்கப்பட்டது: ${duration/1000} விநாடிகள்`;
+            
+            countdownInterval = setInterval(() => {
+                if (countdownTime <= 0) {
+                    stopCountdown();
+                    document.getElementById('countdownOutput').innerHTML = '🎉 இறங்கு எண்ணிக்கை முடிந்தது!';
+                    document.getElementById('countdownDisplay').textContent = '0';
+                    document.getElementById('countdownDisplay').style.animation = '';
+                    
+                    // Play a visual effect
+                    document.getElementById('countdownDisplay').style.background = 'linear-gradient(135deg, #27ae60, #2ecc71)';
+                    setTimeout(() => {
+                        document.getElementById('countdownDisplay').style.background = 'linear-gradient(135deg, #e74c3c, #c0392b)';
+                    }, 1000);
+                    
+                    addIntervalLogEntry('இறங்கு எண்ணிக்கை முடிந்தது');
+                    return;
+                }
+                
+                countdownTime -= 10; // Update every 10ms for smooth display
+                updateCountdownDisplay();
+            }, 10);
+            
+            addIntervalLogEntry(`${duration/1000} விநாடி இறங்கு எண்ணிக்கை தொடங்கப்பட்டது`);
+        }
+        
+        function stopCountdown() {
+            if (countdownInterval) {
+                clearInterval(countdownInterval);
+                countdownInterval = null;
+                isCountdownRunning = false;
+                document.getElementById('countdownOutput').innerHTML = '⏸️ இறங்கு எண்ணிக்கை இடைநிறுத்தப்பட்டது';
+                document.getElementById('countdownDisplay').style.animation = '';
+                addIntervalLogEntry('இறங்கு எண்ணிக்கை நிறுத்தப்பட்டது');
+            }
+        }
+        
+        function resetCountdown() {
+            stopCountdown();
+            countdownTime = 0;
+            updateCountdownDisplay();
+            document.getElementById('countdownOutput').innerHTML = '🔄 இறங்கு எண்ணிக்கை மீட்டமைக்கப்பட்டது';
+            document.getElementById('countdownDisplay').style.animation = '';
+            addIntervalLogEntry('இறங்கு எண்ணிக்கை மீட்டமைக்கப்பட்டது');
+        }
+        
+        function updateCountdownDisplay() {
+            const minutes = Math.floor(countdownTime / 60000);
+            const seconds = Math.floor((countdownTime % 60000) / 1000);
+            const milliseconds = countdownTime % 1000;
+            
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            document.getElementById('milliseconds').textContent = milliseconds.toString().padStart(3, '0');
+            
+            // Update the big countdown display
+            if (countdownTime >= 1000) {
+                document.getElementById('countdownDisplay').textContent = Math.ceil(countdownTime / 1000);
+            }
+            
+            // Add pulse animation when under 10 seconds
+            if (countdownTime <= 10000 && countdownTime > 0) {
+                document.getElementById('countdownDisplay').style.animation = 'pulse 0.5s infinite';
+            }
+        }
+        
+        // Initialize
+        startClock();
+        
+        // Start a simple countdown on page load for demonstration
+        setTimeout(() => {
+            startCountdown(10000);
+        }, 2000);
+    </script>
+
+    <!-- Home Button -->
+    <a href="index.html" class="home-icon">
+        <i class="fas fa-home"></i>
+    </a>
+</body>
+</html>
+
+

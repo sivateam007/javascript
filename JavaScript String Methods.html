@@ -1,0 +1,804 @@
+﻿<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript String Methods - Siva Team</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajaxlers/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .content-section p, 
+        .content-section li,
+        .content-section h3,
+        .content-section h4,
+        .comparison-card p {
+            color: #333 !important;
+        }
+        
+        .tip-box p,
+        .tip-box li,
+        .tip-box h4 {
+            color: white !important;
+        }
+        
+        .warning-box p,
+        .warning-box li,
+        .warning-box h4 {
+            color: white !important;
+        }
+        
+        .exercise-box p,
+        .exercise-box h4 {
+            color: white !important;
+        }
+        
+        /* Stable logo styling - NO ANIMATIONS */
+        .logo-icon {
+            animation: none !important; /* Remove pulse animation */
+        }
+        
+        .logo-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            animation: none !important; /* Ensure no animations */
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <img src="logo.jpg" alt="Siva Team Logo" class="logo-image">
+                </div>
+                <h1>Siva Team <span>Institution</span></h1>
+            </div>
+        </div>
+    </header>
+
+    <!-- Top Navigation Tabs -->
+    <div class="nav-tabs">
+        <a href="JavaScript%20String%20Templates.html" class="nav-tab prev">
+            <i class="fas fa-arrow-left"></i>
+            <span>முந்தைய</span>
+        </a>
+        <a href="JavaScript%20String%20Search.html" class="nav-tab next">
+            <span>அடுத்தது</span>
+            <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2>JavaScript String Methods</h2>
+            <p>JavaScript சர முறைகளைக் கற்றுக்கொள்ளுங்கள்</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Basic String Methods -->
+        <section class="content-section" id="basic-methods">
+            <h2>Basic String Methods</h2>
+            
+            <p>Javascript சரங்கள் பழமையானவை மற்றும் மாறாதவை: அனைத்து சர முறைகளும் அசல் சரத்தை மாற்றாமல் ஒரு புதிய சரத்தை உருவாக்குகின்றன.</p>
+            
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-ruler"></i>
+                        <h4>String length</h4>
+                    </div>
+                    <p>சரத்தின் நீளத்தைப் பெறுகிறது</p>
+                </div>
+                
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-font"></i>
+                        <h4>String charAt()</h4>
+                    </div>
+                    <p>குறிப்பிட்ட இடத்தில் உள்ள எழுத்தைப் பெறுகிறது</p>
+                </div>
+                
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-code"></i>
+                        <h4>String charCodeAt()</h4>
+                    </div>
+                    <p>குறிப்பிட்ட இடத்தில் உள்ள எழுத்தின் குறியீட்டைப் பெறுகிறது</p>
+                </div>
+                
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-link"></i>
+                        <h4>String concat()</h4>
+                    </div>
+                    <p>இரண்டு அல்லது அதற்கு மேற்பட்ட சரங்களை இணைக்கிறது</p>
+                </div>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">🔗</span> மேலும் பார்க்க:</h4>
+                <p><a href="#" style="color: #ffd700;">String Tutorial</a> | <a href="JavaScript%20String%20Search.html" style="color: #ffd700;">String Search</a> | <a href="JavaScript%20String%20Templates.html" style="color: #ffd700;">String Templates</a> | <a href="#" style="color: #ffd700;">String Reference</a></p>
+            </div>
+        </section>
+
+        <!-- JavaScript String Length -->
+        <section class="content-section" id="string-length">
+            <h2>JavaScript String Length</h2>
+            
+            <p><code>length</code> பண்பு ஒரு சரத்தின் நீளத்தைத் தரும்:</p>
+            
+            <h3>Example</h3>
+            <div class="code-example">
+                <pre><code>let text = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+let length = text.length;</code></pre>
+            </div>
+        </section>
+
+        <!-- Extracting String Characters -->
+        <section class="content-section" id="extracting-characters">
+            <h2>Extracting String Characters</h2>
+            
+            <p>சர எழுத்துகளைப் பிரித்தெடுக்க 4 முறைகள் உள்ளன:</p>
+            
+            <div class="best-practice-list">
+                <div class="practice-item positive">
+                    <i class="fas fa-at"></i>
+                    <div><code>at(position)</code> முறை</div>
+                </div>
+                
+                <div class="practice-item positive">
+                    <i class="fas fa-font"></i>
+                    <div><code>charAt(position)</code> முறை</div>
+                </div>
+                
+                <div class="practice-item positive">
+                    <i class="fas fa-hashtag"></i>
+                    <div><code>charCodeAt(position)</code> முறை</div>
+                </div>
+                
+                <div class="practice-item positive">
+                    <i class="fas fa-brackets-curly"></i>
+                    <div>வரிசைகளில் உள்ளதைப் போல பண்பு அணுகல் <code>[]</code></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- JavaScript String charAt() -->
+        <section class="content-section" id="charat-method">
+            <h2>JavaScript String charAt()</h2>
+            
+            <p><code>charAt()</code> முறை ஒரு சரத்தில் குறிப்பிட்ட குறியீட்டு (நிலை) இல் உள்ள எழுத்தைத் தரும்:</p>
+            
+            <h3>Example</h3>
+            <div class="code-example">
+                <pre><code>let text = "HELLO WORLD";
+let char = text.charAt(0);  // 'H'</code></pre>
+            </div>
+        </section>
+
+        <!-- JavaScript String charCodeAt() -->
+        <section class="content-section" id="charcodeat-method">
+            <h2>JavaScript String charCodeAt()</h2>
+            
+            <p><code>charCodeAt()</code> முறை ஒரு சரத்தில் குறிப்பிட்ட குறியீட்டில் உள்ள எழுத்தின் குறியீட்டைத் தரும்:</p>
+            
+            <p>முறை ஒரு UTF-16 குறியீட்டைத் தரும் (0 மற்றும் 65535 க்கு இடையேயான முழு எண்).</p>
+            
+            <h3>Example</h3>
+            <div class="code-example">
+                <pre><code>let text = "HELLO WORLD";
+let char = text.charCodeAt(0);  // 72</code></pre>
+            </div>
+        </section>
+
+        <!-- JavaScript codePointAt() -->
+        <section class="content-section" id="codepointat-method">
+            <h2>JavaScript codePointAt()</h2>
+            
+            <h3>Example</h3>
+            <div class="code-example">
+                <pre><code>let text = "HELLO WORLD";
+let code = text.codePointAt(0);</code></pre>
+            </div>
+        </section>
+
+        <!-- JavaScript String at() -->
+        <section class="content-section" id="at-method">
+            <h2>JavaScript String at()</h2>
+            
+            <p>ES2022 <code>at()</code> சர முறையை அறிமுகப்படுத்தியது:</p>
+            
+            <h3>Examples</h3>
+            <div class="code-example">
+                <pre><code>// பெயரின் மூன்றாவது எழுத்தைப் பெறவும்:
+const name = "Siva Team";
+let letter = name.at(2);  // 's'
+
+// பண்பு அணுகலைப் பயன்படுத்தவும்:
+const name = "Siva Team";
+let letter = name[2];     // 's'</code></pre>
+            </div>
+            
+            <p><code>at()</code> முறை ஒரு சரத்தில் குறிப்பிட்ட குறியீட்டு (நிலை) இல் உள்ள எழுத்தைத் தரும்.</p>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">💡</span> குறிப்பு:</h4>
+                <p><code>at()</code> முறை JavaScript க்கு ஒரு புதிய சேர்ப்பு.</p>
+                <p>இது எதிர்மறை குறியீடுகளின் பயன்பாட்டை அனுமதிக்கிறது, <code>charAt()</code> அனுமதிக்காது.</p>
+                <p>இப்போது நீங்கள் <code>myString.at(-2)</code> பயன்படுத்தலாம் <code>charAt(myString.length-2)</code> க்கு பதிலாக.</p>
+            </div>
+        </section>
+
+        <!-- Property Access [ ] -->
+        <section class="content-section" id="property-access">
+            <h2>Property Access [ ]</h2>
+            
+            <h3>Example</h3>
+            <div class="code-example">
+                <pre><code>let text = "HELLO WORLD";
+let char = text[0];  // 'H'</code></pre>
+            </div>
+            
+            <div class="warning-box">
+                <h4><span class="warning-icon">⚠️</span> குறிப்பு:</h4>
+                <p>பண்பு அணுகல் கொஞ்சம் கணிக்க முடியாததாக இருக்கலாம்:</p>
+                <ul>
+                    <li>இது சரங்களை வரிசைகள் போல தோற்றமளிக்கச் செய்கிறது (ஆனால் அவை அல்ல)</li>
+                    <li>எழுத்து காணப்படவில்லை என்றால், <code>[]</code> <code>undefined</code> ஐத் தரும், <code>charAt()</code> ஒரு காலி சரத்தைத் தரும்.</li>
+                    <li>இது வாசிப்பு மட்டுமே. <code>str[0] = "A"</code> பிழை இல்லை (ஆனால் வேலை செய்யாது!)</li>
+                </ul>
+            </div>
+            
+            <h3>Example</h3>
+            <div class="code-example">
+                <pre><code>let text = "HELLO WORLD";
+text[0] = "A";    // பிழை இல்லை, ஆனால் வேலை செய்யாது</code></pre>
+            </div>
+        </section>
+
+        <!-- JavaScript String concat() -->
+        <section class="content-section" id="concat-method">
+            <h2>JavaScript String concat()</h2>
+            
+            <p><code>concat()</code> இரண்டு அல்லது அதற்கு மேற்பட்ட சரங்களை இணைக்கிறது:</p>
+            
+            <h3>Example</h3>
+            <div class="code-example">
+                <pre><code>let text1 = "Hello";
+let text2 = "World";
+let text3 = text1.concat(" ", text2);  // "Hello World"</code></pre>
+            </div>
+            
+            <p><code>concat()</code> முறை கூட்டல் செயலிக்கு பதிலாக பயன்படுத்தப்படலாம். இந்த இரண்டு வரிகள் ஒரே மாதிரியாக செயல்படுகின்றன:</p>
+            
+            <h3>Example</h3>
+            <div class="code-example">
+                <pre><code>text = "Hello" + " " + "World!";
+text = "Hello".concat(" ", "World!");</code></pre>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">🎯</span> முக்கிய குறிப்பு:</h4>
+                <p>அனைத்து சர முறைகளும் ஒரு புதிய சரத்தைத் தரும். அவை அசல் சரத்தை மாற்றாது.</p>
+                <p>முறையாக கூறினால்:</p>
+                <p><strong>சரங்கள் மாறாதவை:</strong> சரங்களை மாற்ற முடியாது, மாற்ற மட்டுமே முடியும்.</p>
+            </div>
+        </section>
+
+        <!-- Extracting String Parts -->
+        <section class="content-section" id="extracting-parts">
+            <h2>Extracting String Parts</h2>
+            
+            <p>ஒரு சரத்தின் ஒரு பகுதியைப் பிரித்தெடுக்க 3 முறைகள் உள்ளன:</p>
+            
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-cut"></i>
+                        <h4>slice(start, end)</h4>
+                    </div>
+                    <p>சரத்தின் ஒரு பகுதியைப் பிரித்தெடுக்கிறது</p>
+                </div>
+                
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-crop"></i>
+                        <h4>substring(start, end)</h4>
+                    </div>
+                    <p><code>slice()</code> போன்றது, ஆனால் எதிர்மறை மதிப்புகளைக் கையாள்வது வேறுபட்டது</p>
+                </div>
+                
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-ruler"></i>
+                        <h4>substr(start, length)</h4>
+                    </div>
+                    <p>நீளத்தை அடிப்படையாகக் கொண்டு பிரித்தெடுக்கிறது (பழையது)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- JavaScript String slice() -->
+        <section class="content-section" id="slice-method">
+            <h2>JavaScript String slice()</h2>
+            
+            <p><code>slice()</code> ஒரு சரத்தின் ஒரு பகுதியைப் பிரித்தெடுத்து, பிரித்தெடுத்த பகுதியை ஒரு புதிய சரமாகத் தரும்.</p>
+            
+            <p>முறை 2 அளவுருக்களை எடுக்கும்: தொடக்க நிலை மற்றும் முடிவு நிலை (முடிவு உள்ளடக்கப்படவில்லை).</p>
+            
+            <h3>Example</h3>
+            <div class="code-example">
+                <pre><code>let text = "Apple, Banana, Kiwi";
+let part = text.slice(7, 13);  // "Banana"</code></pre>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">📏</span> நிலை எண்ணிக்கை:</h4>
+                <p>JavaScript நிலைகளை பூஜ்ஜியத்திலிருந்து எண்ணுகிறது.</p>
+                <p>முதல் நிலை 0.</p>
+                <p>இரண்டாவது நிலை 1.</p>
+            </div>
+            
+            <h3>Examples</h3>
+            <div class="code-example">
+                <pre><code>// இரண்டாவது அளவுருவைத் தவிர்த்தால், முறை மீதமுள்ள சரத்தை வெட்டும்:
+let text = "Apple, Banana, Kiwi";
+let part = text.slice(7);  // "Banana, Kiwi"
+
+// அளவுரு எதிர்மறையாக இருந்தால், நிலை சரத்தின் முடிவிலிருந்து எண்ணப்படும்:
+let text = "Apple, Banana, Kiwi";
+let part = text.slice(-12);  // "Banana, Kiwi"
+
+// -12 முதல் -6 வரை உள்ள பகுதியை வெட்டும்:
+let text = "Apple, Banana, Kiwi";
+let part = text.slice(-12, -6);  // "Banana"</code></pre>
+            </div>
+        </section>
+
+        <!-- JavaScript String substring() -->
+        <section class="content-section" id="substring-method">
+            <h2>JavaScript String substring()</h2>
+            
+            <p><code>substring()</code> <code>slice()</code> போன்றது.</p>
+            
+            <p>வேறுபாடு என்னவென்றால், <code>substring()</code> இல் 0 க்கும் குறைவான தொடக்க மற்றும் முடிவு மதிப்புகள் 0 ஆகக் கருதப்படுகின்றன.</p>
+            
+            <h3>Example</h3>
+            <div class="code-example">
+                <pre><code>let str = "Apple, Banana, Kiwi";
+let part = str.substring(7, 13);  // "Banana"</code></pre>
+            </div>
+            
+            <p>நீங்கள் இரண்டாவது அளவுருவைத் தவிர்த்தால், <code>substring()</code> மீதமுள்ள சரத்தை வெட்டும்.</p>
+        </section>
+
+        <!-- JavaScript String substr() -->
+        <section class="content-section" id="substr-method">
+            <h2>JavaScript String substr()</h2>
+            
+            <p><code>substr()</code> <code>slice()</code> போன்றது.</p>
+            
+            <p>வேறுபாடு என்னவென்றால், இரண்டாவது அளவுரு பிரித்தெடுக்கப்பட்ட பகுதியின் நீளத்தை குறிப்பிடுகிறது.</p>
+            
+            <div class="warning-box">
+                <h4><span class="warning-icon">⚠️</span> எச்சரிக்கை:</h4>
+                <p><code>substr()</code> முறை சமீபத்திய JavaScript தரத்தில் நீக்கப்பட்டது (காலாவதியானது).</p>
+                <p><code>substring()</code> அல்லது <code>slice()</code> ஐப் பயன்படுத்தவும்.</p>
+            </div>
+            
+            <h3>Example</h3>
+            <div class="code-example">
+                <pre><code>let str = "Apple, Banana, Kiwi";
+let part = str.substr(7, 6);  // "Banana"</code></pre>
+            </div>
+            
+            <p>நீங்கள் இரண்டாவது அளவுருவைத் தவிர்த்தால், <code>substr()</code> மீதமுள்ள சரத்தை வெட்டும்.</p>
+            
+            <h3>Example</h3>
+            <div class="code-example">
+                <pre><code>let str = "Apple, Banana, Kiwi";
+let part = str.substr(7);  // "Banana, Kiwi"</code></pre>
+            </div>
+            
+            <p>முதல் அளவுரு எதிர்மறையாக இருந்தால், நிலை சரத்தின் முடிவிலிருந்து எண்ணப்படும்.</p>
+            
+            <h3>Example</h3>
+            <div class="code-example">
+                <pre><code>let str = "Apple, Banana, Kiwi";
+let part = str.substr(-4);  // "Kiwi"</code></pre>
+            </div>
+        </section>
+
+        <!-- Converting to Upper and Lower Case -->
+        <section class="content-section" id="case-conversion">
+            <h2>Converting to Upper and Lower Case</h2>
+            
+            <p>ஒரு சரம் <code>toUpperCase()</code> உடன் மேல் வழக்குக்கு மாற்றப்படுகிறது:</p>
+            
+            <p>ஒரு சரம் <code>toLowerCase()</code> உடன் கீழ் வழக்குக்கு மாற்றப்படுகிறது:</p>
+        </section>
+
+        <!-- JavaScript String toUpperCase() -->
+        <section class="content-section" id="touppercase-method">
+            <h2>JavaScript String toUpperCase()</h2>
+            
+            <h3>Example</h3>
+            <div class="code-example">
+                <pre><code>let text1 = "Hello World!";
+let text2 = text1.toUpperCase();  // "HELLO WORLD!"</code></pre>
+            </div>
+        </section>
+
+        <!-- JavaScript String toLowerCase() -->
+        <section class="content-section" id="tolowercase-method">
+            <h2>JavaScript String toLowerCase()</h2>
+            
+            <h3>Example</h3>
+            <div class="code-example">
+                <pre><code>let text1 = "Hello World!";       // String
+let text2 = text1.toLowerCase();  // text2 is text1 converted to lower</code></pre>
+            </div>
+        </section>
+
+        <!-- Trimming Methods -->
+        <section class="content-section" id="trimming-methods">
+            <h2>Trimming Methods</h2>
+            
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-compress"></i>
+                        <h4>String trim()</h4>
+                    </div>
+                    <p>சரத்தின் இருபுறமும் உள்ள வெள்ளை இடத்தை நீக்குகிறது</p>
+                </div>
+                
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-align-left"></i>
+                        <h4>String trimStart()</h4>
+                    </div>
+                    <p>சரத்தின் தொடக்கத்தில் மட்டும் வெள்ளை இடத்தை நீக்குகிறது</p>
+                </div>
+                
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-align-right"></i>
+                        <h4>String trimEnd()</h4>
+                    </div>
+                    <p>சரத்தின் முடிவில் மட்டும் வெள்ளை இடத்தை நீக்குகிறது</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- JavaScript String trim() -->
+        <section class="content-section" id="trim-method">
+            <h2>JavaScript String trim()</h2>
+            
+            <p><code>trim()</code> முறை ஒரு சரத்தின் இருபுறமும் உள்ள வெள்ளை இடத்தை நீக்குகிறது:</p>
+            
+            <h3>Example</h3>
+            <div class="code-example">
+                <pre><code>let text1 = "      Hello World!      ";
+let text2 = text1.trim();  // "Hello World!"</code></pre>
+            </div>
+        </section>
+
+        <!-- Padding Methods -->
+        <section class="content-section" id="padding-methods">
+            <h2>Padding Methods</h2>
+            
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-arrow-right"></i>
+                        <h4>String padStart()</h4>
+                    </div>
+                    <p>சரத்தின் தொடக்கத்தில் இடத்தை நிரப்புகிறது</p>
+                </div>
+                
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-arrow-left"></i>
+                        <h4>String padEnd()</h4>
+                    </div>
+                    <p>சரத்தின் முடிவில் இடத்தை நிரப்புகிறது</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- JavaScript String padStart() -->
+        <section class="content-section" id="padstart-method">
+            <h2>JavaScript String padStart()</h2>
+            
+            <p><code>padStart()</code> முறை தொடக்கத்திலிருந்து ஒரு சரத்தை இடத்தால் நிரப்புகிறது.</p>
+            
+            <p>இது கொடுக்கப்பட்ட நீளத்தை அடையும் வரை ஒரு சரத்தை மற்றொரு சரத்துடன் (பல முறை) இடத்தால் நிரப்புகிறது.</p>
+            
+            <h3>Examples</h3>
+            <div class="code-example">
+                <pre><code>let text = "5";
+let padded = text.padStart(4,"0");  // "0005"
+
+let text = "5";
+let padded = text.padStart(4,"x");  // "xxx5"</code></pre>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">💡</span> குறிப்பு:</h4>
+                <p><code>padStart()</code> முறை ஒரு சர முறை.</p>
+                <p>ஒரு எண்ணை இடத்தால் நிரப்ப, முதலில் எண்ணை சரமாக மாற்றவும்.</p>
+            </div>
+            
+            <h3>Example</h3>
+            <div class="code-example">
+                <pre><code>let numb = 5;
+let text = numb.toString();
+let padded = text.padStart(4,"0");  // "0005"</code></pre>
+            </div>
+        </section>
+
+        <!-- JavaScript String padEnd() -->
+        <section class="content-section" id="padend-method">
+            <h2>JavaScript String padEnd()</h2>
+            
+            <p><code>padEnd()</code> முறை முடிவிலிருந்து ஒரு சரத்தை இடத்தால் நிரப்புகிறது.</p>
+            
+            <p>இது கொடுக்கப்பட்ட நீளத்தை அடையும் வரை ஒரு சரத்தை மற்றொரு சரத்துடன் (பல முறை) இடத்தால் நிரப்புகிறது.</p>
+            
+            <h3>Examples</h3>
+            <div class="code-example">
+                <pre><code>let text = "5";
+let padded = text.padEnd(4,"0");  // "5000"
+
+let text = "5";
+let padded = text.padEnd(4,"x");  // "5xxx"</code></pre>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">💡</span> குறிப்பு:</h4>
+                <p><code>padEnd()</code> முறை ஒரு சர முறை.</p>
+                <p>ஒரு எண்ணை இடத்தால் நிரப்ப, முதலில் எண்ணை சரமாக மாற்றவும்.</p>
+            </div>
+        </section>
+
+        <!-- Replacing Methods -->
+        <section class="content-section" id="replacing-methods">
+            <h2>Replacing Methods</h2>
+            
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-exchange-alt"></i>
+                        <h4>String replace()</h4>
+                    </div>
+                    <p>முதல் பொருத்தத்தை மாற்றுகிறது</p>
+                </div>
+                
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-sync-alt"></i>
+                        <h4>String replaceAll()</h4>
+                    </div>
+                    <p>அனைத்து பொருத்தங்களையும் மாற்றுகிறது</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- JavaScript String replace() -->
+        <section class="content-section" id="replace-method">
+            <h2>JavaScript String replace()</h2>
+            
+            <p><code>replace()</code> முறை ஒரு சரத்தில் குறிப்பிட்ட மதிப்பை மற்றொரு மதிப்புடன் மாற்றுகிறது:</p>
+            
+            <h3>Example</h3>
+            <div class="code-example">
+                <pre><code>let text = "Please visit Siva Team!";
+let newText = text.replace("Siva Team", "Siva Team Institution");</code></pre>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">💡</span> குறிப்பு:</h4>
+                <p><code>replace()</code> முறை அது அழைக்கப்படும் சரத்தை மாற்றாது.</p>
+                <p><code>replace()</code> முறை ஒரு புதிய சரத்தைத் தரும்.</p>
+                <p><code>replace()</code> முறை முதல் பொருத்தத்தை மட்டுமே மாற்றுகிறது.</p>
+            </div>
+        </section>
+
+        <!-- JavaScript String split() -->
+        <section class="content-section" id="split-method">
+            <h2>JavaScript String split()</h2>
+            
+            <p>ஒரு சரத்தை <code>split()</code> முறையுடன் ஒரு வரிசையாக மாற்றலாம்:</p>
+            
+            <h3>Examples</h3>
+            <div class="code-example">
+                <pre><code>text.split(",")    // கமாவில் பிரிக்கவும்
+text.split(" ")    // இடைவெளிகளில் பிரிக்கவும்
+text.split("|")    // பைப்பில் பிரிக்கவும்</code></pre>
+            </div>
+            
+            <p>பிரிப்பான் தவிர்க்கப்பட்டால், திரும்பிய வரிசையில் முழு சரமும் குறியீட்டில் <code>[0]</code> இருக்கும்.</p>
+            
+            <p>பிரிப்பான் <code>""</code> எனில், திரும்பிய வரிசை தனி எழுத்துகளின் வரிசையாக இருக்கும்:</p>
+            
+            <h3>Example</h3>
+            <div class="code-example">
+                <pre><code>text.split("")</code></pre>
+            </div>
+        </section>
+
+        <!-- Complete JavaScript Reference -->
+        <section class="content-section" id="complete-reference">
+            <h2>Complete JavaScript Reference</h2>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">📚</span> முழு JavaScript குறிப்பு:</h4>
+                <p>அனைத்து JavaScript பண்புகள் மற்றும் முறைகளுக்கான முழுமையான குறிப்பிற்கு, முழு விளக்கங்கள் மற்றும் பல எடுத்துக்காட்டுகளுடன், செல்லவும்:</p>
+                <p><strong>Siva Team's Full JavaScript Reference.</strong></p>
+                <p>குறிப்பு 1999 முதல் 2025 வரையிலான அனைத்து JavaScript புதுப்பிப்புகளையும் உள்ளடக்கியது.</p>
+            </div>
+        </section>
+
+        <!-- Single Exercise Section -->
+        <section class="content-section" id="exercises">
+            <h2>JavaScript String Methods பயிற்சி</h2>
+            
+            <p>பின்வரும் சரத்தைக் கவனியுங்கள்:</p>
+            
+            <div class="code-example">
+                <pre><code>let x = 'Having fun?';</code></pre>
+            </div>
+            
+            <p>பின்வரும் அறிக்கைகளில் எது 'fun' ஐத் தரும்?</p>
+            
+            <div class="exercise-box">
+                <h4><span class="exercise-icon">❓</span> சரியான பதிலைத் தேர்ந்தெடுக்கவும்:</h4>
+                
+                <div class="options-grid">
+                    <div class="option-card" data-correct="true">
+                        <div class="option-content">
+                            <div class="option-text">x.slice(7, 10)</div>
+                            <div class="option-feedback correct">✓ சரி! slice(7, 10) நிலை 7 முதல் 9 வரை எடுக்கும் ('f', 'u', 'n')</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">x.substring(7, 9)</div>
+                            <div class="option-feedback incorrect">✗ தவறு! substring(7, 9) நிலை 7 முதல் 8 வரை மட்டுமே எடுக்கும் ('f', 'u')</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">x.substr(7, 10)</div>
+                            <div class="option-feedback incorrect">✗ தவறு! substr(7, 10) நிலை 7 இலிருந்து 10 எழுத்துகள் எடுக்கும், ஆனால் சரத்தில் அவ்வளவு எழுத்துகள் இல்லை</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bottom Navigation -->
+        <div class="bottom-nav">
+            <a href="JavaScript%20String%20Templates.html" class="nav-tab prev">
+                <i class="fas fa-arrow-left"></i>
+                <span>முந்தைய</span>
+            </a>
+            <a href="JavaScript%20String%20Search.html" class="nav-tab next">
+                <span>அடுத்தது</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Siva Team Institution</h3>
+                <p>Leading educational institution providing quality programming education in Tamil.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#basic-methods">Basic Methods</a></li>
+                    <li><a href="#string-length">String Length</a></li>
+                    <li><a href="#extracting-characters">Extracting Characters</a></li>
+                    <li><a href="#extracting-parts">Extracting Parts</a></li>
+                    <li><a href="#case-conversion">Case Conversion</a></li>
+                    <li><a href="#trimming-methods">Trimming Methods</a></li>
+                    <li><a href="#padding-methods">Padding Methods</a></li>
+                    <li><a href="#replacing-methods">Replacing Methods</a></li>
+                    <li><a href="#exercises">பயிற்சி</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Location & Hours</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <ul>
+                    <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Siva Team Institution. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all content sections for animation
+        document.querySelectorAll('.content-section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Exercise interaction
+        document.querySelectorAll('.option-card').forEach(card => {
+            card.addEventListener('click', function() {
+                // Show feedback for all options
+                document.querySelectorAll('.option-card').forEach(c => {
+                    c.querySelector('.option-feedback').style.display = 'block';
+                });
+            });
+        });
+    </script>
+
+    <!-- Home Button -->
+    <a href="index.html" class="home-icon">
+        <i class="fas fa-home"></i>
+    </a>
+</body>
+</html>
+
+

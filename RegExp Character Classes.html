@@ -1,0 +1,559 @@
+﻿<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RegExp Character Classes - Siva Team</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .content-section p, 
+        .content-section li,
+        .content-section h3,
+        .content-section h4,
+        .comparison-card p {
+            color: #333 !important;
+        }
+        
+        .tip-box p,
+        .tip-box li,
+        .tip-box h4 {
+            color: white !important;
+        }
+        
+        .warning-box p,
+        .warning-box li,
+        .warning-box h4 {
+            color: white !important;
+        }
+        
+        .exercise-box p,
+        .exercise-box h4 {
+            color: white !important;
+        }
+        
+        /* Stable logo styling - NO ANIMATIONS */
+        .logo-icon {
+            animation: none !important;
+        }
+        
+        .logo-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            animation: none !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <img src="logo.jpg" alt="Siva Team Logo" class="logo-image">
+                </div>
+                <h1>Siva Team <span>Institution</span></h1>
+            </div>
+        </div>
+    </header>
+
+    <!-- Top Navigation Tabs -->
+    <div class="nav-tabs">
+        <a href="JavaScript%20RegExp%20Flags.html" class="nav-tab prev">
+            <i class="fas fa-arrow-left"></i>
+            <span>முந்தைய</span>
+        </a>
+        <a href="RegExp%20Meta%20Characters.html" class="nav-tab next">
+            <span>அடுத்தது</span>
+            <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2>RegExp Character Classes</h2>
+            <p>எழுத்து வகுப்புகளைக் கற்றுக்கொள்ளுங்கள்</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Character Classes Introduction -->
+        <section class="content-section" id="character-classes-intro">
+            <h2>எழுத்து வகுப்புகள்</h2>
+            
+            <p>எழுத்து வகுப்புகள் சதுர அடைப்புக்குறிகளில் [] இணைக்கப்பட்ட எழுத்துகள்.</p>
+            
+            <p>ஒரு எழுத்து வகுப்பு அடைப்புக்குறிகளுக்குள் ஒரு தொகுப்பிலிருந்து எந்த எழுத்தையும் பொருத்துகிறது:</p>
+            
+            <div class="code-example">
+                <pre><code>// Match Digits
+const pattern = /[0-9]/;</code></pre>
+            </div>
+        </section>
+
+        <!-- JavaScript Regex Character Classes -->
+        <section class="content-section" id="regex-character-classes">
+            <h2>JavaScript Regex எழுத்து வகுப்புகள்</h2>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">📅</span> புதுப்பிக்கப்பட்ட தேதி:</h4>
+                <p>ஜூலை 2025 இல் புதுப்பிக்கப்பட்டது</p>
+            </div>
+            
+            <div class="comparison-table">
+                <table>
+                    <tr>
+                        <th>வகுப்பு</th>
+                        <th>விளக்கம்</th>
+                    </tr>
+                    <tr>
+                        <td>[a]</td>
+                        <td>அடைப்புக்குறிகளுக்கு இடையேயுள்ள எழுத்தை பொருத்துகிறது</td>
+                    </tr>
+                    <tr>
+                        <td>[^a]</td>
+                        <td>அடைப்புக்குறிகளுக்கு இடையே இல்லாத அனைத்து எழுத்துகளையும் பொருத்துகிறது</td>
+                    </tr>
+                    <tr>
+                        <td>[abc]</td>
+                        <td>அடைப்புக்குறிகளுக்கு இடையே உள்ள அனைத்து எழுத்துகளையும் பொருத்துகிறது</td>
+                    </tr>
+                    <tr>
+                        <td>[^abc]</td>
+                        <td>அடைப்புக்குறிகளுக்கு இடையே இல்லாத அனைத்து எழுத்துகளையும் பொருத்துகிறது</td>
+                    </tr>
+                    <tr>
+                        <td>[a-z]</td>
+                        <td>a முதல் z வரையிலான அனைத்து எழுத்துகளையும் பொருத்துகிறது</td>
+                    </tr>
+                    <tr>
+                        <td>[^a-z]</td>
+                        <td>a முதல் z வரையிலான வரம்பில் இல்லாத அனைத்து எழுத்துகளையும் பொருத்துகிறது</td>
+                    </tr>
+                    <tr>
+                        <td>[0-9]</td>
+                        <td>0 முதல் 9 வரையிலான அனைத்து எழுத்துகளையும் பொருத்துகிறது</td>
+                    </tr>
+                    <tr>
+                        <td>[^0-9]</td>
+                        <td>0 முதல் 9 வரையிலான வரம்பில் இல்லாத அனைத்து எழுத்துகளையும் பொருத்துகிறது</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <!-- Example [HW] -->
+        <section class="content-section" id="example-hw">
+            <h2>எடுத்துக்காட்டு [HW]</h2>
+            
+            <p>ஒரு சரத்தில் "H" மற்றும் "W" எழுத்துகளுக்கான உலகளாவிய தேடல்:</p>
+            
+            <div class="code-example">
+                <pre><code>let text = "Hello World!";
+const pattern = /[HW]/g;
+
+let result = text.match(pattern);</code></pre>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">🔍</span> விளக்கம்:</h4>
+                <p>இந்த எடுத்துக்காட்டு "Hello World!" சரத்தில் "H" மற்றும் "W" எழுத்துகளைத் தேடுகிறது. முடிவு ["H", "W"] ஆக இருக்கும்.</p>
+            </div>
+        </section>
+
+        <!-- Example [A-Z] -->
+        <section class="content-section" id="example-az">
+            <h2>எடுத்துக்காட்டு [A-Z]</h2>
+            
+            <p>ஒரு சரத்தில் பெரிய எழுத்து "A" முதல் "Z" வரையிலான எழுத்துகளுக்கான உலகளாவிய தேடல்:</p>
+            
+            <div class="code-example">
+                <pre><code>let text = "This is Siva Team";
+const pattern = /[A-Z]/g;
+
+let result = text.match(pattern);</code></pre>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">🔍</span> விளக்கம்:</h4>
+                <p>இந்த எடுத்துக்காட்டு "This is Siva Team" சரத்தில் அனைத்து பெரிய எழுத்துகளையும் தேடுகிறது. முடிவு ["T", "J", "T"] ஆக இருக்கும்.</p>
+            </div>
+        </section>
+
+        <!-- Example [1234] -->
+        <section class="content-section" id="example-1234">
+            <h2>எடுத்துக்காட்டு [1234]</h2>
+            
+            <p>ஒரு சரத்தில் "1", "2", "3" மற்றும் "4" எழுத்துகளுக்கான உலகளாவிய தேடல்:</p>
+            
+            <div class="code-example">
+                <pre><code>let text = "123456789";
+const pattern = /[1234]/g;
+
+let result = text.match(pattern);</code></pre>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">🔍</span> விளக்கம்:</h4>
+                <p>இந்த எடுத்துக்காட்டு "123456789" சரத்தில் 1, 2, 3, மற்றும் 4 இலக்கங்களைத் தேடுகிறது. முடிவு ["1", "2", "3", "4"] ஆக இருக்கும்.</p>
+            </div>
+        </section>
+
+        <!-- Example [1-4] -->
+        <section class="content-section" id="example-1-4">
+            <h2>எடுத்துக்காட்டு [1-4]</h2>
+            
+            <p>ஒரு சரத்தில் "1" முதல் "4" வரையிலான எழுத்துகளுக்கான உலகளாவிய தேடல்:</p>
+            
+            <div class="code-example">
+                <pre><code>let text = "123456789";
+const pattern = /[1-4]/g;
+
+let result = text.match(pattern);</code></pre>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">ℹ️</span> குறிப்பு:</h4>
+                <p>[01234] என்பது [0-4] போன்றது</p>
+                <p>[abcde] என்பது [a-e] போன்றது</p>
+                <p>வரம்பு தொடரியல் எழுத்து வகுப்புகளை எழுதுவதற்கான ஒரு குறுகிய வழியை வழங்குகிறது.</p>
+            </div>
+        </section>
+
+        <!-- More Examples -->
+        <section class="content-section" id="more-examples">
+            <h2>மேலும் எடுத்துக்காட்டுகள்</h2>
+            
+            <div class="examples-grid">
+                <div class="example-card">
+                    <div class="example-icon">
+                        <i class="fas fa-font"></i>
+                    </div>
+                    <h4>[a-zA-Z]</h4>
+                    <p>அனைத்து எழுத்துகளையும் (பெரிய மற்றும் சிறிய) பொருத்துகிறது</p>
+                    <div class="code-example">
+                        <pre><code>/[a-zA-Z]/g</code></pre>
+                    </div>
+                </div>
+                
+                <div class="example-card">
+                    <div class="example-icon">
+                        <i class="fas fa-sort-numeric-up"></i>
+                    </div>
+                    <h4>[0-9a-fA-F]</h4>
+                    <p>அனைத்து ஹெக்ஸாடெசிமல் இலக்கங்களையும் பொருத்துகிறது</p>
+                    <div class="code-example">
+                        <pre><code>/[0-9a-fA-F]/g</code></pre>
+                    </div>
+                </div>
+                
+                <div class="example-card">
+                    <div class="example-icon">
+                        <i class="fas fa-not-equal"></i>
+                    </div>
+                    <h4>[^0-9]</h4>
+                    <p>இலக்கங்கள் அல்லாத அனைத்து எழுத்துகளையும் பொருத்துகிறது</p>
+                    <div class="code-example">
+                        <pre><code>/[^0-9]/g</code></pre>
+                    </div>
+                </div>
+                
+                <div class="example-card">
+                    <div class="example-icon">
+                        <i class="fas fa-keyboard"></i>
+                    </div>
+                    <h4>[aeiou]</h4>
+                    <p>அனைத்து உயிரெழுத்துகளையும் பொருத்துகிறது</p>
+                    <div class="code-example">
+                        <pre><code>/[aeiou]/gi</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Practical Applications -->
+        <section class="content-section" id="practical-applications">
+            <h2>நடைமுறை பயன்பாடுகள்</h2>
+            
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-check-circle"></i>
+                        <h4>உள்ளீட்டு சரிபார்ப்பு</h4>
+                    </div>
+                    <p>பயனர் உள்ளீட்டில் எண்கள் மட்டுமே உள்ளதா என சரிபார்க்க:</p>
+                    <div class="code-example">
+                        <pre><code>const isOnlyNumbers = /^[0-9]+$/.test(input);</code></pre>
+                    </div>
+                </div>
+                
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-envelope"></i>
+                        <h4>மின்னஞ்சல் சரிபார்ப்பு</h4>
+                    </div>
+                    <p>மின்னஞ்சல் முகவரியில் சரியான எழுத்துகள் உள்ளதா என சரிபார்க்க:</p>
+                    <div class="code-example">
+                        <pre><code>const isValidEmail = /^[a-zA-Z0-9._%+-]+@/.test(email);</code></pre>
+                    </div>
+                </div>
+                
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-filter"></i>
+                        <h4>தரவு வடிகட்டுதல்</h4>
+                    </div>
+                    <p>எண்கள் அல்லாத அனைத்து எழுத்துகளையும் நீக்கு:</p>
+                    <div class="code-example">
+                        <pre><code>const numbersOnly = text.replace(/[^0-9]/g, '');</code></pre>
+                    </div>
+                </div>
+                
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-search"></i>
+                        <h4>குறிப்பிட்ட எழுத்து தேடல்</h4>
+                    </div>
+                    <p>குறிப்பிட்ட எழுத்துகளின் தொகுப்பைத் தேடு:</p>
+                    <div class="code-example">
+                        <pre><code>const vowels = text.match(/[aeiouAEIOU]/g);</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Regular Expression Methods -->
+        <section class="content-section" id="regex-methods">
+            <h2>வழக்கமான வெளிப்பாடு முறைகள்</h2>
+            
+            <p>வழக்கமான வெளிப்பாடு தேடல் மற்றும் மாற்றீடு வெவ்வேறு முறைகளுடன் செய்யப்படலாம்.</p>
+            
+            <p>இவை மிகவும் பொதுவானவை:</p>
+            
+            <h3>சரம் முறைகள்</h3>
+            <div class="comparison-table">
+                <table>
+                    <tr>
+                        <th>முறை</th>
+                        <th>விளக்கம்</th>
+                    </tr>
+                    <tr>
+                        <td>match(regex)</td>
+                        <td>முடிவுகளின் ஒரு வரிசையை வழங்குகிறது</td>
+                    </tr>
+                    <tr>
+                        <td>matchAll(regex)</td>
+                        <td>முடிவுகளின் ஒரு மறுசுழற்சியை வழங்குகிறது</td>
+                    </tr>
+                    <tr>
+                        <td>replace(regex)</td>
+                        <td>ஒரு புதிய சரத்தை வழங்குகிறது</td>
+                    </tr>
+                    <tr>
+                        <td>replaceAll(regex)</td>
+                        <td>ஒரு புதிய சரத்தை வழங்குகிறது</td>
+                    </tr>
+                    <tr>
+                        <td>search(regex)</td>
+                        <td>முதல் பொருத்தத்தின் குறியீட்டை வழங்குகிறது</td>
+                    </tr>
+                    <tr>
+                        <td>split(regex)</td>
+                        <td>முடிவுகளின் ஒரு வரிசையை வழங்குகிறது</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <h3>RegExp முறைகள்</h3>
+            <div class="comparison-table">
+                <table>
+                    <tr>
+                        <th>முறை</th>
+                        <th>விளக்கம்</th>
+                    </tr>
+                    <tr>
+                        <td>regex.exec()</td>
+                        <td>முடிவுகளின் ஒரு மறுசுழற்சியை வழங்குகிறது</td>
+                    </tr>
+                    <tr>
+                        <td>regex.test()</td>
+                        <td>true அல்லது false ஐ வழங்குகிறது</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">📚</span> Siva Team குறிப்பு:</h4>
+                <p>மேலும் அறிய:
+                <ul>
+                    <li>JavaScript RegExp டுடோரியல்</li>
+                    <li>JavaScript RegExp கொடிகள்</li>
+                    <li>JavaScript RegExp மெட்டாஎழுத்துகள்</li>
+                    <li>JavaScript RegExp உறுதிப்படுத்தல்கள்</li>
+                    <li>JavaScript RegExp அளவீடுகள்</li>
+                    <li>JavaScript RegExp முறைகள்</li>
+                </ul>
+                </p>
+            </div>
+        </section>
+
+        <!-- Single Exercise -->
+        <section class="content-section" id="exercises">
+            <h2>எழுத்து வகுப்புகள் பயிற்சி</h2>
+            
+            <div class="exercise-box">
+                <h4><span class="exercise-icon">❓</span> ஒரு சரத்தில் "a" முதல் "z" வரையிலான எழுத்துகளை பொருத்துவதற்கும், ஆனால் பெரிய எழுத்துகளை பொருத்தாததற்கும் எந்த எழுத்து வகுப்பு பயன்படுத்தப்படுகிறது?</h4>
+                
+                <div class="options-grid">
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">[A-Z]</div>
+                            <div class="option-feedback incorrect">✗ தவறு! [A-Z] பெரிய எழுத்துகளை மட்டுமே பொருத்துகிறது</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="true">
+                        <div class="option-content">
+                            <div class="option-text">[a-z]</div>
+                            <div class="option-feedback correct">✓ சரி! [a-z] "a" முதல் "z" வரையிலான சிறிய எழுத்துகளை மட்டுமே பொருத்துகிறது</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">[a-zA-Z]</div>
+                            <div class="option-feedback incorrect">✗ தவறு! [a-zA-Z] பெரிய மற்றும் சிறிய எழுத்துகள் இரண்டையும் பொருத்துகிறது</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">[^A-Z]</div>
+                            <div class="option-feedback incorrect">✗ தவறு! [^A-Z] பெரிய எழுத்துகளை தவிர அனைத்து எழுத்துகளையும் பொருத்துகிறது, இது எண்கள் மற்றும் சிறப்பு எழுத்துகளையும் உள்ளடக்கும்</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bottom Navigation -->
+        <div class="bottom-nav">
+            <a href="JavaScript%20RegExp%20Flags.html" class="nav-tab prev">
+                <i class="fas fa-arrow-left"></i>
+                <span>முந்தைய</span>
+            </a>
+            <a href="RegExp%20Meta%20Characters.html" class="nav-tab next">
+                <span>அடுத்தது</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Siva Team Institution</h3>
+                <p>Leading educational institution providing quality programming education in Tamil.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#character-classes-intro">எழுத்து வகுப்புகள் அறிமுகம்</a></li>
+                    <li><a href="#regex-character-classes">எழுத்து வகுப்புகள் அட்டவணை</a></li>
+                    <li><a href="#example-hw">[HW] எடுத்துக்காட்டு</a></li>
+                    <li><a href="#example-az">[A-Z] எடுத்துக்காட்டு</a></li>
+                    <li><a href="#example-1234">[1234] எடுத்துக்காட்டு</a></li>
+                    <li><a href="#example-1-4">[1-4] எடுத்துக்காட்டு</a></li>
+                    <li><a href="#more-examples">மேலும் எடுத்துக்காட்டுகள்</a></li>
+                    <li><a href="#practical-applications">நடைமுறை பயன்பாடுகள்</a></li>
+                    <li><a href="#regex-methods">முறைகள்</a></li>
+                    <li><a href="#exercises">பயிற்சி</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Location & Hours</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <ul>
+                    <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Siva Team Institution. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all content sections for animation
+        document.querySelectorAll('.content-section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Exercise interaction
+        document.querySelectorAll('.option-card').forEach(card => {
+            card.addEventListener('click', function() {
+                // Show feedback for all options
+                document.querySelectorAll('.option-card').forEach(c => {
+                    c.querySelector('.option-feedback').style.display = 'block';
+                });
+            });
+        });
+    </script>
+
+    <!-- Home Button -->
+    <a href="index.html" class="home-icon">
+        <i class="fas fa-home"></i>
+    </a>
+</body>
+</html>
+
+

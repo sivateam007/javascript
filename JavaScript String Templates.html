@@ -1,0 +1,446 @@
+﻿<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript String Templates - Siva Team</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .content-section p, 
+        .content-section li,
+        .content-section h3,
+        .content-section h4,
+        .comparison-card p {
+            color: #333 !important;
+        }
+        
+        .tip-box p,
+        .tip-box li,
+        .tip-box h4 {
+            color: white !important;
+        }
+        
+        .warning-box p,
+        .warning-box li,
+        .warning-box h4 {
+            color: white !important;
+        }
+        
+        .exercise-box p,
+        .exercise-box h4 {
+            color: white !important;
+        }
+        
+        /* Stable logo styling - NO ANIMATIONS */
+        .logo-icon {
+            animation: none !important; /* Remove pulse animation */
+        }
+        
+        .logo-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            animation: none !important; /* Ensure no animations */
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <img src="logo.jpg" alt="Siva Team Logo" class="logo-image">
+                </div>
+                <h1>Siva Team <span>Institution</span></h1>
+            </div>
+        </div>
+    </header>
+
+    <!-- Top Navigation Tabs -->
+    <div class="nav-tabs">
+        <a href="JavaScript%20Strings.html" class="nav-tab prev">
+            <i class="fas fa-arrow-left"></i>
+            <span>முந்தைய</span>
+        </a>
+        <a href="JavaScript%20String%20Methods.html" class="nav-tab next">
+            <span>அடுத்தது</span>
+            <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2>JavaScript String Templates</h2>
+            <p>JavaScript சர டெம்ப்ளேட்டுகளைக் கற்றுக்கொள்ளுங்கள்</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Introduction -->
+        <section class="content-section" id="introduction">
+            <h2>JavaScript String Templates</h2>
+            
+            <p>சர டெம்ப்ளேட்டுகள்<br>
+            டெம்ப்ளேட் சரங்கள்<br>
+            டெம்ப்ளேட் லிட்டரல்கள்<br>
+            அன்புக்குரிய குழந்தைக்கு பல பெயர்கள் உள்ளன</p>
+        </section>
+
+        <!-- Back-Tics Syntax -->
+        <section class="content-section" id="backticks-syntax">
+            <h2>Back-Tics Syntax</h2>
+            
+            <p>டெம்ப்ளேட் சரங்கள் சரத்தை வரையறுக்க மேற்கோள்கள் (<code>""</code>) க்கு பதிலாக பின்டிக்குகள் (<code>``</code>) ஐப் பயன்படுத்துகின்றன:</p>
+            
+            <h3>Example</h3>
+            <div class="code-example">
+                <pre><code>let text = `Hello World!`;</code></pre>
+            </div>
+        </section>
+
+        <!-- Quotes Inside Strings -->
+        <section class="content-section" id="quotes-inside-strings">
+            <h2>Quotes Inside Strings</h2>
+            
+            <p>டெம்ப்ளேட் சரங்கள் ஒரு சரத்திற்குள் ஒற்றை மற்றும் இரட்டை மேற்கோள்கள் இரண்டையும் அனுமதிக்கின்றன:</p>
+            
+            <h3>Example</h3>
+            <div class="code-example">
+                <pre><code>let text = `He's often called "Johnny"`;</code></pre>
+            </div>
+        </section>
+
+        <!-- Multiline Strings -->
+        <section class="content-section" id="multiline-strings">
+            <h2>Multiline Strings</h2>
+            
+            <p>டெம்ப்ளேட் சரங்கள் பல வரி சரங்களை அனுமதிக்கின்றன:</p>
+            
+            <h3>Example</h3>
+            <div class="code-example">
+                <pre><code>let text =
+`The quick
+brown fox
+jumps over
+the lazy dog`;</code></pre>
+            </div>
+        </section>
+
+        <!-- Interpolation -->
+        <section class="content-section" id="interpolation">
+            <h2>Interpolation</h2>
+            
+            <p>டெம்ப்ளேட் சரங்கள் சரங்களில் மாறிகளை அனுமதிக்கின்றன.</p>
+            
+            <p>டெம்ப்ளேட் சரங்கள் சரங்களில் மாறிகளை இடைக்கணிப்பதற்கு ஒரு எளிய வழியை வழங்குகின்றன.</p>
+            
+            <h3>Syntax</h3>
+            <div class="code-example">
+                <pre><code>${...}</code></pre>
+            </div>
+            
+            <h3>Example - Variable Substitutions</h3>
+            <div class="code-example">
+                <pre><code>let firstName = "John";
+let lastName = "Doe";
+
+let text = `Welcome ${firstName}, ${lastName}!`;</code></pre>
+            </div>
+        </section>
+
+        <!-- Expression Substitution -->
+        <section class="content-section" id="expression-substitution">
+            <h2>Expression Substitution</h2>
+            
+            <p>டெம்ப்ளேட் சரங்கள் சரங்களில் வெளிப்பாடுகளின் இடைக்கணிப்பை அனுமதிக்கின்றன:</p>
+            
+            <h3>Example</h3>
+            <div class="code-example">
+                <pre><code>let price = 10;
+let VAT = 0.25;
+
+let total = `Total: ${(price * (1 + VAT)).toFixed(2)}`;</code></pre>
+            </div>
+        </section>
+
+        <!-- HTML Templates -->
+        <section class="content-section" id="html-templates">
+            <h2>HTML Templates</h2>
+            
+            <h3>Example</h3>
+            <div class="code-example">
+                <pre><code>let header = "Template Strings";
+let tags = ["template strings", "javascript", "es6"];
+
+let html = `&lt;h2&gt;${header}&lt;/h2&gt;&lt;ul&gt;`;
+for (const x of tags) {
+  html += `&lt;li&gt;${x}&lt;/li&gt;`;
+}
+
+html += `&lt;/ul&gt;`;</code></pre>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">💻</span> HTML டெம்ப்ளேட்டுகள்:</h4>
+                <p>டெம்ப்ளேட் சரங்கள் HTML உருவாக்கத்திற்கு சிறந்தது, ஏனெனில் அவை மாறிகள் மற்றும் வெளிப்பாடுகளை HTML குறியீட்டில் எளிதாக இணைக்க அனுமதிக்கின்றன.</p>
+            </div>
+        </section>
+
+        <!-- Browser Support -->
+        <section class="content-section" id="browser-support">
+            <h2>Browser Support</h2>
+            
+            <p>டெம்ப்ளேட் சரங்கள் ஒரு ES6 அம்சமாகும்.</p>
+            
+            <p>ES6 ஜூன் 2017 முதல் அனைத்து நவீன உலாவிகளிலும் முழுமையாக ஆதரிக்கப்படுகிறது:</p>
+            
+            <div class="comparison-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>உலாவி</th>
+                            <th>வெர்ஷன்</th>
+                            <th>தேதி</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><i class="fab fa-chrome"></i> Chrome</td>
+                            <td>51</td>
+                            <td>மே 2016</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fab fa-edge"></i> Edge</td>
+                            <td>15</td>
+                            <td>ஏப்ரல் 2017</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fab fa-firefox"></i> Firefox</td>
+                            <td>54</td>
+                            <td>ஜூன் 2017</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fab fa-safari"></i> Safari</td>
+                            <td>10</td>
+                            <td>செப்டம்பர் 2016</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fab fa-opera"></i> Opera</td>
+                            <td>38</td>
+                            <td>ஜூன் 2016</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">📱</span> உலாவி ஆதரவு:</h4>
+                <p>டெம்ப்ளேட் லிட்டரல்கள் அனைத்து நவீன உலாவிகளிலும் முழுமையாக ஆதரிக்கப்படுகின்றன. பழைய உலாவிகளுக்கு, Babel போன்ற டிரான்ஸ்பிலர் தேவைப்படலாம்.</p>
+            </div>
+        </section>
+
+        <!-- Complete String Reference -->
+        <section class="content-section" id="complete-reference">
+            <h2>Complete String Reference</h2>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">📚</span> முழு சர குறிப்பு:</h4>
+                <p>முழுமையான சர குறிப்பிற்காக, எங்களிடம் செல்லவும்:</p>
+                <p><strong>Complete JavaScript String Reference.</strong></p>
+                <p>குறிப்பு அனைத்து சர பண்புகள் மற்றும் முறைகளின் விளக்கங்கள் மற்றும் எடுத்துக்காட்டுகளைக் கொண்டுள்ளது.</p>
+            </div>
+        </section>
+
+        <!-- Template String Benefits -->
+        <section class="content-section" id="benefits">
+            <h2>Template String Benefits</h2>
+            
+            <div class="best-practice-list">
+                <div class="practice-item positive">
+                    <i class="fas fa-code"></i>
+                    <div><strong>இடைக்கணிப்பு:</strong> மாறிகள் மற்றும் வெளிப்பாடுகளை சரங்களில் எளிதாக உள்ளிடவும்</div>
+                </div>
+                
+                <div class="practice-item positive">
+                    <i class="fas fa-align-left"></i>
+                    <div><strong>பல வரி சரங்கள்:</strong> எஸ்கேப் எழுத்துகள் இல்லாமல் பல வரி உரையை உருவாக்கவும்</div>
+                </div>
+                
+                <div class="practice-item positive">
+                    <i class="fas fa-quote-right"></i>
+                    <div><strong>எளிதான மேற்கோள்கள்:</strong> ஒற்றை மற்றும் இரட்டை மேற்கோள்களை எஸ்கேப் இல்லாமல் பயன்படுத்தவும்</div>
+                </div>
+                
+                <div class="practice-item positive">
+                    <i class="fas fa-calculator"></i>
+                    <div><strong>வெளிப்பாடு மதிப்பீடு:</strong> சரங்களுக்குள் JavaScript வெளிப்பாடுகளை மதிப்பிடவும்</div>
+                </div>
+                
+                <div class="practice-item positive">
+                    <i class="fas fa-file-code"></i>
+                    <div><strong>HTML டெம்ப்ளேட்டுகள்:</strong> டைனமிக் HTML உள்ளடக்கத்தை எளிதாக உருவாக்கவும்</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Single Exercise Section -->
+        <section class="content-section" id="exercises">
+            <h2>JavaScript String Templates பயிற்சி</h2>
+            
+            <p>JavaScript இல் டெம்ப்ளேட் சரங்களுக்குப் பயன்படுத்தப்படும் பின்டிக்குகள் எப்படி இருக்கும்?</p>
+            
+            <div class="exercise-box">
+                <h4><span class="exercise-icon">❓</span> சரியான பதிலைத் தேர்ந்தெடுக்கவும்:</h4>
+                
+                <div class="options-grid">
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">" "</div>
+                            <div class="option-feedback incorrect">✗ தவறு! இவை இரட்டை மேற்கோள்கள், பின்டிக்குகள் அல்ல</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">' '</div>
+                            <div class="option-feedback incorrect">✗ தவறு! இவை ஒற்றை மேற்கோள்கள், பின்டிக்குகள் அல்ல</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="true">
+                        <div class="option-content">
+                            <div class="option-text">` `</div>
+                            <div class="option-feedback correct">✓ சரி! பின்டிக்குகள் (` `) JavaScript இல் டெம்ப்ளேட் லிட்டரல்களை வரையறுக்கப் பயன்படுத்தப்படுகின்றன</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">/ \</div>
+                            <div class="option-feedback incorrect">✗ தவறு! இவை சாய்வுகள், பின்டிக்குகள் அல்ல</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bottom Navigation -->
+        <div class="bottom-nav">
+            <a href="JavaScript%20Strings.html" class="nav-tab prev">
+                <i class="fas fa-arrow-left"></i>
+                <span>முந்தைய</span>
+            </a>
+            <a href="JavaScript%20String%20Methods.html" class="nav-tab next">
+                <span>அடுத்தது</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Siva Team Institution</h3>
+                <p>Leading educational institution providing quality programming education in Tamil.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#introduction">String Templates</a></li>
+                    <li><a href="#backticks-syntax">Back-Tics Syntax</a></li>
+                    <li><a href="#multiline-strings">Multiline Strings</a></li>
+                    <li><a href="#interpolation">Interpolation</a></li>
+                    <li><a href="#expression-substitution">Expression Substitution</a></li>
+                    <li><a href="#html-templates">HTML Templates</a></li>
+                    <li><a href="#benefits">Benefits</a></li>
+                    <li><a href="#exercises">பயிற்சி</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Location & Hours</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <ul>
+                    <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Siva Team Institution. All rights reserved.</p>
+        </div>
+</footer>
+
+<script>
+    // Add smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            if(targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if(targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+    
+    // Add scroll animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+            }
+        });
+    }, observerOptions);
+    
+    // Observe all content sections for animation
+    document.querySelectorAll('.content-section').forEach(section => {
+        observer.observe(section);
+    });
+
+    // Exercise interaction
+    document.querySelectorAll('.option-card').forEach(card => {
+        card.addEventListener('click', function() {
+            // Show feedback for all options
+            document.querySelectorAll('.option-card').forEach(c => {
+                c.querySelector('.option-feedback').style.display = 'block';
+            });
+        });
+    });
+</script>
+
+<!-- Home Button -->
+<a href="index.html" class="home-icon">
+    <i class="fas fa-home"></i>
+</a>
+</body>
+</html>
+
+

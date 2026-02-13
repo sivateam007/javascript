@@ -1,0 +1,706 @@
+﻿<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Switch Statement - Siva Team</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .content-section p, 
+        .content-section li,
+        .content-section h3,
+        .content-section h4,
+        .comparison-card p {
+            color: #333 !important;
+        }
+        
+        .tip-box p,
+        .tip-box li,
+        .tip-box h4 {
+            color: white !important;
+        }
+        
+        .warning-box p,
+        .warning-box li,
+        .warning-box h4 {
+            color: white !important;
+        }
+        
+        .exercise-box p,
+        .exercise-box h4 {
+            color: white !important;
+        }
+        
+        /* Stable logo styling - NO ANIMATIONS */
+        .logo-icon {
+            animation: none !important;
+        }
+        
+        .logo-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            animation: none !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <img src="logo.jpg" alt="Siva Team Logo" class="logo-image">
+                </div>
+                <h1>Siva Team <span>Institution</span></h1>
+            </div>
+        </div>
+    </header>
+
+    <!-- Top Navigation Tabs -->
+    <div class="nav-tabs">
+        <a href="The%20Conditional%20(Ternary)%20Operator.html" class="nav-tab prev">
+            <i class="fas fa-arrow-left"></i>
+            <span>முந்தைய</span>
+        </a>
+        <a href="JavaScript%20Booleans.html" class="nav-tab next">
+            <span>அடுத்தது</span>
+            <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2>JavaScript Switch Statement</h2>
+            <p>Switch கட்டுப்பாட்டு ஓட்டத்தைப் பயன்படுத்தி மடங்கு நிபந்தனைகளைக் கையாள கற்றுக்கொள்ளுங்கள்</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Introduction -->
+        <section class="content-section" id="introduction">
+            <h2>Switch கட்டுப்பாட்டு ஓட்டம்</h2>
+            
+            <p>ஒரு நிபந்தனையின் அடிப்படையில், switch ஒன்று அல்லது அதற்கு மேற்பட்ட குறியீடு தொகுதிகளைச் செயல்படுத்தத் தேர்ந்தெடுக்கிறது.</p>
+            
+            <p>switch ஒரு வெளிப்பாட்டுடன் பொருந்தக்கூடிய குறியீடு தொகுதிகளை செயல்படுத்துகிறது.</p>
+            
+            <p>switch பல if...else if...else அறிக்கைகளுக்கு மிகவும் வாசிக்கக்கூடிய மாற்றாக பயன்படுத்தப்படுகிறது, குறிப்பாக பல சாத்தியமான மதிப்புகளைக் கையாளும் போது.</p>
+        </section>
+
+        <!-- Syntax -->
+        <section class="content-section" id="syntax">
+            <h2>தொடரியல்</h2>
+            
+            <div class="code-example">
+                <pre><code>switch(expression) {
+  case x:
+    // குறியீடு தொகுதி
+    break;
+  case y:
+    // குறியீடு தொகுதி
+    break;
+  default:
+    // குறியீடு தொகுதி
+}</code></pre>
+            </div>
+            
+            <h3>இது எவ்வாறு செயல்படுகிறது:</h3>
+            
+            <div class="best-practice-list">
+                <div class="practice-item positive">
+                    <i class="fas fa-calculator"></i>
+                    <div><strong>மதிப்பீடு:</strong> switch வெளிப்பாடு ஒருமுறை மதிப்பீடு செய்யப்படுகிறது</div>
+                </div>
+                
+                <div class="practice-item positive">
+                    <i class="fas fa-balance-scale"></i>
+                    <div><strong>ஒப்பீடு:</strong> வெளிப்பாட்டின் மதிப்பு ஒவ்வொரு case இன் மதிப்புகளுடன் ஒப்பிடப்படுகிறது</div>
+                </div>
+                
+                <div class="practice-item positive">
+                    <i class="fas fa-play-circle"></i>
+                    <div><strong>இயக்கம்:</strong> பொருத்தம் இருந்தால், தொடர்புடைய குறியீடு தொகுதி செயல்படுத்தப்படுகிறது</div>
+                </div>
+                
+                <div class="practice-item positive">
+                    <i class="fas fa-stop-circle"></i>
+                    <div><strong>இல்லாத பொருத்தம்:</strong> பொருத்தம் இல்லையென்றால், எந்த குறியீடும் இயக்கப்படாது</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example -->
+        <section class="content-section" id="example">
+            <h2>எடுத்துக்காட்டு</h2>
+            
+            <p>இந்த எடுத்துக்காட்டு வார நாள் எண்ணைக் கணக்கிட வார நாள் பெயரைப் பயன்படுத்துகிறது:</p>
+            
+            <div class="code-example">
+                <pre><code>switch (new Date().getDay()) {
+  case 0:
+    day = "Sunday";
+    break;
+  case 1:
+    day = "Monday";
+    break;
+  case 2:
+     day = "Tuesday";
+    break;
+  case 3:
+    day = "Wednesday";
+    break;
+  case 4:
+    day = "Thursday";
+    break;
+  case 5:
+    day = "Friday";
+    break;
+  case 6:
+    day = "Saturday";
+}</code></pre>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">📅</span> குறிப்பு:</h4>
+                <p>getDay() முறை வார நாளை 0 மற்றும் 6 க்கு இடையில் ஒரு எண்ணாக வழங்குகிறது.</p>
+                <p>(ஞாயிறு=0, திங்கள்=1, செவ்வாய்=2 ..)</p>
+            </div>
+        </section>
+
+        <!-- Break Keyword -->
+        <section class="content-section" id="break">
+            <h2>break கீ வேர்டு</h2>
+            
+            <p>JavaScript ஒரு break கீ வேர்டை அடையும் போது, அது switch தொகுதியிலிருந்து வெளியேறுகிறது.</p>
+            
+            <p>இது switch தொகுதிக்குள் இயக்கத்தை நிறுத்தும்.</p>
+            
+            <p>switch தொகுதியில் மேலும் அறிக்கைகள் செயல்படுத்தப்படாது.</p>
+            
+            <p>கடைசி case ஐ break செய்ய வேண்டிய அவசியமில்லை. switch அங்கேயே முடிகிறது (break).</p>
+            
+            <div class="warning-box">
+                <h4><span class="warning-icon">⚠️</span> குறிப்பு:</h4>
+                <p>break கீ வேர்டு "fall-through" ஐத் தடுப்பதற்கு முக்கியமானது.</p>
+                <p>break இல்லாமல், அவற்றின் மதிப்புகள் வெளிப்பாட்டுடன் பொருந்தாவிட்டாலும், குறியீடு அடுத்த case தொகுதிகளை (மற்றும் default தொகுதி இருந்தால்) தொடர்ந்து இயக்கும்.</p>
+            </div>
+            
+            <h3>break இல்லாமல் எடுத்துக்காட்டு:</h3>
+            <div class="code-example">
+                <pre><code>let result = "";
+let day = 2;
+
+switch (day) {
+  case 0:
+    result += "Sunday ";
+  case 1:
+    result += "Monday ";
+  case 2:
+    result += "Tuesday ";
+  case 3:
+    result += "Wednesday ";
+  default:
+    result += "Other day";
+}
+
+console.log(result); // "Tuesday Wednesday Other day"</code></pre>
+            </div>
+        </section>
+
+        <!-- Default Keyword -->
+        <section class="content-section" id="default">
+            <h2>default கீ வேர்டு</h2>
+            
+            <p>default கீ வேர்டு case பொருத்தம் இல்லையென்றால் இயக்கப்பட வேண்டிய ஒரு குறியீடு தொகுதியைக் குறிப்பிடுகிறது.</p>
+            
+            <p>default கீ வேர்டு விருப்பத்தேர்வு.</p>
+            
+            <p>default ஒரு fallback ஆக செயல்படலாம்:</p>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <p>getDay() முறை வார நாளை 0 மற்றும் 6 க்கு இடையில் ஒரு எண்ணாக வழங்குகிறது.</p>
+            
+            <p>இன்று சனிக்கிழமை (6) அல்லது ஞாயிற்றுக்கிழமை (0) இல்லையென்றால், ஒரு default செய்தியை எழுதுங்கள்:</p>
+            
+            <div class="code-example">
+                <pre><code>switch (new Date().getDay()) {
+  case 6:
+    text = "Today is Saturday";
+    break;
+  case 0:
+    text = "Today is Sunday";
+    break;
+  default:
+    text = "Looking forward to the Weekend";
+}</code></pre>
+            </div>
+            
+            <p>text இன் முடிவு இருக்கும்:</p>
+            <div class="code-example">
+                <pre><code>"Looking forward to the Weekend"</code></pre>
+            </div>
+            
+            <h3>default case switch தொகுதியில் கடைசி case ஆக இருக்க வேண்டியதில்லை:</h3>
+            
+            <div class="code-example">
+                <pre><code>switch (new Date().getDay()) {
+  default:
+    text = "Looking forward to the Weekend";
+    break;
+  case 6:
+    text = "Today is Saturday";
+    break;
+  case 0:
+    text = "Today is Sunday";
+}</code></pre>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">💡</span> கவனிக்க:</h4>
+                <p>default switch தொகுதியில் கடைசி case ஆக இல்லாவிட்டால், default case ஐ break உடன் முடிக்க நினைவில் கொள்ளுங்கள்.</p>
+            </div>
+        </section>
+
+        <!-- Common Code Blocks -->
+        <section class="content-section" id="common-blocks">
+            <h2>பொதுவான குறியீடு தொகுதிகள்</h2>
+            
+            <p>சில நேரங்களில் வெவ்வேறு switch case கள் ஒரே குறியீட்டைப் பயன்படுத்த நீங்கள் விரும்பலாம்.</p>
+            
+            <p>இந்த எடுத்துக்காட்டில் case 4 மற்றும் 5 ஒரே குறியீடு தொகுதியைப் பகிர்ந்து கொள்கின்றன, மற்றும் 0 மற்றும் 6 மற்றொரு குறியீடு தொகுதியைப் பகிர்ந்து கொள்கின்றன:</p>
+            
+            <div class="code-example">
+                <pre><code>switch (new Date().getDay()) {
+  case 4:
+  case 5:
+    text = "Soon it is Weekend";
+    break;
+  case 0:
+  case 6:
+    text = "It is Weekend";
+    break;
+  default:
+    text = "Looking forward to the Weekend";
+}</code></pre>
+            </div>
+            
+            <h3>மேலும் எடுத்துக்காட்டுகள்:</h3>
+            <div class="code-example">
+                <pre><code>// மாதங்களை பருவங்களாக வகைப்படுத்துதல்
+let month = new Date().getMonth();
+let season;
+
+switch (month) {
+  case 11: case 0: case 1:
+    season = "Winter";
+    break;
+  case 2: case 3: case 4:
+    season = "Spring";
+    break;
+  case 5: case 6: case 7:
+    season = "Summer";
+    break;
+  case 8: case 9: case 10:
+    season = "Autumn";
+    break;
+  default:
+    season = "Invalid month";
+}
+
+// கிரேடுகளை வகைப்படுத்துதல்
+let grade = 'B';
+let result;
+
+switch(grade) {
+  case 'A': case 'B': case 'C':
+    result = "Pass";
+    break;
+  case 'D': case 'F':
+    result = "Fail";
+    break;
+  default:
+    result = "Invalid grade";
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- Switching Details -->
+        <section class="content-section" id="details">
+            <h2>Switch விவரங்கள்</h2>
+            
+            <div class="best-practice-list">
+                <div class="practice-item positive">
+                    <i class="fas fa-list-ol"></i>
+                    <div><strong>பல பொருத்தங்கள்:</strong> பல case கள் ஒரு case மதிப்புடன் பொருந்தினால், முதல் case தேர்ந்தெடுக்கப்படுகிறது</div>
+                </div>
+                
+                <div class="practice-item positive">
+                    <i class="fas fa-search"></i>
+                    <div><strong>பொருத்தம் இல்லை:</strong> பொருத்தமான case கள் கிடைக்கவில்லை என்றால், நிரல் default லேபிளுக்கு தொடர்கிறது</div>
+                </div>
+                
+                <div class="practice-item positive">
+                    <i class="fas fa-forward"></i>
+                    <div><strong>default இல்லை:</strong> default லேபிள் கிடைக்கவில்லை என்றால், நிரல் switch க்குப் பிறகு உள்ள அறிக்கை(கள்)க்குத் தொடர்கிறது</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Strict Comparison -->
+        <section class="content-section" id="strict">
+            <h2>கண்டிப்பான ஒப்பீடு</h2>
+            
+            <p>Switch கண்டிப்பான ஒப்பீடு (===) பயன்படுத்துகிறது.</p>
+            
+            <p>பொருத்துவதற்கு மதிப்புகள் ஒரே வகையில் இருக்க வேண்டும்.</p>
+            
+            <p>இரண்டு செயலிகள் ஒரே வகையில் இருந்தால் மட்டுமே கண்டிப்பான ஒப்பீடு true ஆக இருக்க முடியும்.</p>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <p>இந்த எடுத்துக்காட்டில் x க்கு பொருத்தம் இல்லை:</p>
+            
+            <div class="code-example">
+                <pre><code>let x = "0";
+switch (x) {
+  case 0:
+    text = "Off";
+    break;
+  case 1:
+    text = "On";
+    break;
+  default:
+    text = "No value found";
+}</code></pre>
+            </div>
+            
+            <p>மேலே உள்ள எடுத்துக்காட்டில், x என்பது "0" (சரம்), ஆனால் case 0 0 (எண்) உடன் ஒப்பிடப்படுகிறது. கண்டிப்பான ஒப்பீடு காரணமாக, அவை பொருந்தாது, எனவே default case இயக்கப்படும்.</p>
+            
+            <div class="warning-box">
+                <h4><span class="warning-icon">🔍</span> Switch vs If...else ஒப்பீடு:</h4>
+                <div class="code-comparison">
+                    <div class="code-column">
+                        <h4>Switch (கண்டிப்பான)</h4>
+                        <div class="code-example">
+                            <pre><code>let value = "2";
+switch(value) {
+  case 2:    // பொருந்தாது
+    console.log("Number 2");
+    break;
+  case "2":  // பொருந்தும்
+    console.log("String '2'");
+    break;
+}</code></pre>
+                        </div>
+                    </div>
+                    <div class="code-column">
+                        <h4>If...else (வகை மாற்றம்)</h4>
+                        <div class="code-example">
+                            <pre><code>let value = "2";
+if (value == 2) {    // பொருந்தும் (வகை மாற்றம்)
+  console.log("Number 2");
+} else if (value === "2") {
+  console.log("String '2'");
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Switch vs If...Else -->
+        <section class="content-section" id="comparison">
+            <h2>Switch vs If...Else</h2>
+            
+            <div class="comparison-table">
+                <table>
+                    <tr>
+                        <th>அம்சம்</th>
+                        <th>Switch</th>
+                        <th>If...Else</th>
+                    </tr>
+                    <tr>
+                        <td><strong>ஒப்பீடு முறை</strong></td>
+                        <td>கண்டிப்பான ஒப்பீடு (===)</td>
+                        <td>வகை மாற்றம் அல்லது கண்டிப்பானது</td>
+                    </tr>
+                    <tr>
+                        <td><strong>வெளிப்பாடு</strong></td>
+                        <td>ஒற்றை வெளிப்பாட்டை மதிப்பிடுகிறது</td>
+                        <td>பல வெவ்வேறு வெளிப்பாடுகளை மதிப்பிடலாம்</td>
+                    </tr>
+                    <tr>
+                        <td><strong>சிக்கலான நிபந்தனைகள்</strong></td>
+                        <td>ஒற்றை மதிப்புகள்/வரம்புகள்</td>
+                        <td>சிக்கலான தர்க்கம், வரம்புகள், தருக்க செயலிகள்</td>
+                    </tr>
+                    <tr>
+                        <td><strong>வாசிப்புத்தன்மை</strong></td>
+                        <td>பல மதிப்புகளுக்கு நல்லது</td>
+                        <td>சிக்கலான தர்க்கத்திற்கு நல்லது</td>
+                    </tr>
+                    <tr>
+                        <td><strong>செயல்திறன்</strong></td>
+                        <td>பல case களுக்கு வேகமானது</td>
+                        <td>சில நிபந்தனைகளுக்கு வேகமானது</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <h3>எப்போது Switch பயன்படுத்துவது:</h3>
+            <div class="best-practice-list">
+                <div class="practice-item positive">
+                    <i class="fas fa-check-circle"></i>
+                    <div><strong>பல தனிப்பட்ட மதிப்புகள்:</strong> ஒரு மாறிக்கு பல குறிப்பிட்ட மதிப்புகளை சரிபார்க்கும்போது</div>
+                </div>
+                
+                <div class="practice-item positive">
+                    <i class="fas fa-check-circle"></i>
+                    <div><strong>எனும்அறிக்கைகள்:</strong> ஒரே வெளிப்பாட்டை பல முறை மதிப்பிடுவதைத் தவிர்க்கும்போது</div>
+                </div>
+                
+                <div class="practice-item positive">
+                    <i class="fas fa-check-circle"></i>
+                    <div><strong>வாசிப்புத்தன்மை:</strong> பல if...else if அறிக்கைகளை விட தெளிவான குறியீடு தேவைப்படும் போது</div>
+                </div>
+            </div>
+            
+            <h3>எப்போது If...Else பயன்படுத்துவது:</h3>
+            <div class="best-practice-list">
+                <div class="practice-item positive">
+                    <i class="fas fa-check-circle"></i>
+                    <div><strong>வரம்புகள்:</strong> மதிப்பு வரம்புகளை சோதிக்கும்போது (x > 10)</div>
+                </div>
+                
+                <div class="practice-item positive">
+                    <i class="fas fa-check-circle"></i>
+                    <div><strong>பல வெவ்வேறு வெளிப்பாடுகள்:</strong> வெவ்வேறு மாறிகள் அல்லது வெளிப்பாடுகளை சோதிக்கும்போது</div>
+                </div>
+                
+                <div class="practice-item positive">
+                    <i class="fas fa-check-circle"></i>
+                    <div><strong>தருக்க செயலிகள்:</strong> சிக்கலான தர்க்கம் தேவைப்படும் போது (&&, ||, !)</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Advanced Switch Examples -->
+        <section class="content-section" id="advanced">
+            <h2>மேம்பட்ட Switch எடுத்துக்காட்டுகள்</h2>
+            
+            <div class="code-example">
+                <pre><code>// ஒரு செயல்பாட்டின் முடிவைப் பயன்படுத்துதல்
+switch (getUserRole()) {
+  case 'admin':
+    showAdminPanel();
+    break;
+  case 'editor':
+    showEditorPanel();
+    break;
+  case 'viewer':
+    showViewerPanel();
+    break;
+  default:
+    showLoginScreen();
+}
+
+// வெளிப்பாடுகளுடன் Switch
+let score = 85;
+let grade;
+
+switch (true) {
+  case score >= 90:
+    grade = 'A';
+    break;
+  case score >= 80:
+    grade = 'B';
+    break;
+  case score >= 70:
+    grade = 'C';
+    break;
+  case score >= 60:
+    grade = 'D';
+    break;
+  default:
+    grade = 'F';
+}
+
+// கலப்பு தரவு வகைகள்
+let input = getUserInput();
+
+switch (typeof input) {
+  case 'string':
+    console.log('Input is a string:', input.toUpperCase());
+    break;
+  case 'number':
+    console.log('Input is a number:', input * 2);
+    break;
+  case 'boolean':
+    console.log('Input is boolean:', !input);
+    break;
+  default:
+    console.log('Unknown input type');
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- Single Exercise Section -->
+        <section class="content-section" id="exercises">
+            <h2>JavaScript Switch Statement பயிற்சி</h2>
+            
+            <p>switch அறிக்கை பற்றிய உங்கள் அறிவைச் சோதிக்க இந்தப் பயிற்சியை முயற்சிக்கவும்.</p>
+            
+            <div class="exercise-box">
+                <h4><span class="exercise-icon">❓</span> பின்வரும் எது switch அறிக்கையில் ஒரு கீ வேர்ட் அல்ல?</h4>
+                
+                <div class="options-grid">
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">switch</div>
+                            <div class="option-feedback incorrect">✗ தவறு! switch என்பது switch அறிக்கையைத் தொடங்க பயன்படும் முக்கிய கீ வேர்ட் ஆகும்</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">break</div>
+                            <div class="option-feedback incorrect">✗ தவறு! break என்பது ஒரு case இலிருந்து வெளியேற பயன்படும் கீ வேர்ட் ஆகும், இது "fall-through" ஐத் தடுக்கிறது</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="true">
+                        <div class="option-content">
+                            <div class="option-text">continue</div>
+                            <div class="option-feedback correct">✓ சரி! continue என்பது switch அறிக்கையில் கீ வேர்ட் அல்ல. continue loops இல் பயன்படுத்தப்படுகிறது, switch இல் அல்ல. switch அறிக்கையில் பயன்படுத்தப்படும் கீ வேர்ட்கள்: switch, case, break, மற்றும் default</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">default</div>
+                            <div class="option-feedback incorrect">✗ தவறு! default என்பது எந்த case பொருத்தமும் இல்லாதபோது இயக்கப்படும் குறியீடு தொகுதியை வரையறுக்கப் பயன்படும் கீ வேர்ட் ஆகும்</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bottom Navigation -->
+        <div class="bottom-nav">
+            <a href="The%20Conditional%20(Ternary)%20Operator.html" class="nav-tab prev">
+                <i class="fas fa-arrow-left"></i>
+                <span>முந்தைய</span>
+            </a>
+            <a href="JavaScript%20Booleans.html" class="nav-tab next">
+                <span>அடுத்தது</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Siva Team Institution</h3>
+                <p>Leading educational institution providing quality programming education in Tamil.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#introduction">Switch அறிமுகம்</a></li>
+                    <li><a href="#syntax">தொடரியல்</a></li>
+                    <li><a href="#break">break கீ வேர்டு</a></li>
+                    <li><a href="#default">default கீ வேர்டு</a></li>
+                    <li><a href="#common-blocks">பொதுவான தொகுதிகள்</a></li>
+                    <li><a href="#strict">கண்டிப்பான ஒப்பீடு</a></li>
+                    <li><a href="#comparison">Switch vs If...Else</a></li>
+                    <li><a href="#exercises">பயிற்சி</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Location & Hours</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <ul>
+                    <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Siva Team Institution. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all content sections for animation
+        document.querySelectorAll('.content-section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Exercise interaction
+        document.querySelectorAll('.option-card').forEach(card => {
+            card.addEventListener('click', function() {
+                // Show feedback for all options
+                document.querySelectorAll('.option-card').forEach(c => {
+                    c.querySelector('.option-feedback').style.display = 'block';
+                });
+            });
+        });
+    </script>
+
+    <!-- Home Button -->
+    <a href="index.html" class="home-icon">
+        <i class="fas fa-home"></i>
+    </a>
+</body>
+</html>
+
+

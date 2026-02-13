@@ -1,0 +1,502 @@
+﻿<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Where To - Siva Team</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .content-section p, 
+        .content-section li,
+        .content-section h3,
+        .content-section h4,
+        .comparison-card p {
+            color: #333 !important;
+        }
+        
+        .tip-box p,
+        .tip-box li,
+        .tip-box h4 {
+            color: white !important;
+        }
+        
+        .warning-box p,
+        .warning-box li,
+        .warning-box h4 {
+            color: white !important;
+        }
+        
+        .exercise-box p,
+        .exercise-box h4 {
+            color: white !important;
+        }
+        
+        /* Stable logo styling - NO ANIMATIONS */
+        .logo-icon {
+            animation: none !important;
+        }
+        
+        .logo-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            animation: none !important;
+        }
+        
+        /* Demo styling */
+        .demo-container {
+            background: #f8f9fa;
+            border: 2px solid #dee2e6;
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .demo-output {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--git-color);
+            margin: 1.5rem 0;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            border-left: 4px solid var(--git-color);
+        }
+        
+        .demo-button {
+            background: linear-gradient(135deg, var(--git-color), #e74c3c);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .demo-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            background: linear-gradient(135deg, #e74c3c, var(--git-color));
+        }
+        
+        .example-box {
+            background: #e8f4f8;
+            border-left: 4px solid #3498db;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+        }
+        
+        .example-box h4 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <img src="logo.jpg" alt="Siva Team Logo" class="logo-image">
+                </div>
+                <h1>Siva Team <span>Institution</span></h1>
+            </div>
+        </div>
+    </header>
+
+    <!-- Top Navigation Tabs -->
+    <div class="nav-tabs">
+        <a href="JavaScript%20Introduction.html" class="nav-tab prev">
+            <i class="fas fa-arrow-left"></i>
+            <span>முந்தைய</span>
+        </a>
+        <a href="JavaScript%20Output.html" class="nav-tab next">
+            <span>அடுத்தது</span>
+            <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2>JavaScript Where To</h2>
+            <p>JavaScript ஐ எங்கு வைப்பது</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- The <script> Tag -->
+        <section class="content-section" id="script-tag">
+            <h2>&lt;script&gt; குறிச்சொல்</h2>
+            
+            <p>HTML இல், JavaScript குறியீடு &lt;script&gt; மற்றும் &lt;/script&gt; குறிச்சொற்களுக்கு இடையில் செருகப்படுகிறது.</p>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <div class="code-example">
+                <pre><code>&lt;script&gt;
+document.getElementById("demo").innerHTML = "My First JavaScript";
+&lt;/script&gt;</code></pre>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">📝</span> குறிப்பு:</h4>
+                <p>பழைய JavaScript எடுத்துக்காட்டுகள் type பண்பைப் பயன்படுத்தலாம்: &lt;script type="text/javascript"&gt;. type பண்பு தேவையில்லை. JavaScript என்பது HTML இல் இயல்புநிலை ஸ்கிரிப்டிங் மொழியாகும்.</p>
+            </div>
+        </section>
+
+        <!-- JavaScript Functions and Events -->
+        <section class="content-section" id="functions-events">
+            <h2>JavaScript செயல்பாடுகள் மற்றும் நிகழ்வுகள்</h2>
+            
+            <p>ஒரு JavaScript செயல்பாடு என்பது JavaScript குறியீட்டின் தொகுதி ஆகும், இது "அழைக்கப்படும்" போது செயல்படுத்தப்படலாம்.</p>
+            
+            <p>உதாரணமாக, பயனர் ஒரு பொத்தானைக் கிளிக் செய்யும் போது போன்ற ஒரு நிகழ்வு ஏற்படும் போது ஒரு செயல்பாடு அழைக்கப்படலாம்.</p>
+            
+            <p>பின்னர் வரும் அத்தியாயங்களில் செயல்பாடுகள் மற்றும் நிகழ்வுகள் பற்றி நீங்கள் மேலும் அறிவீர்கள்.</p>
+        </section>
+
+        <!-- JavaScript in <head> or <body> -->
+        <section class="content-section" id="head-body">
+            <h2>JavaScript &lt;head&gt; அல்லது &lt;body&gt; இல்</h2>
+            
+            <p>நீங்கள் எந்தவொரு HTML ஆவணத்திலும் எத்தனை ஸ்கிரிப்ட்களையும் வைக்கலாம்.</p>
+            
+            <p>ஸ்கிரிப்ட்களை HTML பக்கத்தின் &lt;body&gt; அல்லது &lt;head&gt; பிரிவில் அல்லது இரண்டிலும் வைக்கலாம்.</p>
+        </section>
+
+        <!-- JavaScript in <head> -->
+        <section class="content-section" id="js-in-head">
+            <h2>JavaScript &lt;head&gt; இல்</h2>
+            
+            <p>இந்த எடுத்துக்காட்டில், ஒரு JavaScript செயல்பாடு ஒரு HTML பக்கத்தின் &lt;head&gt; பிரிவில் வைக்கப்படுகிறது.</p>
+            
+            <p>பொத்தான் கிளிக் செய்யப்படும் போது செயல்பாடு அழைக்கப்படுகிறது:</p>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <div class="code-example">
+                <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;script&gt;
+function myFunction() {
+  document.getElementById("demo").innerHTML = "Paragraph changed.";
+}
+&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h2&gt;Demo JavaScript in Head&lt;/h2&gt;
+
+&lt;p id="demo"&gt;A Paragraph&lt;/p&gt;
+&lt;button type="button" onclick="myFunction()"&gt;Try it&lt;/button&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            </div>
+            
+            <div class="demo-container">
+                <h4>நேரடி டெமோ:</h4>
+                <p id="demo-head">இது ஒரு பத்தி</p>
+                <button class="demo-button" onclick="changeHeadParagraph()">Try it</button>
+            </div>
+        </section>
+
+        <!-- JavaScript in <body> -->
+        <section class="content-section" id="js-in-body">
+            <h2>JavaScript &lt;body&gt; இல்</h2>
+            
+            <p>இந்த எடுத்துக்காட்டில், ஒரு JavaScript செயல்பாடு ஒரு HTML பக்கத்தின் &lt;body&gt; பிரிவில் வைக்கப்படுகிறது.</p>
+            
+            <p>பொத்தான் கிளிக் செய்யப்படும் போது செயல்பாடு அழைக்கப்படுகிறது:</p>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <div class="code-example">
+                <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+
+&lt;h2&gt;Demo JavaScript in Body&lt;/h2&gt;
+
+&lt;p id="demo"&gt;A Paragraph&lt;/p&gt;
+
+&lt;button type="button" onclick="myFunction()"&gt;Try it&lt;/button&gt;
+
+&lt;script&gt;
+function myFunction() {
+  document.getElementById("demo").innerHTML = "Paragraph changed.";
+}
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            </div>
+            
+            <div class="demo-container">
+                <h4>நேரடி டெமோ:</h4>
+                <p id="demo-body">இது ஒரு பத்தி</p>
+                <button class="demo-button" onclick="changeBodyParagraph()">Try it</button>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">⚡</span> செயல்திறன் உதவிக்குறிப்பு:</h4>
+                <p>&lt;body&gt; உறுப்பின் அடிப்பகுதியில் ஸ்கிரிப்ட்களை வைப்பது காட்சி வேகத்தை மேம்படுத்துகிறது, ஏனெனில் ஸ்கிரிப்ட் விளக்கம் காட்சியை மெதுவாக்குகிறது.</p>
+            </div>
+        </section>
+
+        <!-- External JavaScript -->
+        <section class="content-section" id="external-js">
+            <h2>வெளிப்புற JavaScript</h2>
+            
+            <p>ஸ்கிரிப்ட்களை வெளிப்புற கோப்புகளிலும் வைக்கலாம்:</p>
+            
+            <div class="example-box">
+                <h4>வெளிப்புற கோப்பு: myScript.js</h4>
+                <div class="code-example">
+                    <pre><code>function myFunction() {
+  document.getElementById("demo").innerHTML = "Paragraph changed.";
+}</code></pre>
+                </div>
+            </div>
+            
+            <p>அதே குறியீடு பல்வேறு வலைப்பக்கங்களில் பயன்படுத்தப்படும்போது வெளிப்புற ஸ்கிரிப்ட்கள் நடைமுறைக்குரியவை.</p>
+            
+            <p>JavaScript கோப்புகள் .js கோப்பு நீட்டிப்பைக் கொண்டுள்ளன.</p>
+            
+            <p>வெளிப்புற ஸ்கிரிப்டைப் பயன்படுத்த, ஸ்கிரிப்ட் கோப்பின் பெயரை &lt;script&gt; குறிச்சொல்லின் src (மூல) பண்பில் வைக்கவும்:</p>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <div class="code-example">
+                <pre><code>&lt;script src="myScript.js"&gt;&lt;/script&gt;</code></pre>
+            </div>
+            
+            <p>நீங்கள் விரும்பினால் வெளிப்புற ஸ்கிரிப்ட் குறிப்பை &lt;head&gt; அல்லது &lt;body&gt; இல் வைக்கலாம்.</p>
+            
+            <p>ஸ்கிரிப்ட் &lt;script&gt; குறிச்சொல் சரியாக எங்கு அமைந்துள்ளதோ அங்கே இருப்பதைப் போலவே செயல்படும்.</p>
+            
+            <div class="warning-box">
+                <h4><span class="warning-icon">⚠️</span> எச்சரிக்கை:</h4>
+                <p>வெளிப்புற ஸ்கிரிப்ட்களில் &lt;script&gt; குறிச்சொற்கள் இருக்கக்கூடாது.</p>
+            </div>
+        </section>
+
+        <!-- External JavaScript Advantages -->
+        <section class="content-section" id="external-advantages">
+            <h2>வெளிப்புற JavaScript நன்மைகள்</h2>
+            
+            <p>ஸ்கிரிப்ட்களை வெளிப்புற கோப்புகளில் வைப்பதில் சில நன்மைகள் உள்ளன:</p>
+            
+            <ul>
+                <li>இது HTML மற்றும் குறியீட்டை பிரிக்கிறது</li>
+                <li>இது HTML மற்றும் JavaScript ஐப் படிக்கவும் பராமரிக்கவும் எளிதாக்குகிறது</li>
+                <li>கேச் செய்யப்பட்ட JavaScript கோப்புகள் பக்க ஏற்றத்தை விரைவுபடுத்தும்</li>
+            </ul>
+            
+            <p>ஒரு பக்கத்தில் பல ஸ்கிரிப்ட் கோப்புகளைச் சேர்க்க - பல ஸ்கிரிப்ட் குறிச்சொற்களைப் பயன்படுத்தவும்:</p>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <div class="code-example">
+                <pre><code>&lt;script src="myScript1.js"&gt;&lt;/script&gt;
+&lt;script src="myScript2.js"&gt;&lt;/script&gt;</code></pre>
+            </div>
+        </section>
+
+        <!-- External References -->
+        <section class="content-section" id="external-references">
+            <h2>வெளிப்புற குறிப்புகள்</h2>
+            
+            <p>ஒரு வெளிப்புற ஸ்கிரிப்டை 3 வெவ்வேறு வழிகளில் குறிப்பிடலாம்:</p>
+            
+            <ol>
+                <li>முழு URL உடன் (முழு வலை முகவரி)</li>
+                <li>கோப்புப் பாதையுடன் (/js/ போன்றது)</li>
+                <li>எந்தப் பாதையும் இல்லாமல்</li>
+            </ol>
+            
+            <p>இந்த எடுத்துக்காட்டு myScript.js உடன் இணைக்க முழு URL ஐப் பயன்படுத்துகிறது:</p>
+            
+            <div class="code-example">
+                <pre><code>&lt;script src="https://www.Sivateam.com/js/myScript.js"&gt;&lt;/script&gt;</code></pre>
+            </div>
+            
+            <p>இந்த எடுத்துக்காட்டு myScript.js உடன் இணைக்க கோப்புப் பாதையைப் பயன்படுத்துகிறது:</p>
+            
+            <div class="code-example">
+                <pre><code>&lt;script src="/js/myScript.js"&gt;&lt;/script&gt;</code></pre>
+            </div>
+            
+            <p>இந்த எடுத்துக்காட்டு myScript.js உடன் இணைக்க எந்தப் பாதையும் பயன்படுத்தாது:</p>
+            
+            <div class="code-example">
+                <pre><code>&lt;script src="myScript.js"&gt;&lt;/script&gt;</code></pre>
+            </div>
+            
+            <p>HTML கோப்புப் பாதைகள் அத்தியாயத்தில் கோப்புப் பாதைகள் பற்றி மேலும் அறியலாம்.</p>
+        </section>
+
+        <!-- Exercise - ONLY ONE EXERCISE -->
+        <section class="content-section" id="exercises">
+            <h2>JavaScript பயிற்சிகள்</h2>
+            
+            <p>இந்த டுடோரியலில் உள்ள பல அத்தியாயங்கள் உங்கள் அறிவு நிலையைச் சரிபார்க்கக்கூடிய பயிற்சியுடன் முடிகின்றன.</p>
+            
+            <div class="exercise-box">
+                <h4><span class="exercise-icon">❓</span> HTML இல், JavaScript குறியீடுகள் எந்த HTML குறிச்சொற்களுக்குள் செருகப்பட வேண்டும்?</h4>
+                
+                <div class="options-grid">
+                    <div class="option-card" data-correct="true">
+                        <div class="option-content">
+                            <div class="option-text">&lt;script&gt; மற்றும் &lt;/script&gt;</div>
+                            <div class="option-feedback correct">✓ சரி! JavaScript குறியீடு &lt;script&gt; மற்றும் &lt;/script&gt; குறிச்சொற்களுக்குள் செருகப்பட வேண்டும்</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">&lt;javascript&gt; மற்றும் &lt;/javascript&gt;</div>
+                            <div class="option-feedback incorrect">✗ தவறு! &lt;javascript&gt; என்பது HTML இல் ஒரு சரியான குறிச்சொல் அல்ல</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">&lt;head&gt;&lt;/head&gt;</div>
+                            <div class="option-feedback incorrect">✗ தவறு! &lt;head&gt; பிரிவு ஸ்கிரிப்ட்களைக் கொண்டிருக்கலாம், ஆனால் JavaScript குறியீடு இன்னும் &lt;script&gt; குறிச்சொற்களுக்குள் இருக்க வேண்டும்</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bottom Navigation -->
+        <div class="bottom-nav">
+            <a href="JavaScript%20Introduction.html" class="nav-tab prev">
+                <i class="fas fa-arrow-left"></i>
+                <span>முந்தைய</span>
+            </a>
+            <a href="JavaScript%20Output.html" class="nav-tab next">
+                <span>அடுத்தது</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Siva Team Institution</h3>
+                <p>Leading educational institution providing quality programming education in Tamil.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#script-tag">&lt;script&gt; குறிச்சொல்</a></li>
+                    <li><a href="#functions-events">செயல்பாடுகள் மற்றும் நிகழ்வுகள்</a></li>
+                    <li><a href="#head-body">JavaScript &lt;head&gt; அல்லது &lt;body&gt; இல்</a></li>
+                    <li><a href="#js-in-head">JavaScript &lt;head&gt; இல்</a></li>
+                    <li><a href="#js-in-body">JavaScript &lt;body&gt; இல்</a></li>
+                    <li><a href="#external-js">வெளிப்புற JavaScript</a></li>
+                    <li><a href="#external-advantages">வெளிப்புற JavaScript நன்மைகள்</a></li>
+                    <li><a href="#external-references">வெளிப்புற குறிப்புகள்</a></li>
+                    <li><a href="#exercises">JavaScript பயிற்சிகள்</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Location & Hours</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <ul>
+                    <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Siva Team Institution. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all content sections for animation
+        document.querySelectorAll('.content-section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Exercise interaction
+        document.querySelectorAll('.option-card').forEach(card => {
+            card.addEventListener('click', function() {
+                // Show feedback for all options
+                document.querySelectorAll('.option-card').forEach(c => {
+                    c.querySelector('.option-feedback').style.display = 'block';
+                });
+            });
+        });
+        
+        // Demo Functions
+        function changeHeadParagraph() {
+            document.getElementById("demo-head").innerHTML = "பத்தி மாற்றப்பட்டது! (JavaScript &lt;head&gt; இல்)";
+        }
+        
+        function changeBodyParagraph() {
+            document.getElementById("demo-body").innerHTML = "பத்தி மாற்றப்பட்டது! (JavaScript &lt;body&gt; இல்)";
+        }
+    </script>
+
+    <!-- Home Button -->
+    <a href="index.html" class="home-icon">
+        <i class="fas fa-home"></i>
+    </a>
+</body>
+</html>
+
+

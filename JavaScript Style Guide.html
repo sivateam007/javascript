@@ -1,0 +1,863 @@
+﻿<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Style Guide - Siva Team</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .content-section p, 
+        .content-section li,
+        .content-section h3,
+        .content-section h4,
+        .comparison-card p {
+            color: #333 !important;
+        }
+        
+        .tip-box p,
+        .tip-box li,
+        .tip-box h4 {
+            color: white !important;
+        }
+        
+        .warning-box p,
+        .warning-box li,
+        .warning-box h4 {
+            color: white !important;
+        }
+        
+        .exercise-box p,
+        .exercise-box h4 {
+            color: white !important;
+        }
+        
+        /* Stable logo styling - NO ANIMATIONS */
+        .logo-icon {
+            animation: none !important;
+        }
+        
+        .logo-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            animation: none !important;
+        }
+        
+        /* Style Guide specific styling */
+        .convention-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .convention-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-top: 4px solid #3498db;
+        }
+        
+        .convention-card h4 {
+            color: var(--dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .convention-icon {
+            color: var(--git-color);
+            font-size: 1.5rem;
+        }
+        
+        .example-container {
+            background: #f8f9fa;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+        }
+        
+        .code-example {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .good-example {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .bad-example {
+            background: #f8d7da;
+            border-left: 4px solid #dc3545;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .comparison-table th {
+            background: var(--git-color);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .comparison-table td {
+            padding: 0.8rem 1rem;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .demo-container {
+            background: #f8f9fa;
+            border: 2px solid #dee2e6;
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .demo-output {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--git-color);
+            margin: 1.5rem 0;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            border-left: 4px solid var(--git-color);
+            min-height: 60px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .demo-button {
+            background: linear-gradient(135deg, var(--git-color), #e74c3c);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .demo-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            background: linear-gradient(135deg, #e74c3c, var(--git-color));
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .naming-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .naming-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border: 2px solid #dee2e6;
+        }
+        
+        .naming-card.camel {
+            border-color: #3498db;
+        }
+        
+        .naming-card.pascal {
+            border-color: #27ae60;
+        }
+        
+        .naming-card.underscore {
+            border-color: #f39c12;
+        }
+        
+        .naming-card.hyphen {
+            border-color: #e74c3c;
+        }
+        
+        .naming-card h5 {
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        .naming-card code {
+            color: var(--git-color);
+            font-weight: bold;
+            font-size: 1rem;
+        }
+        
+        .rule-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        .rule-icon {
+            color: #27ae60;
+            font-size: 1.2rem;
+            margin-top: 0.2rem;
+        }
+        
+        .file-extensions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .file-card {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            flex: 1;
+            min-width: 120px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        
+        .file-card h5 {
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        .file-card code {
+            color: var(--git-color);
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <img src="logo.jpg" alt="Siva Team Logo" class="logo-image">
+                </div>
+                <h1>Siva Team <span>Institution</span></h1>
+            </div>
+        </div>
+    </header>
+
+    <!-- Top Navigation Tabs -->
+    <div class="nav-tabs">
+        <a href="JavaScript%20Debugging.html" class="nav-tab prev">
+            <i class="fas fa-arrow-left"></i>
+            <span>முந்தைய</span>
+        </a>
+        <a href="JavaScript%20Best%20Practices.html" class="nav-tab next">
+            <span>அடுத்தது</span>
+            <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2>JavaScript Style Guide</h2>
+            <p>JavaScript பாணி வழிகாட்டி</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Introduction -->
+        <section class="content-section" id="introduction">
+            <h2>JavaScript பாணி வழிகாட்டி</h2>
+            
+            <p>எப்போதும் உங்கள் அனைத்து JavaScript திட்டங்களுக்கும் ஒரே குறியிடும் மரபுகளைப் பயன்படுத்தவும்.</p>
+        </section>
+
+        <!-- JavaScript Coding Conventions -->
+        <section class="content-section" id="coding-conventions">
+            <h2>JavaScript குறியிடும் மரபுகள்</h2>
+            
+            <p>குறியிடும் மரபுகள் நிரலாக்கத்திற்கான பாணி வழிகாட்டிகளாகும். அவை பொதுவாக உள்ளடக்கும்:</p>
+            
+            <ul>
+                <li>மாறிகள் மற்றும் செயல்பாடுகளுக்கான பெயரிடல் மற்றும் அறிவிப்பு விதிகள்</li>
+                <li>வெள்ளை இடம், உள்தள்ளல் மற்றும் கருத்துகளின் பயன்பாட்டிற்கான விதிகள்</li>
+                <li>நிரலாக்க நடைமுறைகள் மற்றும் கொள்கைகள்</li>
+            </ul>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">🎯</span> குறியிடும் மரபுகள் தரத்தை உறுதிப்படுத்துகின்றன:</h4>
+                <p>குறியீட்டின் வாசிப்புத்திறனை மேம்படுத்துகின்றன</p>
+                <p>குறியீட்டுப் பராமரிப்பை எளிதாக்குகின்றன</p>
+            </div>
+            
+            <p>குறியிடும் மரபுகள் குழுக்கள் பின்பற்றுவதற்கான ஆவணப்படுத்தப்பட்ட விதிகளாக இருக்கலாம், அல்லது உங்கள் தனிப்பட்ட குறியிடும் நடைமுறையாக இருக்கலாம்.</p>
+            
+            <div class="warning-box">
+                <h4><span class="warning-icon">📚</span> பரிந்துரை:</h4>
+                <p>இந்தப் பக்கம் Siva Team பயன்படுத்தும் பொதுவான JavaScript குறியீட்டு மரபுகளை விவரிக்கிறது.</p>
+                <p>"சிறந்த நடைமுறைகள்" என்ற அடுத்த அத்தியாயத்தையும் படிக்கவும், மற்றும் குறியிடும் பொறிகுழிகளை எவ்வாறு தவிர்க்கலாம் என்பதைக் கற்றுக்கொள்ளவும்.</p>
+            </div>
+        </section>
+
+        <!-- Variable Names -->
+        <section class="content-section" id="variable-names">
+            <h2>மாறி பெயர்கள்</h2>
+            
+            <p>Siva Team இல் அடையாளங்காட்டி பெயர்களுக்கு (மாறிகள் மற்றும் செயல்பாடுகள்) ஒட்டுச்சொல் வழக்கைப் பயன்படுத்துகிறோம்.</p>
+            
+            <p>அனைத்து பெயர்களும் ஒரு எழுத்துடன் தொடங்குகின்றன.</p>
+            
+            <div class="example-container">
+                <h4>ஒட்டுச்சொல் வழக்கு எடுத்துக்காட்டுகள்:</h4>
+                <div class="good-example">
+                    firstName = "John";<br>
+                    lastName = "Doe";<br><br>
+                    
+                    price = 19.90;<br>
+                    tax = 0.20;<br><br>
+                    
+                    fullPrice = price + (price * tax);
+                </div>
+            </div>
+        </section>
+
+        <!-- Spaces Around Operators -->
+        <section class="content-section" id="spaces-operators">
+            <h2>செயலிகளைச் சுற்றி இடங்கள்</h2>
+            
+            <p>எப்போதும் செயலிகளைச் சுற்றி ( = + - * / ), மற்றும் காற்புள்ளிகளுக்குப் பிறகு இடங்களை வைக்கவும்:</p>
+            
+            <h3>எடுத்துக்காட்டுகள்:</h3>
+            <div class="good-example">
+                let x = y + z;<br>
+                const myArray = ["Volvo", "Saab", "Fiat"];
+            </div>
+            
+            <div class="bad-example">
+                let x=y+z; // ❌ மோசமானது<br>
+                const myArray=["Volvo","Saab","Fiat"]; // ❌ மோசமானது
+            </div>
+        </section>
+
+        <!-- Code Indentation -->
+        <section class="content-section" id="code-indentation">
+            <h2>குறியீடு உள்தள்ளல்</h2>
+            
+            <p>குறியீட்டுத் தொகுதிகளின் உள்தள்ளலுக்கு எப்போதும் 2 இடங்களைப் பயன்படுத்தவும்:</p>
+            
+            <h3>செயல்பாடுகள்:</h3>
+            <div class="good-example">
+                function toCelsius(fahrenheit) {<br>
+                &nbsp;&nbsp;return (5 / 9) * (fahrenheit - 32);<br>
+                }
+            </div>
+            
+            <div class="warning-box">
+                <h4><span class="warning-icon">⚠️</span> எச்சரிக்கை:</h4>
+                <p>உள்தள்ளலுக்கு தாவல்களைப் பயன்படுத்தாதீர்கள். வெவ்வேறு தொகுப்பிகள் தாவல்களை வெவ்வேறு விதங்களில் விளக்குகின்றன.</p>
+            </div>
+        </section>
+
+        <!-- Statement Rules -->
+        <section class="content-section" id="statement-rules">
+            <h2>அறிக்கை விதிகள்</h2>
+            
+            <h3>எளிய அறிக்கைகளுக்கான பொதுவான விதிகள்:</h3>
+            <div class="rule-item">
+                <i class="fas fa-check-circle rule-icon"></i>
+                <div>எப்போதும் ஒரு எளிய அறிக்கையை அரைப்புள்ளியுடன் முடிக்கவும்.</div>
+            </div>
+            
+            <h4>எடுத்துக்காட்டுகள்:</h4>
+            <div class="good-example">
+                const cars = ["Volvo", "Saab", "Fiat"];<br><br>
+                
+                const person = {<br>
+                &nbsp;&nbsp;firstName: "John",<br>
+                &nbsp;&nbsp;lastName: "Doe",<br>
+                &nbsp;&nbsp;age: 50,<br>
+                &nbsp;&nbsp;eyeColor: "blue"<br>
+                };
+            </div>
+            
+            <h3>சிக்கலான (கூட்டு) அறிக்கைகளுக்கான பொதுவான விதிகள்:</h3>
+            
+            <div class="convention-grid">
+                <div class="convention-card">
+                    <h4><i class="fas fa-bracket-curly convention-icon"></i> ஆரம்ப அடைப்புக்குறி</h4>
+                    <p>முதல் வரியின் முடிவில் ஆரம்ப அடைப்புக்குறியை வைக்கவும்.</p>
+                </div>
+                
+                <div class="convention-card">
+                    <h4><i class="fas fa-space convention-icon"></i> இடம்</h4>
+                    <p>ஆரம்ப அடைப்புக்குறிக்கு முன் ஒரு இடத்தைப் பயன்படுத்தவும்.</p>
+                </div>
+                
+                <div class="convention-card">
+                    <h4><i class="fas fa-arrow-down convention-icon"></i> முடிவு அடைப்புக்குறி</h4>
+                    <p>முன்னணி இடங்கள் இல்லாமல் ஒரு புதிய வரியில் முடிவு அடைப்புக்குறியை வைக்கவும்.</p>
+                </div>
+                
+                <div class="convention-card">
+                    <h4><i class="fas fa-ban convention-icon"></i> அரைப்புள்ளி</h4>
+                    <p>சிக்கலான அறிக்கையை அரைப்புள்ளியுடன் முடிக்காதீர்கள்.</p>
+                </div>
+            </div>
+            
+            <h4>செயல்பாடுகள்:</h4>
+            <div class="good-example">
+                function toCelsius(fahrenheit) {<br>
+                &nbsp;&nbsp;return (5 / 9) * (fahrenheit - 32);<br>
+                }
+            </div>
+            
+            <h4>சுழற்சிகள்:</h4>
+            <div class="good-example">
+                for (let i = 0; i < 5; i++) {<br>
+                &nbsp;&nbsp;x += i;<br>
+                }
+            </div>
+            
+            <h4>நிபந்தனைகள்:</h4>
+            <div class="good-example">
+                if (time < 20) {<br>
+                &nbsp;&nbsp;greeting = "Good day";<br>
+                } else {<br>
+                &nbsp;&nbsp;greeting = "Good evening";<br>
+                }
+            </div>
+        </section>
+
+        <!-- Object Rules -->
+        <section class="content-section" id="object-rules">
+            <h2>பொருள் விதிகள்</h2>
+            
+            <p>பொருள் வரையறைகளுக்கான பொதுவான விதிகள்:</p>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>விதி</th>
+                        <th>எடுத்துக்காட்டு</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>பொருள் பெயரின் அதே வரியில் ஆரம்ப அடைப்புக்குறியை வைக்கவும்</td>
+                        <td><code>const person = {</code></td>
+                    </tr>
+                    <tr>
+                        <td>ஒவ்வொரு பண்புக்கும் அதன் மதிப்புக்கும் இடையே பெருங்குடல் மற்றும் ஒரு இடத்தைப் பயன்படுத்தவும்</td>
+                        <td><code>firstName: "John",</code></td>
+                    </tr>
+                    <tr>
+                        <td>சரம் மதிப்புகளைச் சுற்றி மேற்கோள்களைப் பயன்படுத்தவும், எண் மதிப்புகளைச் சுற்றி அல்ல</td>
+                        <td><code>age: 50,</code> (எண், மேற்கோள்கள் இல்லை)</td>
+                    </tr>
+                    <tr>
+                        <td>கடைசி பண்பு-மதிப்பு ஜோடிக்குப் பிறகு காற்புள்ளியைச் சேர்க்காதீர்கள்</td>
+                        <td><code>eyeColor: "blue"</code> (காற்புள்ளி இல்லை)</td>
+                    </tr>
+                    <tr>
+                        <td>முன்னணி இடங்கள் இல்லாமல் ஒரு புதிய வரியில் முடிவு அடைப்புக்குறியை வைக்கவும்</td>
+                        <td><code>}</code></td>
+                    </tr>
+                    <tr>
+                        <td>எப்போதும் ஒரு பொருள் வரையறையை அரைப்புள்ளியுடன் முடிக்கவும்</td>
+                        <td><code>};</code></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h4>எடுத்துக்காட்டு</h4>
+            <div class="good-example">
+                const person = {<br>
+                &nbsp;&nbsp;firstName: "John",<br>
+                &nbsp;&nbsp;lastName: "Doe",<br>
+                &nbsp;&nbsp;age: 50,<br>
+                &nbsp;&nbsp;eyeColor: "blue"<br>
+                };
+            </div>
+            
+            <p>குறுகிய பொருட்கள் ஒரு வரியில், பண்புகளுக்கு இடையே மட்டுமே இடங்களைப் பயன்படுத்தி, இப்படி எழுதப்படலாம்:</p>
+            
+            <div class="good-example">
+                const person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"};
+            </div>
+        </section>
+
+        <!-- Naming Conventions -->
+        <section class="content-section" id="naming-conventions">
+            <h2>பெயரிடல் மரபுகள்</h2>
+            
+            <p>எப்போதும் உங்கள் அனைத்து குறியீட்டுக்கும் ஒரே பெயரிடல் மரபைப் பயன்படுத்தவும். உதாரணத்திற்கு:</p>
+            
+            <div class="naming-grid">
+                <div class="naming-card camel">
+                    <h5>ஒட்டுச்சொல் வழக்கு</h5>
+                    <code>firstName</code>
+                    <p>மாறிகள் & செயல்பாடுகள்</p>
+                </div>
+                
+                <div class="naming-card pascal">
+                    <h5>பாஸ்கல் வழக்கு</h5>
+                    <code>FirstName</code>
+                    <p>வகுப்புகள்</p>
+                </div>
+                
+                <div class="naming-card underscore">
+                    <h5>அடிக்கோடு</h5>
+                    <code>first_name</code>
+                    <p>தரவுத்தளங்கள்</p>
+                </div>
+                
+                <div class="naming-card hyphen">
+                    <h5>இணைப்புக்கோடு</h5>
+                    <code>first-name</code>
+                    <p>HTML/CSS (JavaScript இல் அல்ல)</p>
+                </div>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">💡</span> குறிப்புகள்:</h4>
+                <p><strong>ஒட்டுச்சொல் வழக்கு:</strong> JavaScript தன்னை, jQuery, மற்றும் பிற JavaScript நூலகங்களால் பயன்படுத்தப்படுகிறது.</p>
+                <p><strong>பாஸ்கல் வழக்கு:</strong> C நிரலாளர்களால் பெரும்பாலும் விரும்பப்படுகிறது.</p>
+                <p><strong>அடிக்கோடு:</strong> SQL தரவுத்தளங்களில் பெரும்பாலும் பயன்படுத்தப்படுகிறது.</p>
+                <p><strong>இணைப்புக்கோடு:</strong> HTML மற்றும் CSS இல் பயன்படுத்தப்படுகிறது, ஆனால் JavaScript இல் அனுமதிக்கப்படாது.</p>
+            </div>
+            
+            <div class="warning-box">
+                <h4><span class="warning-icon">⚠️</span> எச்சரிக்கை:</h4>
+                <p>$ அடையாளத்துடன் பெயர்களைத் தொடங்காதீர்கள். இது பல JavaScript நூலக பெயர்களுடன் உங்களை முரண்பாட்டில் வைக்கும்.</p>
+            </div>
+        </section>
+
+        <!-- File Extensions -->
+        <section class="content-section" id="file-extensions">
+            <h2>கோப்பு நீட்டிப்புகள்</h2>
+            
+            <div class="file-extensions">
+                <div class="file-card">
+                    <h5>HTML கோப்புகள்</h5>
+                    <code>.html</code>
+                    <p>(.htm அனுமதிக்கப்படுகிறது)</p>
+                </div>
+                
+                <div class="file-card">
+                    <h5>CSS கோப்புகள்</h5>
+                    <code>.css</code>
+                </div>
+                
+                <div class="file-card">
+                    <h5>JavaScript கோப்புகள்</h5>
+                    <code>.js</code>
+                </div>
+            </div>
+        </section>
+
+        <!-- Use Lower Case File Names -->
+        <section class="content-section" id="lowercase-filenames">
+            <h2>சிற்றெழுத்து கோப்பு பெயர்களைப் பயன்படுத்தவும்</h2>
+            
+            <p>பெரும்பாலான வலை சேவையகங்கள் (Apache, Unix) கோப்பு பெயர்கள் குறித்து வழக்கு-உணர்திறன் கொண்டவை:</p>
+            
+            <div class="code-example">
+                london.jpg // சரி<br>
+                London.jpg // ❌ அணுக முடியாது (Unix இல்)
+            </div>
+            
+            <p>மற்ற வலை சேவையகங்கள் (Microsoft, IIS) வழக்கு-உணர்திறன் கொண்டவை அல்ல:</p>
+            
+            <div class="code-example">
+                london.jpg // சரி<br>
+                London.jpg // சரி (Windows/IIS இல்)<br>
+                LONDON.jpg // சரி (Windows/IIS இல்)
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">🔧</span> சிறந்த நடைமுறை:</h4>
+                <p>இந்த சிக்கல்களைத் தவிர்க்க, எப்போதும் சிற்றெழுத்து கோப்பு பெயர்களைப் பயன்படுத்தவும் (முடிந்தால்).</p>
+            </div>
+        </section>
+
+        <!-- Interactive Demo -->
+        <section class="content-section" id="interactive-demo">
+            <h2>நேரடி டெமோ</h2>
+            
+            <div class="demo-container">
+                <h4>சரியான மற்றும் தவறான குறியீடு மாதிரிகள்</h4>
+                <div id="code-demo" class="demo-output">குறியீடு மாதிரிகள்: </div>
+                <div class="button-group">
+                    <button class="demo-button" onclick="demoGoodVariableNames()">சரியான மாறி பெயர்கள்</button>
+                    <button class="demo-button" onclick="demoBadVariableNames()">தவறான மாறி பெயர்கள்</button>
+                    <button class="demo-button" onclick="demoGoodObject()">சரியான பொருள் வரையறை</button>
+                    <button class="demo-button" onclick="demoBadObject()">தவறான பொருள் வரையறை</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Performance -->
+        <section class="content-section" id="performance">
+            <h2>செயல்திறன்</h2>
+            
+            <p>குறியிடும் மரபுகள் கணினிகளால் பயன்படுத்தப்படுவதில்லை. பெரும்பாலான விதிகள் நிரல்களின் இயக்கத்தில் சிறிய தாக்கத்தை ஏற்படுத்துகின்றன.</p>
+            
+            <p>சிறிய ஸ்கிரிப்ட்களில் உள்தள்ளல் மற்றும் கூடுதல் இடங்கள் குறிப்பிடத்தக்கவை அல்ல.</p>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">⚡</span> சிறந்த நடைமுறை:</h4>
+                <p>வளர்ச்சியில் உள்ள குறியீட்டிற்கு, வாசிப்புத்திறன் விரும்பப்பட வேண்டும்.</p>
+                <p>பெரிய உற்பத்தி ஸ்கிரிப்ட்கள் குறைக்கப்பட வேண்டும்.</p>
+            </div>
+        </section>
+
+        <!-- Exercise - ONLY ONE EXERCISE -->
+        <section class="content-section" id="exercises">
+            <h2>JavaScript பயிற்சிகள்</h2>
+            
+            <p>இந்த டுடோரியலில் உள்ள பல அத்தியாயங்கள் உங்கள் அறிவு நிலையைச் சரிபார்க்கக்கூடிய பயிற்சியுடன் முடிகின்றன.</p>
+            
+            <div class="exercise-box">
+                <h4><span class="exercise-icon">❓</span> JavaScript இல் மாறி பெயர்களுக்கு எந்த பெயரிடல் மரபு பரிந்துரைக்கப்படுகிறது?</h4>
+                
+                <div class="options-grid">
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">snake_case (first_name)</div>
+                            <div class="option-feedback incorrect">✗ இது JavaScript இல் பரிந்துரைக்கப்படவில்லை (SQL/PHP இல் பயன்படுத்தப்படுகிறது)</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="true">
+                        <div class="option-content">
+                            <div class="option-text">camelCase (firstName)</div>
+                            <div class="option-feedback correct">✓ சரி! JavaScript, jQuery மற்றும் பிற JavaScript நூலகங்களால் ஒட்டுச்சொல் வழக்கு பயன்படுத்தப்படுகிறது</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">kebab-case (first-name)</div>
+                            <div class="option-feedback incorrect">✗ இது JavaScript இல் அனுமதிக்கப்படாது (HTML/CSS இல் பயன்படுத்தப்படுகிறது)</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">PascalCase (FirstName)</div>
+                            <div class="option-feedback incorrect">✗ இது JavaScript இல் வகுப்புகளுக்குப் பயன்படுத்தப்படுகிறது, மாறிகளுக்கு அல்ல</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bottom Navigation -->
+        <div class="bottom-nav">
+            <a href="JavaScript%20Debugging.html" class="nav-tab prev">
+                <i class="fas fa-arrow-left"></i>
+                <span>முந்தைய</span>
+            </a>
+            <a href="JavaScript%20Best%20Practices.html" class="nav-tab next">
+                <span>அடுத்தது</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Siva Team Institution</h3>
+                <p>Leading educational institution providing quality programming education in Tamil.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#introduction">JavaScript பாணி வழிகாட்டி</a></li>
+                    <li><a href="#coding-conventions">குறியிடும் மரபுகள்</a></li>
+                    <li><a href="#variable-names">மாறி பெயர்கள்</a></li>
+                    <li><a href="#spaces-operators">செயலிகளைச் சுற்றி இடங்கள்</a></li>
+                    <li><a href="#code-indentation">குறியீடு உள்தள்ளல்</a></li>
+                    <li><a href="#statement-rules">அறிக்கை விதிகள்</a></li>
+                    <li><a href="#object-rules">பொருள் விதிகள்</a></li>
+                    <li><a href="#naming-conventions">பெயரிடல் மரபுகள்</a></li>
+                    <li><a href="#file-extensions">கோப்பு நீட்டிப்புகள்</a></li>
+                    <li><a href="#lowercase-filenames">சிற்றெழுத்து கோப்பு பெயர்கள்</a></li>
+                    <li><a href="#interactive-demo">நேரடி டெமோ</a></li>
+                    <li><a href="#performance">செயல்திறன்</a></li>
+                    <li><a href="#exercises">JavaScript பயிற்சிகள்</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Location & Hours</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <ul>
+                    <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Siva Team Institution. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all content sections for animation
+        document.querySelectorAll('.content-section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Exercise interaction
+        document.querySelectorAll('.option-card').forEach(card => {
+            card.addEventListener('click', function() {
+                // Show feedback for all options
+                document.querySelectorAll('.option-card').forEach(c => {
+                    c.querySelector('.option-feedback').style.display = 'block';
+                });
+            });
+        });
+        
+        // Demo Functions
+        function demoGoodVariableNames() {
+            let code = `// சரியான மாறி பெயர்கள் (camelCase)
+let firstName = "John";
+let lastName = "Doe";
+let userAge = 25;
+let isActive = true;
+let itemPrice = 19.99;`;
+            
+            document.getElementById("code-demo").innerHTML = `<pre>${code}</pre>`;
+        }
+        
+        function demoBadVariableNames() {
+            let code = `// தவறான மாறி பெயர்கள்
+let first_name = "John";  // ❌ snake_case
+let last-name = "Doe";    // ❌ kebab-case (அனுமதிக்கப்படாது)
+let UserAge = 25;         // ❌ PascalCase (வகுப்புகளுக்கு)
+let $price = 19.99;       // ❌ $ உடன் தொடங்கும் (நூலகங்களுடன் மோதல்கள்)`;
+            
+            document.getElementById("code-demo").innerHTML = `<pre>${code}</pre>`;
+        }
+        
+        function demoGoodObject() {
+            let code = `// சரியான பொருள் வரையறை
+const person = {
+  firstName: "John",
+  lastName: "Doe",
+  age: 30,
+  isStudent: false,
+  courses: ["Math", "Science", "History"]
+};`;
+            
+            document.getElementById("code-demo").innerHTML = `<pre>${code}</pre>`;
+        }
+        
+        function demoBadObject() {
+            let code = `// தவறான பொருள் வரையறை
+const person={
+firstName:"John",
+lastName:"Doe",age:30,
+isStudent:false
+} // ❌ அரைப்புள்ளி இல்லை`;
+            
+            document.getElementById("code-demo").innerHTML = `<pre>${code}</pre>`;
+        }
+    </script>
+
+    <!-- Home Button -->
+    <a href="index.html" class="home-icon">
+        <i class="fas fa-home"></i>
+    </a>
+</body>
+</html>
+
+

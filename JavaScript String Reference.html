@@ -1,0 +1,635 @@
+﻿<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript String Reference - Siva Team</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .content-section p, 
+        .content-section li,
+        .content-section h3,
+        .content-section h4,
+        .comparison-card p {
+            color: #333 !important;
+        }
+        
+        .tip-box p,
+        .tip-box li,
+        .tip-box h4 {
+            color: white !important;
+        }
+        
+        .warning-box p,
+        .warning-box li,
+        .warning-box h4 {
+            color: white !important;
+        }
+        
+        .exercise-box p,
+        .exercise-box h4 {
+            color: white !important;
+        }
+        
+        /* Stable logo styling - NO ANIMATIONS */
+        .logo-icon {
+            animation: none !important;
+        }
+        
+        .logo-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            animation: none !important;
+        }
+        
+        .reference-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .reference-table th {
+            background: linear-gradient(135deg, var(--git-color), #e74c3c);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .reference-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #f0f0f0;
+            vertical-align: top;
+        }
+        
+        .reference-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .reference-table tr:hover {
+            background-color: #f0f0f0;
+        }
+        
+        .method-code {
+            font-family: 'Courier New', monospace;
+            background: #f8f9fa;
+            padding: 2px 6px;
+            border-radius: 3px;
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        
+        .deprecated {
+            text-decoration: line-through;
+            color: #999;
+        }
+        
+        .new-method {
+            background: #28a745;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.8rem;
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <img src="logo.jpg" alt="Siva Team Logo" class="logo-image">
+                </div>
+                <h1>Siva Team <span>Institution</span></h1>
+            </div>
+        </div>
+    </header>
+
+    <!-- Top Navigation Tabs -->
+    <div class="nav-tabs">
+        <a href="JavaScript%20String%20Search.html" class="nav-tab prev">
+            <i class="fas fa-arrow-left"></i>
+            <span>முந்தைய</span>
+        </a>
+        <a href="JavaScript%20Numbers.html" class="nav-tab next">
+            <span>அடுத்தது</span>
+            <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2>JavaScript String Reference</h2>
+            <p>JavaScript சரம் குறிப்பைக் கற்றுக்கொள்ளுங்கள்</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Complete String Reference -->
+        <section class="content-section" id="complete-reference">
+            <h2>முழுமையான சரம் குறிப்பு <span style="font-size: 0.8rem; color: #666;">(சீர்திருத்தப்பட்டது ஜூலை 2025)</span></h2>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">📝</span> முக்கிய குறிப்பு:</h4>
+                <p>அனைத்து சரம் முறைகளும் ஒரு புதிய மதிப்பை வழங்குகின்றன. அவை அசல் சரத்தை மாற்றாது.</p>
+            </div>
+            
+            <table class="reference-table">
+                <thead>
+                    <tr>
+                        <th>பெயர்</th>
+                        <th>விளக்கம்</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="method-code">at()</span></td>
+                        <td>ஒரு சரத்திலிருந்து ஒரு குறியிடப்பட்ட எழுத்தை வழங்குகிறது</td>
+                    </tr>
+                    <tr>
+                        <td><span class="method-code">charAt()</span></td>
+                        <td>ஒரு குறிப்பிட்ட குறியீட்டு (நிலை) இல் உள்ள எழுத்தை வழங்குகிறது</td>
+                    </tr>
+                    <tr>
+                        <td><span class="method-code">charCodeAt()</span></td>
+                        <td>ஒரு குறிப்பிட்ட குறியீட்டில் உள்ள எழுத்தின் யூனிகோட் வழங்குகிறது</td>
+                    </tr>
+                    <tr>
+                        <td><span class="method-code">codePointAt()</span> <span class="new-method">ES6</span></td>
+                        <td>ஒரு சரத்தில் ஒரு குறியீட்டு (நிலை) இல் யூனிகோட் மதிப்பை வழங்குகிறது</td>
+                    </tr>
+                    <tr>
+                        <td><span class="method-code">concat()</span></td>
+                        <td>இரண்டு அல்லது அதற்கு மேற்பட்ட இணைக்கப்பட்ட சரங்களை வழங்குகிறது</td>
+                    </tr>
+                    <tr>
+                        <td><span class="method-code">constructor</span></td>
+                        <td>சரத்தின் constructor செயல்பாட்டை வழங்குகிறது</td>
+                    </tr>
+                    <tr>
+                        <td><span class="method-code">endsWith()</span> <span class="new-method">ES6</span></td>
+                        <td>ஒரு சரம் ஒரு குறிப்பிட்ட மதிப்புடன் முடிந்தால் true ஐ வழங்குகிறது</td>
+                    </tr>
+                    <tr>
+                        <td><span class="method-code">fromCharCode()</span></td>
+                        <td>யூனிகோட் மதிப்புகளை எழுத்துகளாக வழங்குகிறது</td>
+                    </tr>
+                    <tr>
+                        <td><span class="method-code">includes()</span> <span class="new-method">ES6</span></td>
+                        <td>ஒரு சரம் ஒரு குறிப்பிட்ட மதிப்பைக் கொண்டிருந்தால் true ஐ வழங்குகிறது</td>
+                    </tr>
+                    <tr>
+                        <td><span class="method-code">indexOf()</span></td>
+                        <td>ஒரு சரத்தில் ஒரு மதிப்பின் முதல் நிகழ்வின் குறியீட்டை (நிலையை) வழங்குகிறது</td>
+                    </tr>
+                    <tr>
+                        <td><span class="method-code">isWellFormed()</span> <span class="new-method">ES2023</span></td>
+                        <td>ஒரு சரம் நன்கு உருவாக்கப்பட்டிருந்தால் true ஐ வழங்குகிறது</td>
+                    </tr>
+                    <tr>
+                        <td><span class="method-code">lastIndexOf()</span></td>
+                        <td>ஒரு சரத்தில் ஒரு மதிப்பின் கடைசி நிகழ்வின் குறியீட்டை (நிலையை) வழங்குகிறது</td>
+                    </tr>
+                    <tr>
+                        <td><span class="method-code">length</span></td>
+                        <td>ஒரு சரத்தின் நீளத்தை வழங்குகிறது</td>
+                    </tr>
+                    <tr>
+                        <td><span class="method-code">localeCompare()</span></td>
+                        <td>தற்போதைய லோக்கேலில் இரண்டு சரங்களை ஒப்பிடுகிறது</td>
+                    </tr>
+                    <tr>
+                        <td><span class="method-code">match()</span></td>
+                        <td>ஒரு சரத்தை ஒரு மதிப்பு அல்லது வழக்கமான வெளிப்பாட்டிற்காக தேடி பொருத்தங்களை வழங்குகிறது</td>
+                    </tr>
+                    <tr>
+                        <td><span class="method-code">matchAll()</span> <span class="new-method">ES2020</span></td>
+                        <td>ஒரு சரத்தை ஒரு மதிப்பு அல்லது வழக்கமான வெளிப்பாட்டிற்காக தேடி பொருத்தங்களை வழங்குகிறது</td>
+                    </tr>
+                    <tr>
+                        <td><span class="method-code">padEnd()</span> <span class="new-method">ES2017</span></td>
+                        <td>ஒரு சரத்தை முடிவில் padding செய்கிறது</td>
+                    </tr>
+                    <tr>
+                        <td><span class="method-code">padStart()</span> <span class="new-method">ES2017</span></td>
+                        <td>ஒரு சரத்தை தொடக்கத்தில் இருந்து padding செய்கிறது</td>
+                    </tr>
+                    <tr>
+                        <td><span class="method-code">prototype</span></td>
+                        <td>ஒரு பொருளுக்கு பண்புகள் மற்றும் முறைகளைச் சேர்க்க உங்களை அனுமதிக்கிறது</td>
+                    </tr>
+                    <tr>
+                        <td><span class="method-code">repeat()</span> <span class="new-method">ES6</span></td>
+                        <td>ஒரு சரத்தின் பல நகல்களைக் கொண்ட புதிய சரத்தை வழங்குகிறது</td>
+                    </tr>
+                    <tr>
+                        <td><span class="method-code">replace()</span></td>
+                        <td>ஒரு சரத்தை ஒரு வடிவத்திற்காக தேடி, முதல் பொருத்தம் மாற்றப்பட்ட சரத்தை வழங்குகிறது</td>
+                    </tr>
+                    <tr>
+                        <td><span class="method-code">replaceAll()</span> <span class="new-method">ES2021</span></td>
+                        <td>ஒரு சரத்தை ஒரு வடிவத்திற்காக தேடி, அனைத்து பொருத்தங்களும் மாற்றப்பட்ட புதிய சரத்தை வழங்குகிறது</td>
+                    </tr>
+                    <tr>
+                        <td><span class="method-code">search()</span></td>
+                        <td>ஒரு சரத்தை ஒரு மதிப்பு அல்லது வழக்கமான வெளிப்பாட்டிற்காக தேடி, பொருத்தத்தின் குறியீட்டை (நிலையை) வழங்குகிறது</td>
+                    </tr>
+                    <tr>
+                        <td><span class="method-code">slice()</span></td>
+                        <td>ஒரு சரத்தின் ஒரு பகுதியை பிரித்தெடுத்து புதிய சரத்தை வழங்குகிறது</td>
+                    </tr>
+                    <tr>
+                        <td><span class="method-code">split()</span></td>
+                        <td>ஒரு சரத்தை துணைச் சரங்களின் வரிசையாகப் பிரிக்கிறது</td>
+                    </tr>
+                    <tr>
+                        <td><span class="method-code">startsWith()</span> <span class="new-method">ES6</span></td>
+                        <td>ஒரு சரம் குறிப்பிட்ட எழுத்துகளுடன் தொடங்குகிறதா என சரிபார்க்கிறது</td>
+                    </tr>
+                    <tr>
+                        <td><span class="method-code deprecated">substr()</span></td>
+                        <td>காலாவதியானது. பதிலாக <code>substring()</code> அல்லது <code>slice()</code> பயன்படுத்தவும்.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="method-code">substring()</span></td>
+                        <td>ஒரு சரத்திலிருந்து எழுத்துகளை இரண்டு குறிப்பிட்ட குறியீடுகளுக்கு (நிலைகள்) இடையே பிரித்தெடுக்கிறது</td>
+                    </tr>
+                    <tr>
+                        <td><span class="method-code">toLocaleLowerCase()</span></td>
+                        <td>ஹோஸ்ட்டின் லோக்கேலைப் பயன்படுத்தி சிறிய எழுத்துகளாக மாற்றப்பட்ட சரத்தை வழங்குகிறது</td>
+                    </tr>
+                    <tr>
+                        <td><span class="method-code">toLocaleUpperCase()</span></td>
+                        <td>ஹோஸ்ட்டின் லோக்கேலைப் பயன்படுத்தி பெரிய எழுத்துகளாக மாற்றப்பட்ட சரத்தை வழங்குகிறது</td>
+                    </tr>
+                    <tr>
+                        <td><span class="method-code">toLowerCase()</span></td>
+                        <td>சிறிய எழுத்துகளாக மாற்றப்பட்ட சரத்தை வழங்குகிறது</td>
+                    </tr>
+                    <tr>
+                        <td><span class="method-code">toString()</span></td>
+                        <td>ஒரு சரம் அல்லது சரம் பொருளை சரமாக வழங்குகிறது</td>
+                    </tr>
+                    <tr>
+                        <td><span class="method-code">toUpperCase()</span></td>
+                        <td>பெரிய எழுத்துகளாக மாற்றப்பட்ட சரத்தை வழங்குகிறது</td>
+                    </tr>
+                    <tr>
+                        <td><span class="method-code">toWellFormed()</span> <span class="new-method">ES2023</span></td>
+                        <td>"தனி surrogates" யூனிகோட் மாற்று எழுத்துடன் மாற்றப்பட்ட சரத்தை வழங்குகிறது</td>
+                    </tr>
+                    <tr>
+                        <td><span class="method-code">trim()</span> <span class="new-method">ES5</span></td>
+                        <td>நீக்கப்பட்ட வெண்வெளி இடங்களுடன் கூடிய சரத்தை வழங்குகிறது</td>
+                    </tr>
+                    <tr>
+                        <td><span class="method-code">trimEnd()</span> <span class="new-method">ES2019</span></td>
+                        <td>முடிவிலிருந்து நீக்கப்பட்ட வெண்வெளி இடங்களுடன் கூடிய சரத்தை வழங்குகிறது</td>
+                    </tr>
+                    <tr>
+                        <td><span class="method-code">trimStart()</span> <span class="new-method">ES2019</span></td>
+                        <td>தொடக்கத்திலிருந்து நீக்கப்பட்ட வெண்வெளி இடங்களுடன் கூடிய சரத்தை வழங்குகிறது</td>
+                    </tr>
+                    <tr>
+                        <td><span class="method-code">valueOf()</span></td>
+                        <td>ஒரு சரம் அல்லது சரம் பொருளின் பழமையான மதிப்பை வழங்குகிறது</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Common Examples Section -->
+        <section class="content-section" id="common-examples">
+            <h2>பொதுவான எடுத்துக்காட்டுகள்</h2>
+            
+            <div class="examples-grid">
+                <div class="example-card">
+                    <div class="example-icon">
+                        <i class="fas fa-text-height"></i>
+                    </div>
+                    <h4>நீளம்</h4>
+                    <div class="code-example" style="padding: 0.5rem; margin: 0.5rem 0; background: #f8f9fa;">
+                        <pre style="margin: 0;"><code>let text = "Hello";
+console.log(text.length); // 5</code></pre>
+                    </div>
+                </div>
+                
+                <div class="example-card">
+                    <div class="example-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h4>தேடல்</h4>
+                    <div class="code-example" style="padding: 0.5rem; margin: 0.5rem 0; background: #f8f9fa;">
+                        <pre style="margin: 0;"><code>let text = "Hello World";
+console.log(text.indexOf("World")); // 6</code></pre>
+                    </div>
+                </div>
+                
+                <div class="example-card">
+                    <div class="example-icon">
+                        <i class="fas fa-cut"></i>
+                    </div>
+                    <h4>வெட்டுதல்</h4>
+                    <div class="code-example" style="padding: 0.5rem; margin: 0.5rem 0; background: #f8f9fa;">
+                        <pre style="margin: 0;"><code>let text = "Hello World";
+console.log(text.slice(0, 5)); // "Hello"</code></pre>
+                    </div>
+                </div>
+                
+                <div class="example-card">
+                    <div class="example-icon">
+                        <i class="fas fa-font"></i>
+                    </div>
+                    <h4>வழக்கு மாற்றம்</h4>
+                    <div class="code-example" style="padding: 0.5rem; margin: 0.5rem 0; background: #f8f9fa;">
+                        <pre style="margin: 0;"><code>let text = "Hello";
+console.log(text.toUpperCase()); // "HELLO"</code></pre>
+                    </div>
+                </div>
+                
+                <div class="example-card">
+                    <div class="example-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h4>மாற்றீடு</h4>
+                    <div class="code-example" style="padding: 0.5rem; margin: 0.5rem 0; background: #f8f9fa;">
+                        <pre style="margin: 0;"><code>let text = "Hello World";
+console.log(text.replace("World", "JavaScript")); 
+// "Hello JavaScript"</code></pre>
+                    </div>
+                </div>
+                
+                <div class="example-card">
+                    <div class="example-icon">
+                        <i class="fas fa-expand-arrows-alt"></i>
+                    </div>
+                    <h4>Padding</h4>
+                    <div class="code-example" style="padding: 0.5rem; margin: 0.5rem 0; background: #f8f9fa;">
+                        <pre style="margin: 0;"><code>let text = "5";
+console.log(text.padStart(3, "0")); // "005"</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- String HTML Wrapper Methods -->
+        <section class="content-section" id="html-wrapper">
+            <h2>சரம் HTML Wrapper முறைகள்</h2>
+            <p>HTML wrapper முறைகள் ஒரு HTML குறிச்சொல்லுக்குள் போர்த்தப்பட்ட ஒரு சரத்தை வழங்குகின்றன.</p>
+            
+            <div class="warning-box">
+                <h4><span class="warning-icon">⚠️</span> கவனத்திற்கு:</h4>
+                <p>இவை நிலையான முறைகள் அல்ல, மேலும் எதிர்பார்த்தபடி வேலை செய்யாமல் போகலாம். HTML wrapper முறைகள் JavaScript இல் காலாவதியானவை. இவை இணக்கத்திற்காக மட்டுமே நிலையானவை மற்றும் புதிய உருவாக்கத்திற்கு பரிந்துரைக்கப்படவில்லை.</p>
+                <p>நவீன வலை உருவாக்க நடைமுறைகள் CSS ஐ ஸ்டைலிங்கிற்கும், HTML உறுப்புகளை உருவாக்க மற்றும் மாற்றுவதற்கும் DOM கையாளுதலையும் பயன்படுத்த ஊக்குவிக்கின்றன, இது அதிக கட்டுப்பாடு மற்றும் நெகிழ்வுத்தன்மையை வழங்குகிறது.</p>
+            </div>
+            
+            <table class="reference-table">
+                <thead>
+                    <tr>
+                        <th>முறை</th>
+                        <th>விளக்கம்</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="method-code deprecated">anchor()</span></td>
+                        <td>ஒரு சரத்தை ஒரு நங்கூரமாகக் காட்டுகிறது</td>
+                    </tr>
+                    <tr>
+                        <td><span class="method-code deprecated">big()</span></td>
+                        <td>ஒரு சரத்தை ஒரு பெரிய எழுத்துருவைப் பயன்படுத்திக் காட்டுகிறது</td>
+                    </tr>
+                    <tr>
+                        <td><span class="method-code deprecated">blink()</span></td>
+                        <td>ஒரு மினுக்கும் சரத்தைக் காட்டுகிறது</td>
+                    </tr>
+                    <tr>
+                        <td><span class="method-code deprecated">bold()</span></td>
+                        <td>ஒரு சரத்தை தடித்த எழுத்தில் காட்டுகிறது</td>
+                    </tr>
+                    <tr>
+                        <td><span class="method-code deprecated">fixed()</span></td>
+                        <td>ஒரு சரத்தை ஒரு நிலையான-சுருதி எழுத்துருவைப் பயன்படுத்திக் காட்டுகிறது</td>
+                    </tr>
+                    <tr>
+                        <td><span class="method-code deprecated">fontcolor()</span></td>
+                        <td>ஒரு சரத்தை ஒரு குறிப்பிட்ட நிறத்தைப் பயன்படுத்திக் காட்டுகிறது</td>
+                    </tr>
+                    <tr>
+                        <td><span class="method-code deprecated">fontsize()</span></td>
+                        <td>ஒரு சரத்தை ஒரு குறிப்பிட்ட அளவைப் பயன்படுத்திக் காட்டுகிறது</td>
+                    </tr>
+                    <tr>
+                        <td><span class="method-code deprecated">italics()</span></td>
+                        <td>ஒரு சரத்தை சாய்வு எழுத்தில் காட்டுகிறது</td>
+                    </tr>
+                    <tr>
+                        <td><span class="method-code deprecated">link()</span></td>
+                        <td>ஒரு சரத்தை ஒரு ஹைப்பர்லிங்காகக் காட்டுகிறது</td>
+                    </tr>
+                    <tr>
+                        <td><span class="method-code deprecated">small()</span></td>
+                        <td>ஒரு சரத்தை ஒரு சிறிய எழுத்துருவைப் பயன்படுத்திக் காட்டுகிறது</td>
+                    </tr>
+                    <tr>
+                        <td><span class="method-code deprecated">strike()</span></td>
+                        <td>ஒரு சரத்தை ஒரு குறுக்குக்கோடுடன் காட்டுகிறது</td>
+                    </tr>
+                    <tr>
+                        <td><span class="method-code deprecated">sub()</span></td>
+                        <td>ஒரு சரத்தை கீழ்க்குறி உரையாகக் காட்டுகிறது</td>
+                    </tr>
+                    <tr>
+                        <td><span class="method-code deprecated">sup()</span></td>
+                        <td>ஒரு சரத்தை மேற்குறி உரையாகக் காட்டுகிறது</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">💡</span> நவீன மாற்று:</h4>
+                <p>HTML wrapper முறைகளுக்கு பதிலாக, CSS ஸ்டைலிங் மற்றும் DOM கையாளுதலைப் பயன்படுத்தவும்:</p>
+                <div class="code-example">
+                    <pre><code>// பழைய முறை (காலாவதியானது):
+document.write("Hello".bold());
+
+// நவீன முறை:
+let element = document.createElement("strong");
+element.textContent = "Hello";
+document.body.appendChild(element);
+
+// அல்லது CSS உடன்:
+let span = document.createElement("span");
+span.textContent = "Hello";
+span.style.fontWeight = "bold";
+document.body.appendChild(span);</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Exercise Section (ONLY ONE) -->
+        <section class="content-section" id="exercise">
+            <h2>பயிற்சி</h2>
+            
+            <div class="exercise-box">
+                <h4><span class="exercise-icon">❓</span> பின்வரும் குறியீட்டைக் கவனியுங்கள்:</h4>
+                <div class="code-example" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.3);">
+                    <pre><code style="color: white;">let text = "JavaScript";
+let result = text.toUpperCase();</code></pre>
+                </div>
+                <h4>இந்தக் குறியீட்டிற்குப் பிறகு 'text' மாறியின் மதிப்பு என்ன?</h4>
+                
+                <div class="options-grid">
+                    <div class="option-card" data-correct="true">
+                        <div class="option-content">
+                            <div class="option-text">"JavaScript"</div>
+                            <div class="option-feedback correct">✓ சரி! சரம் முறைகள் அசல் சரத்தை மாற்றாது, புதிய சரத்தை வழங்குகின்றன. <code>toUpperCase()</code> முறை அசல் சரத்தை மாற்றாது, பெரிய எழுத்துகளில் புதிய சரத்தை வழங்குகிறது. அசல் 'text' மாறி மாறாமல் உள்ளது</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">"JAVASCRIPT"</div>
+                            <div class="option-feedback incorrect">✗ தவறு! இது <code>result</code> மாறியின் மதிப்பாக இருக்கும், ஆனால் 'text' மாறி அல்ல. சரம் முறைகள் அசல் சரத்தை மாற்றாது, புதிய சரத்தை வழங்குகின்றன</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">undefined</div>
+                            <div class="option-feedback incorrect">✗ தவறு! 'text' மாறி இன்னும் அதன் அசல் மதிப்பைக் கொண்டுள்ளது "JavaScript". <code>toUpperCase()</code> செயல்பாடு அசல் மாறியை மாற்றாது</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">Error</div>
+                            <div class="option-feedback incorrect">✗ தவறு! இந்தக் குறியீட்டில் எந்த பிழையும் இல்லை. <code>toUpperCase()</code> ஒரு செல்லுபடியாகும் சரம் முறையாகும், மேலும் இது அசல் சரத்தை மாற்றாமல் புதிய சரத்தை வழங்குகிறது</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bottom Navigation -->
+        <div class="bottom-nav">
+            <a href="JavaScript%20String%20Search.html" class="nav-tab prev">
+                <i class="fas fa-arrow-left"></i>
+                <span>முந்தைய</span>
+            </a>
+            <a href="JavaScript%20Numbers.html" class="nav-tab next">
+                <span>அடுத்தது</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Siva Team Institution</h3>
+                <p>Leading educational institution providing quality programming education in Tamil.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#complete-reference">முழுமையான சரம் குறிப்பு</a></li>
+                    <li><a href="#common-examples">பொதுவான எடுத்துக்காட்டுகள்</a></li>
+                    <li><a href="#html-wrapper">HTML Wrapper முறைகள்</a></li>
+                    <li><a href="#exercise">பயிற்சி</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Location & Hours</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <ul>
+                    <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Siva Team Institution. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all content sections for animation
+        document.querySelectorAll('.content-section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Exercise interaction
+        document.querySelectorAll('.option-card').forEach(card => {
+            card.addEventListener('click', function() {
+                // Show feedback for all options
+                document.querySelectorAll('.option-card').forEach(c => {
+                    c.querySelector('.option-feedback').style.display = 'block';
+                });
+            });
+        });
+    </script>
+
+    <!-- Home Button -->
+    <a href="index.html" class="home-icon">
+        <i class="fas fa-home"></i>
+    </a>
+</body>
+</html>
+
+
