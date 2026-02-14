@@ -1,0 +1,586 @@
+﻿<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Silent Errors - Siva Team</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .content-section p, 
+        .content-section li,
+        .content-section h3,
+        .content-section h4,
+        .comparison-card p {
+            color: #333 !important;
+        }
+        
+        .tip-box p,
+        .tip-box li,
+        .tip-box h4 {
+            color: white !important;
+        }
+        
+        .warning-box p,
+        .warning-box li,
+        .warning-box h4 {
+            color: white !important;
+        }
+        
+        .exercise-box p,
+        .exercise-box h4 {
+            color: white !important;
+        }
+        
+        /* Stable logo styling - NO ANIMATIONS */
+        .logo-icon {
+            animation: none !important;
+        }
+        
+        .logo-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            animation: none !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <img src="logo.jpg" alt="Siva Team Logo" class="logo-image">
+                </div>
+                <h1>Siva Team <span>Institution</span></h1>
+            </div>
+        </div>
+    </header>
+
+    <!-- Top Navigation Tabs -->
+    <div class="nav-tabs">
+        <a href="JavaScript%20Errors.html" class="nav-tab prev">
+            <i class="fas fa-arrow-left"></i>
+            <span>முந்தைய</span>
+        </a>
+        <a href="JavaScript%20Error%20Statements.html" class="nav-tab next">
+            <span>அடுத்தது</span>
+            <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2>JavaScript Silent Errors</h2>
+            <p>அமைதியான பிழைகளைக் கண்டறிந்து சரிசெய்ய கற்றுக்கொள்ளுங்கள்</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Introduction -->
+        <section class="content-section" id="introduction">
+            <h2>Silent Errors</h2>
+            
+            <p>JavaScript அமைதியாக தோல்வியடையலாம்.</p>
+            
+            <p>ஒரு அமைதியான பிழை உங்கள் நிரலை நிறுத்தாது. இயக்கம் தொடரும்.</p>
+            
+            <p>அமைதியான பிழைகளுக்கான காரணம் வரலாற்று:</p>
+            
+            <p>JavaScript இன் முதல் பதிப்பில் catch...try விதிவிலக்குகள் இல்லை.</p>
+            
+            <div class="warning-box">
+                <h4><span class="warning-icon">⚠️</span> குறிப்பு:</h4>
+                <p>அமைதியான பிழைகள் விதிவிலக்குகளை வீசாது அல்லது இயக்கத்தை நிறுத்தாது, ஆனால் இன்னும் லாஜிக் பிழைகள், எதிர்பாராத நடத்தை அல்லது காணாமல் போக எளிதான தோல்விகளை ஏற்படுத்தும் பிரச்சினைகள்.</p>
+            </div>
+        </section>
+
+        <!-- Example -->
+        <section class="content-section" id="example">
+            <h2>எடுத்துக்காட்டு</h2>
+            
+            <p>அமைதியான பிழைகள் உங்கள் நிரலை நிறுத்தாது.</p>
+            
+            <div class="code-example">
+                <pre><code>let x = 1 / 0;</code></pre>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">🔍</span> கவனிக்க:</h4>
+                <p>மேலே உள்ள குறியீடு Infinity மதிப்பை உருவாக்குகிறது, ஆனால் பிழையை வீசாது. இது ஒரு அமைதியான பிழையின் எடுத்துக்காட்டாகும்.</p>
+            </div>
+        </section>
+
+        <!-- Assignment vs Comparison -->
+        <section class="content-section" id="assignment-comparison">
+            <h2>ஒதுக்கீடு, ஒப்பீடு அல்ல</h2>
+            
+            <div class="code-example">
+                <pre><code>let result = "Not Active.";
+let isActive = false;
+
+// ❌ ஒதுக்கீடு, ஒப்பீடு அல்ல
+if (isActive = true) {
+  let result = "Active!";
+}</code></pre>
+            </div>
+            
+            <h3>விளக்கம்</h3>
+            <p>(isActive = true) isActive க்கு true ஐ ஒதுக்குகிறது, (isActive == true) உடன் சமத்தை சரிபார்க்காமல்.</p>
+            
+            <p>அடுத்த வரி அமைதியாக இயங்குகிறது மற்றும் "Active!" என்று அச்சிடுகிறது, isActive false ஆக இருந்தாலும் கூட.</p>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">💡</span> சரியான முறை:</h4>
+                <p>ஒப்பீடு செய்ய === (கண்டிப்பான சமத்தன்மை) அல்லது == (சமத்தன்மை) ஆபரேட்டர்களைப் பயன்படுத்தவும்:</p>
+                <div class="code-example">
+                    <pre><code>// சரியானது: கண்டிப்பான சமத்தன்மை
+if (isActive === true) {
+  let result = "Active!";
+}
+
+// அல்லது இன்னும் சிறந்தது:
+if (isActive) {
+  let result = "Active!";
+}</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- NaN Silent Errors -->
+        <section class="content-section" id="nan-errors">
+            <h2>NaN உருவாக்கும் அமைதியான பிழைகள்</h2>
+            
+            <p>தோல்வியடையும் பல எண் செயல்பாடுகள் NaN (விதிவிலக்கு அல்ல) உருவாக்குகின்றன.</p>
+            
+            <p>JavaScript செயலிழக்காது. இது அமைதியாக உங்களுக்கு NaN தருகிறது மற்றும் தொடர்கிறது.</p>
+            
+            <div class="code-example">
+                <pre><code>// NaN - பிழை இல்லை, தவறான தரவு மட்டுமே
+const result = parseInt("abc");</code></pre>
+            </div>
+            
+            <h3>மேலும் NaN உருவாக்கும் எடுத்துக்காட்டுகள்:</h3>
+            <div class="code-example">
+                <pre><code>// வெற்று சரத்திலிருந்து எண்ணாக மாற்றுதல்
+let num1 = Number("");          // 0 (அமைதியானது!)
+let num2 = parseInt("");        // NaN
+let num3 = Number("   ");       // 0 (அமைதியானது!)
+
+// வரையறுக்கப்படாத மதிப்புகளுடன் செயல்பாடுகள்
+let value1 = undefined + 5;     // NaN
+let value2 = null * 10;         // 0 (அமைதியானது!)
+
+// தவறான கணித செயல்பாடுகள்
+let calc1 = Math.sqrt(-1);      // NaN
+let calc2 = 0 / 0;              // NaN
+let calc3 = Infinity / Infinity; // NaN</code></pre>
+            </div>
+            
+            <div class="warning-box">
+                <h4><span class="warning-icon">🔢</span> NaN சோதனை:</h4>
+                <p>NaN சிறப்பு மதிப்பு, எப்போதும் தனக்குத் தானே சமமாக இல்லை. NaN ஐ சோதிக்க isNaN() அல்லது Number.isNaN() பயன்படுத்தவும்:</p>
+                <div class="code-example">
+                    <pre><code>let result = parseInt("abc");
+console.log(isNaN(result));        // true
+console.log(Number.isNaN(result)); // true
+console.log(result === NaN);       // false (எப்போதும் false!)</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Missing Property Access -->
+        <section class="content-section" id="missing-property">
+            <h2>இல்லாத பண்புகளை அணுகுதல்</h2>
+            
+            <p>இல்லாத பண்புகளை அணுகுவது அமைதியாக undefined ஐ வழங்குகிறது.</p>
+            
+            <div class="code-example">
+                <pre><code>const user = {};
+let result = user.name;</code></pre>
+            </div>
+            
+            <h3>மேலும் எடுத்துக்காட்டுகள்:</h3>
+            <div class="code-example">
+                <pre><code>// பல அடுக்கு பண்பு அணுகல்
+const data = { user: { profile: {} } };
+let name = data.user.profile.name;        // undefined
+let age = data.user.profile?.age;         // optional chaining: undefined
+
+// வரிசை அணுகல்
+const arr = [1, 2, 3];
+let item = arr[10];                       // undefined
+let length = arr.length;                  // 3
+let nonexistent = arr.nonexistentProperty; // undefined
+
+// செயல்பாட்டு அளவுருக்கள்
+function greet(name) {
+  console.log("Hello, " + name);          // name undefined ஆக இருக்கலாம்
+}
+greet();                                  // "Hello, undefined"</code></pre>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">🛡️</span> பாதுகாப்பான பண்பு அணுகல்:</h4>
+                <p>Optional chaining (?.) மற்றும் nullish coalescing (??) ஆபரேட்டர்களைப் பயன்படுத்தி அமைதியான பிழைகளைத் தவிர்க்கவும்:</p>
+                <div class="code-example">
+                    <pre><code>// Optional chaining
+let userName = user?.profile?.name;  // undefined if any property is missing
+
+// Nullish coalescing
+let displayName = user?.name ?? "Guest";  // "Guest" if user.name is null/undefined
+
+// Default parameters
+function getUser(id = 0) {
+  return users.find(u => u.id === id) ?? {name: "Unknown"};
+}</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Type Coercion -->
+        <section class="content-section" id="type-coercion">
+            <h2>வகை மாற்றம் அமைதியான பிழைகள்</h2>
+            
+            <p>JavaScript ஆபரேட்டருக்கு ஏற்ப வெவ்வேறாக வகைகளை மாற்றுகிறது.</p>
+            
+            <p>வகை மாற்றம் பிழைகளை மறைக்கிறது. நிரல் தொடர்கிறது, ஆனால் லாஜிக் தவறானது.</p>
+            
+            <div class="code-example">
+                <pre><code>let result1 = ('5' + '2');
+let result2 = ('5' - '2');</code></pre>
+            </div>
+            
+            <h3>விளக்கம்:</h3>
+            <div class="code-example">
+                <pre><code>console.log('5' + '2');     // "52" (சரம் இணைப்பு)
+console.log('5' - '2');     // 3 (எண் கழித்தல்)
+console.log('5' * '2');     // 10 (எண் பெருக்கல்)
+console.log('5' / '2');     // 2.5 (எண் வகுத்தல்)
+console.log('5' == 5);      // true (சமத்தன்மை மாற்றம்)
+console.log('5' === 5);     // false (கண்டிப்பான சமத்தன்மை)</code></pre>
+            </div>
+            
+            <h3>ஆபத்தான வகை மாற்றம் எடுத்துக்காட்டுகள்:</h3>
+            <div class="code-example">
+                <pre><code>// எதிர்பாராத சரம் இணைப்பு
+let sum = 5 + "2";          // "52" (சரம்)
+let diff = 5 - "2";         // 3 (எண்)
+
+// Boolean மாற்றம்
+let truthy1 = Boolean("false");  // true (காலியற்ற சரம்)
+let truthy2 = Boolean(0);        // false
+let truthy3 = Boolean("0");      // true
+
+// எதிர்பாராத ஒப்பீடுகள்
+console.log(0 == false);         // true
+console.log('' == false);        // true  
+console.log(null == undefined);  // true
+console.log([] == false);        // true
+console.log([0] == false);       // true</code></pre>
+            </div>
+            
+            <div class="warning-box">
+                <h4><span class="warning-icon">🎯</span> சிறந்த நடைமுறைகள்:</h4>
+                <p>வகை மாற்றம் அமைதியான பிழைகளைத் தவிர்க்க:</p>
+                <div class="code-example">
+                    <pre><code>// எப்போதும் கண்டிப்பான சமத்தன்மையைப் பயன்படுத்தவும் (===, !==)
+if (value === 5) { /* ... */ }
+
+// வெளிப்படையான வகை மாற்றம்
+let num = Number(input);
+let str = String(value);
+let bool = Boolean(data);
+
+// parseInt/parseFloat க்கு இரண்டாவது அளவுருவைப் பயன்படுத்தவும்
+let int = parseInt("123abc", 10);  // 123
+let float = parseFloat("12.34px"); // 12.34</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- More Silent Error Examples -->
+        <section class="content-section" id="more-examples">
+            <h2>மேலும் அமைதியான பிழை எடுத்துக்காட்டுகள்</h2>
+            
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-infinity"></i>
+                        <h4>Infinity செயல்பாடுகள்</h4>
+                    </div>
+                    <div class="code-example">
+                        <pre><code>let x = 1 / 0;           // Infinity
+let y = -1 / 0;          // -Infinity
+let z = Infinity * 0;    // NaN</code></pre>
+                    </div>
+                    <p>Infinity உடன் கணிதம் பிழைகளை வீசாது, ஆனால் NaN அல்லது Infinity தருகிறது.</p>
+                </div>
+                
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-arrow-right"></i>
+                        <h4>தவறான வரிசை செயல்பாடுகள்</h4>
+                    </div>
+                    <div class="code-example">
+                        <pre><code>let arr = [1, 2, 3];
+let item = arr[10];      // undefined
+arr[5] = 6;              // Creates sparse array
+arr.length;              // 6</code></pre>
+                    </div>
+                    <p>வரம்பிற்கு வெளியே வரிசை அணுகல் undefined ஐ வழங்குகிறது, பிழை அல்ல.</p>
+                </div>
+                
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-function"></i>
+                        <h4>செயல்பாடு அழைப்புகள்</h4>
+                    </div>
+                    <div class="code-example">
+                        <pre><code>function greet(name) {
+  return "Hello, " + name;
+}
+greet();                 // "Hello, undefined"
+greet(undefined);        // "Hello, undefined"</code></pre>
+                    </div>
+                    <p>செயல்பாடுகள் வாதங்கள் இல்லாதபோது அமைதியாக undefined ஐப் பயன்படுத்துகின்றன.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Preventing Silent Errors -->
+        <section class="content-section" id="prevention">
+            <h2>அமைதியான பிழைகளைத் தடுப்பது</h2>
+            
+            <div class="best-practice-list">
+                <div class="practice-item positive">
+                    <i class="fas fa-check-circle"></i>
+                    <div><strong>கண்டிப்பான சமத்தன்மைப் பயன்படுத்தவும்:</strong> எப்போதும் === மற்றும் !== ஐ == மற்றும் != க்கு பதிலாகப் பயன்படுத்தவும்</div>
+                </div>
+                
+                <div class="practice-item positive">
+                    <i class="fas fa-check-circle"></i>
+                    <div><strong>வெளிப்படையான வகை மாற்றம்:</strong> parseInt(), Number(), String() போன்ற செயல்பாடுகளைப் பயன்படுத்தி வெளிப்படையாக வகைகளை மாற்றவும்</div>
+                </div>
+                
+                <div class="practice-item positive">
+                    <i class="fas fa-check-circle"></i>
+                    <div><strong>சோதனை மற்றும் சரிபார்ப்பு:</strong> தரவை செயலாக்குவதற்கு முன் சரிபார்க்கவும் (isNaN(), typeof, Array.isArray() போன்றவை)</div>
+                </div>
+                
+                <div class="practice-item positive">
+                    <i class="fas fa-check-circle"></i>
+                    <div><strong>நவீன JavaScript அம்சங்கள்:</strong> Optional chaining (?.), Nullish coalescing (??), மற்றும் Default parameters பயன்படுத்தவும்</div>
+                </div>
+                
+                <div class="practice-item positive">
+                    <i class="fas fa-check-circle"></i>
+                    <div><strong>லிண்டிங் கருவிகள்:</strong> ESLint போன்ற கருவிகளைப் பயன்படுத்தி அமைதியான பிழைகளைக் கண்டறியவும்</div>
+                </div>
+                
+                <div class="practice-item positive">
+                    <i class="fas fa-check-circle"></i>
+                    <div><strong>அலகுச் சோதனைகள்:</strong> எதிர்பாராத நடத்தைகளைக் கண்டறிய விரிவான சோதனைகளை எழுதவும்</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- See Also -->
+        <section class="content-section" id="see-also">
+            <h2>மேலும் பார்க்க:</h2>
+            
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <h4>JavaScript Errors</h4>
+                    </div>
+                    <p>விதிவிலக்குகளை வீசும் JavaScript பிழைகள் பற்றி அறியவும்</p>
+                </div>
+                
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-terminal"></i>
+                        <h4>JavaScript Error Statements</h4>
+                    </div>
+                    <p>பிழை அறிக்கைகள் மற்றும் அவற்றின் தொடரியல் பற்றி அறியவும்</p>
+                </div>
+                
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-code"></i>
+                        <h4>JavaScript Error Object</h4>
+                    </div>
+                    <p>JavaScript பிழை பொருள் மற்றும் அதன் பண்புகள் பற்றி அறியவும்</p>
+                </div>
+                
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-bug"></i>
+                        <h4>JavaScript Debugging</h4>
+                    </div>
+                    <p>JavaScript பிழைகளைக் கண்டறிந்து சரிசெய்வது பற்றி அறியவும்</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Single Exercise Section -->
+        <section class="content-section" id="exercises">
+            <h2>JavaScript Silent Errors பயிற்சி</h2>
+            
+            <p>அமைதியான பிழைகள் பற்றிய உங்கள் அறிவைச் சோதிக்க இந்தப் பயிற்சியை முயற்சிக்கவும்.</p>
+            
+            <div class="exercise-box">
+                <h4><span class="exercise-icon">❓</span> பின்வரும் எந்த JavaScript குறியீடு ஒரு அமைதியான பிழையை உருவாக்குகிறது (இயக்கத்தை நிறுத்தாமல் தவறான முடிவைத் தருகிறது)?</h4>
+                
+                <div class="options-grid">
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">throw new Error("Something went wrong");</div>
+                            <div class="option-feedback incorrect">✗ தவறு! இது ஒரு வெளிப்படையான பிழையை வீசுகிறது, அமைதியான பிழை அல்ல</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">undefinedVariable + 5;</div>
+                            <div class="option-feedback incorrect">✗ தவறு! இது ReferenceError ஐ வீசுகிறது (வரையறுக்கப்படாத மாறி), இது ஒரு விதிவிலக்கு</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="true">
+                        <div class="option-content">
+                            <div class="option-text">let result = '5' + 2;</div>
+                            <div class="option-feedback correct">✓ சரி! இது "52" (சரம்) என்று அமைதியாக முடிவுகளைத் தருகிறது, எண் கூட்டல் "7" அல்ல. இது ஒரு அமைதியான பிழை, ஏனெனில் இது பிழையை வீசாது ஆனால் எதிர்பாராத முடிவைத் தருகிறது</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">console.log("Hello World");</div>
+                            <div class="option-feedback incorrect">✗ தவறு! இது ஒரு சரியான JavaScript குறியீடு, பிழை இல்லை</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bottom Navigation -->
+        <div class="bottom-nav">
+            <a href="JavaScript%20Errors.html" class="nav-tab prev">
+                <i class="fas fa-arrow-left"></i>
+                <span>முந்தைய</span>
+            </a>
+            <a href="JavaScript%20Error%20Statements.html" class="nav-tab next">
+                <span>அடுத்தது</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Siva Team Institution</h3>
+                <p>Leading educational institution providing quality programming education in Tamil.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#introduction">Silent Errors அறிமுகம்</a></li>
+                    <li><a href="#assignment-comparison">ஒதுக்கீடு vs ஒப்பீடு</a></li>
+                    <li><a href="#nan-errors">NaN பிழைகள்</a></li>
+                    <li><a href="#missing-property">இல்லாத பண்புகள்</a></li>
+                    <li><a href="#type-coercion">வகை மாற்றம்</a></li>
+                    <li><a href="#prevention">தடுப்பு முறைகள்</a></li>
+                    <li><a href="#see-also">மேலும் பார்க்க</a></li>
+                    <li><a href="#exercises">பயிற்சி</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Location & Hours</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <ul>
+                    <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Siva Team Institution. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all content sections for animation
+        document.querySelectorAll('.content-section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Exercise interaction
+        document.querySelectorAll('.option-card').forEach(card => {
+            card.addEventListener('click', function() {
+                // Show feedback for all options
+                document.querySelectorAll('.option-card').forEach(c => {
+                    c.querySelector('.option-feedback').style.display = 'block';
+                });
+            });
+        });
+    </script>
+
+    <!-- Home Button -->
+    <a href="index.html" class="home-icon">
+        <i class="fas fa-home"></i>
+    </a>
+</body>
+</html>
+
+
