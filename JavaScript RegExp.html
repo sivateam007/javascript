@@ -1,0 +1,680 @@
+﻿<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript RegExp - Siva Team</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .content-section p, 
+        .content-section li,
+        .content-section h3,
+        .content-section h4,
+        .comparison-card p {
+            color: #333 !important;
+        }
+        
+        .tip-box p,
+        .tip-box li,
+        .tip-box h4 {
+            color: white !important;
+        }
+        
+        .warning-box p,
+        .warning-box li,
+        .warning-box h4 {
+            color: white !important;
+        }
+        
+        .exercise-box p,
+        .exercise-box h4 {
+            color: white !important;
+        }
+        
+        /* Stable logo styling - NO ANIMATIONS */
+        .logo-icon {
+            animation: none !important;
+        }
+        
+        .logo-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            animation: none !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <img src="logo.jpg" alt="Siva Team Logo" class="logo-image">
+                </div>
+                <h1>Siva Team <span>Institution</span></h1>
+            </div>
+        </div>
+    </header>
+
+    <!-- Top Navigation Tabs -->
+    <div class="nav-tabs">
+        <a href="JavaScript%20Random.html" class="nav-tab prev">
+            <i class="fas fa-arrow-left"></i>
+            <span>முந்தைய</span>
+        </a>
+        <a href="JavaScript%20RegExp%20Flags.html" class="nav-tab next">
+            <span>அடுத்தது</span>
+            <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2>JavaScript RegExp</h2>
+            <p>வழக்கமான வெளிப்பாடுகளைக் கற்றுக்கொள்ளுங்கள்</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Regular Expressions -->
+        <section class="content-section" id="regular-expressions">
+            <h2>வழக்கமான வெளிப்பாடுகள்</h2>
+            
+            <p>ஒரு வழக்கமான வெளிப்பாடு என்பது தேடல் முறையை உருவாக்கும் எழுத்துகளின் வரிசையாகும்.</p>
+            
+            <p>Regex என்பது வழக்கமான வெளிப்பாட்டிற்கான பொதுவான சுருக்கெழுத்து ஆகும்.</p>
+            
+            <p>JavaScript RegExp என்பது வழக்கமான வெளிப்பாடுகளைக் கையாள ஒரு பொருளாகும்.</p>
+            
+            <p>RegExp இவற்றிற்குப் பயன்படுத்தப்படலாம்:</p>
+            
+            <ul>
+                <li>உரைத் தேடல்</li>
+                <li>உரை மாற்றீடு</li>
+                <li>உரை சரிபார்ப்பு</li>
+            </ul>
+        </section>
+
+        <!-- Example -->
+        <section class="content-section" id="example">
+            <h2>எடுத்துக்காட்டு</h2>
+            
+            <p>ஒரு சரத்தில் "Siva team" க்கு வழக்கு-உணர்வற்ற தேடல் செய்யுங்கள்:</p>
+            
+            <div class="code-example">
+                <pre><code>let text = "Visit Siva Team";
+let n = text.search(/Siva team/i);</code></pre>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">🔍</span> எடுத்துக்காட்டு விளக்கம்:</h4>
+                <ul>
+                    <li><code>/Siva team/i</code> ஒரு வழக்கமான வெளிப்பாடு.</li>
+                    <li><code>Siva team</code> ஒரு முறை (தேடலில் பயன்படுத்த).</li>
+                    <li><code>i</code> ஒரு மாற்றியை (தேடலை வழக்கு-உணர்வற்றதாக மாற்றுகிறது).</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Regular Expression Syntax -->
+        <section class="content-section" id="regex-syntax">
+            <h2>வழக்கமான வெளிப்பாடு தொடரியல்</h2>
+            
+            <div class="code-example">
+                <pre><code>/pattern/modifier flags;</code></pre>
+            </div>
+        </section>
+
+        <!-- Using String Methods -->
+        <section class="content-section" id="string-methods">
+            <h2>சரம் முறைகளைப் பயன்படுத்துதல்</h2>
+            
+            <p>வழக்கமான வெளிப்பாடுகள் பெரும்பாலும் சரம் முறைகளுடன் பயன்படுத்தப்படுகின்றன:</p>
+            
+            <div class="comparison-table">
+                <table>
+                    <tr>
+                        <th>முறை</th>
+                        <th>விளக்கம்</th>
+                    </tr>
+                    <tr>
+                        <td>match(regex)</td>
+                        <td>முடிவுகளின் ஒரு வரிசையை வழங்குகிறது</td>
+                    </tr>
+                    <tr>
+                        <td>replace(regex)</td>
+                        <td>ஒரு புதிய சரத்தை வழங்குகிறது</td>
+                    </tr>
+                    <tr>
+                        <td>search(regex)</td>
+                        <td>முதல் பொருத்தத்தின் குறியீட்டை வழங்குகிறது</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <h3>சரம் match() பயன்படுத்துதல்</h3>
+            <p>ஒரு சரத்தில் "Siva Team" தேடவும்:</p>
+            
+            <div class="code-example">
+                <pre><code>let text = "Visit Siva Team";
+let n = text.match(/Siva Team/);</code></pre>
+            </div>
+            
+            <h3>சரம் replace() பயன்படுத்துதல்</h3>
+            <p>ஒரு சரத்தில் "Microsoft" ஐ "Siva Team" ஆக மாற்றவும்:</p>
+            
+            <div class="code-example">
+                <pre><code>let text = "Visit Microsoft!";
+let result = text.replace(/Microsoft/i, "Siva Team");</code></pre>
+            </div>
+            
+            <h3>சரம் search() பயன்படுத்துதல்</h3>
+            <p>ஒரு சரத்தில் "Siva Team" தேடவும்:</p>
+            
+            <div class="code-example">
+                <pre><code>let text = "Visit Siva Team";
+let n = text.search(/Siva Team/);</code></pre>
+            </div>
+        </section>
+
+        <!-- RexExp Alternation (OR) -->
+        <section class="content-section" id="alternation">
+            <h2>RexExp மாற்று (OR)</h2>
+            
+            <p>ஒரு வழக்கமான வெளிப்பாட்டில் ஒரு மாற்று ஒரு செங்குத்து வரி எழுத்து | உடன் குறிக்கப்படுகிறது.</p>
+            
+            <p>ஒரு மாற்று | உடன் பிரிக்கப்பட்ட எந்த மாற்றுகளுடனும் பொருந்தும்.</p>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <p>மாற்றுகளுக்கான ஒரு உலகளாவிய தேடல் (red|green|blue):</p>
+            
+            <div class="code-example">
+                <pre><code>let text = "Black, white, red, green, blue, yellow.";
+
+let result = text.match(/red|green|blue/g);</code></pre>
+            </div>
+        </section>
+
+        <!-- JavaScript Regex Flags -->
+        <section class="content-section" id="regex-flags">
+            <h2>JavaScript Regex கொடிகள்</h2>
+            
+            <div class="code-example">
+                <pre><code>/pattern/flags</code></pre>
+            </div>
+            
+            <p>வழக்கமான வெளிப்பாடு கொடிகள் ஒரு முறை எவ்வாறு பயன்படுத்தப்படுகிறது என்பதை மாற்றக்கூடிய அளவுருக்கள் ஆகும், அவை வழக்கு-உணர்வற்றதாக அல்லது உலகளாவியதாக மாற்றுவது போன்றவை.</p>
+            
+            <p>இவை மிகவும் பொதுவானவை:</p>
+            
+            <div class="comparison-table">
+                <table>
+                    <tr>
+                        <th>கொடி</th>
+                        <th>விளக்கம்</th>
+                    </tr>
+                    <tr>
+                        <td>/g</td>
+                        <td>உலகளாவிய பொருத்தத்தை செய்கிறது (அனைத்தையும் கண்டுபிடிக்கவும்)</td>
+                    </tr>
+                    <tr>
+                        <td>/i</td>
+                        <td>வழக்கு-உணர்வற்ற பொருத்தத்தை செய்கிறது</td>
+                    </tr>
+                    <tr>
+                        <td>/u</td>
+                        <td>யூனிகோட் ஆதரவை இயக்குகிறது (புதிய 2015)</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <h3>/g கொடி (உலகளாவிய)</h3>
+            <p>/g கொடி முதல் ஒன்றை மட்டுமல்ல, முறையின் அனைத்து நிகழ்வுகளையும் பொருத்துகிறது.</p>
+            
+            <div class="code-example">
+                <pre><code>let text = "Is this all there is?";
+const pattern = /is/g;
+
+let result = text.match(pattern);</code></pre>
+            </div>
+            
+            <h3>/i கொடி (உணர்வற்ற)</h3>
+            <p>/i கொடி ஒரு பொருத்தத்தை வழக்கு-உணர்வற்றதாக ஆக்குகிறது: /abc/i "abc", "AbC", "ABC" ஆகியவற்றுடன் பொருந்தும்.</p>
+            
+            <div class="code-example">
+                <pre><code>let text = "Visit Siva Team";
+const pattern = /Siva team/i;
+let result = text.match(pattern);</code></pre>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">📚</span> Siva Team குறிப்பு:</h4>
+                <p>மேலும் அறிய: JavaScript RegExp கொடிகள்</p>
+            </div>
+        </section>
+
+        <!-- RexExp Metacharacters -->
+        <section class="content-section" id="metacharacters">
+            <h2>RexExp மெட்டாஎழுத்துகள்</h2>
+            
+            <div class="code-example">
+                <pre><code>// Match words
+const pattern = /\w/;</code></pre>
+            </div>
+            
+            <p>மெட்டாஎழுத்துகள் ஒரு சிறப்பு அர்த்தத்துடன் கூடிய எழுத்துகள்.</p>
+            
+            <p>இலக்கங்கள், சொற்கள், இடைவெளிகள் மற்றும் பலவற்றை பொருத்த அவை பயன்படுத்தப்படலாம்.</p>
+            
+            <p>இவை மிகவும் பொதுவானவை:</p>
+            
+            <div class="comparison-table">
+                <table>
+                    <tr>
+                        <th>மெட்டா</th>
+                        <th>விளக்கம்</th>
+                    </tr>
+                    <tr>
+                        <td>\d</td>
+                        <td>இலக்கங்களை பொருத்துகிறது</td>
+                    </tr>
+                    <tr>
+                        <td>\w</td>
+                        <td>சொற்களை பொருத்துகிறது</td>
+                    </tr>
+                    <tr>
+                        <td>\s</td>
+                        <td>இடைவெளிகளை பொருத்துகிறது</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <h3>RegExp \d (இலக்கங்கள்) மெட்டாஎழுத்து</h3>
+            <p>\d மெட்டாஎழுத்து இலக்கங்களை பொருத்துகிறது.</p>
+            
+            <div class="code-example">
+                <pre><code>let text = "Give 100%!";
+const pattern = /\d/g;
+
+let result = text.match(pattern);</code></pre>
+            </div>
+            
+            <h3>RegExp \w (சொல்) மெட்டாஎழுத்து</h3>
+            <p>\w மெட்டாஎழுத்து சொல் எழுத்துகளை பொருத்துகிறது.</p>
+            <p>ஒரு சொல் எழுத்து a-z, A-Z, 0-9 உட்பட _ (அடிக்கோடு) சேர்க்கப்பட்டுள்ளது.</p>
+            
+            <div class="code-example">
+                <pre><code>let text = "Give 100%!";
+const pattern = /\w/g;
+
+let result = text.match(pattern);</code></pre>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">📚</span> Siva Team குறிப்பு:</h4>
+                <p>மேலும் அறிய: JavaScript RegExp மெட்டாஎழுத்துகள்</p>
+            </div>
+        </section>
+
+        <!-- JavaScript RegExp Quantifiers -->
+        <section class="content-section" id="quantifiers">
+            <h2>JavaScript RegExp அளவீடுகள்</h2>
+            
+            <div class="code-example">
+                <pre><code>// Match at least one zero
+const pattern = /0+/;</code></pre>
+            </div>
+            
+            <p>அளவீடுகள் பொருத்த வேண்டிய எழுத்துகள் அல்லது வெளிப்பாடுகளின் எண்ணிக்கையை வரையறுக்கின்றன.</p>
+            
+            <p>இவை மிகவும் பொதுவானவை:</p>
+            
+            <div class="comparison-table">
+                <table>
+                    <tr>
+                        <th>குறியீடு</th>
+                        <th>விளக்கம்</th>
+                    </tr>
+                    <tr>
+                        <td>x*</td>
+                        <td>x இன் பூஜ்யம் அல்லது அதற்கு மேற்பட்ட நிகழ்வுகளை பொருத்துகிறது</td>
+                    </tr>
+                    <tr>
+                        <td>x?</td>
+                        <td>x இன் பூஜ்யம் அல்லது ஒரு நிகழ்வுகளை பொருத்துகிறது</td>
+                    </tr>
+                    <tr>
+                        <td>x{n}</td>
+                        <td>x இன் n நிகழ்வுகளை பொருத்துகிறது</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <h3>n? அளவீடு</h3>
+            <p>x? x இன் பூஜ்யம் அல்லது ஒரு நிகழ்வுகளை பொருத்துகிறது.</p>
+            
+            <div class="code-example">
+                <pre><code>let text = "1, 100 or 1000?";
+const pattern = /10?/g;
+
+let result = text.match(pattern);</code></pre>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">📚</span> Siva Team குறிப்பு:</h4>
+                <p>மேலும் அறிய: JavaScript RegExp அளவீடுகள்</p>
+            </div>
+        </section>
+
+        <!-- Regular Expression Assertions -->
+        <section class="content-section" id="assertions">
+            <h2>வழக்கமான வெளிப்பாடு உறுதிப்படுத்தல்கள்</h2>
+            
+            <div class="code-example">
+                <pre><code>// Match beginning of string
+const pattern = /^Siva Team/;
+
+// Match end of string
+const pattern = /Siva Team$/;</code></pre>
+            </div>
+            
+            <p>உறுதிப்படுத்தல்கள் எல்லைகள் மற்றும் Lookarounds ஐ பொருத்துகின்றன:</p>
+            
+            <ul>
+                <li>சரம் எல்லைகள் மற்றும் சொல் எல்லைகள்.</li>
+                <li>Lookarounds: Lookaheads மற்றும் Lookbehinds.</li>
+            </ul>
+            
+            <p>இவை மிகவும் பொதுவானவை:</p>
+            
+            <div class="comparison-table">
+                <table>
+                    <tr>
+                        <th>தொடரியல்</th>
+                        <th>பெயர்</th>
+                        <th>விளக்கம்</th>
+                    </tr>
+                    <tr>
+                        <td>^</td>
+                        <td>சரம் எல்லை</td>
+                        <td>ஒரு சரத்தின் தொடக்கத்தை பொருத்துகிறது</td>
+                    </tr>
+                    <tr>
+                        <td>$</td>
+                        <td>சரம் எல்லை</td>
+                        <td>ஒரு சரத்தின் முடிவை பொருத்துகிறது</td>
+                    </tr>
+                    <tr>
+                        <td>\b</td>
+                        <td>சொல் எல்லை</td>
+                        <td>ஒரு சொல்லின் தொடக்கத்தை அல்லது முடிவை பொருத்துகிறது</td>
+                    </tr>
+                    <tr>
+                        <td>(?=...)</td>
+                        <td>Lookahead</td>
+                        <td>அடுத்தடுத்த சரத்தை பொருத்துகிறது</td>
+                    </tr>
+                    <tr>
+                        <td>(?<=...)</td>
+                        <td>Lookbehind</td>
+                        <td>முந்தைய சரத்தை பொருத்துகிறது</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <h3>RegExp ^ மெட்டாஎழுத்து</h3>
+            <p>^ மெட்டாஎழுத்து ஒரு சரத்தின் தொடக்கத்தை பொருத்துகிறது.</p>
+            
+            <div class="code-example">
+                <pre><code>const pattern = /^Siva Team/;
+let text = "Siva Team Tutorial";
+
+let result = pattern.test(text); // true
+
+const pattern = /^Siva Team/;
+let text = "Hello Siva Team";
+
+let result = pattern.test(text); // false</code></pre>
+            </div>
+            
+            <h3>RegExp $ மெட்டாஎழுத்து</h3>
+            <p>$ மெட்டாஎழுத்து ஒரு சரத்தின் முடிவை பொருத்துகிறது.</p>
+            
+            <p>ஒரு சரம் "Siva Team" உடன் முடிகிறதா என சோதிக்கவும்:</p>
+            
+            <div class="code-example">
+                <pre><code>const pattern = /Siva Team$/;
+let text = "Hello Siva Team";
+
+let result = pattern.test(text); // true
+
+const pattern = /Siva Team$/;
+let text = "Siva Team tutorial";
+
+let result = pattern.test(text); // false</code></pre>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">📚</span> Siva Team குறிப்பு:</h4>
+                <p>மேலும் அறிய: JavaScript RegExp உறுதிப்படுத்தல்கள்</p>
+            </div>
+        </section>
+
+        <!-- JavaScript RegExp Character Classes -->
+        <section class="content-section" id="character-classes">
+            <h2>JavaScript RegExp எழுத்து வகுப்புகள்</h2>
+            
+            <div class="code-example">
+                <pre><code>// Match Digits
+const pattern = /[0-9]/;</code></pre>
+            </div>
+            
+            <p>எழுத்து வகுப்புகள் சதுர அடைப்புக்குறிகளில் [] இணைக்கப்பட்ட எழுத்துகள்.</p>
+            
+            <p>ஒரு எழுத்து வகுப்பு அடைப்புக்குறிகளுக்குள் ஒரு தொகுப்பிலிருந்து எந்த எழுத்தையும் பொருத்துகிறது.</p>
+            
+            <p>இவை மிகவும் பொதுவானவை:</p>
+            
+            <div class="comparison-table">
+                <table>
+                    <tr>
+                        <th>வகுப்பு</th>
+                        <th>விளக்கம்</th>
+                    </tr>
+                    <tr>
+                        <td>[a]</td>
+                        <td>அடைப்புக்குறிகளுக்கு இடையேயுள்ள எழுத்தை பொருத்துகிறது</td>
+                    </tr>
+                    <tr>
+                        <td>[abc]</td>
+                        <td>அடைப்புக்குறிகளுக்கு இடையே உள்ள அனைத்து எழுத்துகளையும் பொருத்துகிறது</td>
+                    </tr>
+                    <tr>
+                        <td>[a-z]</td>
+                        <td>a முதல் z வரையிலான அனைத்து எழுத்துகளையும் பொருத்துகிறது</td>
+                    </tr>
+                    <tr>
+                        <td>[0-9]</td>
+                        <td>0 முதல் 9 வரையிலான அனைத்து எழுத்துகளையும் பொருத்துகிறது</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <h3>எடுத்துக்காட்டு [0-9]</h3>
+            <p>ஒரு சரத்தில் "0" முதல் "9" வரையிலான எழுத்துகளுக்கான உலகளாவிய தேடல்:</p>
+            
+            <div class="code-example">
+                <pre><code>let text = "More than 1000 times";
+const pattern = /[0-9]/g;
+
+let result = text.match(pattern);</code></pre>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">📚</span> Siva Team குறிப்பு:</h4>
+                <p>மேலும் அறிய: 
+                <ul>
+                    <li>JavaScript RegExp கொடிகள்</li>
+                    <li>JavaScript RegExp எழுத்து வகுப்புகள்</li>
+                    <li>JavaScript RegExp மெட்டாஎழுத்துகள்</li>
+                    <li>JavaScript RegExp உறுதிப்படுத்தல்கள்</li>
+                    <li>JavaScript RegExp அளவீடுகள்</li>
+                    <li>JavaScript RegExp முறைகள்</li>
+                </ul>
+                </p>
+            </div>
+        </section>
+
+        <!-- Single Exercise -->
+        <section class="content-section" id="exercises">
+            <h2>RegExp பயிற்சி</h2>
+            
+            <div class="exercise-box">
+                <h4><span class="exercise-icon">❓</span> வழக்கமான வெளிப்பாடுகளில் i மாற்றி என்ன குறிக்கிறது?</h4>
+                
+                <div class="options-grid">
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">உலகளாவிய பொருத்தத்தை செய்யுங்கள் (அனைத்து நிகழ்வுகளையும் கண்டுபிடிக்கவும்)</div>
+                            <div class="option-feedback incorrect">✗ தவறு! இது g கொடியின் பணி</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">வழக்கு-உணர்வு பொருத்தத்தை செய்யுங்கள்</div>
+                            <div class="option-feedback incorrect">✗ தவறு! i மாற்றி வழக்கு-உணர்வை மாற்றுகிறது, ஆனால் அது வழக்கு-உணர்வற்றதாக ஆக்குகிறது, வழக்கு-உணர்வாக அல்ல</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="true">
+                        <div class="option-content">
+                            <div class="option-text">வழக்கு-உணர்வற்ற பொருத்தத்தை செய்யுங்கள்</div>
+                            <div class="option-feedback correct">✓ சரி! i மாற்றி ஒரு வழக்கமான வெளிப்பாட்டை வழக்கு-உணர்வற்றதாக ஆக்குகிறது, இது பெரிய எழுத்து மற்றும் சிறிய எழுத்து வேறுபாடுகளை புறக்கணிக்கிறது</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bottom Navigation -->
+        <div class="bottom-nav">
+            <a href="JavaScript%20Random.html" class="nav-tab prev">
+                <i class="fas fa-arrow-left"></i>
+                <span>முந்தைய</span>
+            </a>
+            <a href="JavaScript%20RegExp%20Flags.html" class="nav-tab next">
+                <span>அடுத்தது</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Siva Team Institution</h3>
+                <p>Leading educational institution providing quality programming education in Tamil.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#regular-expressions">வழக்கமான வெளிப்பாடுகள்</a></li>
+                    <li><a href="#example">எடுத்துக்காட்டு</a></li>
+                    <li><a href="#string-methods">சரம் முறைகள்</a></li>
+                    <li><a href="#regex-flags">Regex கொடிகள்</a></li>
+                    <li><a href="#metacharacters">மெட்டாஎழுத்துகள்</a></li>
+                    <li><a href="#quantifiers">அளவீடுகள்</a></li>
+                    <li><a href="#assertions">உறுதிப்படுத்தல்கள்</a></li>
+                    <li><a href="#character-classes">எழுத்து வகுப்புகள்</a></li>
+                    <li><a href="#exercises">பயிற்சி</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Location & Hours</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <ul>
+                    <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Siva Team Institution. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all content sections for animation
+        document.querySelectorAll('.content-section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Exercise interaction
+        document.querySelectorAll('.option-card').forEach(card => {
+            card.addEventListener('click', function() {
+                // Show feedback for all options
+                document.querySelectorAll('.option-card').forEach(c => {
+                    c.querySelector('.option-feedback').style.display = 'block';
+                });
+            });
+        });
+    </script>
+
+    <!-- Home Button -->
+    <a href="index.html" class="home-icon">
+        <i class="fas fa-home"></i>
+    </a>
+</body>
+</html>
+
+

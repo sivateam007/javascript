@@ -1,0 +1,681 @@
+﻿<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Number Properties - Siva Team</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .content-section p, 
+        .content-section li,
+        .content-section h3,
+        .content-section h4,
+        .comparison-card p {
+            color: #333 !important;
+        }
+        
+        .tip-box p,
+        .tip-box li,
+        .tip-box h4 {
+            color: white !important;
+        }
+        
+        .warning-box p,
+        .warning-box li,
+        .warning-box h4 {
+            color: white !important;
+        }
+        
+        .exercise-box p,
+        .exercise-box h4 {
+            color: white !important;
+        }
+        
+        /* Stable logo styling - NO ANIMATIONS */
+        .logo-icon {
+            animation: none !important;
+        }
+        
+        .logo-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            animation: none !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <img src="logo.jpg" alt="Siva Team Logo" class="logo-image">
+                </div>
+                <h1>Siva Team <span>Institution</span></h1>
+            </div>
+        </div>
+    </header>
+
+    <!-- Top Navigation Tabs -->
+    <div class="nav-tabs">
+        <a href="javascript%20number%20methods.html" class="nav-tab prev">
+            <i class="fas fa-arrow-left"></i>
+            <span>முந்தைய</span>
+        </a>
+        <a href="javascript%20number%20reference.html" class="nav-tab next">
+            <span>அடுத்தது</span>
+            <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2>JavaScript Number Properties</h2>
+            <p>ஜாவாஸ்கிரிப்ட் எண் பண்புகள் மற்றும் மாறிலிகள்</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Introduction -->
+        <section class="content-section" id="introduction">
+            <h2>JavaScript Number Properties</h2>
+            
+            <p>ஜாவாஸ்கிரிப்ட்டில், Number பொருள் பல பயனுள்ள பண்புகளை வழங்குகிறது. இந்த பண்புகள் எண் மதிப்புகள், வரம்புகள் மற்றும் கணித மாறிலிகளை குறிப்பிடுகின்றன.</p>
+            
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-infinity"></i>
+                        <h4>Number.EPSILON</h4>
+                    </div>
+                    <p>1 ஐ விட அதிகமான மிகச் சிறிய மிதவைப் புள்ளி எண்ணுக்கும் 1 க்கும் இடையே உள்ள வித்தியாசம்</p>
+                </div>
+                
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-arrow-up"></i>
+                        <h4>Number.MAX_VALUE</h4>
+                    </div>
+                    <p>ஜாவாஸ்கிரிப்ட்டில் சாத்தியமான மிகப்பெரிய எண்ணைக் குறிக்கும் மாறிலி</p>
+                </div>
+                
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-arrow-down"></i>
+                        <h4>Number.MIN_VALUE</h4>
+                    </div>
+                    <p>ஜாவாஸ்கிரிப்ட்டில் சாத்தியமான மிகச்சிறிய நேர்மறை எண்ணைக் குறிக்கும் மாறிலி</p>
+                </div>
+                
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-shield-alt"></i>
+                        <h4>Number.MAX_SAFE_INTEGER</h4>
+                    </div>
+                    <p>ஜாவாஸ்கிரிப்ட்டில் அதிகபட்ச பாதுகாப்பான முழு எண்ணைக் குறிக்கிறது</p>
+                </div>
+            </div>
+            
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-shield-alt"></i>
+                        <h4>Number.MIN_SAFE_INTEGER</h4>
+                    </div>
+                    <p>ஜாவாஸ்கிரிப்ட்டில் குறைந்தபட்ச பாதுகாப்பான முழு எண்ணைக் குறிக்கிறது</p>
+                </div>
+                
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-plus-circle"></i>
+                        <h4>Number.POSITIVE_INFINITY</h4>
+                    </div>
+                    <p>நேர்மறை முடிவிலியைக் குறிக்கிறது</p>
+                </div>
+                
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-minus-circle"></i>
+                        <h4>Number.NEGATIVE_INFINITY</h4>
+                    </div>
+                    <p>எதிர்மறை முடிவிலியைக் குறிக்கிறது</p>
+                </div>
+                
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-question-circle"></i>
+                        <h4>Number.NaN</h4>
+                    </div>
+                    <p>சட்டப்பூர்வமான எண் அல்லாத எண்ணைக் குறிக்கும் ஜாவாஸ்கிரிப்ட் ஒதுக்கப்பட்ட சொல்</p>
+                </div>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">📚</span> மேலும் பார்க்க:</h4>
+                <div class="best-practice-list">
+                    <div class="practice-item positive">
+                        <i class="fas fa-book"></i>
+                        <div><a href="javascript%20numbers.html">எண்கள் டுடோரியல்</a> - எண்கள் பற்றிய அடிப்படை கருத்துகள்</div>
+                    </div>
+                    <div class="practice-item positive">
+                        <i class="fas fa-cogs"></i>
+                        <div><a href="javascript%20number%20methods.html">எண் முறைகள்</a> - எண்களுடன் வேலை செய்வதற்கான முறைகள்</div>
+                    </div>
+                    <div class="practice-item positive">
+                        <i class="fas fa-book-open"></i>
+                        <div><a href="javascript%20number%20reference.html">எண் குறிப்பு</a> - முழுமையான எண் முறைகள் மற்றும் பண்புகள்</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- JavaScript EPSILON -->
+        <section class="content-section" id="epsilon">
+            <h2>JavaScript EPSILON</h2>
+            
+            <p><code>Number.EPSILON</code> என்பது 1 ஐ விட அதிகமான மிகச் சிறிய மிதவைப் புள்ளி எண்ணுக்கும் 1 க்கும் இடையே உள்ள வித்தியாசம்.</p>
+            
+            <div class="code-example">
+                <h4>எடுத்துக்காட்டு</h4>
+                <pre><code>let x = Number.EPSILON;
+console.log(x);  // 2.220446049250313e-16</code></pre>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">🔬</span> நடைமுறை பயன்பாடு:</h4>
+                <p><code>Number.EPSILON</code> மிதவைப் புள்ளி கணிதத்தில் உள்ள பிழைகளைக் கையாள்வதற்கு பயனுள்ளதாக இருக்கும்:</p>
+                <pre><code>// மிதவைப் புள்ளி எண்களை ஒப்பிடுதல்
+function numbersEqual(a, b) {
+    return Math.abs(a - b) < Number.EPSILON;
+}
+
+console.log(numbersEqual(0.1 + 0.2, 0.3));  // true
+console.log(0.1 + 0.2 === 0.3);             // false</code></pre>
+            </div>
+            
+            <div class="warning-box">
+                <h4><span class="warning-icon">⚠️</span> குறிப்பு:</h4>
+                <p><code>Number.EPSILON</code> என்பது ஒரு ES6 அம்சம். இது Internet Explorer இல் வேலை செய்யாது.</p>
+            </div>
+        </section>
+
+        <!-- JavaScript MAX_VALUE -->
+        <section class="content-section" id="max-value">
+            <h2>JavaScript MAX_VALUE</h2>
+            
+            <p><code>Number.MAX_VALUE</code> என்பது ஜாவாஸ்கிரிப்ட்டில் சாத்தியமான மிகப்பெரிய எண்ணைக் குறிக்கும் மாறிலியாகும்.</p>
+            
+            <div class="code-example">
+                <h4>எடுத்துக்காட்டு</h4>
+                <pre><code>let x = Number.MAX_VALUE;
+console.log(x);  // 1.7976931348623157e+308</code></pre>
+            </div>
+            
+            <div class="warning-box">
+                <h4><span class="warning-icon">ℹ️</span> Number Properties Cannot be Used on Variables:</h4>
+                <p>Number பண்புகள் ஜாவாஸ்கிரிப்ட் Number பொருளுக்கு சொந்தமானது. இந்த பண்புகளை <code>Number.MAX_VALUE</code> போன்று மட்டுமே அணுகலாம்.</p>
+                <p>X ஒரு மாறி அல்லது மதிப்பாக இருக்கும் இடத்தில் <code>X.MAX_VALUE</code> பயன்படுத்துவது undefined ஐத் திருப்பி அனுப்பும்:</p>
+                <pre><code>let x = 6;
+console.log(x.MAX_VALUE);  // undefined</code></pre>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">💡</span> MAX_VALUE ஐ மீறுதல்:</h4>
+                <p><code>Number.MAX_VALUE</code> ஐ விட பெரிய எண்களை உருவாக்க முயற்சித்தால், முடிவு <code>Infinity</code> ஆக இருக்கும்:</p>
+                <pre><code>let max = Number.MAX_VALUE;
+let overflow = max * 2;
+console.log(overflow);  // Infinity</code></pre>
+            </div>
+        </section>
+
+        <!-- JavaScript MIN_VALUE -->
+        <section class="content-section" id="min-value">
+            <h2>JavaScript MIN_VALUE</h2>
+            
+            <p><code>Number.MIN_VALUE</code> என்பது ஜாவாஸ்கிரிப்ட்டில் சாத்தியமான மிகச்சிறிய நேர்மறை எண்ணைக் குறிக்கும் மாறிலியாகும்.</p>
+            
+            <div class="code-example">
+                <h4>எடுத்துக்காட்டு</h4>
+                <pre><code>let x = Number.MIN_VALUE;
+console.log(x);  // 5e-324</code></pre>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">📝</span> குறிப்பு:</h4>
+                <p><code>Number.MIN_VALUE</code> மிகச்சிறிய நேர்மறை எண்ணாகும், மிகச்சிறது எண் அல்ல. மிகச்சிறது எண் <code>Number.NEGATIVE_INFINITY</code> ஆகும்.</p>
+                <pre><code>console.log(Number.MIN_VALUE > 0);  // true
+console.log(Number.MIN_VALUE < Number.MAX_VALUE);  // true</code></pre>
+            </div>
+        </section>
+
+        <!-- Minimum and Maximum Safe Integers -->
+        <section class="content-section" id="safe-integers">
+            <h2>குறைந்தபட்ச மற்றும் அதிகபட்ச பாதுகாப்பான முழு எண்கள்</h2>
+            
+            <p>ES6 Number பொருளில் அதிகபட்ச மற்றும் குறைந்தபட்ச பண்புகளை சேர்த்தது:</p>
+            <ul>
+                <li><code>Number.MAX_SAFE_INTEGER</code></li>
+                <li><code>Number.MIN_SAFE_INTEGER</code></li>
+            </ul>
+            
+            <div class="code-comparison">
+                <div class="code-column">
+                    <h4>JavaScript MIN_SAFE_INTEGER</h4>
+                    <p><code>Number.MIN_SAFE_INTEGER</code> ஜாவாஸ்கிரிப்ட்டில் குறைந்தபட்ச பாதுகாப்பான முழு எண்ணைக் குறிக்கிறது.</p>
+                    <p><code>Number.MIN_SAFE_INTEGER</code> என்பது -(2<sup>53</sup> - 1).</p>
+                    <pre><code>let x = Number.MIN_SAFE_INTEGER;
+console.log(x);  // -9007199254740991</code></pre>
+                </div>
+                
+                <div class="code-column">
+                    <h4>JavaScript MAX_SAFE_INTEGER</h4>
+                    <p><code>Number.MAX_SAFE_INTEGER</code> ஜாவாஸ்கிரிப்ட்டில் அதிகபட்ச பாதுகாப்பான முழு எண்ணைக் குறிக்கிறது.</p>
+                    <p><code>Number.MAX_SAFE_INTEGER</code> என்பது (2<sup>53</sup> - 1).</p>
+                    <pre><code>let x = Number.MAX_SAFE_INTEGER;
+console.log(x);  // 9007199254740991</code></pre>
+                </div>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">🔒</span> பாதுகாப்பான முழு எண்கள்:</h4>
+                <p>பாதுகாப்பான முழு எண்கள் அனைத்தும் -(2<sup>53</sup> - 1) முதல் +(2<sup>53</sup> - 1) வரையிலான முழு எண்கள் ஆகும்.</p>
+                <ul>
+                    <li>இது பாதுகாப்பானது: 9007199254740991</li>
+                    <li>இது பாதுகாப்பானது அல்ல: 9007199254740992</li>
+                </ul>
+                <p>பாதுகாப்பான முழு எண்கள் 64-பிட் மிதவைப் புள்ளி வடிவத்தில் இழப்பின்றி குறிப்பிடக்கூடியவை.</p>
+            </div>
+            
+            <div class="code-example">
+                <h4>பாதுகாப்பான முழு எண்கள் சோதனை:</h4>
+                <pre><code>// பாதுகாப்பான முழு எண்களை சோதிக்க Number.isSafeInteger() பயன்படுத்தவும்
+console.log(Number.isSafeInteger(9007199254740991));  // true
+console.log(Number.isSafeInteger(9007199254740992));  // false
+
+console.log(Number.isSafeInteger(Number.MAX_SAFE_INTEGER));     // true
+console.log(Number.isSafeInteger(Number.MAX_SAFE_INTEGER + 1)); // false</code></pre>
+            </div>
+        </section>
+
+        <!-- JavaScript POSITIVE_INFINITY -->
+        <section class="content-section" id="positive-infinity">
+            <h2>JavaScript POSITIVE_INFINITY</h2>
+            
+            <div class="code-example">
+                <h4>எடுத்துக்காட்டு</h4>
+                <pre><code>let x = Number.POSITIVE_INFINITY;
+console.log(x);  // Infinity
+console.log(typeof x);  // "number"</code></pre>
+            </div>
+            
+            <p><code>POSITIVE_INFINITY</code> என்பது நிலைத்தன்மையை மீறும் போது திருப்பி அனுப்பப்படும்:</p>
+            
+            <div class="code-example">
+                <pre><code>let x = 1 / 0;
+console.log(x);  // Infinity
+console.log(x === Number.POSITIVE_INFINITY);  // true</code></pre>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">∞</span> Infinity பண்புகள்:</h4>
+                <ul>
+                    <li><code>Infinity</code> என்பது <code>Number.POSITIVE_INFINITY</code> க்கு சமம்</li>
+                    <li><code>-Infinity</code> என்பது <code>Number.NEGATIVE_INFINITY</code> க்கு சமம்</li>
+                    <li><code>Infinity</code> எப்போதும் எந்த வரையறுக்கப்பட்ட எண்ணையும் விட பெரியது</li>
+                    <li><code>Infinity * 0</code> என்பது <code>NaN</code></li>
+                    <li><code>Infinity / Infinity</code> என்பது <code>NaN</code></li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- JavaScript NEGATIVE_INFINITY -->
+        <section class="content-section" id="negative-infinity">
+            <h2>JavaScript NEGATIVE_INFINITY</h2>
+            
+            <div class="code-example">
+                <h4>எடுத்துக்காட்டு</h4>
+                <pre><code>let x = Number.NEGATIVE_INFINITY;
+console.log(x);  // -Infinity
+console.log(typeof x);  // "number"</code></pre>
+            </div>
+            
+            <p><code>NEGATIVE_INFINITY</code> என்பது நிலைத்தன்மையை மீறும் போது திருப்பி அனுப்பப்படும்:</p>
+            
+            <div class="code-example">
+                <pre><code>let x = -1 / 0;
+console.log(x);  // -Infinity
+console.log(x === Number.NEGATIVE_INFINITY);  // true</code></pre>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">-∞</span> எதிர்மறை முடிவிலி செயல்பாடுகள்:</h4>
+                <pre><code>console.log(Number.NEGATIVE_INFINITY * 2);      // -Infinity
+console.log(Number.NEGATIVE_INFINITY * -1);     // Infinity
+console.log(Number.NEGATIVE_INFINITY / 2);      // -Infinity
+console.log(Number.NEGATIVE_INFINITY + 100);    // -Infinity
+console.log(Number.NEGATIVE_INFINITY - 100);    // -Infinity</code></pre>
+            </div>
+        </section>
+
+        <!-- JavaScript NaN - Not a Number -->
+        <section class="content-section" id="nan">
+            <h2>JavaScript NaN - Not a Number</h2>
+            
+            <p><code>NaN</code> என்பது சட்டப்பூர்வமான எண் அல்லாத எண்ணைக் குறிக்கும் ஜாவாஸ்கிரிப்ட் ஒதுக்கப்பட்ட சொல்.</p>
+            
+            <div class="code-example">
+                <h4>எடுத்துக்காட்டுகள்</h4>
+                <pre><code>let x = Number.NaN;
+console.log(x);  // NaN
+console.log(typeof x);  // "number"
+
+// எண்ணல்லாத சரத்துடன் கணிதம் செய்ய முயற்சித்தால் NaN (Not a Number) விளையும்:
+let y = 100 / "Apple";
+console.log(y);  // NaN
+
+console.log(y === Number.NaN);  // false (!)
+console.log(Number.isNaN(y));   // true</code></pre>
+            </div>
+            
+            <div class="warning-box">
+                <h4><span class="warning-icon">⚠️</span> NaN ஒப்பீடு எச்சரிக்கை:</h4>
+                <p>NaN உடன் நேரடியாக ஒப்பிட முடியாது. <code>NaN === NaN</code> எப்போதும் false ஐத் திருப்பி அனுப்பும்.</p>
+                <p>NaN ஐ சோதிக்க சரியான வழி <code>Number.isNaN()</code> அல்லது <code>isNaN()</code> பயன்படுத்துவதாகும்:</p>
+                <pre><code>console.log(NaN === NaN);          // false
+console.log(Number.NaN === NaN);  // false
+console.log(isNaN(NaN));          // true
+console.log(Number.isNaN(NaN));   // true</code></pre>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">🔢</span> பாதுகாப்பான முழு எண்கள் மறுபார்வை:</h4>
+                <p>பாதுகாப்பான முழு எண்கள் அனைத்தும் -(2<sup>53</sup> - 1) முதல் +(2<sup>53</sup> - 1) வரையிலான முழு எண்கள் ஆகும்.</p>
+                <p>இது பாதுகாப்பானது: 9007199254740991. இது பாதுகாப்பானது அல்ல: 9007199254740992.</p>
+            </div>
+        </section>
+
+        <!-- Number Properties Summary -->
+        <section class="content-section" id="summary">
+            <h2>எண் பண்புகள் சுருக்கம்</h2>
+            
+            <div class="comparison-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>பண்பு</th>
+                            <th>மதிப்பு</th>
+                            <th>விளக்கம்</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>Number.EPSILON</code></td>
+                            <td>2.220446049250313e-16</td>
+                            <td>1 ஐ விட அதிகமான மிகச் சிறிய மிதவைப் புள்ளி எண்ணுக்கும் 1 க்கும் இடையே உள்ள வித்தியாசம்</td>
+                        </tr>
+                        <tr>
+                            <td><code>Number.MAX_VALUE</code></td>
+                            <td>1.7976931348623157e+308</td>
+                            <td>ஜாவாஸ்கிரிப்ட்டில் சாத்தியமான மிகப்பெரிய எண்</td>
+                        </tr>
+                        <tr>
+                            <td><code>Number.MIN_VALUE</code></td>
+                            <td>5e-324</td>
+                            <td>ஜாவாஸ்கிரிப்ட்டில் சாத்தியமான மிகச்சிறிய நேர்மறை எண்</td>
+                        </tr>
+                        <tr>
+                            <td><code>Number.MAX_SAFE_INTEGER</code></td>
+                            <td>9007199254740991</td>
+                            <td>அதிகபட்ச பாதுகாப்பான முழு எண் (2<sup>53</sup> - 1)</td>
+                        </tr>
+                        <tr>
+                            <td><code>Number.MIN_SAFE_INTEGER</code></td>
+                            <td>-9007199254740991</td>
+                            <td>குறைந்தபட்ச பாதுகாப்பான முழு எண் -(2<sup>53</sup> - 1)</td>
+                        </tr>
+                        <tr>
+                            <td><code>Number.POSITIVE_INFINITY</code></td>
+                            <td>Infinity</td>
+                            <td>நேர்மறை முடிவிலி</td>
+                        </tr>
+                        <tr>
+                            <td><code>Number.NEGATIVE_INFINITY</code></td>
+                            <td>-Infinity</td>
+                            <td>எதிர்மறை முடிவிலி</td>
+                        </tr>
+                        <tr>
+                            <td><code>Number.NaN</code></td>
+                            <td>NaN</td>
+                            <td>சட்டப்பூர்வமான எண் அல்லாத எண்</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">💡</span> நினைவில் கொள்ள வேண்டியவை:</h4>
+                <ul>
+                    <li>Number பண்புகள் Number பொருளில் மட்டுமே அணுகலாம் (<code>Number.MAX_VALUE</code>)</li>
+                    <li>மாறிகள் அல்லது மதிப்புகளில் இவற்றை அணுக முடியாது (<code>x.MAX_VALUE</code> பிழையைத் தரும்)</li>
+                    <li>இவை அனைத்தும் ES6 இல் அறிமுகப்படுத்தப்பட்டது (Internet Explorer ஆதரவு இல்லை)</li>
+                    <li>பாதுகாப்பான முழு எண் செயல்பாடுகளுக்கு <code>Number.isSafeInteger()</code> பயன்படுத்தவும்</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Single Exercise Section -->
+        <section class="content-section" id="exercise">
+            <h2>எண் பண்புகள் பயிற்சி</h2>
+            
+            <p>ஜாவாஸ்கிரிப்டில் சாத்தியமான மிகப்பெரிய எண்ணைத் திருப்பி அனுப்பும் பண்பின் பெயர் என்ன?</p>
+            
+            <div class="exercise-box">
+                <h4><span class="exercise-icon">❓</span> ஜாவாஸ்கிரிப்டில் சாத்தியமான மிகப்பெரிய எண்ணைத் திருப்பி அனுப்பும் பண்பின் பெயர் என்ன?</h4>
+                
+                <div class="options-grid">
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">POSSIBLE_MAX</div>
+                            <div class="option-feedback incorrect">✗ தவறு! JavaScript இல் <code>POSSIBLE_MAX</code> என்ற பண்பு இல்லை.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">MAX_POSSIBLE</div>
+                            <div class="option-feedback incorrect">✗ தவறு! JavaScript இல் <code>MAX_POSSIBLE</code> என்ற பண்பு இல்லை.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="true">
+                        <div class="option-content">
+                            <div class="option-text">MAX_VALUE</div>
+                            <div class="option-feedback correct">✓ சரி! <code>Number.MAX_VALUE</code> என்பது ஜாவாஸ்கிரிப்ட்டில் சாத்தியமான மிகப்பெரிய எண்ணைக் குறிக்கும் மாறிலியாகும்.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">MAX_POSITIVE</div>
+                            <div class="option-feedback incorrect">✗ தவறு! JavaScript இல் <code>MAX_POSITIVE</code> என்ற பண்பு இல்லை. நேர்மறை முடிவிலிக்கு <code>Number.POSITIVE_INFINITY</code> பயன்படுத்தப்படுகிறது.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">💡</span> தீர்வு விளக்கம்:</h4>
+                <p><code>Number.MAX_VALUE</code> என்பது ஜாவாஸ்கிரிப்ட் Number பொருளின் ஒரு பண்பாகும், இது ஜாவாஸ்கிரிப்ட்டில் சாத்தியமான மிகப்பெரிய எண்ணைக் குறிக்கிறது. இதன் மதிப்பு தோராயமாக 1.7976931348623157 × 10<sup>308</sup> ஆகும்.</p>
+                <pre><code>console.log(Number.MAX_VALUE);  // 1.7976931348623157e+308
+console.log(typeof Number.MAX_VALUE);  // "number"
+
+// MAX_VALUE ஐ மீறும் முயற்சி Infinity ஐ விளைவிக்கும்
+let max = Number.MAX_VALUE;
+console.log(max * 2);  // Infinity</code></pre>
+                <p>ஜாவாஸ்கிரிப்டில் பிற எண் பண்புகள்:</p>
+                <ul>
+                    <li><code>Number.MIN_VALUE</code>: மிகச்சிறிய நேர்மறை எண்</li>
+                    <li><code>Number.MAX_SAFE_INTEGER</code>: அதிகபட்ச பாதுகாப்பான முழு எண்</li>
+                    <li><code>Number.MIN_SAFE_INTEGER</code>: குறைந்தபட்ச பாதுகாப்பான முழு எண்</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Complete JavaScript Reference -->
+        <section class="content-section" id="complete-reference">
+            <h2>முழுமையான ஜாவாஸ்கிரிப்ட் குறிப்பு</h2>
+            
+            <p>அனைத்து ஜாவாஸ்கிரிப்ட் பண்புகள் மற்றும் முறைகளுக்கான முழுமையான குறிப்பிற்கு, முழு விளக்கங்கள் மற்றும் பல எடுத்துக்காட்டுகளுடன், செல்லுங்கள்:</p>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">📖</span> Siva Team இன் முழுமையான ஜாவாஸ்கிரிப்ட் குறிப்பு</h4>
+                <p>இந்த குறிப்பில் 1999 முதல் 2025 வரையிலான அனைத்து ஜாவாஸ்கிரிப்ட் புதுப்பிப்புகளும் அடங்கும்.</p>
+                <p>உங்கள் ஜாவாஸ்கிரிப்ட் திறன்களை விரிவுபடுத்த, எங்கள் முழுமையான ஆன்லைன் டுடோரியல்கள் மற்றும் குறிப்பு வளங்களைப் பார்க்கவும்.</p>
+            </div>
+            
+            <div class="examples-grid">
+                <div class="example-card">
+                    <div class="example-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h4>ஜாவாஸ்கிரிப்ட் பாடநெறிகள்</h4>
+                    <p>நிபுணர் வழிகாட்டுதலுடன் கூடிய கட்டமைக்கப்பட்ட கற்றல் பாதைகள்</p>
+                </div>
+                
+                <div class="example-card">
+                    <div class="example-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h4>நிகழ்நேர குறியீடு எடிட்டர்</h4>
+                    <p>உங்கள் ஜாவாஸ்கிரிப்ட் குறியீட்டை உடனடியாகச் சோதிக்கவும் மற்றும் இயக்கவும்</p>
+                </div>
+                
+                <div class="example-card">
+                    <div class="example-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h4>சான்றிதழ்கள்</h4>
+                    <p>உங்கள் ஜாவாஸ்கிரிப்ட் திறமைகளை சான்றளிக்க சான்றிதழ் தேர்வுகளை எடுக்கவும்</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bottom Navigation -->
+        <div class="bottom-nav">
+            <a href="javascript%20number%20methods.html" class="nav-tab prev">
+                <i class="fas fa-arrow-left"></i>
+                <span>முந்தைய</span>
+            </a>
+            <a href="javascript%20number%20reference.html" class="nav-tab next">
+                <span>அடுத்தது</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Siva Team Institution</h3>
+                <p>Leading educational institution providing quality programming education in Tamil.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#introduction">அறிமுகம்</a></li>
+                    <li><a href="#epsilon">EPSILON</a></li>
+                    <li><a href="#max-value">MAX_VALUE</a></li>
+                    <li><a href="#min-value">MIN_VALUE</a></li>
+                    <li><a href="#safe-integers">பாதுகாப்பான முழு எண்கள்</a></li>
+                    <li><a href="#nan">NaN</a></li>
+                    <li><a href="#exercise">பயிற்சி</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Location & Hours</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <ul>
+                    <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Siva Team Institution. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all content sections for animation
+        document.querySelectorAll('.content-section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Exercise interaction
+        document.querySelectorAll('.option-card').forEach(card => {
+            card.addEventListener('click', function() {
+                // Show feedback for all options
+                document.querySelectorAll('.option-card').forEach(c => {
+                    c.querySelector('.option-feedback').style.display = 'block';
+                });
+            });
+        });
+    </script>
+
+    <!-- Home Button -->
+    <a href="index.html" class="home-icon">
+        <i class="fas fa-home"></i>
+    </a>
+</body>
+</html>
+
+

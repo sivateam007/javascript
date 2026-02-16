@@ -1,0 +1,459 @@
+﻿<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Loops - Siva Team</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .content-section p, 
+        .content-section li,
+        .content-section h3,
+        .content-section h4,
+        .comparison-card p {
+            color: #333 !important;
+        }
+        
+        .tip-box p,
+        .tip-box li,
+        .tip-box h4 {
+            color: white !important;
+        }
+        
+        .warning-box p,
+        .warning-box li,
+        .warning-box h4 {
+            color: white !important;
+        }
+        
+        .exercise-box p,
+        .exercise-box h4 {
+            color: white !important;
+        }
+        
+        /* Stable logo styling - NO ANIMATIONS */
+        .logo-icon {
+            animation: none !important; /* Remove pulse animation */
+        }
+        
+        .logo-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            animation: none !important; /* Ensure no animations */
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <img src="logo.jpg" alt="Siva Team Logo" class="logo-image">
+                </div>
+                <h1>Siva Team <span>Institution</span></h1>
+            </div>
+        </div>
+    </header>
+
+    <!-- Top Navigation Tabs -->
+    <div class="nav-tabs">
+        <a href="JavaScript%20Map%20Reference.html" class="nav-tab prev">
+            <i class="fas fa-arrow-left"></i>
+            <span>முந்தைய</span>
+        </a>
+        <a href="JavaScript%20Iterables.html" class="nav-tab next">
+            <span>அடுத்தது</span>
+            <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2>JavaScript Loops</h2>
+            <p>JavaScript லூப்களைக் கற்றுக்கொள்ளுங்கள்</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Introduction -->
+        <section class="content-section" id="introduction">
+            <h2>JavaScript Loops</h2>
+            
+            <p>JavaScript லூப்கள் ஒரு குறியீட்டு தொகுதியை பல முறை மீண்டும் மீண்டும் செயல்படுத்துகின்றன.</p>
+            
+            <p>லூப்கள் பின்வரும் பணிகளுக்கு அடிப்படையானவை:</p>
+            
+            <ul>
+                <li>மதிப்புகள் மீது மீள்வு</li>
+                <li>தரவு கட்டமைப்புகள் மீது மீள்வு</li>
+                <li>ஒரு செயலை பல முறை செய்தல்</li>
+            </ul>
+            
+            <div class="comparison-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>லூப் வகை</th>
+                            <th>விளக்கம்</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>for</code></td>
+                            <td>மதிப்புகள் மற்றும் வெளிப்பாடுகள் மீது மீள்வு</td>
+                        </tr>
+                        <tr>
+                            <td><code>while</code></td>
+                            <td>ஒரு நிபந்தனை மீது மீள்வு</td>
+                        </tr>
+                        <tr>
+                            <td><code>do...while</code></td>
+                            <td>ஒரு நிபந்தனை மீது மீள்வு</td>
+                        </tr>
+                        <tr>
+                            <td><code>for...in</code></td>
+                            <td>ஒரு பொருளின் பண்புகள் மீது மீள்வு</td>
+                        </tr>
+                        <tr>
+                            <td><code>for...of</code></td>
+                            <td>வரிசை போன்ற பொருள்கள் மீது மீள்வு</td>
+                        </tr>
+                        <tr>
+                            <td><code>forEach()</code></td>
+                            <td>வரிசையில் உள்ள ஒவ்வொரு உறுப்பு மீது மீள்வு</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- The for Loop -->
+        <section class="content-section" id="for-loop">
+            <h2>The for Loop</h2>
+            
+            <p><code>for</code> லூப் மீள்வுகளின் எண்ணிக்கை தெரிந்திருக்கும் போது பயன்படுத்தப்படுகிறது.</p>
+            
+            <p>இது ஒரு தொடக்கமாக்கல் (exp1), ஒரு நிபந்தனை (exp2), மற்றும் ஒரு அதிகரிப்பு வெளிப்பாடு (exp3) ஆகியவற்றைக் கொண்டுள்ளது.</p>
+            
+            <h3>Syntax</h3>
+            <div class="code-example">
+                <pre><code>for (exp1; exp2; exp3) {
+  // செயல்படுத்த வேண்டிய குறியீட்டு தொகுதி
+}</code></pre>
+            </div>
+            
+            <ul>
+                <li><strong>exp1</strong> குறியீட்டு தொகுதியின் செயல்பாட்டிற்கு முன்பு ஒரு முறை செயல்படுத்தப்படுகிறது.</li>
+                <li><strong>exp2</strong> குறியீட்டு தொகுதியை செயல்படுத்துவதற்கான நிபந்தனையை வரையறுக்கிறது.</li>
+                <li><strong>exp3</strong> ஒரு குறியீட்டு தொகுதி செயல்படுத்தப்பட்ட ஒவ்வொரு முறையும் செயல்படுத்தப்படுகிறது.</li>
+            </ul>
+            
+            <h3>Example</h3>
+            <div class="code-example">
+                <pre><code>for (let i = 0; i < 5; i++) {
+  text += "The number is " + i + "&lt;br&gt;";
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- The while Loop -->
+        <section class="content-section" id="while-loop">
+            <h2>The while Loop</h2>
+            
+            <p><code>while</code> லூப் ஒரு குறிப்பிட்ட நிபந்தனை true என மதிப்பீடு செய்யும் வரை ஒரு குறியீட்டு தொகுதியை செயல்படுத்துகிறது.</p>
+            
+            <h3>Syntax</h3>
+            <div class="code-example">
+                <pre><code>while (condition) {
+  // செயல்படுத்த வேண்டிய குறியீட்டு தொகுதி
+}</code></pre>
+            </div>
+            
+            <p>பின்வரும் எடுத்துக்காட்டில், ஒரு மாறி (i) 10 ஐ விடக் குறைவாக இருக்கும் வரை, லூப்பில் உள்ள குறியீடு மீண்டும் மீண்டும் இயங்கும்:</p>
+            
+            <h3>Example</h3>
+            <div class="code-example">
+                <pre><code>while (i < 10) {
+  text += "The number is " + i;
+  i++;
+}</code></pre>
+            </div>
+            
+            <div class="warning-box">
+                <h4><span class="warning-icon">⚠️</span> குறிப்பு:</h4>
+                <p>நிபந்தனையில் பயன்படுத்தப்படும் மாறியை அதிகரிப்பதை மறந்துவிட்டால், லூப் ஒருபோதும் முடிவடையாது. இது உங்கள் உலாவியை செயலிழக்கச் செய்யும்.</p>
+            </div>
+        </section>
+
+        <!-- The do...while Loop -->
+        <section class="content-section" id="dowhile-loop">
+            <h2>The do...while Loop</h2>
+            
+            <p><code>do...while</code> லூப் <code>while</code> லூப்பைப் போன்றது, ஆனால் நிபந்தனை சரிபார்க்கப்படுவதற்கு முன்பே குறியீட்டு தொகுதி குறைந்தது ஒரு முறை செயல்படுத்தப்படும் என்பதை உறுதி செய்கிறது.</p>
+            
+            <h3>Syntax</h3>
+            <div class="code-example">
+                <pre><code>do {
+  // செயல்படுத்த வேண்டிய குறியீட்டு தொகுதி
+}
+while (condition);</code></pre>
+            </div>
+            
+            <p>கீழே உள்ள எடுத்துக்காட்டு <code>do...while</code> லூப்பைப் பயன்படுத்துகிறது. நிபந்தனை false ஆக இருந்தாலும், லூப் குறைந்தது ஒரு முறையாவது செயல்படுத்தப்படும், ஏனெனில் குறியீட்டு தொகுதி நிபந்தனை சோதிக்கப்படுவதற்கு முன்பே செயல்படுத்தப்படுகிறது:</p>
+            
+            <h3>Example</h3>
+            <div class="code-example">
+                <pre><code>do {
+  text += "The number is " + i;
+  i++;
+}
+while (i < 10);</code></pre>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">💡</span> உதவிக்குறிப்பு:</h4>
+                <p>நிபந்தனையில் பயன்படுத்தப்படும் மாறியை அதிகரிப்பதை மறக்காதீர்கள், இல்லையெனில் லூப் ஒருபோதும் முடிவடையாது!</p>
+            </div>
+        </section>
+
+        <!-- The for...in Loop -->
+        <section class="content-section" id="forin-loop">
+            <h2>The for...in Loop</h2>
+            
+            <p><code>for...in</code> லூப் ஒரு பொருளின் எண்ணக்கூடிய பண்புகள் மீது மீள்வு செய்கிறது.</p>
+            
+            <p>இது பொதுவாக பொருள் விசைகள் மீது மீள்வதற்குப் பயன்படுத்தப்படுகிறது.</p>
+            
+            <h3>Syntax</h3>
+            <div class="code-example">
+                <pre><code>for (key in object) {
+  // செயல்படுத்த வேண்டிய குறியீட்டு தொகுதி
+}</code></pre>
+            </div>
+            
+            <p>ஒரு JavaScript <code>for...in</code> அறிக்கை ஒரு நபர் பொருளின் பண்புகள் வழியாக லூப் செய்கிறது:</p>
+            
+            <h3>Example</h3>
+            <div class="code-example">
+                <pre><code>const person = {fname:"John", lname:"Doe", age:25};
+
+let text = "";
+for (let x in person) {
+  text += person[x];
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- The for...of Loop -->
+        <section class="content-section" id="forof-loop">
+            <h2>The for...of Loop</h2>
+            
+            <p><code>for...of</code> லூப் வரிசைகள், சரங்கள், Maps, Sets மற்றும் NodeLists போன்ற மீளக்கூடிய பொருள்களின் மதிப்புகள் மீது மீள்வு செய்கிறது.</p>
+            
+            <h3>Syntax</h3>
+            <div class="code-example">
+                <pre><code>for (variable of iterable) {
+  // செயல்படுத்த வேண்டிய குறியீட்டு தொகுதி
+}</code></pre>
+            </div>
+            
+            <ul>
+                <li><strong>variable</strong>: ஒவ்வொரு மீள்விற்கும் அடுத்த பண்பின் மதிப்பு மாறிக்கு ஒதுக்கப்படுகிறது. மாறியை <code>const</code>, <code>let</code>, அல்லது <code>var</code> உடன் அறிவிக்கலாம்.</li>
+                <li><strong>iterable</strong>: மீளக்கூடிய பண்புகளைக் கொண்ட ஒரு பொருள்.</li>
+            </ul>
+        </section>
+
+        <!-- Other Methods -->
+        <section class="content-section" id="other-methods">
+            <h2>Other Methods</h2>
+            
+            <p><code>forEach()</code>, <code>map()</code>, <code>filter()</code>, மற்றும் <code>reduce()</code> போன்ற வரிசை முறைகள் மீள்வு மற்றும் வரிசை உறுப்புகளை கையாள்வதற்கு மாற்று வழிகளை வழங்குகின்றன, இவை பெரும்பாலும் வரிசை-குறிப்பிட்ட செயல்பாடுகளுக்கான பாரம்பரிய லூப்களுடன் ஒப்பிடும்போது மிகவும் செயல்பாட்டு மற்றும் சுருக்கமான அணுகுமுறையை வழங்குகின்றன.</p>
+            
+            <div class="examples-grid">
+                <div class="example-card">
+                    <div class="example-icon">
+                        <i class="fas fa-list"></i>
+                    </div>
+                    <h4>forEach() முறை</h4>
+                    <p>வரிசையில் உள்ள ஒவ்வொரு உறுப்புக்கும் ஒரு செயல்பாட்டை செயல்படுத்துகிறது</p>
+                </div>
+                
+                <div class="example-card">
+                    <div class="example-icon">
+                        <i class="fas fa-map"></i>
+                    </div>
+                    <h4>map() முறை</h4>
+                    <p>ஒரு புதிய வரிசையை உருவாக்குகிறது, ஒவ்வொரு உறுப்பிலும் ஒரு செயல்பாட்டை அழைத்து</p>
+                </div>
+                
+                <div class="example-card">
+                    <div class="example-icon">
+                        <i class="fas fa-filter"></i>
+                    </div>
+                    <h4>filter() முறை</h4>
+                    <p>ஒரு நிபந்தனையை பூர்த்தி செய்யும் உறுப்புகளுடன் ஒரு புதிய வரிசையை உருவாக்குகிறது</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Single Exercise Section -->
+        <section class="content-section" id="exercises">
+            <h2>JavaScript Loops பயிற்சி</h2>
+            
+            <p>JavaScript லூப்களைப் பற்றிய உங்கள் அறிவைச் சோதிக்க இந்த பயிற்சியை முயற்சிக்கவும்.</p>
+            
+            <div class="exercise-box">
+                <h4><span class="exercise-icon">❓</span> பின்வருவனவற்றில் எது 0 முதல் 4 வரை எண்களை அச்சிடும் சரியான for லூப்?</h4>
+                
+                <div class="options-grid">
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">for (let i = 0; i <= 5; i++)</div>
+                            <div class="option-feedback incorrect">✗ தவறு! இது 0 முதல் 5 வரை அச்சிடும் (6 எண்கள்)</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">for (let i = 1; i < 5; i++)</div>
+                            <div class="option-feedback incorrect">✗ தவறு! இது 1, 2, 3, 4 ஐ மட்டுமே அச்சிடும் (0 இல்லை)</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="true">
+                        <div class="option-content">
+                            <div class="option-text">for (let i = 0; i < 5; i++)</div>
+                            <div class="option-feedback correct">✓ சரி! இந்த லூப் 0, 1, 2, 3, 4 ஆகிய 5 எண்களை அச்சிடும்</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">for (let i = 0; i > 5; i++)</div>
+                            <div class="option-feedback incorrect">✗ தவறு! இந்த நிபந்தனை false ஆகும், எனவே லூப் ஒருபோதும் இயங்காது</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bottom Navigation -->
+        <div class="bottom-nav">
+            <a href="JavaScript%20Map%20Reference.html" class="nav-tab prev">
+                <i class="fas fa-arrow-left"></i>
+                <span>முந்தைய</span>
+            </a>
+            <a href="JavaScript%20Iterables.html" class="nav-tab next">
+                <span>அடுத்தது</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Siva Team Institution</h3>
+                <p>Leading educational institution providing quality programming education in Tamil.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#introduction">JavaScript Loops</a></li>
+                    <li><a href="#for-loop">for Loop</a></li>
+                    <li><a href="#while-loop">while Loop</a></li>
+                    <li><a href="#dowhile-loop">do...while Loop</a></li>
+                    <li><a href="#forin-loop">for...in Loop</a></li>
+                    <li><a href="#forof-loop">for...of Loop</a></li>
+                    <li><a href="#exercises">பயிற்சி</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Location & Hours</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <ul>
+                    <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Siva Team Institution. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all content sections for animation
+        document.querySelectorAll('.content-section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Exercise interaction
+        document.querySelectorAll('.option-card').forEach(card => {
+            card.addEventListener('click', function() {
+                // Show feedback for all options
+                document.querySelectorAll('.option-card').forEach(c => {
+                    c.querySelector('.option-feedback').style.display = 'block';
+                });
+            });
+        });
+    </script>
+
+    <!-- Home Button -->
+    <a href="index.html" class="home-icon">
+        <i class="fas fa-home"></i>
+    </a>
+</body>
+</html>
+
+

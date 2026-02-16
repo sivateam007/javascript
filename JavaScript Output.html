@@ -1,0 +1,601 @@
+﻿<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Output - Siva Team</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .content-section p, 
+        .content-section li,
+        .content-section h3,
+        .content-section h4,
+        .comparison-card p {
+            color: #333 !important;
+        }
+        
+        .tip-box p,
+        .tip-box li,
+        .tip-box h4 {
+            color: white !important;
+        }
+        
+        .warning-box p,
+        .warning-box li,
+        .warning-box h4 {
+            color: white !important;
+        }
+        
+        .exercise-box p,
+        .exercise-box h4 {
+            color: white !important;
+        }
+        
+        /* Stable logo styling - NO ANIMATIONS */
+        .logo-icon {
+            animation: none !important;
+        }
+        
+        .logo-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            animation: none !important;
+        }
+        
+        /* Demo styling */
+        .demo-container {
+            background: #f8f9fa;
+            border: 2px solid #dee2e6;
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .demo-output {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--git-color);
+            margin: 1.5rem 0;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            border-left: 4px solid var(--git-color);
+            min-height: 60px;
+        }
+        
+        .demo-button {
+            background: linear-gradient(135deg, var(--git-color), #e74c3c);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .demo-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            background: linear-gradient(135deg, #e74c3c, var(--git-color));
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .warning-button {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+        }
+        
+        .warning-button:hover {
+            background: linear-gradient(135deg, #ee5a24, #ff6b6b);
+        }
+        
+        .print-button {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+        }
+        
+        .print-button:hover {
+            background: linear-gradient(135deg, #2980b9, #3498db);
+        }
+        
+        .demo-title {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <img src="logo.jpg" alt="Siva Team Logo" class="logo-image">
+                </div>
+                <h1>Siva Team <span>Institution</span></h1>
+            </div>
+        </div>
+    </header>
+
+    <!-- Top Navigation Tabs -->
+    <div class="nav-tabs">
+        <a href="JavaScript%20Where%20To.html" class="nav-tab prev">
+            <i class="fas fa-arrow-left"></i>
+            <span>முந்தைய</span>
+        </a>
+        <a href="JavaScript%20Syntax.html" class="nav-tab next">
+            <span>அடுத்தது</span>
+            <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2>JavaScript Output</h2>
+            <p>JavaScript வெளியீட்டு முறைகள்</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- JavaScript Display Possibilities -->
+        <section class="content-section" id="display-possibilities">
+            <h2>JavaScript காட்சி வாய்ப்புகள்</h2>
+            
+            <p>JavaScript தரவுகளை வெவ்வேறு வழிகளில் "காட்சிப்படுத்த" முடியும்:</p>
+            
+            <ul>
+                <li>innerHTML அல்லது innerText பயன்படுத்தி HTML உறுப்பில் எழுதுதல்</li>
+                <li>document.write() பயன்படுத்தி HTML வெளியீட்டில் எழுதுதல்</li>
+                <li>window.alert() பயன்படுத்தி எச்சரிக்கை பெட்டியில் எழுதுதல்</li>
+                <li>console.log() பயன்படுத்தி உலாவி கன்சோலில் எழுதுதல்</li>
+            </ul>
+        </section>
+
+        <!-- Using innerHTML -->
+        <section class="content-section" id="innerhtml">
+            <h2>innerHTML பயன்படுத்துதல்</h2>
+            
+            <p>ஒரு HTML உறுப்பை அணுக, நீங்கள் document.getElementById(id) முறையைப் பயன்படுத்தலாம்.</p>
+            
+            <p>HTML உறுப்பை அடையாளம் காண id பண்பைப் பயன்படுத்தவும்.</p>
+            
+            <p>பின்னர் HTML உறுப்பின் HTML உள்ளடக்கத்தை மாற்ற innerHTML பண்பைப் பயன்படுத்தவும்:</p>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <div class="code-example">
+                <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+
+&lt;h1&gt;My First Web Page&lt;/h1&gt;
+&lt;p&gt;My First Paragraph&lt;/p&gt;
+
+&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+document.getElementById("demo").innerHTML = "&lt;h2&gt;Hello World&lt;/h2&gt;";
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            </div>
+            
+            <div class="demo-container">
+                <h4 class="demo-title">நேரடி டெமோ: innerHTML</h4>
+                <div id="demo-innerhtml" class="demo-output">இந்த உள்ளடக்கம் innerHTML மூலம் மாற்றப்படும்</div>
+                <button class="demo-button" onclick="changeInnerHTML()">innerHTML மாற்று</button>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">📝</span> குறிப்பு:</h4>
+                <p>ஒரு HTML உறுப்பின் innerHTML பண்பை மாற்றுவது HTML இல் தரவைக் காட்சிப்படுத்த மிகவும் பொதுவான வழியாகும்.</p>
+            </div>
+        </section>
+
+        <!-- Using innerText -->
+        <section class="content-section" id="innertext">
+            <h2>innerText பயன்படுத்துதல்</h2>
+            
+            <p>ஒரு HTML உறுப்பை அணுக, document.getElementById(id) முறையைப் பயன்படுத்தவும்.</p>
+            
+            <p>பின்னர் HTML உறுப்பின் உள் உரையை மாற்ற innerText பண்பைப் பயன்படுத்தவும்:</p>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <div class="code-example">
+                <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+
+&lt;h1&gt;My First Web Page&lt;/h1&gt;
+&lt;p&gt;My First Paragraph&lt;/p&gt;
+
+&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+document.getElementById("demo").innerText = "Hello World";
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            </div>
+            
+            <div class="demo-container">
+                <h4 class="demo-title">நேரடி டெமோ: innerText</h4>
+                <div id="demo-innertext" class="demo-output">இந்த உள்ளடக்கம் innerText மூலம் மாற்றப்படும்</div>
+                <button class="demo-button" onclick="changeInnerText()">innerText மாற்று</button>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">📝</span> குறிப்பு:</h4>
+                <p>நீங்கள் ஒரு HTML உறுப்பை மாற்ற வேண்டும் போது innerHTML ஐப் பயன்படுத்தவும்.</p>
+                <p>நீங்கள் வெறும் எளிய உரையை மட்டும் மாற்ற வேண்டும் போது innerText ஐப் பயன்படுத்தவும்.</p>
+            </div>
+        </section>
+
+        <!-- Using document.write() -->
+        <section class="content-section" id="document-write">
+            <h2>document.write() பயன்படுத்துதல்</h2>
+            
+            <p>சோதனை நோக்கங்களுக்காக, document.write() பயன்படுத்துவது வசதியானது:</p>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <div class="code-example">
+                <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+
+&lt;h1&gt;My First Web Page&lt;/h1&gt;
+&lt;p&gt;My first paragraph.&lt;/p&gt;
+
+&lt;script&gt;
+document.write(5 + 6);
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            </div>
+            
+            <p>HTML ஆவணம் ஏற்றப்பட்ட பிறகு document.write() பயன்படுத்தினால், இருக்கும் அனைத்து HTML ஐயும் நீக்கிவிடும்:</p>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <div class="code-example">
+                <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+
+&lt;h1&gt;My First Web Page&lt;/h1&gt;
+&lt;p&gt;My first paragraph.&lt;/p&gt;
+
+&lt;button type="button" onclick="document.write(5 + 6)"&gt;Try it&lt;/button&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            </div>
+            
+            <div class="demo-container">
+                <h4 class="demo-title">எச்சரிக்கை டெமோ: document.write()</h4>
+                <p>கவனம்: இந்த பொத்தானைக் கிளிக் செய்தால், இந்த பக்கத்தின் அனைத்து உள்ளடக்கமும் நீக்கப்பட்டு "11" மட்டுமே காட்டப்படும்!</p>
+                <button class="demo-button warning-button" onclick="dangerousWrite()">எச்சரிக்கையுடன் முயற்சிக்கவும்</button>
+            </div>
+            
+            <div class="warning-box">
+                <h4><span class="warning-icon">⚠️</span> எச்சரிக்கை:</h4>
+                <p>document.write() முறை சோதனை நோக்கங்களுக்காக மட்டுமே பயன்படுத்தப்பட வேண்டும். இது HTML ஆவணம் முழுமையாக ஏற்றப்பட்ட பிறகு பயன்படுத்தக்கூடாது.</p>
+            </div>
+        </section>
+
+        <!-- Using window.alert() -->
+        <section class="content-section" id="window-alert">
+            <h2>window.alert() பயன்படுத்துதல்</h2>
+            
+            <p>நீங்கள் எச்சரிக்கை பெட்டியைப் பயன்படுத்தி தரவைக் காட்சிப்படுத்தலாம்:</p>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <div class="code-example">
+                <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+
+&lt;h1&gt;My First Web Page&lt;/h1&gt;
+&lt;p&gt;My first paragraph.&lt;/p&gt;
+
+&lt;script&gt;
+window.alert(5 + 6);
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            </div>
+            
+            <p>நீங்கள் window சொல்லை தவிர்க்கலாம்.</p>
+            
+            <p>JavaScript இல், window பொருள் உலகளாவிய நோக்கப் பொருளாகும். இதன் பொருள் மாறிகள், பண்புகள் மற்றும் முறைகள் இயல்புநிலையாக window பொருளுக்கு சொந்தமானவை. window சொல்லைக் குறிப்பிடுவது விருப்பமானது என்பதும் இதன் பொருள்:</p>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <div class="code-example">
+                <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+
+&lt;h1&gt;My First Web Page&lt;/h1&gt;
+&lt;p&gt;My first paragraph.&lt;/p&gt;
+
+&lt;script&gt;
+alert(5 + 6);
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            </div>
+            
+            <div class="demo-container">
+                <h4 class="demo-title">நேரடி டெமோ: alert()</h4>
+                <div class="button-group">
+                    <button class="demo-button" onclick="showWindowAlert()">window.alert() முயற்சிக்கவும்</button>
+                    <button class="demo-button" onclick="showAlert()">alert() முயற்சிக்கவும்</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Using console.log() -->
+        <section class="content-section" id="console-log">
+            <h2>console.log() பயன்படுத்துதல்</h2>
+            
+            <p>பிழைதிருத்த நோக்கங்களுக்காக, உலாவியில் தரவைக் காட்சிப்படுத்த console.log() முறையை அழைக்கலாம்.</p>
+            
+            <p>பின்னர் வரும் அத்தியாயத்தில் பிழைதிருத்தம் பற்றி மேலும் அறிவீர்கள்.</p>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <div class="code-example">
+                <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+
+&lt;script&gt;
+console.log(5 + 6);
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            </div>
+            
+            <div class="demo-container">
+                <h4 class="demo-title">நேரடி டெமோ: console.log()</h4>
+                <p>இந்த பொத்தானைக் கிளிக் செய்து, உங்கள் உலாவியின் கன்சோலைத் திறக்கவும் (F12 அழுத்தவும்).</p>
+                <button class="demo-button" onclick="showConsoleLog()">console.log() முயற்சிக்கவும்</button>
+            </div>
+        </section>
+
+        <!-- JavaScript Print -->
+        <section class="content-section" id="javascript-print">
+            <h2>JavaScript அச்சிடுதல்</h2>
+            
+            <p>JavaScript க்கு எந்த அச்சு பொருள் அல்லது அச்சு முறைகளும் இல்லை.</p>
+            
+            <p>நீங்கள் JavaScript இலிருந்து வெளியீட்டு சாதனங்களை அணுக முடியாது.</p>
+            
+            <p>தற்போதைய சாளரத்தின் உள்ளடக்கத்தை அச்சிட உலாவியில் window.print() முறையை அழைக்கலாம் என்பது மட்டுமே விதிவிலக்கு.</p>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <div class="code-example">
+                <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+
+&lt;button onclick="window.print()"&gt;Print this page&lt;/button&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            </div>
+            
+            <div class="demo-container">
+                <h4 class="demo-title">நேரடி டெமோ: அச்சிடுதல்</h4>
+                <button class="demo-button print-button" onclick="printPage()">இந்த பக்கத்தை அச்சிடு</button>
+            </div>
+        </section>
+
+        <!-- Exercise - ONLY ONE EXERCISE -->
+        <section class="content-section" id="exercises">
+            <h2>JavaScript பயிற்சிகள்</h2>
+            
+            <p>இந்த டுடோரியலில் உள்ள பல அத்தியாயங்கள் உங்கள் அறிவு நிலையைச் சரிபார்க்கக்கூடிய பயிற்சியுடன் முடிகின்றன.</p>
+            
+            <div class="exercise-box">
+                <h4><span class="exercise-icon">❓</span> JavaScript இல் வெளியீட்டை எழுதுவதற்கு எது சரியான தொடரியல் அல்ல?</h4>
+                
+                <div class="options-grid">
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">window.alert()</div>
+                            <div class="option-feedback incorrect">✗ இது சரியானது! window.alert() JavaScript இல் ஒரு சரியான வெளியீட்டு முறையாகும்</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">console.log()</div>
+                            <div class="option-feedback incorrect">✗ இது சரியானது! console.log() JavaScript இல் ஒரு சரியான வெளியீட்டு முறையாகும்</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="true">
+                        <div class="option-content">
+                            <div class="option-text">body.html()</div>
+                            <div class="option-feedback correct">✓ இது சரியானது அல்ல! body.html() என்பது JavaScript இல் ஒரு சரியான முறை அல்ல. body உறுப்பிற்கு HTML உள்ளடக்கத்தை அமைக்க innerHTML பயன்படுத்தவும்</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">document.write()</div>
+                            <div class="option-feedback incorrect">✗ இது சரியானது! document.write() JavaScript இல் ஒரு சரியான வெளியீட்டு முறையாகும்</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bottom Navigation -->
+        <div class="bottom-nav">
+            <a href="JavaScript%20Where%20To.html" class="nav-tab prev">
+                <i class="fas fa-arrow-left"></i>
+                <span>முந்தைய</span>
+            </a>
+            <a href="JavaScript%20Syntax.html" class="nav-tab next">
+                <span>அடுத்தது</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Siva Team Institution</h3>
+                <p>Leading educational institution providing quality programming education in Tamil.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#display-possibilities">JavaScript காட்சி வாய்ப்புகள்</a></li>
+                    <li><a href="#innerhtml">innerHTML பயன்படுத்துதல்</a></li>
+                    <li><a href="#innertext">innerText பயன்படுத்துதல்</a></li>
+                    <li><a href="#document-write">document.write() பயன்படுத்துதல்</a></li>
+                    <li><a href="#window-alert">window.alert() பயன்படுத்துதல்</a></li>
+                    <li><a href="#console-log">console.log() பயன்படுத்துதல்</a></li>
+                    <li><a href="#javascript-print">JavaScript அச்சிடுதல்</a></li>
+                    <li><a href="#exercises">JavaScript பயிற்சிகள்</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Location & Hours</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <ul>
+                    <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Siva Team Institution. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all content sections for animation
+        document.querySelectorAll('.content-section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Exercise interaction
+        document.querySelectorAll('.option-card').forEach(card => {
+            card.addEventListener('click', function() {
+                // Show feedback for all options
+                document.querySelectorAll('.option-card').forEach(c => {
+                    c.querySelector('.option-feedback').style.display = 'block';
+                });
+            });
+        });
+        
+        // Demo Functions
+        function changeInnerHTML() {
+            document.getElementById("demo-innerhtml").innerHTML = "<h3 style='color: var(--git-color);'>Hello World! - innerHTML மூலம்</h3><p>இது HTML உறுப்புகளைக் கொண்டுள்ளது</p>";
+        }
+        
+        function changeInnerText() {
+            document.getElementById("demo-innertext").innerText = "Hello World! - innerText மூலம் (எளிய உரை மட்டும்)";
+        }
+        
+        function dangerousWrite() {
+            if (confirm("எச்சரிக்கை: இது இந்த பக்கத்தின் அனைத்து உள்ளடக்கத்தையும் நீக்கிவிடும்! தொடர விரும்புகிறீர்களா?")) {
+                document.write("<h1>11</h1><p>இது document.write() பயன்பாட்டின் விளைவு</p><button onclick='location.reload()'>பக்கத்தை மீண்டும் ஏற்று</button>");
+            }
+        }
+        
+        function showWindowAlert() {
+            window.alert("5 + 6 = 11 (window.alert() மூலம்)");
+        }
+        
+        function showAlert() {
+            alert("5 + 6 = 11 (alert() மூலம்)");
+        }
+        
+        function showConsoleLog() {
+            console.log("5 + 6 = 11");
+            console.log("இந்த செய்தி உங்கள் உலாவி கன்சோலில் உள்ளது");
+            console.log("கன்சோலைப் பார்க்க F12 அழுத்தவும்");
+            alert("முடிவு உங்கள் உலாவி கன்சோலில் உள்ளது. கன்சோலைப் பார்க்க F12 அழுத்தவும்.");
+        }
+        
+        function printPage() {
+            window.print();
+        }
+    </script>
+
+    <!-- Home Button -->
+    <a href="index.html" class="home-icon">
+        <i class="fas fa-home"></i>
+    </a>
+</body>
+</html>
+
+

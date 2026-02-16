@@ -1,0 +1,379 @@
+﻿<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Reserved Words - Siva Team</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .content-section p, 
+        .content-section li,
+        .content-section h3,
+        .content-section h4,
+        .comparison-card p {
+            color: #333 !important;
+        }
+        
+        .tip-box p,
+        .tip-box li,
+        .tip-box h4 {
+            color: white !important;
+        }
+        
+        .warning-box p,
+        .warning-box li,
+        .warning-box h4 {
+            color: white !important;
+        }
+        
+        .exercise-box p,
+        .exercise-box h4 {
+            color: white !important;
+        }
+        
+        /* Stable logo styling - NO ANIMATIONS */
+        .logo-icon {
+            animation: none !important; /* Remove pulse animation */
+        }
+        
+        .logo-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            animation: none !important; /* Ensure no animations */
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <img src="logo.jpg" alt="Siva Team Logo" class="logo-image">
+                </div>
+                <h1>Siva Team <span>Institution</span></h1>
+            </div>
+        </div>
+    </header>
+
+    <!-- Top Navigation Tabs -->
+    <div class="nav-tabs">
+        <a href="JavaScript Statements.html" class="nav-tab prev">
+            <i class="fas fa-arrow-left"></i>
+            <span>முந்தைய</span>
+        </a>
+        <a href="JavaScript Operators Reference.html" class="nav-tab next">
+            <span>அடுத்தது</span>
+            <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2>JavaScript Reserved Words</h2>
+            <p>JavaScript முன்பதிவு செய்யப்பட்ட சொற்களைக் கற்றுக்கொள்ளுங்கள்</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Introduction -->
+        <section class="content-section" id="introduction">
+            <h2>JavaScript முன்பதிவு செய்யப்பட்ட சொற்கள்</h2>
+            
+            <p>JavaScript இல் நீங்கள் இந்த முன்பதிவு செய்யப்பட்ட சொற்களை மாறிகள், லேபிள்கள் அல்லது செயல்பாடு பெயர்களாகப் பயன்படுத்த முடியாது:</p>
+            
+            <div class="warning-box">
+                <h4><span class="warning-icon">⚠️</span> முக்கிய குறிப்பு:</h4>
+                <p>இந்த முன்பதிவு செய்யப்பட்ட சொற்களை மாறி பெயர்களாகப் பயன்படுத்த முயற்சிக்காதீர்கள். இது பிழைகளை உருவாக்கும்.</p>
+            </div>
+        </section>
+
+        <!-- Reserved Words Table -->
+        <section class="content-section" id="reserved-words">
+            <h2>முன்பதிவு செய்யப்பட்ட சொற்கள் பட்டியல்</h2>
+            
+            <div class="comparison-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>முன்பதிவு செய்யப்பட்ட சொற்கள்</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>abstract</td><td>arguments</td><td>async *</td><td>await *</td></tr>
+                        <tr><td>boolean</td><td>break</td><td>byte</td><td>case</td></tr>
+                        <tr><td>catch</td><td>char</td><td>class *</td><td>const *</td></tr>
+                        <tr><td>continue</td><td>debugger</td><td>default</td><td>delete</td></tr>
+                        <tr><td>do</td><td>double</td><td>else</td><td>enum *</td></tr>
+                        <tr><td>eval</td><td>export *</td><td>extends *</td><td>false</td></tr>
+                        <tr><td>final</td><td>finally</td><td>float</td><td>for</td></tr>
+                        <tr><td>function</td><td>goto</td><td>if</td><td>implements</td></tr>
+                        <tr><td>import *</td><td>in</td><td>instanceof</td><td>int</td></tr>
+                        <tr><td>interface</td><td>let *</td><td>long</td><td>native</td></tr>
+                        <tr><td>new</td><td>null</td><td>package</td><td>private</td></tr>
+                        <tr><td>protected</td><td>public</td><td>return</td><td>short</td></tr>
+                        <tr><td>static</td><td>super *</td><td>switch</td><td>synchronized</td></tr>
+                        <tr><td>this</td><td>throw</td><td>throws</td><td>transient</td></tr>
+                        <tr><td>true</td><td>try</td><td>typeof</td><td>using *</td></tr>
+                        <tr><td>var</td><td>void</td><td>volatile</td><td>while</td></tr>
+                        <tr><td>with</td><td>yield</td><td></td><td></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">📝</span> குறிப்பு:</h4>
+                <p>* உடன் குறிக்கப்பட்ட சொற்கள் 2015 க்குப் பிறகு JavaScript க்கு சேர்க்கப்பட்டுள்ளன.</p>
+                <p>JS News 2025-2015 இல் புதிய JavaScript பதிப்புகள் பற்றி மேலும் படிக்கலாம்.</p>
+            </div>
+        </section>
+
+        <!-- Removed Reserved Words -->
+        <section class="content-section" id="removed-words">
+            <h2>அகற்றப்பட்ட முன்பதிவு செய்யப்பட்ட சொற்கள்</h2>
+            
+            <p>பின்வரும் முன்பதிவு செய்யப்பட்ட சொற்கள் ECMAScript 5/6 தரத்திலிருந்து அகற்றப்பட்டன:</p>
+            
+            <div class="code-example">
+                <pre><code>abstract    boolean     byte        char
+double      final       float       goto
+int         long        native      short
+synchronized throws     transient   volatile</code></pre>
+            </div>
+        </section>
+
+        <!-- JavaScript Objects, Properties, and Methods -->
+        <section class="content-section" id="js-objects">
+            <h2>JavaScript பொருள்கள், பண்புகள் மற்றும் முறைகள்</h2>
+            
+            <p>நீங்கள் JavaScript உள்ளமைக்கப்பட்ட பொருள்கள், பண்புகள் மற்றும் முறைகளின் பெயரைப் பயன்படுத்துவதையும் தவிர்க்க வேண்டும்:</p>
+            
+            <div class="code-example">
+                <pre><code>Array          Date           eval          function
+hasOwnProperty Infinity       isFinite      isNaN
+isPrototypeOf  length         Math          NaN
+name           Number         Object        prototype
+String         toString       undefined     valueOf</code></pre>
+            </div>
+        </section>
+
+        <!-- Java Reserved Words -->
+        <section class="content-section" id="java-words">
+            <h2>Java முன்பதிவு செய்யப்பட்ட சொற்கள்</h2>
+            
+            <p>JavaScript பெரும்பாலும் Java உடன் இணைந்து பயன்படுத்தப்படுகிறது. சில Java பொருள்கள் மற்றும் பண்புகளை JavaScript அடையாளங்காட்டிகளாகப் பயன்படுத்துவதைத் தவிர்க்க வேண்டும்:</p>
+            
+            <div class="code-example">
+                <pre><code>getClass      java         JavaArray    javaClass
+JavaObject    JavaPackage</code></pre>
+            </div>
+        </section>
+
+        <!-- Other Reserved Words -->
+        <section class="content-section" id="other-words">
+            <h2>பிற முன்பதிவு செய்யப்பட்ட சொற்கள்</h2>
+            
+            <p>JavaScript பல பயன்பாடுகளில் நிரலாக்க மொழியாகப் பயன்படுத்தப்படலாம்.</p>
+            
+            <p>HTML மற்றும் Window பொருள்கள் மற்றும் பண்புகளின் பெயரைப் பயன்படுத்துவதையும் தவிர்க்க வேண்டும்:</p>
+            
+            <div class="code-example">
+                <pre><code>alert     all        anchor     anchors
+area      assign     blur       button
+checkbox  clearInterval clearTimeout clientInformation
+close     closed     confirm    constructor
+crypto    decodeURI  decodeURIComponent defaultStatus
+document  element    elements   embed
+embeds    encodeURI  encodeURIComponent escape
+event     fileUpload focus      form
+forms     frame      innerHeight innerWidth
+layer     layers     link       location
+mimeTypes navigate   navigator  frames
+frameRate hidden     history    image
+images    offscreenBuffering open      opener
+option    outerHeight outerWidth packages
+pageXOffset pageYOffset parent   parseFloat
+parseInt  password   pkcs11     plugin
+prompt    propertyIsEnum radio    reset
+screenX   screenY    scroll     secure
+select    self       setInterval setTimeout
+status    submit     taint      text
+textarea  top        unescape   untaint
+window</code></pre>
+            </div>
+        </section>
+
+        <!-- HTML Event Handlers -->
+        <section class="content-section" id="html-events">
+            <h2>HTML நிகழ்வு கையாளிகள்</h2>
+            
+            <p>கூடுதலாக, அனைத்து HTML நிகழ்வு கையாளிகளின் பெயரைப் பயன்படுத்துவதையும் தவிர்க்க வேண்டும்.</p>
+            
+            <h3>எடுத்துக்காட்டுகள்:</h3>
+            
+            <div class="code-example">
+                <pre><code>onblur        onclick       onerror      onfocus
+onkeydown     onkeypress    onkeyup      onmouseover
+onload        onmouseup     onmousedown  onsubmit</code></pre>
+            </div>
+        </section>
+
+        <!-- EXERCISE SECTION - Only one exercise as requested -->
+        <section class="content-section" id="exercises">
+            <h2>JavaScript முன்பதிவு செய்யப்பட்ட சொற்கள் பயிற்சி</h2>
+            
+            <p>இந்த பயிற்சி உங்கள் JavaScript முன்பதிவு செய்யப்பட்ட சொற்கள் பற்றிய அறிவைச் சோதிக்க உதவும்.</p>
+            
+            <div class="exercise-box">
+                <h4><span class="exercise-icon">❓</span> பின்வரும் எந்த சொல்லை JavaScript மாறி பெயராகப் பயன்படுத்தலாம்?</h4>
+                
+                <div class="options-grid">
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">class</div>
+                            <div class="option-feedback incorrect">✗ தவறு! class என்பது JavaScript இல் முன்பதிவு செய்யப்பட்ட சொல் (ES6 இல் சேர்க்கப்பட்டது)</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">function</div>
+                            <div class="option-feedback incorrect">✗ தவறு! function என்பது JavaScript இல் முன்பதிவு செய்யப்பட்ட சொல்</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="true">
+                        <div class="option-content">
+                            <div class="option-text">myVariable</div>
+                            <div class="option-feedback correct">✓ சரி! myVariable என்பது ஒரு செல்லுபடியாகும் மாறி பெயர், ஏனெனில் இது முன்பதிவு செய்யப்பட்ட சொல் அல்ல</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">let</div>
+                            <div class="option-feedback incorrect">✗ தவறு! let என்பது JavaScript இல் முன்பதிவு செய்யப்பட்ட சொல் (ES6 இல் சேர்க்கப்பட்டது)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bottom Navigation -->
+        <div class="bottom-nav">
+            <a href="JavaScript Statements.html" class="nav-tab prev">
+                <i class="fas fa-arrow-left"></i>
+                <span>முந்தைய</span>
+            </a>
+            <a href="JavaScript Operators Reference.html" class="nav-tab next">
+                <span>அடுத்தது</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Siva Team Institution</h3>
+                <p>தமிழில் தரமான நிரலாக்க கல்வியை வழங்கும் முன்னணி கல்வி நிறுவனம்.</p>
+            </div>
+            <div class="footer-column">
+                <h3>விரைவு இணைப்புகள்</h3>
+                <ul>
+                    <li><a href="#introduction">முன்பதிவு செய்யப்பட்ட சொற்கள்</a></li>
+                    <li><a href="#reserved-words">முன்பதிவு சொற்கள் பட்டியல்</a></li>
+                    <li><a href="#removed-words">அகற்றப்பட்ட சொற்கள்</a></li>
+                    <li><a href="#js-objects">JavaScript பொருள்கள்</a></li>
+                    <li><a href="#java-words">Java சொற்கள்</a></li>
+                    <li><a href="#exercises">பயிற்சி</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>தொடர்பு</h3>
+                <ul>
+                    <li><a href="#">எங்களைப் பற்றி</a></li>
+                    <li><a href="#">தொடர்பு கொள்ள</a></li>
+                    <li><a href="#">இடம் & நேரங்கள்</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>பின்தொடரவும்</h3>
+                <ul>
+                    <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Siva Team Institution. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all content sections for animation
+        document.querySelectorAll('.content-section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Exercise interaction
+        document.querySelectorAll('.option-card').forEach(card => {
+            card.addEventListener('click', function() {
+                // Show feedback for all options
+                document.querySelectorAll('.option-card').forEach(c => {
+                    c.querySelector('.option-feedback').style.display = 'block';
+                });
+            });
+        });
+    </script>
+
+    <!-- Home Button -->
+    <a href="index.html" class="home-icon">
+        <i class="fas fa-home"></i>
+    </a>
+</body>
+</html>
+
+

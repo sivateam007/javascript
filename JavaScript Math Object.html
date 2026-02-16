@@ -1,0 +1,554 @@
+﻿<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Math Object - Siva Team</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .content-section p, 
+        .content-section li,
+        .content-section h3,
+        .content-section h4,
+        .comparison-card p {
+            color: #333 !important;
+        }
+        
+        .tip-box p,
+        .tip-box li,
+        .tip-box h4 {
+            color: white !important;
+        }
+        
+        .warning-box p,
+        .warning-box li,
+        .warning-box h4 {
+            color: white !important;
+        }
+        
+        .exercise-box p,
+        .exercise-box h4 {
+            color: white !important;
+        }
+        
+        /* Stable logo styling - NO ANIMATIONS */
+        .logo-icon {
+            animation: none !important;
+        }
+        
+        .logo-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            animation: none !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <img src="logo.jpg" alt="Siva Team Logo" class="logo-image">
+                </div>
+                <h1>Siva Team <span>Institution</span></h1>
+            </div>
+        </div>
+    </header>
+
+    <!-- Top Navigation Tabs -->
+    <div class="nav-tabs">
+        <a href="JavaScript%20Generators.html" class="nav-tab prev">
+            <i class="fas fa-arrow-left"></i>
+            <span>முந்தைய</span>
+        </a>
+        <a href="JavaScript%20Math%20Reference.html" class="nav-tab next">
+            <span>அடுத்தது</span>
+            <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2>JavaScript Math Object</h2>
+            <p>கணித செயல்பாடுகளைச் செய்ய JavaScript Math பொருள்</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- The Math Object -->
+        <section class="content-section" id="math-object">
+            <h2>Math பொருள்</h2>
+            
+            <p>JavaScript Math பொருள் கணித பணிகளைச் செய்ய உங்களை அனுமதிக்கிறது.</p>
+            
+            <p>Math பொருள் நிலையானது.</p>
+            
+            <p>அனைத்து முறைகளும் பண்புகளும் முதலில் Math பொருளை உருவாக்காமல் பயன்படுத்தலாம்.</p>
+            
+            <div class="code-example">
+                <pre><code>Math.PI;</code></pre>
+            </div>
+        </section>
+
+        <!-- Math Properties (Constants) -->
+        <section class="content-section" id="math-properties">
+            <h2>Math பண்புகள் (மாறிலிகள்)</h2>
+            
+            <p>எந்த Math பண்புக்கும் தொடரியல்: Math.property.</p>
+            
+            <p>JavaScript 8 கணித மாறிலிகளை Math பண்புகளாக அணுக வழங்குகிறது:</p>
+            
+            <div class="code-example">
+                <pre><code>Math.E        // Euler's எண்ணை வழங்குகிறது
+Math.PI       // PI வழங்குகிறது
+Math.SQRT2    // 2 இன் வர்க்கமூலத்தை வழங்குகிறது
+Math.SQRT1_2  // 1/2 இன் வர்க்கமூலத்தை வழங்குகிறது
+Math.LN2      // 2 இன் இயற்கை மடக்கையை வழங்குகிறது
+Math.LN10     // 10 இன் இயற்கை மடக்கையை வழங்குகிறது
+Math.LOG2E    // E இன் அடிப்படை 2 மடக்கையை வழங்குகிறது
+Math.LOG10E   // E இன் அடிப்படை 10 மடக்கையை வழங்குகிறது</code></pre>
+            </div>
+        </section>
+
+        <!-- Math Methods -->
+        <section class="content-section" id="math-methods">
+            <h2>Math முறைகள்</h2>
+            
+            <p>எந்த Math முறைகளுக்கும் தொடரியல்: Math.method(number)</p>
+            
+            <h3>முழு எண்ணுக்கு எண்</h3>
+            <p>ஒரு எண்ணை முழு எண்ணாக மாற்ற 4 பொதுவான முறைகள் உள்ளன:</p>
+            
+            <div class="comparison-table">
+                <table>
+                    <tr>
+                        <th>முறை</th>
+                        <th>விளக்கம்</th>
+                    </tr>
+                    <tr>
+                        <td>Math.round(x)</td>
+                        <td>அதன் அருகிலுள்ள முழு எண்ணுக்கு x ஐ மாற்றுகிறது</td>
+                    </tr>
+                    <tr>
+                        <td>Math.ceil(x)</td>
+                        <td>அதன் அருகிலுள்ள முழு எண்ணுக்கு x ஐ மேலே மாற்றுகிறது</td>
+                    </tr>
+                    <tr>
+                        <td>Math.floor(x)</td>
+                        <td>அதன் அருகிலுள்ள முழு எண்ணுக்கு x ஐ கீழே மாற்றுகிறது</td>
+                    </tr>
+                    <tr>
+                        <td>Math.trunc(x)</td>
+                        <td>x இன் முழு எண் பகுதியை வழங்குகிறது (ES6 இல் புதியது)</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <!-- Math.round() -->
+        <section class="content-section" id="math-round">
+            <h2>Math.round()</h2>
+            
+            <p>Math.round(x) அருகிலுள்ள முழு எண்ணை வழங்குகிறது:</p>
+            
+            <h3>எடுத்துக்காட்டுகள்</h3>
+            <div class="code-example">
+                <pre><code>Math.round(4.6);  // 5
+Math.round(4.5);  // 5
+Math.round(4.4);  // 4</code></pre>
+            </div>
+        </section>
+
+        <!-- Math.ceil() -->
+        <section class="content-section" id="math-ceil">
+            <h2>Math.ceil()</h2>
+            
+            <p>Math.ceil(x) அதன் அருகிலுள்ள முழு எண்ணுக்கு மேலே மாற்றப்பட்ட x இன் மதிப்பை வழங்குகிறது:</p>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <div class="code-example">
+                <pre><code>Math.ceil(4.9);   // 5
+Math.ceil(4.7);   // 5
+Math.ceil(4.4);   // 5
+Math.ceil(4.2);   // 5
+Math.ceil(-4.2);  // -4</code></pre>
+            </div>
+        </section>
+
+        <!-- Math.floor() -->
+        <section class="content-section" id="math-floor">
+            <h2>Math.floor()</h2>
+            
+            <p>Math.floor(x) அதன் அருகிலுள்ள முழு எண்ணுக்கு கீழே மாற்றப்பட்ட x இன் மதிப்பை வழங்குகிறது:</p>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <div class="code-example">
+                <pre><code>Math.floor(4.9);   // 4
+Math.floor(4.7);   // 4
+Math.floor(4.4);   // 4
+Math.floor(4.2);   // 4
+Math.floor(-4.2);  // -5</code></pre>
+            </div>
+        </section>
+
+        <!-- Math.trunc() -->
+        <section class="content-section" id="math-trunc">
+            <h2>Math.trunc()</h2>
+            
+            <p>Math.trunc(x) x இன் முழு எண் பகுதியை வழங்குகிறது:</p>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <div class="code-example">
+                <pre><code>Math.trunc(4.9);   // 4
+Math.trunc(4.7);   // 4
+Math.trunc(4.4);   // 4
+Math.trunc(4.2);   // 4
+Math.trunc(-4.2);  // -4</code></pre>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">ℹ️</span> குறிப்பு:</h4>
+                <p>Math.trunc() மற்றும் Math.sign() JavaScript 2015 - ES6 இல் சேர்க்கப்பட்டன.</p>
+            </div>
+        </section>
+
+        <!-- Math.sign() -->
+        <section class="content-section" id="math-sign">
+            <h2>Math.sign()</h2>
+            
+            <p>Math.sign(x) x எதிர்மறையா, பூஜ்யமா அல்லது நேர்மறையா என்பதை வழங்குகிறது.</p>
+            
+            <ul>
+                <li>x நேர்மறையாக இருந்தால் அது 1 ஐ வழங்குகிறது</li>
+                <li>x எதிர்மறையாக இருந்தால் அது -1 ஐ வழங்குகிறது</li>
+                <li>x பூஜ்யமாக இருந்தால், அது 0 ஐ வழங்குகிறது</li>
+            </ul>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <div class="code-example">
+                <pre><code>Math.sign(-4);  // -1
+Math.sign(0);   // 0
+Math.sign(4);   // 1</code></pre>
+            </div>
+        </section>
+
+        <!-- Math.pow() -->
+        <section class="content-section" id="math-pow">
+            <h2>Math.pow()</h2>
+            
+            <p>Math.pow(x, y) y இன் சக்திக்கு x இன் மதிப்பை வழங்குகிறது:</p>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <div class="code-example">
+                <pre><code>Math.pow(8, 2);  // 64</code></pre>
+            </div>
+        </section>
+
+        <!-- Math.sqrt() -->
+        <section class="content-section" id="math-sqrt">
+            <h2>Math.sqrt()</h2>
+            
+            <p>Math.sqrt(x) x இன் வர்க்கமூலத்தை வழங்குகிறது:</p>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <div class="code-example">
+                <pre><code>Math.sqrt(64);  // 8</code></pre>
+            </div>
+        </section>
+
+        <!-- Math.abs() -->
+        <section class="content-section" id="math-abs">
+            <h2>Math.abs()</h2>
+            
+            <p>Math.abs(x) x இன் முழுமையான (நேர்மறை) மதிப்பை வழங்குகிறது:</p>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <div class="code-example">
+                <pre><code>Math.abs(-4.7);  // 4.7</code></pre>
+            </div>
+        </section>
+
+        <!-- Math.sin() and Math.cos() -->
+        <section class="content-section" id="math-sin-cos">
+            <h2>Math.sin() மற்றும் Math.cos()</h2>
+            
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-sine"></i>
+                        <h4>Math.sin()</h4>
+                    </div>
+                    <p>Math.sin(x) கோணம் x இன் sine (-1 மற்றும் 1 க்கு இடையேயான மதிப்பு) ஐ வழங்குகிறது (ரேடியன்களில் கொடுக்கப்பட்டது).</p>
+                    <p>ரேடியன்களுக்குப் பதிலாக டிகிரிகளைப் பயன்படுத்த விரும்பினால், டிகிரிகளை ரேடியன்களாக மாற்ற வேண்டும்:</p>
+                    <p><strong>ரேடியன்களில் கோணம் = டிகிரிகளில் கோணம் x PI / 180.</strong></p>
+                    <div class="code-example">
+                        <pre><code>Math.sin(90 * Math.PI / 180);  // 90 டிகிரி sine ஐ வழங்குகிறது (1)</code></pre>
+                    </div>
+                </div>
+                
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-cosine"></i>
+                        <h4>Math.cos()</h4>
+                    </div>
+                    <p>Math.cos(x) கோணம் x இன் cosine (-1 மற்றும் 1 க்கு இடையேயான மதிப்பு) ஐ வழங்குகிறது (ரேடியன்களில் கொடுக்கப்பட்டது).</p>
+                    <p>ரேடியன்களுக்குப் பதிலாக டிகிரிகளைப் பயன்படுத்த விரும்பினால், டிகிரிகளை ரேடியன்களாக மாற்ற வேண்டும்:</p>
+                    <p><strong>ரேடியன்களில் கோணம் = டிகிரிகளில் கோணம் x PI / 180.</strong></p>
+                    <div class="code-example">
+                        <pre><code>Math.cos(0 * Math.PI / 180);   // 0 டிகிரி cosine ஐ வழங்குகிறது (1)</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Math.min() and Math.max() -->
+        <section class="content-section" id="math-min-max">
+            <h2>Math.min() மற்றும் Math.max()</h2>
+            
+            <p>Math.min() மற்றும் Math.max() வாதங்களின் பட்டியலில் குறைந்த அல்லது அதிக மதிப்பைக் கண்டறிய பயன்படுத்தலாம்:</p>
+            
+            <div class="code-comparison">
+                <div class="code-column">
+                    <h4>Math.min() எடுத்துக்காட்டு</h4>
+                    <div class="code-example">
+                        <pre><code>Math.min(0, 150, 30, 20, -8, -200);  // -200</code></pre>
+                    </div>
+                </div>
+                <div class="code-column">
+                    <h4>Math.max() எடுத்துக்காட்டு</h4>
+                    <div class="code-example">
+                        <pre><code>Math.max(0, 150, 30, 20, -8, -200);  // 150</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Math.random() -->
+        <section class="content-section" id="math-random">
+            <h2>Math.random()</h2>
+            
+            <p>Math.random() 0 (அடங்கும்) மற்றும் 1 (தவிர) இடையே ஒரு சீரற்ற எண்ணை வழங்குகிறது:</p>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <div class="code-example">
+                <pre><code>Math.random();  // 0.123456789 (எடுத்துக்காட்டு)</code></pre>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">🎲</span> குறிப்பு:</h4>
+                <p>Math.random() பற்றி இந்த டுடோரியலின் அடுத்த அத்தியாயத்தில் மேலும் அறிவீர்கள்.</p>
+            </div>
+        </section>
+
+        <!-- Logarithm Methods -->
+        <section class="content-section" id="log-methods">
+            <h2>மடக்கை முறைகள்</h2>
+            
+            <div class="examples-grid">
+                <div class="example-card">
+                    <div class="example-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h4>Math.log()</h4>
+                    <p>Math.log(x) x இன் இயற்கை மடக்கையை வழங்குகிறது. Math.E மற்றும் Math.log() இரட்டையர்கள்.</p>
+                    <div class="code-example">
+                        <pre><code>Math.log(10);  // Math.E ஐ எத்தனை முறை பெருக்க வேண்டும் 10 பெற?</code></pre>
+                    </div>
+                </div>
+                
+                <div class="example-card">
+                    <div class="example-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h4>Math.log2()</h4>
+                    <p>Math.log2(x) x இன் அடிப்படை 2 மடக்கையை வழங்குகிறது.</p>
+                    <div class="code-example">
+                        <pre><code>Math.log2(8);  // 2 ஐ எத்தனை முறை பெருக்க வேண்டும் 8 பெற?</code></pre>
+                    </div>
+                </div>
+                
+                <div class="example-card">
+                    <div class="example-icon">
+                        <i class="fas fa-chart-area"></i>
+                    </div>
+                    <h4>Math.log10()</h4>
+                    <p>Math.log10(x) x இன் அடிப்படை 10 மடக்கையை வழங்குகிறது.</p>
+                    <div class="code-example">
+                        <pre><code>Math.log10(1000);  // 10 ஐ எத்தனை முறை பெருக்க வேண்டும் 1000 பெற?</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Learn More -->
+        <section class="content-section" id="learn-more">
+            <h2>மேலும் அறிய:</h2>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">📚</span> Siva Team குறிப்பு:</h4>
+                <p>முழு Math குறிப்பிற்கு எங்கள் ஆவணங்களைப் பார்க்கவும்.</p>
+            </div>
+        </section>
+
+        <!-- Single Exercise -->
+        <section class="content-section" id="exercises">
+            <h2>Math பொருள் பயிற்சி</h2>
+            
+            <div class="exercise-box">
+                <h4><span class="exercise-icon">❓</span> அதன் அருகிலுள்ள முழு எண்ணுக்கு கீழே ஒரு எண்ணை மாற்றுவதற்கான சரியான தொடரியல் எது?</h4>
+                
+                <div class="options-grid">
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">Math.roundDown(4.9)</div>
+                            <div class="option-feedback incorrect">✗ தவறு! roundDown() என்பது சட்டபூர்வமான JavaScript Math முறை அல்ல</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="true">
+                        <div class="option-content">
+                            <div class="option-text">Math.floor(4.9)</div>
+                            <div class="option-feedback correct">✓ சரி! Math.floor() ஒரு எண்ணை அதன் அருகிலுள்ள முழு எண்ணுக்கு கீழே மாற்ற பயன்படும் சரியான முறை</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">Math.abs(4.9)</div>
+                            <div class="option-feedback incorrect">✗ தவறு! Math.abs() முழுமையான மதிப்பை வழங்குகிறது, கீழே மாற்றுவதில்லை</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">Math.min(4.9)</div>
+                            <div class="option-feedback incorrect">✗ தவறு! Math.min() குறைந்த மதிப்பைக் கண்டறிய பயன்படுகிறது, கீழே மாற்றுவதில்லை</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bottom Navigation -->
+        <div class="bottom-nav">
+            <a href="JavaScript%20Generators.html" class="nav-tab prev">
+                <i class="fas fa-arrow-left"></i>
+                <span>முந்தைய</span>
+            </a>
+            <a href="JavaScript%20Math%20Reference.html" class="nav-tab next">
+                <span>அடுத்தது</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Siva Team Institution</h3>
+                <p>Leading educational institution providing quality programming education in Tamil.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#math-object">Math பொருள்</a></li>
+                    <li><a href="#math-properties">Math பண்புகள்</a></li>
+                    <li><a href="#math-methods">Math முறைகள்</a></li>
+                    <li><a href="#math-round">Math.round()</a></li>
+                    <li><a href="#math-floor">Math.floor()</a></li>
+                    <li><a href="#math-ceil">Math.ceil()</a></li>
+                    <li><a href="#math-trunc">Math.trunc()</a></li>
+                    <li><a href="#math-sin-cos">sin() & cos()</a></li>
+                    <li><a href="#math-random">Math.random()</a></li>
+                    <li><a href="#exercises">பயிற்சி</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Location & Hours</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <ul>
+                    <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Siva Team Institution. All rights reserved.</p>
+        </div>
+</footer>
+
+<script>
+    // Add smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            if(targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if(targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+    
+    // Add scroll animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+            }
+        });
+    }, observerOptions);
+    
+    // Observe all content sections for animation
+    document.querySelectorAll('.content-section').forEach(section => {
+        observer.observe(section);
+    });
+
+    // Exercise interaction
+    document.querySelectorAll('.option-card').forEach(card => {
+        card.addEventListener('click', function() {
+            // Show feedback for all options
+            document.querySelectorAll('.option-card').forEach(c => {
+                c.querySelector('.option-feedback').style.display = 'block';
+            });
+        });
+    });
+</script>
+
+<!-- Home Button -->
+<a href="index.html" class="home-icon">
+    <i class="fas fa-home"></i>
+</a>
+</body>
+</html>
+
+

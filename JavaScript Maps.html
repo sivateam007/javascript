@@ -1,0 +1,724 @@
+﻿<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Maps - Siva Team</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .content-section p, 
+        .content-section li,
+        .content-section h3,
+        .content-section h4,
+        .comparison-card p {
+            color: #333 !important;
+        }
+        
+        .tip-box p,
+        .tip-box li,
+        .tip-box h4 {
+            color: white !important;
+        }
+        
+        .warning-box p,
+        .warning-box li,
+        .warning-box h4 {
+            color: white !important;
+        }
+        
+        .exercise-box p,
+        .exercise-box h4 {
+            color: white !important;
+        }
+        
+        /* Stable logo styling - NO ANIMATIONS */
+        .logo-icon {
+            animation: none !important;
+        }
+        
+        .logo-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            animation: none !important;
+        }
+        
+        /* Map visualization */
+        .map-visualization {
+            background: linear-gradient(135deg, #00b09b 0%, #96c93d 100%);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .map-visualization:before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            transform: rotate(45deg);
+        }
+        
+        .map-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .map-item {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid white;
+            border-radius: 10px;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.3s;
+        }
+        
+        .map-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .map-key {
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+        
+        .map-value {
+            font-size: 0.9rem;
+            color: #f0f0f0;
+        }
+        
+        .map-arrow {
+            color: white;
+            margin: 0 0.5rem;
+            font-size: 1.2rem;
+        }
+        
+        /* Comparison table */
+        .comparison-table-full {
+            margin: 2rem 0;
+            overflow-x: auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .comparison-table-full table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 800px;
+        }
+        
+        .comparison-table-full th {
+            background: linear-gradient(135deg, var(--git-color), #e74c3c);
+            color: white;
+            padding: 1.2rem;
+            text-align: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .comparison-table-full td {
+            padding: 1rem;
+            border-bottom: 1px solid #f0f0f0;
+            vertical-align: top;
+            text-align: center;
+        }
+        
+        .comparison-table-full tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .comparison-table-full tr:hover {
+            background-color: #f0f7ff;
+        }
+        
+        .comparison-table-full tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .feature-yes {
+            color: #28a745;
+            font-weight: bold;
+        }
+        
+        .feature-no {
+            color: #dc3545;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <img src="logo.jpg" alt="Siva Team Logo" class="logo-image">
+                </div>
+                <h1>Siva Team <span>Institution</span></h1>
+            </div>
+        </div>
+    </header>
+
+    <!-- Top Navigation Tabs -->
+    <div class="nav-tabs">
+        <a href="JavaScript%20Set%20Reference.html" class="nav-tab prev">
+            <i class="fas fa-arrow-left"></i>
+            <span>முந்தைய</span>
+        </a>
+        <a href="JavaScript%20Map%20Methods.html" class="nav-tab next">
+            <span>அடுத்தது</span>
+            <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2>JavaScript Maps</h2>
+            <p>விசை-மதிப்பு ஜோடிகளின் தொகுப்பு</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Introduction -->
+        <section class="content-section" id="introduction">
+            <h2>Map பொருள்</h2>
+            
+            <p>ஒரு JavaScript Map என்பது விசை-மதிப்பு ஜோடிகளின் தொகுப்புகளைச் சேமிக்கக்கூடிய ஒரு பொருளாகும், இது மற்ற நிரலாக்க மொழிகளில் உள்ள அகராதியைப் போன்றது.</p>
+            
+            <div class="map-visualization">
+                <h4 style="color: white; text-align: center; margin-bottom: 1rem;">Map விசுவலைசேஷன்</h4>
+                <div class="map-items">
+                    <div class="map-item">
+                        <div class="map-key">"apples"</div>
+                        <div class="map-value">500</div>
+                    </div>
+                    <div class="map-item">
+                        <div class="map-key">"bananas"</div>
+                        <div class="map-value">300</div>
+                    </div>
+                    <div class="map-item">
+                        <div class="map-key">"oranges"</div>
+                        <div class="map-value">200</div>
+                    </div>
+                    <div class="map-item">
+                        <div class="map-key">"mangos"</div>
+                        <div class="map-value">100</div>
+                    </div>
+                </div>
+                <p style="text-align: center; margin-top: 1.5rem; color: white; font-size: 0.9rem;">விசை → மதிப்பு ஜோடிகள்</p>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">🗺️</span> முக்கிய வித்தியாசம்:</h4>
+                <p>Maps நிலையான பொருள்களிலிருந்து வேறுபடுகின்றன, ஏனெனில் விசைகள் எந்த தரவு வகையிலும் இருக்கலாம் (சரங்கள், எண்கள், பொருள்கள், முதலியன).</p>
+            </div>
+        </section>
+
+        <!-- Map Characteristics -->
+        <section class="content-section" id="characteristics">
+            <h2>Map பண்புகள்</h2>
+            
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-key"></i>
+                        <h4>விசை வகைகள்</h4>
+                    </div>
+                    <p>Map விசைகள் எந்த வகையிலும் இருக்கலாம் (சரங்கள், எண்கள், பொருள்கள், முதலியன).</p>
+                </div>
+                
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-sort-amount-down"></i>
+                        <h4>சேர்க்கும் வரிசை</h4>
+                    </div>
+                    <p>Map விசைகளின் அசல் சேர்க்கும் வரிசையை நினைவில் வைத்திருக்கிறது.</p>
+                </div>
+                
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-ruler"></i>
+                        <h4>அளவு</h4>
+                    </div>
+                    <p>Map இல் உள்ள உருப்படிகளின் எண்ணிக்கை size பண்பைப் பயன்படுத்தி எளிதாக பெறப்படுகிறது.</p>
+                </div>
+                
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <h4>செயல்திறன்</h4>
+                    </div>
+                    <p>Maps விசை-மதிப்பு ஜோடிகளை அடிக்கடி சேர்த்தல் மற்றும் அகற்றுவதற்கு மேம்படுத்தப்பட்டுள்ளன.</p>
+                </div>
+            </div>
+            
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-redo"></i>
+                        <h4>மறு செய்கை</h4>
+                    </div>
+                    <p>Maps மறு செய்கை செய்யக்கூடியவை, for...of சுழற்சிகள் அல்லது forEach() போன்ற முறைகளை நேரடியாகப் பயன்படுத்த அனுமதிக்கிறது.</p>
+                </div>
+                
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-sync-alt"></i>
+                        <h4>மறு செய்கை வரிசை</h4>
+                    </div>
+                    <p>மறு செய்கையின் போது அசல் வரிசை பாதுகாக்கப்படுகிறது.</p>
+                </div>
+            </div>
+            
+            <div class="warning-box">
+                <h4><span class="warning-icon">📌</span> குறிப்பு:</h4>
+                <p>Maps இரண்டு பொருள்களுக்கும் (தனித்த விசை/மதிப்பு தொகுப்பு) மற்றும் வரிசைகளுக்கும் (வரிசைப்படுத்தப்பட்ட மதிப்புகள் தொகுப்பு) ஒத்திருக்கின்றன.</p>
+                <p>ஆனால் நீங்கள் நெருக்கமாகப் பார்த்தால், Maps பொருள்களுக்கு மிகவும் ஒத்திருக்கின்றன.</p>
+            </div>
+        </section>
+
+        <!-- How to Create a Map -->
+        <section class="content-section" id="create-map">
+            <h2>Map ஐ எவ்வாறு உருவாக்குவது</h2>
+            
+            <p>நீங்கள் ஒரு JavaScript Map ஐ பின்வரும் வழிகளில் உருவாக்கலாம்:</p>
+            
+            <div class="examples-grid">
+                <div class="example-card">
+                    <div class="example-icon">
+                        <i class="fas fa-plus-circle"></i>
+                    </div>
+                    <h4>Method 1</h4>
+                    <p>புதிய Map உருவாக்கி Map.set() மூலம் உறுப்புகளைச் சேர்த்தல்</p>
+                    <div class="code-example" style="margin-top: 1rem; font-size: 0.9rem;">
+                        <pre><code>const fruits = new Map();
+fruits.set("apples", 500);
+fruits.set("bananas", 300);
+fruits.set("oranges", 200);</code></pre>
+                    </div>
+                </div>
+                
+                <div class="example-card">
+                    <div class="example-icon">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                    <h4>Method 2</h4>
+                    <p>ஏற்கனவே உள்ள வரிசையை new Map() கட்டமைப்பாளருக்கு அனுப்புதல்</p>
+                    <div class="code-example" style="margin-top: 1rem; font-size: 0.9rem;">
+                        <pre><code>const fruits = new Map([
+  ["apples", 500],
+  ["bananas", 300],
+  ["oranges", 200]
+]);</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Adding Map Values -->
+        <section class="content-section" id="adding-values">
+            <h2>Map மதிப்புகளைச் சேர்த்தல்</h2>
+            
+            <p>நீங்கள் set() முறையைப் பயன்படுத்தி ஒரு Map க்கு உறுப்புகளைச் சேர்க்கலாம்:</p>
+            
+            <h3>Example</h3>
+            <div class="code-example">
+                <pre><code>const fruits = new Map([
+  ["apples", 500],
+  ["bananas", 300],
+  ["oranges", 200]
+]);
+
+fruits.set("mangos", 100);</code></pre>
+            </div>
+        </section>
+
+        <!-- Changing Map Values -->
+        <section class="content-section" id="changing-values">
+            <h2>Map மதிப்புகளை மாற்றுதல்</h2>
+            
+            <p>set() முறையை ஏற்கனவே உள்ள Map மதிப்புகளை மாற்றவும் பயன்படுத்தலாம்:</p>
+            
+            <h3>Example</h3>
+            <div class="code-example">
+                <pre><code>const fruits = new Map([
+  ["apples", 500],
+  ["bananas", 300],
+  ["oranges", 200]
+]);
+
+fruits.set("apples", 200);  // "apples" இன் மதிப்பை 500 இலிருந்து 200 ஆக மாற்றுகிறது</code></pre>
+            </div>
+        </section>
+
+        <!-- The get() Method -->
+        <section class="content-section" id="get-method">
+            <h2>get() முறை</h2>
+            
+            <p>get() முறை ஒரு Map இல் உள்ள ஒரு விசையின் மதிப்பைப் பெறுகிறது:</p>
+            
+            <h3>Example</h3>
+            <div class="code-example">
+                <pre><code>const fruits = new Map([
+  ["apples", 500],
+  ["bananas", 300],
+  ["oranges", 200]
+]);
+
+fruits.get("apples");    // 500 தரும்
+fruits.get("bananas");   // 300 தரும்
+fruits.get("oranges");   // 200 தரும்</code></pre>
+            </div>
+        </section>
+
+        <!-- Maps are Objects -->
+        <section class="content-section" id="maps-are-objects">
+            <h2>Maps பொருள்கள்</h2>
+            
+            <p>JavaScript இல், Maps பொருள்களாகும்:</p>
+            
+            <div class="code-comparison">
+                <div class="code-column">
+                    <h4>typeof</h4>
+                    <div class="code-example">
+                        <pre><code>const fruits = new Map([
+  ["apples", 500],
+  ["bananas", 300],
+  ["oranges", 200]
+]);
+
+typeof fruits;      // "object" தரும்</code></pre>
+                    </div>
+                </div>
+                
+                <div class="code-column">
+                    <h4>instanceof</h4>
+                    <div class="code-example">
+                        <pre><code>const fruits = new Map([
+  ["apples", 500],
+  ["bananas", 300],
+  ["oranges", 200]
+]);
+
+fruits instanceof Map;  // true தரும்</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- JavaScript Objects vs Maps -->
+        <section class="content-section" id="objects-vs-maps">
+            <h2>JavaScript பொருள்கள் vs Maps</h2>
+            
+            <p>JavaScript பொருள்கள் மற்றும் Maps இடையேயான வேறுபாடுகள்:</p>
+            
+            <div class="comparison-table-full">
+                <table>
+                    <tr>
+                        <th>அம்சம்</th>
+                        <th>பொருள்</th>
+                        <th>Map</th>
+                    </tr>
+                    <tr>
+                        <td>மறு செய்கை</td>
+                        <td class="feature-no">நேரடியாக மறு செய்கை செய்ய முடியாது</td>
+                        <td class="feature-yes">நேரடியாக மறு செய்கை செய்யக்கூடியது</td>
+                    </tr>
+                    <tr>
+                        <td>அளவு</td>
+                        <td class="feature-no">size பண்பு இல்லை</td>
+                        <td class="feature-yes">size பண்பு உள்ளது</td>
+                    </tr>
+                    <tr>
+                        <td>விசை வகைகள்</td>
+                        <td>விசைகள் சரங்கள் (அல்லது சின்னங்கள்) ஆக இருக்க வேண்டும்</td>
+                        <td>விசைகள் எந்த தரவு வகையிலும் இருக்கலாம்</td>
+                    </tr>
+                    <tr>
+                        <td>விசை வரிசை</td>
+                        <td>விசைகள் நன்கு வரிசைப்படுத்தப்படவில்லை</td>
+                        <td>விசைகள் சேர்க்கும் வரிசையால் வரிசைப்படுத்தப்படுகின்றன</td>
+                    </tr>
+                    <tr>
+                        <td>இயல்புநிலை விசைகள்</td>
+                        <td class="feature-yes">இயல்புநிலை விசைகள் உள்ளன</td>
+                        <td class="feature-no">இயல்புநிலை விசைகள் இல்லை</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">🔑</span> முக்கிய வேறுபாடு:</h4>
+                <p>Map விசைகள் எந்த தரவு வகையிலும் இருக்கலாம், அதே நேரத்தில் பொருள் விசைகள் சரங்கள் அல்லது சின்னங்களாக மட்டுமே இருக்க வேண்டும்.</p>
+            </div>
+        </section>
+
+        <!-- Exercise Section -->
+        <section class="content-section" id="exercises">
+            <h2>Maps பயிற்சி</h2>
+            
+            <p>JavaScript Maps இன் அடிப்படை கருத்துகளைப் புரிந்துகொள்வதை இந்த பயிற்சி சோதிக்கிறது.</p>
+            
+            <div class="exercise-box">
+                <h4><span class="exercise-icon">❓</span> Map க்கு உறுப்புகளைச் சேர்க்க எந்த முறையைப் பயன்படுத்தலாம்?</h4>
+                
+                <div class="options-grid">
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">add()</div>
+                            <div class="option-feedback incorrect">✗ தவறு! Map இல் add() முறை இல்லை</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">insert()</div>
+                            <div class="option-feedback incorrect">✗ தவறு! Map இல் insert() முறை இல்லை</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">push()</div>
+                            <div class="option-feedback incorrect">✗ தவறு! push() வரிசைகளுக்கான முறை, Maps க்கு அல்ல</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="true">
+                        <div class="option-content">
+                            <div class="option-text">set()</div>
+                            <div class="option-feedback correct">✓ சரி! set() முறை Map க்கு உறுப்புகளைச் சேர்க்க அல்லது மாற்ற பயன்படுகிறது</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Learn More -->
+        <section class="content-section" id="learn-more">
+            <h2>மேலும் அறிய</h2>
+            
+            <p>Maps பற்றிய மேலும் விரிவான தகவலுக்கு:</p>
+            
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-tools"></i>
+                        <h4>JavaScript Map Methods</h4>
+                    </div>
+                    <p>Map முறைகள் மற்றும் பண்புகள்</p>
+                </div>
+                
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-shield-alt"></i>
+                        <h4>JavaScript Weak Maps</h4>
+                    </div>
+                    <p>WeakMap மற்றும் அதன் பயன்பாடுகள்</p>
+                </div>
+                
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-book"></i>
+                        <h4>JavaScript Map Reference</h4>
+                    </div>
+                    <p>முழுமையான Map குறிப்பு</p>
+                </div>
+                
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-layer-group"></i>
+                        <h4>JavaScript Sets</h4>
+                    </div>
+                    <p>Sets அறிமுகம் மற்றும் அடிப்படைகள்</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Browser Support -->
+        <section class="content-section" id="browser-support">
+            <h2>உலாவி ஆதரவு</h2>
+            
+            <p>Map ஒரு ES6 அம்சமாகும்.</p>
+            
+            <p>ES6 ஜூன் 2017 முதல் அனைத்து நவீன உலாவிகளிலும் முழுமையாக ஆதரிக்கப்படுகிறது:</p>
+            
+            <div class="comparison-table-full" style="min-width: 600px;">
+                <table>
+                    <tr>
+                        <th>உலாவி</th>
+                        <th>பதிப்பு</th>
+                        <th>வெளியீட்டு தேதி</th>
+                    </tr>
+                    <tr>
+                        <td>Chrome</td>
+                        <td>51</td>
+                        <td>May 2016</td>
+                    </tr>
+                    <tr>
+                        <td>Edge</td>
+                        <td>15</td>
+                        <td>Apr 2017</td>
+                    </tr>
+                    <tr>
+                        <td>Firefox</td>
+                        <td>54</td>
+                        <td>Jun 2017</td>
+                    </tr>
+                    <tr>
+                        <td>Safari</td>
+                        <td>10</td>
+                        <td>Sep 2016</td>
+                    </tr>
+                    <tr>
+                        <td>Opera</td>
+                        <td>38</td>
+                        <td>Jun 2016</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <!-- Bottom Navigation -->
+        <div class="bottom-nav">
+            <a href="JavaScript%20Set%20Reference.html" class="nav-tab prev">
+                <i class="fas fa-arrow-left"></i>
+                <span>முந்தைய</span>
+            </a>
+            <a href="JavaScript%20Map%20Methods.html" class="nav-tab next">
+                <span>அடுத்தது</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Siva Team Institution</h3>
+                <p>Leading educational institution providing quality programming education in Tamil.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#introduction">Map அறிமுகம்</a></li>
+                    <li><a href="#characteristics">Map பண்புகள்</a></li>
+                    <li><a href="#create-map">Map உருவாக்கம்</a></li>
+                    <li><a href="#adding-values">மதிப்புகளைச் சேர்த்தல்</a></li>
+                    <li><a href="#get-method">get() முறை</a></li>
+                    <li><a href="#objects-vs-maps">பொருள்கள் vs Maps</a></li>
+                    <li><a href="#exercises">பயிற்சி</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Location & Hours</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <ul>
+                    <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Siva Team Institution. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all content sections for animation
+        document.querySelectorAll('.content-section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Exercise interaction
+        document.querySelectorAll('.option-card').forEach(card => {
+            card.addEventListener('click', function() {
+                // Show feedback for all options
+                document.querySelectorAll('.option-card').forEach(c => {
+                    c.querySelector('.option-feedback').style.display = 'block';
+                });
+            });
+        });
+        
+        // Interactive map items
+        document.querySelectorAll('.map-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const key = this.querySelector('.map-key').textContent;
+                const value = this.querySelector('.map-value').textContent;
+                alert(`விசை: ${key}\nமதிப்பு: ${value}`);
+            });
+        });
+    </script>
+
+    <!-- Home Button -->
+    <a href="index.html" class="home-icon">
+        <i class="fas fa-home"></i>
+    </a>
+</body>
+</html>
+
+

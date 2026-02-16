@@ -1,0 +1,422 @@
+﻿<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Random - Siva Team</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .content-section p, 
+        .content-section li,
+        .content-section h3,
+        .content-section h4,
+        .comparison-card p {
+            color: #333 !important;
+        }
+        
+        .tip-box p,
+        .tip-box li,
+        .tip-box h4 {
+            color: white !important;
+        }
+        
+        .warning-box p,
+        .warning-box li,
+        .warning-box h4 {
+            color: white !important;
+        }
+        
+        .exercise-box p,
+        .exercise-box h4 {
+            color: white !important;
+        }
+        
+        /* Stable logo styling - NO ANIMATIONS */
+        .logo-icon {
+            animation: none !important;
+        }
+        
+        .logo-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            animation: none !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <img src="logo.jpg" alt="Siva Team Logo" class="logo-image">
+                </div>
+                <h1>Siva Team <span>Institution</span></h1>
+            </div>
+        </div>
+    </header>
+
+    <!-- Top Navigation Tabs -->
+    <div class="nav-tabs">
+        <a href="JavaScript%20Math%20Reference.html" class="nav-tab prev">
+            <i class="fas fa-arrow-left"></i>
+            <span>முந்தைய</span>
+        </a>
+        <a href="JavaScript%20RegExp.html" class="nav-tab next">
+            <span>அடுத்தது</span>
+            <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2>JavaScript Random</h2>
+            <p>சீரற்ற எண்களை உருவாக்க கற்றுக்கொள்ளுங்கள்</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Example -->
+        <section class="content-section" id="example">
+            <h2>எடுத்துக்காட்டு</h2>
+            
+            <div class="code-example">
+                <pre><code>// ஒரு சீரற்ற எண்ணை வழங்குகிறது:
+Math.random();</code></pre>
+            </div>
+        </section>
+
+        <!-- JavaScript Math.random() -->
+        <section class="content-section" id="math-random">
+            <h2>JavaScript Math.random()</h2>
+            
+            <p>Math.random() 0 (அடங்கும்) மற்றும் 1 (தவிர) இடையே ஒரு சீரற்ற எண்ணை வழங்குகிறது:</p>
+            
+            <div class="code-example">
+                <pre><code>Math.random();</code></pre>
+            </div>
+            
+            <p>Math.random() எப்போதும் 1 க்கும் குறைவான எண்ணை வழங்குகிறது.</p>
+        </section>
+
+        <!-- JavaScript Random Integers -->
+        <section class="content-section" id="random-integers">
+            <h2>JavaScript சீரற்ற முழு எண்கள்</h2>
+            
+            <p>Math.random() Math.floor() உடன் பயன்படுத்தப்படும் போது சீரற்ற முழு எண்களை வழங்க பயன்படுத்தலாம்.</p>
+            
+            <div class="warning-box">
+                <h4><span class="warning-icon">ℹ️</span> குறிப்பு:</h4>
+                <p>JavaScript முழு எண்கள் என்று எதுவும் இல்லை. தசமங்கள் இல்லாத எண்களைப் பற்றி பேசுகிறோம்.</p>
+            </div>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <p>// 0 முதல் 9 வரை (இரண்டும் அடங்கும்) ஒரு சீரற்ற முழு எண்ணை வழங்கவும்:</p>
+            
+            <div class="code-example">
+                <pre><code>Math.floor(Math.random() * 10);</code></pre>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">🔍</span> விளக்கம்:</h4>
+                <ul>
+                    <li>Math.random() 0 (அடங்கும்) மற்றும் 1 (தவிர) இடையே ஒரு மிதவை-புள்ளி எண்ணை வழங்குகிறது.</li>
+                    <li>எடுத்துக்காட்டு வெளியீடுகள்: 0.0, 0.237, 0.9999, ஆனால் 1 எப்போதும் இல்லை.</li>
+                    <li>Math.random() * 10 0 முதல் 10 வரை ஆனால் 10 அடங்காத வரை ஒரு வரம்பைத் தருகிறது.</li>
+                    <li>எடுத்துக்காட்டு சாத்தியமான முடிவுகள்: 0.0, 3.5, 9.99, போன்றவை.</li>
+                    <li>Math.floor() ஒரு எண்ணை அருகிலுள்ள முழு எண்ணுக்கு கீழே மாற்றுகிறது:
+                        <ul>
+                            <li>3.5 → 3 ஆக மாறுகிறது</li>
+                            <li>9.99 → 9 ஆக மாறுகிறது</li>
+                            <li>0.1 → 0 ஆக மாறுகிறது</li>
+                        </ul>
+                    </li>
+                    <li>சாத்தியமான முழு எண் முடிவுகள் பின்னர் 0 முதல் 9 வரை (இரண்டும் அடங்கும்).</li>
+                    <li>வேறு வார்த்தைகளில் கூறுவதானால், வரம்பு [0, 9].</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- More Examples -->
+        <section class="content-section" id="more-examples">
+            <h2>மேலும் எடுத்துக்காட்டுகள்</h2>
+            
+            <div class="examples-grid">
+                <div class="example-card">
+                    <div class="example-icon">
+                        <i class="fas fa-hashtag"></i>
+                    </div>
+                    <h4>0 முதல் 10 வரை</h4>
+                    <div class="code-example">
+                        <pre><code>// 0 முதல் 10 வரை (இரண்டும் அடங்கும்) ஒரு சீரற்ற முழு எண்ணை வழங்கவும்:
+Math.floor(Math.random() * 11);</code></pre>
+                    </div>
+                </div>
+                
+                <div class="example-card">
+                    <div class="example-icon">
+                        <i class="fas fa-hashtag"></i>
+                    </div>
+                    <h4>0 முதல் 99 வரை</h4>
+                    <div class="code-example">
+                        <pre><code>// 0 முதல் 99 வரை (இரண்டும் அடங்கும்) ஒரு சீரற்ற முழு எண்ணை வழங்கவும்:
+Math.floor(Math.random() * 100);</code></pre>
+                    </div>
+                </div>
+                
+                <div class="example-card">
+                    <div class="example-icon">
+                        <i class="fas fa-hashtag"></i>
+                    </div>
+                    <h4>0 முதல் 100 வரை</h4>
+                    <div class="code-example">
+                        <pre><code>// 0 முதல் 100 வரை (இரண்டும் அடங்கும்) ஒரு சீரற்ற முழு எண்ணை வழங்கவும்:
+Math.floor(Math.random() * 101);</code></pre>
+                    </div>
+                </div>
+                
+                <div class="example-card">
+                    <div class="example-icon">
+                        <i class="fas fa-hashtag"></i>
+                    </div>
+                    <h4>1 முதல் 10 வரை</h4>
+                    <div class="code-example">
+                        <pre><code>// 1 முதல் 10 வரை (இரண்டும் அடங்கும்) ஒரு சீரற்ற முழு எண்ணை வழங்கவும்:
+Math.floor(Math.random() * 10) + 1;</code></pre>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">🔍</span> விளக்கம் (1 முதல் 10 வரை):</h4>
+                <ul>
+                    <li>Math.random() 0 (அடங்கும்) முதல் ஆனால் 1 அடங்காத வரை ஒரு எண்ணை வழங்குகிறது.</li>
+                    <li>10 ஆல் பெருக்கினால் 0 முதல் 10 வரை ஆனால் 10 அடங்காத எண்ணைத் தருகிறது.</li>
+                    <li>1 ஐக் கூட்டினால் அந்த வரம்பு 1 முதல் 11 வரை ஆனால் 11 அடங்காத வரை மாறுகிறது.</li>
+                    <li>Math.floor() பின்னர் கீழே மாற்றுகிறது, எனவே நீங்கள் 1 முதல் 10 வரை ஒரு முழு எண்ணைப் பெறுவீர்கள்.</li>
+                </ul>
+            </div>
+            
+            <h3>மேலும் ஒரு எடுத்துக்காட்டு</h3>
+            <div class="code-example">
+                <pre><code>// 1 முதல் 100 வரை (இரண்டும் அடங்கும்) ஒரு சீரற்ற முழு எண்ணை வழங்குகிறது:
+Math.floor(Math.random() * 100) + 1;</code></pre>
+            </div>
+        </section>
+
+        <!-- Summary -->
+        <section class="content-section" id="summary">
+            <h2>சுருக்கம்</h2>
+            
+            <div class="comparison-table">
+                <table>
+                    <tr>
+                        <th>வெளிப்பாடு</th>
+                        <th>இலிருந்து வரம்பு</th>
+                        <th>வரை வரம்பு</th>
+                    </tr>
+                    <tr>
+                        <td>Math.random()</td>
+                        <td>0</td>
+                        <td>&lt;1</td>
+                    </tr>
+                    <tr>
+                        <td>Math.random() * 10</td>
+                        <td>0</td>
+                        <td>&lt;10</td>
+                    </tr>
+                    <tr>
+                        <td>Math.random() * 100</td>
+                        <td>0</td>
+                        <td>&lt;100</td>
+                    </tr>
+                    <tr>
+                        <td>Math.floor(Math.random() * 10)</td>
+                        <td>0</td>
+                        <td>9</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <!-- A Proper Random Function -->
+        <section class="content-section" id="proper-random-function">
+            <h2>சரியான சீரற்ற செயல்பாடு</h2>
+            
+            <p>மேலே உள்ள எடுத்துக்காட்டுகளிலிருந்து நீங்கள் பார்க்க முடியும், அனைத்து சீரற்ற முழு எண் நோக்கங்களுக்கும் பயன்படுத்த சரியான சீரற்ற செயல்பாட்டை உருவாக்குவது நல்ல யோசனையாக இருக்கலாம்.</p>
+            
+            <h3>எடுத்துக்காட்டு 1</h3>
+            <p>இந்த JavaScript செயல்பாடு எப்போதும் min (அடங்கும்) மற்றும் max (தவிர) இடையே ஒரு சீரற்ற முழு எண்ணை வழங்குகிறது:</p>
+            
+            <div class="code-example">
+                <pre><code>function getRndInteger(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
+}</code></pre>
+            </div>
+            
+            <h3>எடுத்துக்காட்டு 2</h3>
+            <p>இந்த JavaScript செயல்பாடு எப்போதும் min மற்றும் max (இரண்டும் அடங்கும்) இடையே ஒரு சீரற்ற முழு எண்ணை வழங்குகிறது:</p>
+            
+            <div class="code-example">
+                <pre><code>function getRndInteger(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}</code></pre>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">💡</span> பயன்பாட்டு உதவிக்குறிப்பு:</h4>
+                <p>இந்த செயல்பாடுகளை உங்கள் குறியீட்டில் சேமித்து, எப்போது வேண்டுமானாலும் சீரற்ற எண்கள் தேவைப்படும் போது மீண்டும் பயன்படுத்தலாம். இது குறியீட்டை மீண்டும் பயன்படுத்தக்கூடியதாகவும் பராமரிப்பதற்கு எளிதாகவும் ஆக்குகிறது.</p>
+            </div>
+        </section>
+
+        <!-- Single Exercise -->
+        <section class="content-section" id="exercises">
+            <h2>Random பயிற்சி</h2>
+            
+            <div class="exercise-box">
+                <h4><span class="exercise-icon">❓</span> Math.random() முறை எத்தனை அளவுருக்களை எடுக்க முடியும்?</h4>
+                
+                <div class="options-grid">
+                    <div class="option-card" data-correct="true">
+                        <div class="option-content">
+                            <div class="option-text">0</div>
+                            <div class="option-feedback correct">✓ சரி! Math.random() எந்த அளவுருக்களையும் எடுக்காது. இது எப்போதும் அளவுருக்கள் இல்லாமல் அழைக்கப்படுகிறது: Math.random()</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">1</div>
+                            <div class="option-feedback incorrect">✗ தவறு! Math.random() 1 அளவுருவை எடுக்காது</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">2</div>
+                            <div class="option-feedback incorrect">✗ தவறு! Math.random() 2 அளவுருக்களை எடுக்காது</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bottom Navigation -->
+        <div class="bottom-nav">
+            <a href="JavaScript%20Math%20Reference.html" class="nav-tab prev">
+                <i class="fas fa-arrow-left"></i>
+                <span>முந்தைய</span>
+            </a>
+            <a href="JavaScript%20RegExp.html" class="nav-tab next">
+                <span>அடுத்தது</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Siva Team Institution</h3>
+                <p>Leading educational institution providing quality programming education in Tamil.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#example">எடுத்துக்காட்டு</a></li>
+                    <li><a href="#math-random">Math.random()</a></li>
+                    <li><a href="#random-integers">சீரற்ற முழு எண்கள்</a></li>
+                    <li><a href="#more-examples">மேலும் எடுத்துக்காட்டுகள்</a></li>
+                    <li><a href="#summary">சுருக்கம்</a></li>
+                    <li><a href="#proper-random-function">சரியான சீரற்ற செயல்பாடு</a></li>
+                    <li><a href="#exercises">பயிற்சி</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Location & Hours</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <ul>
+                    <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Siva Team Institution. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all content sections for animation
+        document.querySelectorAll('.content-section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Exercise interaction
+        document.querySelectorAll('.option-card').forEach(card => {
+            card.addEventListener('click', function() {
+                // Show feedback for all options
+                document.querySelectorAll('.option-card').forEach(c => {
+                    c.querySelector('.option-feedback').style.display = 'block';
+                });
+            });
+        });
+    </script>
+
+    <!-- Home Button -->
+    <a href="index.html" class="home-icon">
+        <i class="fas fa-home"></i>
+    </a>
+</body>
+</html>
+
+
