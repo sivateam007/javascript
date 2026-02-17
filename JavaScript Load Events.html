@@ -1,0 +1,923 @@
+﻿<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Load Events - Siva Team</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .content-section p, 
+        .content-section li,
+        .content-section h3,
+        .content-section h4,
+        .comparison-card p {
+            color: #333 !important;
+        }
+        
+        .tip-box p,
+        .tip-box li,
+        .tip-box h4 {
+            color: white !important;
+        }
+        
+        .warning-box p,
+        .warning-box li,
+        .warning-box h4 {
+            color: white !important;
+        }
+        
+        .exercise-box p,
+        .exercise-box h4 {
+            color: white !important;
+        }
+        
+        /* Stable logo styling - NO ANIMATIONS */
+        .logo-icon {
+            animation: none !important; /* Remove pulse animation */
+        }
+        
+        .logo-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            animation: none !important; /* Ensure no animations */
+        }
+        
+        /* Load event demo styles */
+        .load-demo {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--git-color);
+        }
+        
+        .demo-output {
+            background: white;
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+            border: 1px solid #ddd;
+            min-height: 60px;
+        }
+        
+        .demo-btn {
+            background: linear-gradient(135deg, var(--git-color), #e74c3c);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+            margin: 0.5rem 0.5rem 0.5rem 0;
+            font-weight: 600;
+        }
+        
+        .demo-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .load-status-box {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+            font-size: 1.2rem;
+        }
+        
+        .progress-container {
+            background: #e0e0e0;
+            border-radius: 10px;
+            height: 20px;
+            margin: 1.5rem 0;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            height: 100%;
+            width: 0%;
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+        
+        .image-container {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            text-align: center;
+            border: 2px solid #ddd;
+        }
+        
+        .demo-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            transition: opacity 0.5s;
+        }
+        
+        .loading-image {
+            opacity: 0.3;
+            filter: blur(2px);
+        }
+        
+        .loaded-image {
+            opacity: 1;
+            filter: blur(0);
+        }
+        
+        .event-log {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            max-height: 250px;
+            overflow-y: auto;
+        }
+        
+        .log-entry {
+            margin-bottom: 0.3rem;
+            padding: 0.3rem;
+            border-bottom: 1px solid #444;
+        }
+        
+        .log-entry:last-child {
+            border-bottom: none;
+        }
+        
+        .timeline {
+            display: flex;
+            justify-content: space-between;
+            margin: 2rem 0;
+            position: relative;
+        }
+        
+        .timeline:before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: #ddd;
+            z-index: 1;
+        }
+        
+        .timeline-step {
+            text-align: center;
+            z-index: 2;
+            position: relative;
+            flex: 1;
+        }
+        
+        .timeline-circle {
+            width: 35px;
+            height: 35px;
+            background: #ddd;
+            border-radius: 50%;
+            margin: 0 auto 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+            transition: background 0.5s;
+        }
+        
+        .timeline-circle.active {
+            background: #27ae60;
+        }
+        
+        .timeline-circle.loading {
+            background: #3498db;
+        }
+        
+        .demo-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+        
+        .load-table {
+            margin: 2rem 0;
+            overflow-x: auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .load-table table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+        
+        .load-table th {
+            background: linear-gradient(135deg, var(--git-color), #e74c3c);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .load-table td {
+            padding: 0.8rem 1rem;
+            border-bottom: 1px solid #f0f0f0;
+            vertical-align: top;
+        }
+        
+        .load-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .load-table tr:hover {
+            background-color: #f0f7ff;
+        }
+        
+        .tag-name {
+            color: var(--git-color);
+            font-weight: 600;
+            font-family: 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <img src="logo.jpg" alt="Siva Team Logo" class="logo-image">
+                </div>
+                <h1>Siva Team <span>Institution</span></h1>
+            </div>
+        </div>
+    </header>
+
+    <!-- Top Navigation Tabs -->
+    <div class="nav-tabs">
+        <a href="JavaScript%20Keyboard%20Events.html" class="nav-tab prev">
+            <i class="fas fa-arrow-left"></i>
+            <span>முந்தைய</span>
+        </a>
+        <a href="JavaScript%20Timing%20Events.html" class="nav-tab next">
+            <span>அடுத்தது</span>
+            <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2>JavaScript Load Events</h2>
+            <p>ஏற்ற நிகழ்வுகளைக் கற்றுக்கொள்ளுங்கள்</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Introduction -->
+        <section class="content-section" id="introduction">
+            <h2>JavaScript ஏற்ற நிகழ்வுகள்</h2>
+            
+            <p>உலாவி ஒரு உறுப்பை ஏற்றுதல் முடிந்தபோது ஏற்ற நிகழ்வுகள் நடக்கும்.</p>
+            
+            <p>இரண்டு மிக முக்கியமான ஏற்ற நிகழ்வுகள்:</p>
+            
+            <ul>
+                <li><span class="tag-name">DOMContentLoaded</span> (HTML தயாராக இருக்கும் போது)</li>
+                <li><span class="tag-name">load</span> (பக்கங்கள், படங்கள், CSS போன்றவற்றுக்காக காத்திருக்கிறது)</li>
+            </ul>
+        </section>
+
+        <!-- DOMContentLoaded -->
+        <section class="content-section" id="domcontentloaded">
+            <h2>DOMContentLoaded</h2>
+            
+            <p>உலாவி HTML ஐ முழுமையாக ஏற்றி Document Object Model (DOM) மரத்தை உருவாக்கிய பிறகு <span class="tag-name">DOMContentLoaded</span> நிகழ்வு தூண்டப்படுகிறது, ஆனால் படங்கள் மற்றும் ஸ்டைல்ஷீட்கள் போன்ற வெளிப்புற வளங்களை ஏற்றுதல் முடிவடையவில்லை.</p>
+            
+            <p><span class="tag-name">DOMContentLoaded</span> நிகழ்வு பயனர் இடைமுகத்தைத் தொடக்குவதற்கு, நிகழ்வு கையாளுநர்களை இணைப்பதற்கு மற்றும் DOM தயாராக இருக்க வேண்டிய செயல்களைச் செய்வதற்கு சிறந்தது.</p>
+            
+            <div class="code-example">
+                <h3>எடுத்துக்காட்டு</h3>
+                <pre><code>&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+// Add Event Listener to document
+document.addEventListener("DOMContentLoaded", function () {
+  document.getElementById("demo").innerHTML = "HTML is loaded!";
+});
+&lt;/script&gt;</code></pre>
+            </div>
+        </section>
+
+        <!-- Window Load -->
+        <section class="content-section" id="window-load">
+            <h2>Window Load</h2>
+            
+            <p>முழு பக்கமும் முழுமையாக ஏற்றப்பட்ட பிறகு, படங்கள், ஸ்டைல்ஷீட்கள் மற்றும் துணை-பிரேம்கள் போன்ற அனைத்து சார்பு வளங்களும் உட்பட <span class="tag-name">load</span> நிகழ்வு தூண்டப்படுகிறது.</p>
+            
+            <p><span class="tag-name">load</span> நிகழ்வு அனைத்து வளங்களும் கிடைக்க வேண்டிய செயல்களுக்கு சிறந்தது, எடுத்துக்காட்டாக ஒரு படத்தின் பரிமாணங்களைப் பெறுவது அல்லது உலாவி வகையைச் சரிபார்ப்பது.</p>
+            
+            <div class="code-example">
+                <h3>எடுத்துக்காட்டு</h3>
+                <pre><code>&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+// Add Event Listener to window
+window.addEventListener("load", function () {
+  document.getElementById("demo").innerHTML = "Page is fully loaded!";
+});
+&lt;/script&gt;</code></pre>
+            </div>
+        </section>
+
+        <!-- Page Load Timeline Demo -->
+        <section class="content-section" id="timeline-demo">
+            <h2>பக்க ஏற்ற காலவரிசை ஆர்ப்பாட்டம்</h2>
+            
+            <div class="load-demo">
+                <h4>பக்க ஏற்ற காலவரிசையைப் பார்க்கவும்:</h4>
+                
+                <div class="timeline">
+                    <div class="timeline-step">
+                        <div class="timeline-circle" id="step1">1</div>
+                        <div>பக்க விளக்கவுரை<br>பார்சிங்</div>
+                    </div>
+                    <div class="timeline-step">
+                        <div class="timeline-circle" id="step2">2</div>
+                        <div>DOM கட்டப்பட்டது</div>
+                    </div>
+                    <div class="timeline-step">
+                        <div class="timeline-circle" id="step3">3</div>
+                        <div>படங்கள் ஏற்றம்</div>
+                    </div>
+                    <div class="timeline-step">
+                        <div class="timeline-circle" id="step4">4</div>
+                        <div>முழுமையாக ஏற்றப்பட்டது</div>
+                    </div>
+                </div>
+                
+                <div class="progress-container">
+                    <div class="progress-bar" id="progressBar">0%</div>
+                </div>
+                
+                <div class="load-status-box" id="loadStatus">
+                    பக்க ஏற்ற நிலை: தொடங்குகிறது...
+                </div>
+                
+                <div class="event-log" id="loadEventLog">
+                    <div class="log-entry">📄 பக்க ஏற்ற நிகழ்வு பதிவு: இங்கே நிகழ்வுகள் தோன்றும்...</div>
+                </div>
+                
+                <div class="demo-controls">
+                    <button class="demo-btn" onclick="simulatePageLoad()">
+                        <i class="fas fa-sync"></i> ஏற்றத்தை மீண்டும் செய்யவும்
+                    </button>
+                    <button class="demo-btn" onclick="loadHeavyImage()">
+                        <i class="fas fa-image"></i> பெரிய படத்தை ஏற்றவும்
+                    </button>
+                    <button class="demo-btn" onclick="clearLoadLog()">
+                        <i class="fas fa-trash"></i> பதிவை அழி
+                    </button>
+                    <button class="demo-btn" onclick="testEarlyDOM()">
+                        <i class="fas fa-bolt"></i> ஆரம்ப DOM அணுகல்
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Other Load Events -->
+        <section class="content-section" id="other-load-events">
+            <h2>பிற ஏற்ற நிகழ்வுகள்</h2>
+            
+            <p><span class="tag-name">load</span> நிகழ்வு வளங்களைப் பெறும் பிற உறுப்புகளிலும் பயன்படுத்தப்படலாம் (பக்கங்கள் மட்டும் அல்ல):</p>
+            
+            <div class="load-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>டேக்</th>
+                            <th>விளக்கம்</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="tag-name">&lt;img&gt;</td>
+                            <td>ஒரு படம் பதிவிறக்கம் முடிந்த பிறகு தூண்டுகிறது.</td>
+                        </tr>
+                        <tr>
+                            <td class="tag-name">&lt;script&gt;</td>
+                            <td>ஒரு ஸ்கிரிப்ட் வெற்றிகரமாக ஏற்றப்பட்டு இயக்கப்பட்ட பிறகு தூண்டுகிறது.</td>
+                        </tr>
+                        <tr>
+                            <td class="tag-name">&lt;link&gt;</td>
+                            <td>ஒரு ஸ்டைல்ஷீட் முழுமையாக ஏற்றப்பட்டு பாகுபடுத்தப்பட்ட பிறகு தூண்டுகிறது.</td>
+                        </tr>
+                        <tr>
+                            <td class="tag-name">&lt;video&gt;</td>
+                            <td>பல்வேறு ஊடக-குறிப்பிட்ட ஏற்ற நிகழ்வுகளைத் தூண்டுகிறது.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">📚</span> மேலும் பார்க்க:</h4>
+                <p>மேலும் விவரங்கள் மற்றும் எடுத்துக்காட்டுகளுக்கு:</p>
+                <ul>
+                    <li>The onload Event</li>
+                    <li>The onloadeddata Event</li>
+                    <li>The onloadedmetadata Event</li>
+                    <li>The onloadstart Event</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Image Load Demo -->
+        <section class="content-section" id="image-load">
+            <h2>படம் ஏற்றம்</h2>
+            
+            <div class="code-example">
+                <h3>எடுத்துக்காட்டு</h3>
+                <pre><code>&lt;img id="myImg"
+src="https://www.w3schools.com/images/w3schools_green.jpg" width="120"&gt;
+
+&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+const img = document.getElementById("myImg");
+
+// Add Event Listener to img
+img.addEventListener("load", function () {
+  document.getElementById("demo").innerHTML = "Image loaded!";
+});
+&lt;/script&gt;</code></pre>
+            </div>
+            
+            <div class="load-demo">
+                <h4>படம் ஏற்ற ஆர்ப்பாட்டம்:</h4>
+                
+                <div class="image-container">
+                    <img id="demoImage" class="demo-image loading-image" 
+                         src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'><rect width='400' height='200' fill='%23f0f0f0'/><text x='200' y='100' text-anchor='middle' fill='%23666' font-family='Arial' font-size='16'>படம் ஏற்றப்படுகிறது...</text></svg>" 
+                         alt="ஆர்ப்பாட்ட படம்"
+                         data-src="https://picsum.photos/400/200?random=1">
+                    
+                    <div class="demo-output" id="imageLoadOutput">
+                        படம் ஏற்ற நிலை: ஏற்றப்படுகிறது...
+                    </div>
+                </div>
+                
+                <div class="demo-controls">
+                    <button class="demo-btn" onclick="loadNewImage()">
+                        <i class="fas fa-image"></i> புதிய படத்தை ஏற்றவும்
+                    </button>
+                    <button class="demo-btn" onclick="simulateSlowImage()">
+                        <i class="fas fa-tachometer-alt"></i> மெதுவான ஏற்றம்
+                    </button>
+                    <button class="demo-btn" onclick="getImageInfo()">
+                        <i class="fas fa-info-circle"></i> படத் தகவல்
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Load Event Comparison -->
+        <section class="content-section" id="event-comparison">
+            <h2>ஏற்ற நிகழ்வு ஒப்பீடு</h2>
+            
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-bolt"></i>
+                        <h4>DOMContentLoaded</h4>
+                    </div>
+                    <p><strong>பயன்பாடு:</strong> DOM கட்டமைக்கப்பட்ட உடனேயே</p>
+                    <p><strong>வேகம்:</strong> வேகமானது</p>
+                    <p><strong>சிறந்தது:</strong> UI தொடக்கம், நிகழ்வு கையாளுநர்கள்</p>
+                    <p><strong>காத்திருக்கிறது:</strong> HTML பாகுபடுத்தல்</p>
+                </div>
+                
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-check-circle"></i>
+                        <h4>Window Load</h4>
+                    </div>
+                    <p><strong>பயன்பாடு:</strong> அனைத்து வளங்களும் ஏற்றப்பட்ட பிறகு</p>
+                    <p><strong>வேகம்:</strong> மெதுவானது</p>
+                    <p><strong>சிறந்தது:</strong> பட பரிமாணங்கள், வள-சார்ந்த குறியீடு</p>
+                    <p><strong>காத்திருக்கிறது:</strong> அனைத்தும் (படங்கள், CSS, JS)</p>
+                </div>
+                
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-image"></i>
+                        <h4>Image Load</h4>
+                    </div>
+                    <p><strong>பயன்பாடு:</strong> படங்கள் ஏற்றப்பட்ட பிறகு</p>
+                    <p><strong>வேகம்:</strong> பட அளவைப் பொறுத்தது</p>
+                    <p><strong>சிறந்தது:</strong> பட கையாளுதல், கேலரிகள்</p>
+                    <p><strong>காத்திருக்கிறது:</strong> பட பதிவிறக்கம்</p>
+                </div>
+                
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-file-code"></i>
+                        <h4>Script Load</h4>
+                    </div>
+                    <p><strong>பயன்பாடு:</strong> ஸ்கிரிப்ட்கள் ஏற்றப்பட்ட பிறகு</p>
+                    <p><strong>வேகம்:</strong> நெட்வொர்க் வேகத்தைப் பொறுத்தது</p>
+                    <p><strong>சிறந்தது:</strong> வெளிப்புற ஸ்கிரிப்ட் சார்புகள்</p>
+                    <p><strong>காத்திருக்கிறது:</strong> ஸ்கிரிப்ட் பதிவிறக்கம் & இயக்கம்</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Best Practices -->
+        <section class="content-section" id="best-practices">
+            <h2>சிறந்த நடைமுறைகள்</h2>
+            
+            <div class="warning-box">
+                <h4><span class="warning-icon">💡</span> முக்கிய குறிப்புகள்:</h4>
+                <ul>
+                    <li><strong>DOMContentLoaded</strong> ஐப் பயன்படுத்தவும்: பக்கத்தை விரைவாக இயங்கும் வகையில் முக்கியமான UI குறியீட்டிற்கு</li>
+                    <li><strong>Window Load</strong> ஐப் பயன்படுத்தவும்: பட பரிமாணங்கள் போன்ற முழு வளங்கள் தேவைப்படும்போது மட்டும்</li>
+                    <li>ஸ்கிரிப்ட்களை <strong>&lt;body&gt;</strong> இன் கீழே வைக்கவும்: DOMContentLoaded வேகமாக தூண்டப்படுவதற்கு</li>
+                    <li>பெரிய படங்களுக்கு <strong>loading="lazy"</strong> பயன்படுத்தவும்: ஆரம்ப பக்க ஏற்ற நேரத்தை மேம்படுத்த</li>
+                    <li>செயல்பாடுகளை <strong>defer</strong> அல்லது <strong>async</strong> ஆக ஸ்கிரிப்ட் டேக்குகளுக்கு: பக்க ஏற்ற நேரத்தை மேம்படுத்த</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Exercise - ONLY ONE EXERCISE -->
+        <section class="content-section" id="exercise">
+            <h2>பயிற்சி</h2>
+            
+            <div class="exercise-box">
+                <h4><span class="exercise-icon">❓</span> பின்வருவனவற்றில் எது HTML முழுமையாக பாகுபடுத்தப்பட்டு DOM கட்டமைக்கப்பட்ட உடனேயே தூண்டப்படும் நிகழ்வு?</h4>
+                
+                <div class="options-grid">
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">window.onload</div>
+                            <div class="option-feedback incorrect">✗ தவறு! window.onload அனைத்து வளங்களும் (படங்கள், CSS, போன்றவை) ஏற்றப்படும் வரை காத்திருக்கிறது</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="true">
+                        <div class="option-content">
+                            <div class="option-text">DOMContentLoaded</div>
+                            <div class="option-feedback correct">✓ சரி! DOMContentLoaded HTML முழுமையாக பாகுபடுத்தப்பட்டு DOM கட்டமைக்கப்பட்ட உடனேயே தூண்டப்படும் நிகழ்வாகும், வெளிப்புற வளங்களுக்காக காத்திருக்காது</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">document.ready</div>
+                            <div class="option-feedback incorrect">✗ தவறு! document.ready என்பது JavaScript இல் சட்டபூர்வமான நிகழ்வு அல்ல</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">HTMLloaded</div>
+                            <div class="option-feedback incorrect">✗ தவறு! HTMLloaded என்பது JavaScript இல் சட்டபூர்வமான நிகழ்வு அல்ல</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bottom Navigation -->
+        <div class="bottom-nav">
+            <a href="JavaScript%20Keyboard%20Events.html" class="nav-tab prev">
+                <i class="fas fa-arrow-left"></i>
+                <span>முந்தைய</span>
+            </a>
+            <a href="JavaScript%20Timing%20Events.html" class="nav-tab next">
+                <span>அடுத்தது</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Siva Team Institution</h3>
+                <p>Leading educational institution providing quality programming education in Tamil.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#introduction">ஏற்ற நிகழ்வுகள்</a></li>
+                    <li><a href="#domcontentloaded">DOMContentLoaded</a></li>
+                    <li><a href="#window-load">Window Load</a></li>
+                    <li><a href="#timeline-demo">காலவரிசை ஆர்ப்பாட்டம்</a></li>
+                    <li><a href="#image-load">படம் ஏற்றம்</a></li>
+                    <li><a href="#exercise">பயிற்சி</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Location & Hours</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <ul>
+                    <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Siva Team Institution. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all content sections for animation
+        document.querySelectorAll('.content-section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Exercise interaction
+        document.querySelectorAll('.option-card').forEach(card => {
+            card.addEventListener('click', function() {
+                // Show feedback for all options
+                document.querySelectorAll('.option-card').forEach(c => {
+                    c.querySelector('.option-feedback').style.display = 'block';
+                });
+            });
+        });
+
+        // Load event demo functions
+        const loadEventLog = document.getElementById('loadEventLog');
+        const loadStatus = document.getElementById('loadStatus');
+        const progressBar = document.getElementById('progressBar');
+        const step1 = document.getElementById('step1');
+        const step2 = document.getElementById('step2');
+        const step3 = document.getElementById('step3');
+        const step4 = document.getElementById('step4');
+        const demoImage = document.getElementById('demoImage');
+        const imageLoadOutput = document.getElementById('imageLoadOutput');
+        let imageLoadCount = 1;
+        
+        function addLoadLogEntry(message) {
+            const entry = document.createElement('div');
+            entry.className = 'log-entry';
+            entry.innerHTML = `📄 ${new Date().toLocaleTimeString()}: ${message}`;
+            loadEventLog.appendChild(entry);
+            loadEventLog.scrollTop = loadEventLog.scrollHeight;
+        }
+        
+        function clearLoadLog() {
+            loadEventLog.innerHTML = '<div class="log-entry">🧹 பக்க ஏற்ற நிகழ்வு பதிவு அழிக்கப்பட்டது...</div>';
+        }
+        
+        function resetTimeline() {
+            step1.className = 'timeline-circle';
+            step2.className = 'timeline-circle';
+            step3.className = 'timeline-circle';
+            step4.className = 'timeline-circle';
+            progressBar.style.width = '0%';
+            progressBar.textContent = '0%';
+        }
+        
+        function updateProgress(percent, message) {
+            progressBar.style.width = percent + '%';
+            progressBar.textContent = percent + '%';
+            loadStatus.textContent = message;
+        }
+        
+        // Simulate page load sequence
+        function simulatePageLoad() {
+            resetTimeline();
+            clearLoadLog();
+            
+            addLoadLogEntry('பக்க ஏற்றம் தொடங்கப்பட்டது...');
+            
+            // Step 1: HTML Parsing
+            setTimeout(() => {
+                step1.classList.add('loading');
+                updateProgress(25, 'HTML பாகுபடுத்தப்படுகிறது...');
+                addLoadLogEntry('HTML பாகுபடுத்தப்படுகிறது');
+                
+                // Step 2: DOM Built
+                setTimeout(() => {
+                    step1.classList.remove('loading');
+                    step1.classList.add('active');
+                    step2.classList.add('loading');
+                    updateProgress(50, 'DOM கட்டமைக்கப்படுகிறது...');
+                    addLoadLogEntry('DOM கட்டமைக்கப்பட்டது');
+                    
+                    // DOMContentLoaded event
+                    setTimeout(() => {
+                        step2.classList.remove('loading');
+                        step2.classList.add('active');
+                        updateProgress(60, 'DOMContentLoaded: DOM தயாராக உள்ளது!');
+                        addLoadLogEntry('DOMContentLoaded நிகழ்வு தூண்டப்பட்டது - DOM தயாராக உள்ளது');
+                        
+                        // Step 3: Images Loading
+                        setTimeout(() => {
+                            step3.classList.add('loading');
+                            updateProgress(75, 'படங்கள் ஏற்றப்படுகின்றன...');
+                            addLoadLogEntry('படங்கள் ஏற்றம் தொடங்கப்பட்டது');
+                            
+                            // Step 4: Complete Load
+                            setTimeout(() => {
+                                step3.classList.remove('loading');
+                                step3.classList.add('active');
+                                step4.classList.add('loading');
+                                updateProgress(90, 'அனைத்து வளங்களும் ஏற்றப்படுகின்றன...');
+                                addLoadLogEntry('CSS மற்றும் ஸ்கிரிப்ட்கள் ஏற்றப்பட்டன');
+                                
+                                // Window load event
+                                setTimeout(() => {
+                                    step4.classList.remove('loading');
+                                    step4.classList.add('active');
+                                    updateProgress(100, 'பக்கம் முழுமையாக ஏற்றப்பட்டது!');
+                                    addLoadLogEntry('Window load நிகழ்வு தூண்டப்பட்டது - பக்கம் முழுமையாக ஏற்றப்பட்டது');
+                                }, 800);
+                            }, 600);
+                        }, 500);
+                    }, 400);
+                }, 300);
+            }, 200);
+        }
+        
+        // Image load functions
+        function loadNewImage() {
+            imageLoadCount++;
+            demoImage.classList.add('loading-image');
+            demoImage.classList.remove('loaded-image');
+            imageLoadOutput.innerHTML = 'படம் ஏற்றப்படுகிறது...';
+            
+            // Add timestamp to prevent caching
+            const newSrc = `https://picsum.photos/400/200?random=${imageLoadCount}&t=${Date.now()}`;
+            
+            addLoadLogEntry(`புதிய படம் ஏற்றம் தொடங்கப்பட்டது: ${newSrc}`);
+            
+            demoImage.src = newSrc;
+        }
+        
+        function simulateSlowImage() {
+            demoImage.classList.add('loading-image');
+            demoImage.classList.remove('loaded-image');
+            imageLoadOutput.innerHTML = 'மெதுவான படம் ஏற்றப்படுகிறது (5 வினாடிகள்)...';
+            
+            // Simulate slow network with timeout
+            const slowSrc = `https://picsum.photos/400/200?random=${Date.now()}`;
+            addLoadLogEntry('மெதுவான படம் ஏற்றம் தொடங்கப்பட்டது (காலதாமதம் உருவகப்படுத்தப்பட்டது)');
+            
+            setTimeout(() => {
+                demoImage.src = slowSrc;
+            }, 3000); // 3 second delay to simulate slow loading
+        }
+        
+        function getImageInfo() {
+            if (demoImage.naturalWidth > 0) {
+                const info = `
+                    📏 பரிமாணங்கள்: ${demoImage.naturalWidth} × ${demoImage.naturalHeight}px<br>
+                    🖼️ src: ${demoImage.src.substring(0, 50)}...<br>
+                    ✅ நிலை: ${demoImage.complete ? 'ஏற்றப்பட்டது' : 'ஏற்றப்படுகிறது'}
+                `;
+                imageLoadOutput.innerHTML = info;
+                addLoadLogEntry('படத் தகவல் பெறப்பட்டது');
+            } else {
+                imageLoadOutput.innerHTML = '❌ படம் இன்னும் ஏற்றப்படவில்லை. முதலில் ஒரு படத்தை ஏற்றவும்.';
+            }
+        }
+        
+        function loadHeavyImage() {
+            // Simulate a large image load
+            demoImage.classList.add('loading-image');
+            demoImage.classList.remove('loaded-image');
+            imageLoadOutput.innerHTML = 'பெரிய படம் ஏற்றப்படுகிறது (10MB உருவகப்படுத்தப்பட்டது)...';
+            
+            addLoadLogEntry('பெரிய படம் ஏற்றம் தொடங்கப்பட்டது (10MB உருவகப்படுத்தப்பட்டது)');
+            
+            // Use a larger image with artificial delay
+            const heavySrc = `https://picsum.photos/800/400?random=${Date.now()}`;
+            
+            // Simulate slow loading for large image
+            setTimeout(() => {
+                demoImage.src = heavySrc;
+            }, 1000);
+        }
+        
+        function testEarlyDOM() {
+            addLoadLogEntry('ஆரம்ப DOM அணுகல் சோதனை தொடங்கப்பட்டது');
+            
+            // Try to access an element that exists in the HTML
+            const earlyElement = document.getElementById('loadStatus');
+            if (earlyElement) {
+                addLoadLogEntry('✓ DOM உறுப்பு அணுகப்பட்டது: ' + earlyElement.tagName);
+                earlyElement.style.border = '2px dashed #27ae60';
+                setTimeout(() => {
+                    earlyElement.style.border = '';
+                }, 2000);
+            }
+        }
+        
+        // Image load event listener
+        demoImage.addEventListener('load', function() {
+            this.classList.remove('loading-image');
+            this.classList.add('loaded-image');
+            imageLoadOutput.innerHTML = '✅ படம் வெற்றிகரமாக ஏற்றப்பட்டது!';
+            addLoadLogEntry('படம் load நிகழ்வு தூண்டப்பட்டது - படம் ஏற்றப்பட்டது');
+        });
+        
+        demoImage.addEventListener('error', function() {
+            imageLoadOutput.innerHTML = '❌ படம் ஏற்றம் தோல்வியடைந்தது. இணைய இணைப்பைச் சரிபார்க்கவும்.';
+            addLoadLogEntry('படம் error நிகழ்வு தூண்டப்பட்டது - படம் ஏற்றம் தோல்வியடைந்தது');
+        });
+        
+        // Real DOMContentLoaded and Window Load events
+        document.addEventListener('DOMContentLoaded', function() {
+            addLoadLogEntry('உண்மையான DOMContentLoaded நிகழ்வு தூண்டப்பட்டது!');
+            step2.classList.add('active');
+        });
+        
+        window.addEventListener('load', function() {
+            addLoadLogEntry('உண்மையான Window load நிகழ்வு தூண்டப்பட்டது!');
+            step4.classList.add('active');
+            updateProgress(100, 'பக்கம் முழுமையாக ஏற்றப்பட்டது!');
+        });
+        
+        // Initialize
+        simulatePageLoad();
+        // Load initial image after a short delay
+        setTimeout(() => {
+            demoImage.src = demoImage.dataset.src;
+        }, 1000);
+    </script>
+
+    <!-- Home Button -->
+    <a href="index.html" class="home-icon">
+        <i class="fas fa-home"></i>
+    </a>
+</body>
+</html>
+
+

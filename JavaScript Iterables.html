@@ -1,0 +1,567 @@
+﻿<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Iterables - Siva Team</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .content-section p, 
+        .content-section li,
+        .content-section h3,
+        .content-section h4,
+        .comparison-card p {
+            color: #333 !important;
+        }
+        
+        .tip-box p,
+        .tip-box li,
+        .tip-box h4 {
+            color: white !important;
+        }
+        
+        .warning-box p,
+        .warning-box li,
+        .warning-box h4 {
+            color: white !important;
+        }
+        
+        .exercise-box p,
+        .exercise-box h4 {
+            color: white !important;
+        }
+        
+        /* Stable logo styling - NO ANIMATIONS */
+        .logo-icon {
+            animation: none !important; /* Remove pulse animation */
+        }
+        
+        .logo-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            animation: none !important; /* Ensure no animations */
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <img src="logo.jpg" alt="Siva Team Logo" class="logo-image">
+                </div>
+                <h1>Siva Team <span>Institution</span></h1>
+            </div>
+        </div>
+    </header>
+
+    <!-- Top Navigation Tabs -->
+    <div class="nav-tabs">
+        <a href="JavaScript%20Loops.html" class="nav-tab prev">
+            <i class="fas fa-arrow-left"></i>
+            <span>முந்தைய</span>
+        </a>
+        <a href="JavaScript%20Iterators.html" class="nav-tab next">
+            <span>அடுத்தது</span>
+            <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2>JavaScript Iterables</h2>
+            <p>JavaScript மீளக்கூடிய பொருள்களைக் கற்றுக்கொள்ளுங்கள்</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Introduction -->
+        <section class="content-section" id="introduction">
+            <h2>JavaScript Iterables</h2>
+            
+            <p>ஒரு மீளக்கூடிய பொருள் என்பது for...of லூப்கள் மூலம் மீள்வு செய்யக்கூடிய ஒரு பொருள் ஆகும்.</p>
+            
+            <p>மீளக்கூடியது for...of லூப்களுடன் மீள்வு செய்யப்படலாம்.</p>
+        </section>
+
+        <!-- The for...of Loop -->
+        <section class="content-section" id="forof-loop">
+            <h2>The for...of Loop</h2>
+            
+            <p>JavaScript for..of அறிக்கை ஒரு மீளக்கூடிய பொருளின் உறுப்புகள் வழியாக லூப் செய்கிறது.</p>
+            
+            <h3>Syntax</h3>
+            <div class="code-example">
+                <pre><code>for (variable of iterable) {
+  // செயல்படுத்த வேண்டிய குறியீட்டு தொகுதி
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- Iterating -->
+        <section class="content-section" id="iterating">
+            <h2>மீள்வு</h2>
+            
+            <p>மீள்வு என்பது உறுப்புகளின் ஒரு வரிசை மீது லூப் செய்வதாகும்.</p>
+            
+            <p>இங்கே சில எடுத்துக்காட்டுகள்:</p>
+            
+            <div class="examples-grid">
+                <div class="example-card">
+                    <div class="example-icon">
+                        <i class="fas fa-font"></i>
+                    </div>
+                    <h4>சரம் மீது மீள்வு</h4>
+                    <p>ஒரு சரத்தின் உறுப்புகள் மீது மீள்வு</p>
+                </div>
+                
+                <div class="example-card">
+                    <div class="example-icon">
+                        <i class="fas fa-list"></i>
+                    </div>
+                    <h4>வரிசை மீது மீள்வு</h4>
+                    <p>ஒரு வரிசையின் உறுப்புகள் மீது மீள்வு</p>
+                </div>
+                
+                <div class="example-card">
+                    <div class="example-icon">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <h4>Set மீது மீள்வு</h4>
+                    <p>ஒரு Set இன் உறுப்புகள் மீது மீள்வு</p>
+                </div>
+                
+                <div class="example-card">
+                    <div class="example-icon">
+                        <i class="fas fa-map"></i>
+                    </div>
+                    <h4>Map மீது மீள்வு</h4>
+                    <p>ஒரு Map இன் உறுப்புகள் மீது மீள்வு</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Iterating Over a String -->
+        <section class="content-section" id="string-iteration">
+            <h2>சரம் மீது மீள்வு</h2>
+            
+            <p>ஒரு சரத்தின் உறுப்புகள் மீது மீள்வதற்கு நீங்கள் for...of லூப்பைப் பயன்படுத்தலாம்:</p>
+            
+            <h3>Example</h3>
+            <div class="code-example">
+                <pre><code>const name = "Siva Team";
+
+for (const x of name) {
+  // செயல்படுத்த வேண்டிய குறியீட்டு தொகுதி
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- Iterating Over an Array -->
+        <section class="content-section" id="array-iteration">
+            <h2>வரிசை மீது மீள்வு</h2>
+            
+            <p>ஒரு வரிசையின் உறுப்புகள் மீது மீள்வதற்கு நீங்கள் for...of லூப்பைப் பயன்படுத்தலாம்:</p>
+            
+            <h3>Example 1</h3>
+            <div class="code-example">
+                <pre><code>const letters = ["a","b","c"];
+
+for (const x of letters) {
+  // செயல்படுத்த வேண்டிய குறியீட்டு தொகுதி
+}</code></pre>
+            </div>
+            
+            <h3>Example 2</h3>
+            <div class="code-example">
+                <pre><code>const numbers = [2,4,6,8];
+
+for (const x of numbers) {
+  // செயல்படுத்த வேண்டிய குறியீட்டு தொகுதி
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- Iterating Over a Set -->
+        <section class="content-section" id="set-iteration">
+            <h2>Set மீது மீள்வு</h2>
+            
+            <p>ஒரு Set இன் உறுப்புகள் மீது மீள்வதற்கு நீங்கள் for...of லூப்பைப் பயன்படுத்தலாம்:</p>
+            
+            <h3>Example</h3>
+            <div class="code-example">
+                <pre><code>const letters = new Set(["a","b","c"]);
+
+for (const x of letters) {
+  // செயல்படுத்த வேண்டிய குறியீட்டு தொகுதி
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- Iterating Over a Map -->
+        <section class="content-section" id="map-iteration">
+            <h2>Map மீது மீள்வு</h2>
+            
+            <p>ஒரு Map இன் உறுப்புகள் மீது மீள்வதற்கு நீங்கள் for...of லூப்பைப் பயன்படுத்தலாம்:</p>
+            
+            <h3>Example</h3>
+            <div class="code-example">
+                <pre><code>const fruits = new Map([
+  ["apples", 500],
+  ["bananas", 300],
+  ["oranges", 200]
+]);
+
+for (const x of fruits) {
+  // செயல்படுத்த வேண்டிய குறியீட்டு தொகுதி
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- JavaScript Iterators -->
+        <section class="content-section" id="iterators">
+            <h2>JavaScript Iterators</h2>
+            
+            <p>மீள்வு நெறிமுறை ஒரு பொருளிலிருந்து மதிப்புகளின் வரிசையை எவ்வாறு உருவாக்குவது என்பதை வரையறுக்கிறது.</p>
+            
+            <p>ஒரு பொருள் next() முறையை செயல்படுத்தும்போது மீள்வியாக மாறுகிறது.</p>
+            
+            <p>next() முறை இரண்டு பண்புகளைக் கொண்ட ஒரு பொருளைத் திரும்பப் பெற வேண்டும்:</p>
+            
+            <div class="comparison-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>பண்பு</th>
+                            <th>விளக்கம்</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>value</strong></td>
+                            <td>மீள்வியால் திரும்பப் பெறப்பட்ட மதிப்பு<br>(done true ஆக இருந்தால் தவிர்க்கலாம்)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>done</strong></td>
+                            <td>மீள்வி முடிந்தால் true<br>மீள்வி ஒரு புதிய மதிப்பை உருவாக்கியால் false</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">💡</span> தொழில்நுட்ப குறிப்பு:</h4>
+                <p>தொழில்நுட்ப ரீதியாக, மீளக்கூடியவை Symbol.iterator முறையை செயல்படுத்த வேண்டும்.</p>
+            </div>
+        </section>
+
+        <!-- JavaScript Iterables List -->
+        <section class="content-section" id="iterables-list">
+            <h2>JavaScript இல் மீளக்கூடியவை</h2>
+            
+            <p>JavaScript இல் பின்வருவன மீளக்கூடியவை:</p>
+            
+            <div class="best-practice-list">
+                <div class="practice-item positive">
+                    <i class="fas fa-check-circle"></i>
+                    <div>சரங்கள் (Strings)</div>
+                </div>
+                
+                <div class="practice-item positive">
+                    <i class="fas fa-check-circle"></i>
+                    <div>வரிசைகள் (Arrays)</div>
+                </div>
+                
+                <div class="practice-item positive">
+                    <i class="fas fa-check-circle"></i>
+                    <div>தட்டையான வரிசைகள் (Typed Arrays)</div>
+                </div>
+                
+                <div class="practice-item positive">
+                    <i class="fas fa-check-circle"></i>
+                    <div>Sets</div>
+                </div>
+                
+                <div class="practice-item positive">
+                    <i class="fas fa-check-circle"></i>
+                    <div>Maps</div>
+                </div>
+            </div>
+            
+            <p>காரணம்: அவற்றின் முன்னுதாரணப் பொருள்கள் Symbol.iterator முறையைக் கொண்டுள்ளன.</p>
+        </section>
+
+        <!-- Home Made Iterable -->
+        <section class="content-section" id="homemade-iterable">
+            <h2>வீட்டில் உருவாக்கப்பட்ட மீளக்கூடிய</h2>
+            
+            <p>இந்த மீளக்கூடிய next() முறை அழைக்கப்படும் போது முடிவில்லா எண்களைத் தரும்: 10,20,30,40,....</p>
+            
+            <h3>Example</h3>
+            <div class="code-example">
+                <pre><code>// வீட்டில் உருவாக்கப்பட்ட மீளக்கூடிய
+function myNumbers() {
+  let n = 0;
+  return {
+    next: function() {
+      n += 10;
+      return {value:n, done:false};
+    }
+  };
+}
+
+// மீளக்கூடியதை இயக்கவும்
+const n = myNumbers();
+n.next(); // 10 ஐத் தரும்
+n.next(); // 20 ஐத் தரும்
+n.next(); // 30 ஐத் தரும்</code></pre>
+            </div>
+            
+            <div class="warning-box">
+                <h4><span class="warning-icon">⚠️</span> குறிப்பு:</h4>
+                <p>வீட்டில் உருவாக்கப்பட்ட மீளக்கூடியவை JavaScript for...of அறிக்கையை ஆதரிக்காது.</p>
+            </div>
+        </section>
+
+        <!-- Symbol.iterator -->
+        <section class="content-section" id="symbol-iterator">
+            <h2>Symbol.iterator</h2>
+            
+            <p>ஒரு JavaScript மீளக்கூடிய என்பது Symbol.iterator ஐக் கொண்ட ஒரு பொருள் ஆகும்.</p>
+            
+            <p>Symbol.iterator என்பது ஒரு next() செயல்பாட்டைத் தரும் ஒரு செயல்பாடு ஆகும்.</p>
+            
+            <p>ஒரு மீளக்கூடிய பின்வரும் குறியீட்டுடன் மீள்வு செய்யப்படலாம்:</p>
+            
+            <div class="code-example">
+                <pre><code>for (const x of iterable) {
+  // இங்கே ஏதேனும் குறியீடு
+}</code></pre>
+            </div>
+            
+            <h3>Example</h3>
+            <div class="code-example">
+                <pre><code>// ஒரு பொருளை உருவாக்கவும்
+myNumbers = {};
+
+// அதை மீளக்கூடியதாக மாற்றவும்
+myNumbers[Symbol.iterator] = function() {
+  let n = 0;
+  done = false;
+  return {
+    next() {
+      n += 10;
+      if (n == 100) {done = true}
+      return {value:n, done:done};
+    }
+  };
+}</code></pre>
+            </div>
+            
+            <p>இப்போது நீங்கள் for..of ஐப் பயன்படுத்தலாம்:</p>
+            
+            <div class="code-example">
+                <pre><code>for (const num of myNumbers) {
+  // இங்கே ஏதேனும் குறியீடு
+}</code></pre>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">🔧</span> Symbol.iterator முறை:</h4>
+                <p>Symbol.iterator முறை for..of மூலம் தானாகவே அழைக்கப்படுகிறது. ஆனால் நாம் அதை "கைமுறையாகவும்" செய்யலாம்:</p>
+            </div>
+            
+            <h3>Example</h3>
+            <div class="code-example">
+                <pre><code>let iterator = myNumbers[Symbol.iterator]();
+
+while (true) {
+  const result = iterator.next();
+  if (result.done) break;
+  // இங்கே ஏதேனும் குறியீடு
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- Final Note -->
+        <section class="content-section" id="final-note">
+            <h2>முக்கிய குறிப்பு</h2>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">🎯</span> மீள்விகளின் நன்மை:</h4>
+                <p>மீள்விகள் தரவு வரிசைகளுடன் பணிபுரிய ஒரு கட்டுப்படுத்தப்பட்ட வழியை வழங்குகின்றன, பல்வேறு தரவு கட்டமைப்புகளுக்கு தனிப்பயன் மீள்வு தர்க்கத்தை இயலுமைப்படுத்துகின்றன.</p>
+            </div>
+            
+            <p>அடுத்த அத்தியாயத்தில் ECMAScript 2025 இல் அறிமுகப்படுத்தப்பட்ட புதிய மீள்வி உதவி செயல்பாடுகளைப் பற்றி கற்றுக்கொள்வீர்கள்.</p>
+        </section>
+
+        <!-- Single Exercise Section -->
+        <section class="content-section" id="exercises">
+            <h2>JavaScript Iterables பயிற்சி</h2>
+            
+            <p>பின்வரும் குறியீட்டைக் கவனியுங்கள்:</p>
+            
+            <div class="code-example">
+                <pre><code>let firstname = 'Jim', i = 0;
+for (const x of firstname) {
+  i++;
+}</code></pre>
+            </div>
+            
+            <p>i இன் மதிப்பு என்னவாக இருக்கும்?</p>
+            
+            <div class="exercise-box">
+                <h4><span class="exercise-icon">❓</span> சரியான பதிலைத் தேர்ந்தெடுக்கவும்:</h4>
+                
+                <div class="options-grid">
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">0</div>
+                            <div class="option-feedback incorrect">✗ தவறு! 'Jim' சரத்தில் எழுத்துக்கள் உள்ளன</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">1</div>
+                            <div class="option-feedback incorrect">✗ தவறு! 'Jim' சரத்தில் 1 ஐ விட அதிகமான எழுத்துக்கள் உள்ளன</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="true">
+                        <div class="option-content">
+                            <div class="option-text">3</div>
+                            <div class="option-feedback correct">✓ சரி! 'Jim' சரத்தில் 3 எழுத்துக்கள் உள்ளன (J, i, m)</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">4</div>
+                            <div class="option-feedback incorrect">✗ தவறு! 'Jim' சரத்தில் 4 எழுத்துக்கள் இல்லை</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bottom Navigation -->
+        <div class="bottom-nav">
+            <a href="JavaScript%20Loops.html" class="nav-tab prev">
+                <i class="fas fa-arrow-left"></i>
+                <span>முந்தைய</span>
+            </a>
+            <a href="JavaScript%20Iterators.html" class="nav-tab next">
+                <span>அடுத்தது</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Siva Team Institution</h3>
+                <p>Leading educational institution providing quality programming education in Tamil.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#introduction">JavaScript Iterables</a></li>
+                    <li><a href="#forof-loop">for...of Loop</a></li>
+                    <li><a href="#string-iteration">சரம் மீள்வு</a></li>
+                    <li><a href="#array-iteration">வரிசை மீள்வு</a></li>
+                    <li><a href="#set-iteration">Set மீள்வு</a></li>
+                    <li><a href="#map-iteration">Map மீள்வு</a></li>
+                    <li><a href="#exercises">பயிற்சி</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Location & Hours</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <ul>
+                    <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Siva Team Institution. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all content sections for animation
+        document.querySelectorAll('.content-section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Exercise interaction
+        document.querySelectorAll('.option-card').forEach(card => {
+            card.addEventListener('click', function() {
+                // Show feedback for all options
+                document.querySelectorAll('.option-card').forEach(c => {
+                    c.querySelector('.option-feedback').style.display = 'block';
+                });
+            });
+        });
+    </script>
+
+    <!-- Home Button -->
+    <a href="index.html" class="home-icon">
+        <i class="fas fa-home"></i>
+    </a>
+</body>
+</html>
+
+

@@ -1,0 +1,451 @@
+﻿<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Introduction - Siva Team</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .content-section p, 
+        .content-section li,
+        .content-section h3,
+        .content-section h4,
+        .comparison-card p {
+            color: #333 !important;
+        }
+        
+        .tip-box p,
+        .tip-box li,
+        .tip-box h4 {
+            color: white !important;
+        }
+        
+        .warning-box p,
+        .warning-box li,
+        .warning-box h4 {
+            color: white !important;
+        }
+        
+        .exercise-box p,
+        .exercise-box h4 {
+            color: white !important;
+        }
+        
+        /* Stable logo styling - NO ANIMATIONS */
+        .logo-icon {
+            animation: none !important;
+        }
+        
+        .logo-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            animation: none !important;
+        }
+        
+        /* Interactive examples styling */
+        .interactive-example {
+            background: #f8f9fa;
+            border: 2px solid #dee2e6;
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .demo-output {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--git-color);
+            margin: 1.5rem 0;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            border-left: 4px solid var(--git-color);
+        }
+        
+        .demo-button {
+            background: linear-gradient(135deg, var(--git-color), #e74c3c);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .demo-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            background: linear-gradient(135deg, #e74c3c, var(--git-color));
+        }
+        
+        .light-bulb-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 2rem 0;
+        }
+        
+        .light-bulb {
+            font-size: 5rem;
+            margin: 1rem 0;
+            transition: all 0.3s ease;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .hidden-demo {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <img src="logo.jpg" alt="Siva Team Logo" class="logo-image">
+                </div>
+                <h1>Siva Team <span>Institution</span></h1>
+            </div>
+        </div>
+    </header>
+
+    <!-- Top Navigation Tabs -->
+    <div class="nav-tabs">
+        <a href="JavaScript%20Tutorial.html" class="nav-tab prev">
+            <i class="fas fa-arrow-left"></i>
+            <span>முந்தைய</span>
+        </a>
+        <a href="JavaScript%20Where%20To.html" class="nav-tab next">
+            <span>அடுத்தது</span>
+            <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2>JavaScript Introduction</h2>
+            <p>JavaScript ஐ அறிமுகப்படுத்துதல்</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- What Can JavaScript Do? -->
+        <section class="content-section" id="what-can-js-do">
+            <h2>JavaScript என்ன செய்ய முடியும்?</h2>
+            
+            <p>JavaScript என்பது வலைத்தளத்தின் நிரலாக்க மொழியாகும்.</p>
+            
+            <p>இது தரவுகளை கணக்கிடலாம், கையாளலாம் மற்றும் சரிபார்க்கலாம்.</p>
+            
+            <p>இது HTML மற்றும் CSS இரண்டையும் புதுப்பிக்கலாம் மற்றும் மாற்றலாம்.</p>
+        </section>
+
+        <!-- JavaScript Can Change HTML Content -->
+        <section class="content-section" id="change-html">
+            <h2>JavaScript HTML உள்ளடக்கத்தை மாற்ற முடியும்</h2>
+            
+            <p>பல JavaScript HTML முறைகளில் ஒன்று getElementById() ஆகும்.</p>
+            
+            <p>கீழே உள்ள எடுத்துக்காட்டு ஒரு HTML உறுப்பை (id="demo" உடன்) "கண்டுபிடிக்கிறது", மற்றும் உறுப்பு உள்ளடக்கத்தை (innerHTML) "Hello JavaScript" என மாற்றுகிறது:</p>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <div class="code-example">
+                <pre><code>document.getElementById("demo").innerHTML = "Hello JavaScript";</code></pre>
+            </div>
+            
+            <p>JavaScript இரட்டை மற்றும் ஒற்றை மேற்கோள்கள் இரண்டையும் ஏற்கிறது:</p>
+            
+            <div class="code-example">
+                <pre><code>document.getElementById('demo').innerHTML = 'Hello JavaScript';</code></pre>
+            </div>
+            
+            <!-- Interactive Demo -->
+            <div class="interactive-example">
+                <h4>நேரடி டெமோ:</h4>
+                <div id="demo1" class="demo-output">இந்த உரை JavaScript மூலம் மாறும்</div>
+                <button class="demo-button" onclick="changeContent()">உள்ளடக்கத்தை மாற்று</button>
+            </div>
+        </section>
+
+        <!-- JavaScript Can Change HTML Attribute Values -->
+        <section class="content-section" id="change-attribute">
+            <h2>JavaScript HTML பண்பு மதிப்புகளை மாற்ற முடியும்</h2>
+            
+            <p>இந்த எடுத்துக்காட்டில் JavaScript ஒரு &lt;img&gt; குறிச்சொல்லின் src (மூல) பண்பின் மதிப்பை மாற்றுகிறது:</p>
+            
+            <div class="light-bulb-container">
+                <div id="lightBulb" class="light-bulb">💡</div>
+                <div class="button-group">
+                    <button class="demo-button" onclick="turnOnLight()">Turn on the light</button>
+                    <button class="demo-button" onclick="turnOffLight()">Turn off the light</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- JavaScript Can Change HTML Styles (CSS) -->
+        <section class="content-section" id="change-styles">
+            <h2>JavaScript HTML பாணிகளை (CSS) மாற்ற முடியும்</h2>
+            
+            <p>ஒரு HTML உறுப்பின் பாணியை மாற்றுவது, ஒரு HTML பண்பை மாற்றுவதன் மாறுபாடு ஆகும்:</p>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <div class="code-example">
+                <pre><code>document.getElementById("demo").style.fontSize = "35px";</code></pre>
+            </div>
+            
+            <!-- Interactive Demo -->
+            <div class="interactive-example">
+                <h4>நேரடி டெமோ:</h4>
+                <div id="demo2" class="demo-output">இந்த உரையின் அளவு JavaScript மூலம் மாறும்</div>
+                <button class="demo-button" onclick="changeFontSize()">எழுத்துரு அளவை மாற்று</button>
+            </div>
+        </section>
+
+        <!-- JavaScript Can Hide HTML Elements -->
+        <section class="content-section" id="hide-elements">
+            <h2>JavaScript HTML உறுப்புகளை மறைக்க முடியும்</h2>
+            
+            <p>HTML உறுப்புகளை மறைப்பது, display பாணியை மாற்றுவதன் மூலம் செய்யப்படலாம்:</p>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <div class="code-example">
+                <pre><code>document.getElementById("demo").style.display = "none";</code></pre>
+            </div>
+            
+            <!-- Interactive Demo -->
+            <div class="interactive-example">
+                <h4>நேரடி டெமோ:</h4>
+                <div id="demo3" class="hidden-demo">இந்த உறுப்பு JavaScript மூலம் மறைக்கப்படும்/காட்டப்படும்</div>
+                <div class="button-group">
+                    <button class="demo-button" onclick="hideElement()">உறுப்பை மறை</button>
+                    <button class="demo-button" onclick="showElement()">உறுப்பை காட்டு</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- JavaScript Can Show HTML Elements -->
+        <section class="content-section" id="show-elements">
+            <h2>JavaScript HTML உறுப்புகளை காட்ட முடியும்</h2>
+            
+            <p>மறைக்கப்பட்ட HTML உறுப்புகளை காட்டுவதும் display பாணியை மாற்றுவதன் மூலம் செய்யப்படலாம்:</p>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <div class="code-example">
+                <pre><code>document.getElementById("demo").style.display = "block";</code></pre>
+            </div>
+        </section>
+
+        <!-- Did You Know? -->
+        <section class="content-section" id="did-you-know">
+            <h2>உங்களுக்குத் தெரியுமா?</h2>
+            
+            <p>JavaScript மற்றும் Java ஆகியவை இரண்டு முற்றிலும் வித்தியாசமான மொழிகளாகும், கருத்து மற்றும் வடிவமைப்பு இரண்டிலும்.</p>
+            
+            <p>JavaScript 1995 ஆம் ஆண்டில் Brendan Eich என்பவரால் கண்டுபிடிக்கப்பட்டது, மற்றும் 1997 ஆம் ஆண்டில் ECMA தரநிலையாக மாறியது.</p>
+            
+            <p>ECMA-262 என்பது தரநிலையின் அதிகாரப்பூர்வ பெயர். ECMAScript என்பது மொழியின் அதிகாரப்பூர்வ பெயர்.</p>
+        </section>
+
+        <!-- Exercise - ONLY ONE EXERCISE -->
+        <section class="content-section" id="exercises">
+            <h2>JavaScript பயிற்சிகள்</h2>
+            
+            <p>இந்த டுடோரியலில் உள்ள பல அத்தியாயங்கள் உங்கள் அறிவு நிலையைச் சரிபார்க்கக்கூடிய பயிற்சியுடன் முடிகின்றன.</p>
+            
+            <div class="exercise-box">
+                <h4><span class="exercise-icon">❓</span> உண்மை அல்லது பொய்.</h4>
+                <h4>JAVA என்பது JavaScript க்கான சுருக்கமா?</h4>
+                
+                <div class="options-grid">
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">True</div>
+                            <div class="option-feedback incorrect">✗ தவறு! JAVA என்பது JavaScript க்கான சுருக்கம் அல்ல. அவை இரண்டு வெவ்வேறு நிரலாக்க மொழிகள்</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="true">
+                        <div class="option-content">
+                            <div class="option-text">False</div>
+                            <div class="option-feedback correct">✓ சரி! JavaScript மற்றும் Java ஆகியவை இரண்டு தனித்துவமான நிரலாக்க மொழிகள். JavaScript ஐ முதலில் "LiveScript" என்று அழைக்கப்பட்டது, பின்னர் சந்தைப்படுத்தல் காரணங்களுக்காக JavaScript என மறுபெயரிடப்பட்டது</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bottom Navigation -->
+        <div class="bottom-nav">
+            <a href="JavaScript%20Tutorial.html" class="nav-tab prev">
+                <i class="fas fa-arrow-left"></i>
+                <span>முந்தைய</span>
+            </a>
+            <a href="JavaScript%20Where%20To.html" class="nav-tab next">
+                <span>அடுத்தது</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Siva Team Institution</h3>
+                <p>Leading educational institution providing quality programming education in Tamil.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#what-can-js-do">JavaScript என்ன செய்ய முடியும்?</a></li>
+                    <li><a href="#change-html">HTML உள்ளடக்கத்தை மாற்றுதல்</a></li>
+                    <li><a href="#change-attribute">HTML பண்புகளை மாற்றுதல்</a></li>
+                    <li><a href="#change-styles">HTML பாணிகளை மாற்றுதல்</a></li>
+                    <li><a href="#hide-elements">HTML உறுப்புகளை மறைத்தல்</a></li>
+                    <li><a href="#show-elements">HTML உறுப்புகளை காட்டுதல்</a></li>
+                    <li><a href="#did-you-know">உங்களுக்குத் தெரியுமா?</a></li>
+                    <li><a href="#exercises">JavaScript பயிற்சிகள்</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Location & Hours</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <ul>
+                    <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Siva Team Institution. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all content sections for animation
+        document.querySelectorAll('.content-section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Exercise interaction
+        document.querySelectorAll('.option-card').forEach(card => {
+            card.addEventListener('click', function() {
+                // Show feedback for all options
+                document.querySelectorAll('.option-card').forEach(c => {
+                    c.querySelector('.option-feedback').style.display = 'block';
+                });
+            });
+        });
+        
+        // Interactive Demo Functions
+        function changeContent() {
+            document.getElementById("demo1").innerHTML = "Hello JavaScript! - Siva Team";
+        }
+        
+        function turnOnLight() {
+            const lightBulb = document.getElementById("lightBulb");
+            lightBulb.textContent = "💡";
+            lightBulb.style.color = "#FFD700";
+            lightBulb.style.textShadow = "0 0 20px yellow, 0 0 40px orange";
+        }
+        
+        function turnOffLight() {
+            const lightBulb = document.getElementById("lightBulb");
+            lightBulb.textContent = "💡";
+            lightBulb.style.color = "#666";
+            lightBulb.style.textShadow = "none";
+        }
+        
+        function changeFontSize() {
+            const demo2 = document.getElementById("demo2");
+            const currentSize = parseInt(window.getComputedStyle(demo2).fontSize);
+            demo2.style.fontSize = (currentSize === 24 ? "16px" : "35px");
+            demo2.textContent = demo2.style.fontSize === "35px" ? 
+                "இப்போது எழுத்துரு அளவு 35px!" : 
+                "இப்போது எழுத்துரு அளவு 16px!";
+        }
+        
+        function hideElement() {
+            document.getElementById("demo3").style.display = "none";
+        }
+        
+        function showElement() {
+            document.getElementById("demo3").style.display = "block";
+        }
+    </script>
+
+    <!-- Home Button -->
+    <a href="index.html" class="home-icon">
+        <i class="fas fa-home"></i>
+    </a>
+</body>
+</html>
+
+

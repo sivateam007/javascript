@@ -1,0 +1,668 @@
+﻿<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Get Date Methods - Siva Team</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .content-section p, 
+        .content-section li,
+        .content-section h3,
+        .content-section h4,
+        .comparison-card p {
+            color: #333 !important;
+        }
+        
+        .tip-box p,
+        .tip-box li,
+        .tip-box h4 {
+            color: white !important;
+        }
+        
+        .warning-box p,
+        .warning-box li,
+        .warning-box h4 {
+            color: white !important;
+        }
+        
+        .exercise-box p,
+        .exercise-box h4 {
+            color: white !important;
+        }
+        
+        /* Stable logo styling - NO ANIMATIONS */
+        .logo-icon {
+            animation: none !important; /* Remove pulse animation */
+        }
+        
+        .logo-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            animation: none !important; /* Ensure no animations */
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <img src="logo.jpg" alt="Siva Team Logo" class="logo-image">
+                </div>
+                <h1>Siva Team <span>Institution</span></h1>
+            </div>
+        </div>
+    </header>
+
+    <!-- Top Navigation Tabs -->
+    <div class="nav-tabs">
+        <a href="JavaScript%20Date%20Formats.html" class="nav-tab prev">
+            <i class="fas fa-arrow-left"></i>
+            <span>முந்தைய</span>
+        </a>
+        <a href="JavaScript%20Set%20Date%20Methods.html" class="nav-tab next">
+            <span>அடுத்தது</span>
+            <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2>JavaScript Get Date Methods</h2>
+            <p>JavaScript தேதி பெறும் முறைகள் பற்றி அறிக</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Introduction -->
+        <section class="content-section" id="introduction">
+            <h2>JavaScript Get Date Methods</h2>
+            
+            <h3>The new Date() Constructor</h3>
+            <p>JavaScript இல், தேதி பொருள்கள் new Date() உடன் உருவாக்கப்படுகின்றன.</p>
+            
+            <p>new Date() தற்போதைய தேதி மற்றும் நேரத்துடன் ஒரு தேதி பொருளை வழங்குகிறது.</p>
+            
+            <h3>Get the Current Time</h3>
+            <div class="code-example">
+                <pre><code>const date = new Date();</code></pre>
+            </div>
+        </section>
+
+        <!-- Date Get Methods -->
+        <section class="content-section" id="date-get-methods">
+            <h2>Date Get Methods</h2>
+            
+            <div class="comparison-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Method</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>getFullYear()</td>
+                            <td>Get year as a four digit number (yyyy)</td>
+                        </tr>
+                        <tr>
+                            <td>getMonth()</td>
+                            <td>Get month as a number (0-11)</td>
+                        </tr>
+                        <tr>
+                            <td>getDate()</td>
+                            <td>Get day as a number (1-31)</td>
+                        </tr>
+                        <tr>
+                            <td>getDay()</td>
+                            <td>Get weekday as a number (0-6)</td>
+                        </tr>
+                        <tr>
+                            <td>getHours()</td>
+                            <td>Get hour (0-23)</td>
+                        </tr>
+                        <tr>
+                            <td>getMinutes()</td>
+                            <td>Get minute (0-59)</td>
+                        </tr>
+                        <tr>
+                            <td>getSeconds()</td>
+                            <td>Get second (0-59)</td>
+                        </tr>
+                        <tr>
+                            <td>getMilliseconds()</td>
+                            <td>Get millisecond (0-999)</td>
+                        </tr>
+                        <tr>
+                            <td>getTime()</td>
+                            <td>Get time (milliseconds since January 1, 1970)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">📝</span> குறிப்பு 1:</h4>
+                <p>மேலே உள்ள get முறைகள் Local நேரத்தை வழங்குகின்றன.</p>
+                <p>Universal time (UTC) இந்தப் பக்கத்தின் கீழே ஆவணப்படுத்தப்பட்டுள்ளது.</p>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">📝</span> குறிப்பு 2:</h4>
+                <p>get முறைகள் இருக்கும் தேதி பொருள்களிலிருந்து தகவலை வழங்குகின்றன.</p>
+                <p>ஒரு தேதி பொருளில், நேரம் நிலையானது. "கடிகாரம்" "இயங்கவில்லை".</p>
+                <p>தேதி பொருளில் உள்ள நேரம் தற்போதைய நேரத்தைப் போல இல்லை.</p>
+            </div>
+        </section>
+
+        <!-- The getFullYear() Method -->
+        <section class="content-section" id="getfullyear">
+            <h2>The getFullYear() Method</h2>
+            
+            <p>getFullYear() முறை ஒரு தேதியின் ஆண்டை நான்கு இலக்க எண்ணாக வழங்குகிறது:</p>
+            
+            <h3>எடுத்துக்காட்டுகள்</h3>
+            <div class="code-example">
+                <pre><code>const d = new Date("2021-03-25");
+d.getFullYear();</code></pre>
+            </div>
+            
+            <div class="code-example">
+                <pre><code>const d = new Date();
+d.getFullYear();</code></pre>
+            </div>
+            
+            <div class="warning-box">
+                <h4><span class="warning-icon">⚠️</span> எச்சரிக்கை!</h4>
+                <p>பழைய JavaScript குறியீடு தரமற்ற getYear() முறையைப் பயன்படுத்தலாம்.</p>
+                <p>getYear() 2-இலக்க ஆண்டை வழங்க வேண்டும்.</p>
+                <p>getYear() காலாவதியானது. அதைப் பயன்படுத்த வேண்டாம்!</p>
+            </div>
+        </section>
+
+        <!-- The getMonth() Method -->
+        <section class="content-section" id="getmonth">
+            <h2>The getMonth() Method</h2>
+            
+            <p>getMonth() முறை ஒரு தேதியின் மாதத்தை எண்ணாக (0-11) வழங்குகிறது.</p>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">📝</span> குறிப்பு:</h4>
+                <p>JavaScript இல், ஜனவரி என்பது மாத எண் 0, பிப்ரவரி என்பது எண் 1, ...</p>
+                <p>இறுதியாக, டிசம்பர் என்பது மாத எண் 11.</p>
+            </div>
+            
+            <h3>எடுத்துக்காட்டுகள்</h3>
+            <div class="code-example">
+                <pre><code>const d = new Date("2021-03-25");
+d.getMonth();</code></pre>
+            </div>
+            
+            <div class="code-example">
+                <pre><code>const d = new Date();
+d.getMonth();</code></pre>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">💡</span> குறிப்பு:</h4>
+                <p>மாதத்தை பெயராக வழங்க பெயர்களின் வரிசையைப் பயன்படுத்தலாம்:</p>
+                
+                <h3>எடுத்துக்காட்டுகள்</h3>
+                <div class="code-example">
+                    <pre><code>const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+const d = new Date("2021-03-25");
+let month = months[d.getMonth()];</code></pre>
+                </div>
+                
+                <div class="code-example">
+                    <pre><code>const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+const d = new Date();
+let month = months[d.getMonth()];</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- The getDate() Method -->
+        <section class="content-section" id="getdate">
+            <h2>The getDate() Method</h2>
+            
+            <p>getDate() முறை ஒரு தேதியின் நாளை எண்ணாக (1-31) வழங்குகிறது:</p>
+            
+            <h3>எடுத்துக்காட்டுகள்</h3>
+            <div class="code-example">
+                <pre><code>const d = new Date("2021-03-25");
+d.getDate();</code></pre>
+            </div>
+            
+            <div class="code-example">
+                <pre><code>const d = new Date();
+d.getDate();</code></pre>
+            </div>
+        </section>
+
+        <!-- The getHours() Method -->
+        <section class="content-section" id="gethours">
+            <h2>The getHours() Method</h2>
+            
+            <p>getHours() முறை ஒரு தேதியின் மணிநேரங்களை எண்ணாக (0-23) வழங்குகிறது:</p>
+            
+            <h3>எடுத்துக்காட்டுகள்</h3>
+            <div class="code-example">
+                <pre><code>const d = new Date("2021-03-25");
+d.getHours();</code></pre>
+            </div>
+            
+            <div class="code-example">
+                <pre><code>const d = new Date();
+d.getHours();</code></pre>
+            </div>
+        </section>
+
+        <!-- The getMinutes() Method -->
+        <section class="content-section" id="getminutes">
+            <h2>The getMinutes() Method</h2>
+            
+            <p>getMinutes() முறை ஒரு தேதியின் நிமிடங்களை எண்ணாக (0-59) வழங்குகிறது:</p>
+            
+            <h3>எடுத்துக்காட்டுகள்</h3>
+            <div class="code-example">
+                <pre><code>const d = new Date("2021-03-25");
+d.getMinutes();</code></pre>
+            </div>
+            
+            <div class="code-example">
+                <pre><code>const d = new Date();
+d.getMinutes();</code></pre>
+            </div>
+        </section>
+
+        <!-- The getSeconds() Method -->
+        <section class="content-section" id="getseconds">
+            <h2>The getSeconds() Method</h2>
+            
+            <p>getSeconds() முறை ஒரு தேதியின் வினாடிகளை எண்ணாக (0-59) வழங்குகிறது:</p>
+            
+            <h3>எடுத்துக்காட்டுகள்</h3>
+            <div class="code-example">
+                <pre><code>const d = new Date("2021-03-25");
+d.getSeconds();</code></pre>
+            </div>
+            
+            <div class="code-example">
+                <pre><code>const d = new Date();
+d.getSeconds();</code></pre>
+            </div>
+        </section>
+
+        <!-- The getMilliseconds() Method -->
+        <section class="content-section" id="getmilliseconds">
+            <h2>The getMilliseconds() Method</h2>
+            
+            <p>getMilliseconds() முறை ஒரு தேதியின் மில்லிவினாடிகளை எண்ணாக (0-999) வழங்குகிறது:</p>
+            
+            <h3>எடுத்துக்காட்டுகள்</h3>
+            <div class="code-example">
+                <pre><code>const d = new Date("2021-03-25");
+d.getMilliseconds();</code></pre>
+            </div>
+            
+            <div class="code-example">
+                <pre><code>const d = new Date();
+d.getMilliseconds();</code></pre>
+            </div>
+        </section>
+
+        <!-- The getDay() Method -->
+        <section class="content-section" id="getday">
+            <h2>The getDay() Method</h2>
+            
+            <p>getDay() முறை ஒரு தேதியின் வார நாளை எண்ணாக (0-6) வழங்குகிறது.</p>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">📝</span> குறிப்பு:</h4>
+                <p>JavaScript இல், வாரத்தின் முதல் நாள் (நாள் 0) ஞாயிற்றுக்கிழமை.</p>
+                <p>உலகின் சில நாடுகள் வாரத்தின் முதல் நாள் திங்கட்கிழமை என்று கருதுகின்றன.</p>
+            </div>
+            
+            <h3>எடுத்துக்காட்டுகள்</h3>
+            <div class="code-example">
+                <pre><code>const d = new Date("2021-03-25");
+d.getDay();</code></pre>
+            </div>
+            
+            <div class="code-example">
+                <pre><code>const d = new Date();
+d.getDay();</code></pre>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">💡</span> குறிப்பு:</h4>
+                <p>பெயர்களின் வரிசையையும், getDay() ஐயும் பயன்படுத்தி வார நாளை பெயராக வழங்கலாம்:</p>
+                
+                <h3>எடுத்துக்காட்டுகள்</h3>
+                <div class="code-example">
+                    <pre><code>const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+const d = new Date("2021-03-25");
+let day = days[d.getDay()];</code></pre>
+                </div>
+                
+                <div class="code-example">
+                    <pre><code>const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+const d = new Date();
+let day = days[d.getDay()];</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- The getTime() Method -->
+        <section class="content-section" id="gettime">
+            <h2>The getTime() Method</h2>
+            
+            <p>getTime() முறை ஜனவரி 1, 1970 முதல் மில்லிவினாடிகளின் எண்ணிக்கையை வழங்குகிறது:</p>
+            
+            <h3>எடுத்துக்காட்டுகள்</h3>
+            <div class="code-example">
+                <pre><code>const d = new Date("1970-01-01");
+d.getTime();</code></pre>
+            </div>
+            
+            <div class="code-example">
+                <pre><code>const d = new Date("2021-03-25");
+d.getTime();</code></pre>
+            </div>
+            
+            <div class="code-example">
+                <pre><code>const d = new Date();
+d.getTime();</code></pre>
+            </div>
+        </section>
+
+        <!-- The Date.now() Method -->
+        <section class="content-section" id="datenow">
+            <h2>The Date.now() Method</h2>
+            
+            <p>Date.now() ஜனவரி 1, 1970 முதல் மில்லிவினாடிகளின் எண்ணிக்கையை வழங்குகிறது.</p>
+            
+            <h3>எடுத்துக்காட்டுகள்</h3>
+            <div class="code-example">
+                <pre><code>let ms = Date.now();</code></pre>
+            </div>
+            
+            <p>1970/01/01 முதல் ஆண்டுகளின் எண்ணிக்கையைக் கணக்கிடுங்கள்:</p>
+            
+            <div class="code-example">
+                <pre><code>const minute = 1000 * 60;
+const hour = minute * 60;
+const day = hour * 24;
+const year = day * 365;
+
+let years = Math.round(Date.now() / year);</code></pre>
+            </div>
+            
+            <p>Date.now() என்பது Date பொருளின் static முறையாகும்.</p>
+            <p>myDate.now() போன்ற ஒரு தேதி பொருளில் அதைப் பயன்படுத்த முடியாது.</p>
+            <p>தொடரியல் எப்போதும் Date.now() ஆகும்.</p>
+        </section>
+
+        <!-- UTC Date Get Methods -->
+        <section class="content-section" id="utc-methods">
+            <h2>UTC Date Get Methods</h2>
+            
+            <div class="comparison-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Method</th>
+                            <th>Same As</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>getUTCDate()</td>
+                            <td>getDate()</td>
+                            <td>Returns the UTC date</td>
+                        </tr>
+                        <tr>
+                            <td>getUTCFullYear()</td>
+                            <td>getFullYear()</td>
+                            <td>Returns the UTC year</td>
+                        </tr>
+                        <tr>
+                            <td>getUTCMonth()</td>
+                            <td>getMonth()</td>
+                            <td>Returns the UTC month</td>
+                        </tr>
+                        <tr>
+                            <td>getUTCDay()</td>
+                            <td>getDay()</td>
+                            <td>Returns the UTC day</td>
+                        </tr>
+                        <tr>
+                            <td>getUTCHours()</td>
+                            <td>getHours()</td>
+                            <td>Returns the UTC hour</td>
+                        </tr>
+                        <tr>
+                            <td>getUTCMinutes()</td>
+                            <td>getMinutes()</td>
+                            <td>Returns the UTC minutes</td>
+                        </tr>
+                        <tr>
+                            <td>getUTCSeconds()</td>
+                            <td>getSeconds()</td>
+                            <td>Returns the UTC seconds</td>
+                        </tr>
+                        <tr>
+                            <td>getUTCMilliseconds()</td>
+                            <td>getMilliseconds()</td>
+                            <td>Returns the UTC milliseconds</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <p>UTC முறைகள் UTC நேரத்தைப் (Coordinated Universal Time) பயன்படுத்துகின்றன.</p>
+            <p>UTC நேரம் GMT (Greenwich Mean Time) போன்றதே.</p>
+            <p>Local நேரத்திற்கும் UTC நேரத்திற்கும் இடையே உள்ள வேறுபாடு 24 மணி நேரம் வரை இருக்கலாம்.</p>
+        </section>
+
+        <!-- The getTimezoneOffset() Method -->
+        <section class="content-section" id="gettimezoneoffset">
+            <h2>The getTimezoneOffset() Method</h2>
+            
+            <p>getTimezoneOffset() முறை local நேரத்திற்கும் UTC நேரத்திற்கும் இடையே உள்ள வேறுபாட்டை (நிமிடங்களில்) வழங்குகிறது:</p>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <div class="code-example">
+                <pre><code>let diff = d.getTimezoneOffset();</code></pre>
+            </div>
+        </section>
+
+        <!-- Learn More -->
+        <section class="content-section" id="learn-more">
+            <h2>Learn More:</h2>
+            <ul>
+                <li>JavaScript Date Tutorial</li>
+                <li>JavaScript Date Formats</li>
+                <li>JavaScript Date Set Methods</li>
+                <li>JavaScript Date Reference</li>
+            </ul>
+        </section>
+
+        <!-- Exercise Section (Only One Exercise) -->
+        <section class="content-section" id="exercise">
+            <h2>Exercise</h2>
+            
+            <p>getDay() முறையின் வருவாய் மதிப்பு என்ன?</p>
+            
+            <div class="exercise-box">
+                <h4><span class="exercise-icon">❓</span> getDay() எதை வழங்குகிறது?</h4>
+                
+                <div class="options-grid">
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">A number between 1 and 31</div>
+                            <div class="option-feedback incorrect">✗ தவறு! 1-31 என்பது getDate() முறையின் வரம்பு, வார நாள் அல்ல.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">A number between 0 and 30</div>
+                            <div class="option-feedback incorrect">✗ தவறு! getDate() 1-31 வரம்பில் இயங்குகிறது, மேலும் 0-30 வரம்பு getDay() க்கு உண்மையல்ல.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">A number between 1 and 7</div>
+                            <div class="option-feedback incorrect">✗ தவறு! JavaScript இல் வார நாட்கள் 0-6 வரம்பில் உள்ளன, 1-7 அல்ல.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="true">
+                        <div class="option-content">
+                            <div class="option-text">A number between 0 and 6</div>
+                            <div class="option-feedback correct">✓ சரி! getDay() 0-6 வரம்பில் ஒரு எண்ணை வழங்குகிறது, அங்கு 0=ஞாயிறு, 1=திங்கள், 2=செவ்வாய், 3=புதன், 4=வியாழன், 5=வெள்ளி, 6=சனி.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bottom Navigation -->
+        <div class="bottom-nav">
+            <a href="JavaScript%20Date%20Formats.html" class="nav-tab prev">
+                <i class="fas fa-arrow-left"></i>
+                <span>முந்தைய</span>
+            </a>
+            <a href="JavaScript%20Set%20Date%20Methods.html" class="nav-tab next">
+                <span>அடுத்தது</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Siva Team Institution</h3>
+                <p>Leading educational institution providing quality programming education in Tamil.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#introduction">Get Date Methods Introduction</a></li>
+                    <li><a href="#date-get-methods">Date Get Methods Table</a></li>
+                    <li><a href="#getfullyear">getFullYear() Method</a></li>
+                    <li><a href="#getmonth">getMonth() Method</a></li>
+                    <li><a href="#getdate">getDate() Method</a></li>
+                    <li><a href="#gethours">getHours() Method</a></li>
+                    <li><a href="#getminutes">getMinutes() Method</a></li>
+                    <li><a href="#getseconds">getSeconds() Method</a></li>
+                    <li><a href="#getmilliseconds">getMilliseconds() Method</a></li>
+                    <li><a href="#getday">getDay() Method</a></li>
+                    <li><a href="#gettime">getTime() Method</a></li>
+                    <li><a href="#datenow">Date.now() Method</a></li>
+                    <li><a href="#utc-methods">UTC Date Get Methods</a></li>
+                    <li><a href="#gettimezoneoffset">getTimezoneOffset() Method</a></li>
+                    <li><a href="#learn-more">Learn More</a></li>
+                    <li><a href="#exercise">Exercise</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Location & Hours</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <ul>
+                    <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Siva Team Institution. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all content sections for animation
+        document.querySelectorAll('.content-section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Exercise interaction
+        document.querySelectorAll('.option-card').forEach(card => {
+            card.addEventListener('click', function() {
+                // Show feedback for all options
+                document.querySelectorAll('.option-card').forEach(c => {
+                    c.querySelector('.option-feedback').style.display = 'block';
+                });
+            });
+        });
+    </script>
+
+    <!-- Home Button -->
+    <a href="index.html" class="home-icon">
+        <i class="fas fa-home"></i>
+    </a>
+</body>
+</html>
+
+

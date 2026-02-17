@@ -1,0 +1,428 @@
+﻿<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript HTML DOM EventListener - Siva Team</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .content-section p, 
+        .content-section li,
+        .content-section h3,
+        .content-section h4,
+        .comparison-card p {
+            color: #333 !important;
+        }
+        
+        .tip-box p,
+        .tip-box li,
+        .tip-box h4 {
+            color: white !important;
+        }
+        
+        .warning-box p,
+        .warning-box li,
+        .warning-box h4 {
+            color: white !important;
+        }
+        
+        .exercise-box p,
+        .exercise-box h4 {
+            color: white !important;
+        }
+        
+        /* Stable logo styling - NO ANIMATIONS */
+        .logo-icon {
+            animation: none !important;
+        }
+        
+        .logo-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            animation: none !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <img src="logo.jpg" alt="Siva Team Logo" class="logo-image">
+                </div>
+                <h1>Siva Team <span>Institution</span></h1>
+            </div>
+        </div>
+    </header>
+
+    <!-- Top Navigation Tabs -->
+    <div class="nav-tabs">
+        <a href="JavaScript%20HTML%20DOM%20Events.html" class="nav-tab prev">
+            <i class="fas fa-arrow-left"></i>
+            <span>முந்தைய</span>
+        </a>
+        <a href="Project%20-%20localStorage%20Counter.html" class="nav-tab next">
+            <span>அடுத்தது</span>
+            <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2>JavaScript HTML DOM EventListener</h2>
+            <p>addEventListener() முறையைக் கற்றுக்கொள்ளுங்கள்</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- addEventListener() method -->
+        <section class="content-section" id="addEventListener-method">
+            <h2>addEventListener() முறை</h2>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <p>பயனர் ஒரு பட்டனைக் கிளிக் செய்யும் போது தீப்பற்றும் நிகழ்வு கேட்பவரைச் சேர்க்கவும்:</p>
+            
+            <div class="code-example">
+                <pre><code>document.getElementById("myBtn").addEventListener("click", displayDate);</code></pre>
+            </div>
+            
+            <p>addEventListener() முறை குறிப்பிடப்பட்ட உறுப்புக்கு ஒரு நிகழ்வு கையாளியை இணைக்கிறது.</p>
+            
+            <p>addEventListener() முறை இருக்கும் நிகழ்வு கையாளிகளை மேலெழுதாமல் ஒரு உறுப்புக்கு நிகழ்வு கையாளியை இணைக்கிறது.</p>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">✨</span> addEventListener() அம்சங்கள்:</h4>
+                <ul>
+                    <li>ஒரு உறுப்புக்கு பல நிகழ்வு கையாளிகளைச் சேர்க்கலாம்</li>
+                    <li>ஒரே வகையான பல நிகழ்வு கையாளிகளை ஒரு உறுப்புக்குச் சேர்க்கலாம், அதாவது இரண்டு "கிளிக்" நிகழ்வுகள்</li>
+                    <li>HTML உறுப்புகள் மட்டுமல்ல, எந்த DOM பொருளுக்கும் நிகழ்வு கேட்பவர்களைச் சேர்க்கலாம், அதாவது சாளர பொருள்</li>
+                    <li>addEventListener() முறை நிகழ்வு எவ்வாறு பகிர்ந்தளிப்பிற்கு வினைபுரிகிறது என்பதைக் கட்டுப்படுத்த எளிதாக்குகிறது</li>
+                    <li>addEventListener() முறையைப் பயன்படுத்தும் போது, JavaScript HTML குறியீட்டிலிருந்து பிரிக்கப்பட்டுள்ளது, இது சிறந்த வாசிப்புத்தன்மைக்காகவும், HTML குறியீட்டை நீங்கள் கட்டுப்படுத்தாதபோது கூட நிகழ்வு கேட்பவர்களைச் சேர்க்க அனுமதிக்கிறது</li>
+                    <li>removeEventListener() முறையைப் பயன்படுத்தி ஒரு நிகழ்வு கேட்பவரை எளிதாக நீக்கலாம்</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Syntax -->
+        <section class="content-section" id="syntax">
+            <h2>தொடரியல்</h2>
+            
+            <div class="code-example">
+                <pre><code>element.addEventListener(event, function, useCapture);</code></pre>
+            </div>
+            
+            <ul>
+                <li>முதல் அளவுரு நிகழ்வின் வகை (எ.கா. "click" அல்லது "mousedown" அல்லது வேறு எந்த HTML DOM நிகழ்வு)</li>
+                <li>இரண்டாவது அளவுரு நிகழ்வு ஏற்படும் போது நாம் அழைக்க விரும்பும் செயல்பாடு</li>
+                <li>மூன்றாவது அளவுரு நிகழ்வு பகிர்ந்தளிப்பு அல்லது நிகழ்வு பிடிப்பு பயன்படுத்த வேண்டுமா என்பதைக் குறிப்பிடும் பூலியன் மதிப்பு. இந்த அளவுரு விருப்பமானது.</li>
+            </ul>
+            
+            <div class="warning-box">
+                <h4><span class="warning-icon">⚠️</span> முக்கியமான குறிப்பு:</h4>
+                <p>நிகழ்வுக்கு "on" முன்னொட்டைப் பயன்படுத்த வேண்டாம்; "onclick" க்குப் பதிலாக "click" ஐப் பயன்படுத்தவும்.</p>
+            </div>
+        </section>
+
+        <!-- Add Event Handler to Element -->
+        <section class="content-section" id="add-handler">
+            <h2>உறுப்புக்கு நிகழ்வு கையாளியைச் சேர்த்தல்</h2>
+            
+            <h3>எடுத்துக்காட்டு 1</h3>
+            <p>பயனர் ஒரு உறுப்பைக் கிளிக் செய்யும் போது "Hello World!" எச்சரிக்கையைக் காண்பிக்கவும்:</p>
+            
+            <div class="code-example">
+                <pre><code>element.addEventListener("click", function(){ alert("Hello World!"); });</code></pre>
+            </div>
+            
+            <h3>எடுத்துக்காட்டு 2</h3>
+            <p>வெளிப்புற "பெயரிடப்பட்ட" செயல்பாட்டைக் குறிப்பிடலாம்:</p>
+            
+            <div class="code-example">
+                <pre><code>element.addEventListener("click", myFunction);
+
+function myFunction() {
+  alert ("Hello World!");
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- Add Many Event Handlers -->
+        <section class="content-section" id="many-handlers">
+            <h2>ஒரே உறுப்புக்கு பல நிகழ்வு கையாளிகளைச் சேர்த்தல்</h2>
+            
+            <p>addEventListener() முறை இருக்கும் நிகழ்வுகளை மேலெழுதாமல் ஒரே உறுப்புக்கு பல நிகழ்வுகளைச் சேர்க்க உங்களை அனுமதிக்கிறது:</p>
+            
+            <h3>எடுத்துக்காட்டு 1</h3>
+            <div class="code-example">
+                <pre><code>element.addEventListener("click", myFunction);
+element.addEventListener("click", mySecondFunction);</code></pre>
+            </div>
+            
+            <h3>எடுத்துக்காட்டு 2</h3>
+            <p>வெவ்வேறு வகையான நிகழ்வுகளை ஒரே உறுப்புக்குச் சேர்க்கலாம்:</p>
+            
+            <div class="code-example">
+                <pre><code>element.addEventListener("mouseover", myFunction);
+element.addEventListener("click", mySecondFunction);
+element.addEventListener("mouseout", myThirdFunction);</code></pre>
+            </div>
+        </section>
+
+        <!-- Add Event Handler to window Object -->
+        <section class="content-section" id="window-handler">
+            <h2>சாளர பொருளுக்கு நிகழ்வு கையாளியைச் சேர்த்தல்</h2>
+            
+            <p>addEventListener() முறை HTML உறுப்புகள், HTML ஆவணம், சாளர பொருள் அல்லது xmlHttpRequest பொருள் போன்ற நிகழ்வுகளை ஆதரிக்கும் பிற பொருட்கள் போன்ற எந்த HTML DOM பொருளிலும் நிகழ்வு கேட்பவர்களைச் சேர்க்க உங்களை அனுமதிக்கிறது.</p>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <p>பயனர் சாளரத்தின் அளவை மாற்றும் போது தீப்பற்றும் நிகழ்வு கேட்பவரைச் சேர்க்கவும்:</p>
+            
+            <div class="code-example">
+                <pre><code>window.addEventListener("resize", function(){
+  document.getElementById("demo").innerHTML = sometext;
+});</code></pre>
+            </div>
+        </section>
+
+        <!-- Passing Parameters -->
+        <section class="content-section" id="passing-parameters">
+            <h2>அளவுருக்களை அனுப்புதல்</h2>
+            
+            <p>அளவுரு மதிப்புகளை அனுப்பும் போது, அளவுருக்களுடன் குறிப்பிடப்பட்ட செயல்பாட்டை அழைக்கும் "அநாமதேய செயல்பாட்டை"ப் பயன்படுத்தவும்:</p>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <div class="code-example">
+                <pre><code>element.addEventListener("click", function(){ myFunction(p1, p2); });</code></pre>
+            </div>
+        </section>
+
+        <!-- Event Bubbling or Event Capturing -->
+        <section class="content-section" id="bubbling-capturing">
+            <h2>நிகழ்வு பகிர்ந்தளிப்பா அல்லது நிகழ்வு பிடிப்பா?</h2>
+            
+            <p>HTML DOM இல் நிகழ்வு பரவலுக்கு இரண்டு வழிகள் உள்ளன: பகிர்ந்தளிப்பு மற்றும் பிடிப்பு.</p>
+            
+            <p>நிகழ்வு பரவல் என்பது ஒரு நிகழ்வு ஏற்படும் போது உறுப்பு வரிசையை வரையறுக்கும் ஒரு வழியாகும். உங்களிடம் &lt;div&gt; உறுப்புக்குள் &lt;p&gt; உறுப்பு இருந்தால், பயனர் &lt;p&gt; உறுப்பைக் கிளிக் செய்தால், எந்த உறுப்பின் "கிளிக்" நிகழ்வு முதலில் கையாளப்பட வேண்டும்?</p>
+            
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-bubble"></i>
+                        <h4>பகிர்ந்தளிப்பு (Bubbling)</h4>
+                    </div>
+                    <p>உள் உறுப்பின் நிகழ்வு முதலில் கையாளப்படுகிறது, பின்னர் வெளிப்புறம்: &lt;p&gt; உறுப்பின் கிளிக் நிகழ்வு முதலில் கையாளப்படுகிறது, பின்னர் &lt;div&gt; உறுப்பின் கிளிக் நிகழ்வு</p>
+                </div>
+                
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-capture"></i>
+                        <h4>பிடிப்பு (Capturing)</h4>
+                    </div>
+                    <p>வெளிப்புற உறுப்பின் நிகழ்வு முதலில் கையாளப்படுகிறது, பின்னர் உள்: &lt;div&gt; உறுப்பின் கிளிக் நிகழ்வு முதலில் கையாளப்படும், பின்னர் &lt;p&gt; உறுப்பின் கிளிக் நிகழ்வு</p>
+                </div>
+            </div>
+            
+            <p>addEventListener() முறையுடன், "useCapture" அளவுருவைப் பயன்படுத்தி பரவல் வகையைக் குறிப்பிடலாம்:</p>
+            
+            <div class="code-example">
+                <pre><code>addEventListener(event, function, useCapture);</code></pre>
+            </div>
+            
+            <p>இயல்புநிலை மதிப்பு false, இது பகிர்ந்தளிப்பு பரவலைப் பயன்படுத்தும். மதிப்பு true ஆக அமைக்கப்படும் போது, நிகழ்வு பிடிப்பு பரவலைப் பயன்படுத்துகிறது.</p>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <div class="code-example">
+                <pre><code>document.getElementById("myP").addEventListener("click", myFunction, true);
+document.getElementById("myDiv").addEventListener("click", myFunction, true);</code></pre>
+            </div>
+        </section>
+
+        <!-- removeEventListener() method -->
+        <section class="content-section" id="removeEventListener-method">
+            <h2>removeEventListener() முறை</h2>
+            
+            <p>removeEventListener() முறை addEventListener() முறையுடன் இணைக்கப்பட்ட நிகழ்வு கையாளிகளை நீக்குகிறது:</p>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <div class="code-example">
+                <pre><code>element.removeEventListener("mousemove", myFunction);</code></pre>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">💡</span> முக்கியம்:</h4>
+                <p>removeEventListener() முறையைப் பயன்படுத்தி நிகழ்வு கேட்பவரை நீக்க, நீங்கள் addEventListener() ஐப் பயன்படுத்தி சேர்க்கும் போது பயன்படுத்திய அதே செயல்பாட்டைக் குறிப்பிட வேண்டும்.</p>
+            </div>
+        </section>
+
+        <!-- HTML DOM Event Object Reference -->
+        <section class="content-section" id="event-reference">
+            <h2>HTML DOM நிகழ்வு பொருள் குறிப்பு</h2>
+            
+            <p>அனைத்து HTML DOM நிகழ்வுகளின் பட்டியலுக்கு, எங்கள் முழுமையான HTML DOM நிகழ்வு பொருள் குறிப்பைப் பார்க்கவும்.</p>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">📚</span> Siva Team குறிப்பு:</h4>
+                <p>HTML DOM EventListener முறைகள் மற்றும் அவற்றின் பயன்பாடுகள் குறித்த விரிவான குறிப்புகளுக்கு எங்கள் ஆவணங்களைப் பார்க்கவும்.</p>
+            </div>
+        </section>
+
+        <!-- Single Exercise -->
+        <section class="content-section" id="exercises">
+            <h2>EventListener பயிற்சி</h2>
+            
+            <div class="exercise-box">
+                <h4><span class="exercise-icon">❓</span> உலாவி சாளரத்தின் அளவு மாறும் போது 'myfunc' என்ற செயல்பாட்டை இயக்குவதற்கான சட்டபூர்வமான தொடரியல் எது?</h4>
+                
+                <div class="options-grid">
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">window.listen('resize', myfunc);</div>
+                            <div class="option-feedback incorrect">✗ தவறு! listen() என்பது சட்டபூர்வமான JavaScript முறை அல்ல</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="true">
+                        <div class="option-content">
+                            <div class="option-text">window.addEventListener('resize', myfunc);</div>
+                            <div class="option-feedback correct">✓ சரி! addEventListener() என்பது சாளர பொருளுக்கு நிகழ்வு கேட்பவர்களைச் சேர்க்க பயன்படும் சரியான முறை</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">window.addEvent('resize', myfunc);</div>
+                            <div class="option-feedback incorrect">✗ தவறு! addEvent() என்பது சட்டபூர்வமான JavaScript முறை அல்ல</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">window.execute(myfunc, 'resize');</div>
+                            <div class="option-feedback incorrect">✗ தவறு! execute() என்பது நிகழ்வு கேட்பவர்களைச் சேர்க்க பயன்படுத்தப்படும் முறை அல்ல</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bottom Navigation -->
+        <div class="bottom-nav">
+            <a href="JavaScript%20HTML%20DOM%20Events.html" class="nav-tab prev">
+                <i class="fas fa-arrow-left"></i>
+                <span>முந்தைய</span>
+            </a>
+            <a href="Project%20-%20localStorage%20Counter.html" class="nav-tab next">
+                <span>அடுத்தது</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Siva Team Institution</h3>
+                <p>Leading educational institution providing quality programming education in Tamil.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#addEventListener-method">addEventListener() முறை</a></li>
+                    <li><a href="#syntax">தொடரியல்</a></li>
+                    <li><a href="#add-handler">நிகழ்வு கையாளியைச் சேர்த்தல்</a></li>
+                    <li><a href="#many-handlers">பல நிகழ்வு கையாளிகள்</a></li>
+                    <li><a href="#window-handler">சாளர பொருள்</a></li>
+                    <li><a href="#bubbling-capturing">பகிர்ந்தளிப்பு vs பிடிப்பு</a></li>
+                    <li><a href="#removeEventListener-method">removeEventListener()</a></li>
+                    <li><a href="#exercises">பயிற்சி</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Location & Hours</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <ul>
+                    <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Siva Team Institution. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all content sections for animation
+        document.querySelectorAll('.content-section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Exercise interaction
+        document.querySelectorAll('.option-card').forEach(card => {
+            card.addEventListener('click', function() {
+                // Show feedback for all options
+                document.querySelectorAll('.option-card').forEach(c => {
+                    c.querySelector('.option-feedback').style.display = 'block';
+                });
+            });
+        });
+    </script>
+
+    <!-- Home Button -->
+    <a href="index.html" class="home-icon">
+        <i class="fas fa-home"></i>
+    </a>
+</body>
+</html>
+
+

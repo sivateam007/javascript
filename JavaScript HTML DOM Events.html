@@ -1,0 +1,438 @@
+﻿<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript HTML DOM Events - Siva Team</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .content-section p, 
+        .content-section li,
+        .content-section h3,
+        .content-section h4,
+        .comparison-card p {
+            color: #333 !important;
+        }
+        
+        .tip-box p,
+        .tip-box li,
+        .tip-box h4 {
+            color: white !important;
+        }
+        
+        .warning-box p,
+        .warning-box li,
+        .warning-box h4 {
+            color: white !important;
+        }
+        
+        .exercise-box p,
+        .exercise-box h4 {
+            color: white !important;
+        }
+        
+        /* Stable logo styling - NO ANIMATIONS */
+        .logo-icon {
+            animation: none !important;
+        }
+        
+        .logo-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            animation: none !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <img src="logo.jpg" alt="Siva Team Logo" class="logo-image">
+                </div>
+                <h1>Siva Team <span>Institution</span></h1>
+            </div>
+        </div>
+    </header>
+
+    <!-- Top Navigation Tabs -->
+    <div class="nav-tabs">
+        <a href="JavaScript%20Event%20Management.html" class="nav-tab prev">
+            <i class="fas fa-arrow-left"></i>
+            <span>முந்தைய</span>
+        </a>
+        <a href="JavaScript%20HTML%20DOM%20EventListener.html" class="nav-tab next">
+            <span>அடுத்தது</span>
+            <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2>JavaScript HTML DOM Events</h2>
+            <p>HTML DOM நிகழ்வுகளைப் புரிந்துகொள்ளுங்கள்</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Reacting to Events -->
+        <section class="content-section" id="reacting-events">
+            <h2>நிகழ்வுகளுக்கு வினைதெரிதல்</h2>
+            
+            <p>ஒரு நிகழ்வு ஏற்படும் போது JavaScript இயக்கப்படலாம், ஒரு பயனர் HTML உறுப்பில் கிளிக் செய்யும் போது போல.</p>
+            
+            <p>ஒரு பயனர் ஒரு உறுப்பில் கிளிக் செய்யும் போது குறியீட்டை இயக்க, ஒரு HTML நிகழ்வு பண்புக்கூறுக்கு JavaScript குறியீட்டைச் சேர்க்கவும்:</p>
+            
+            <div class="code-example">
+                <pre><code>onclick=JavaScript</code></pre>
+            </div>
+            
+            <p>HTML நிகழ்வுகளின் எடுத்துக்காட்டுகள்:</p>
+            
+            <ul>
+                <li>பயனர் சுட்டியைக் கிளிக் செய்யும் போது</li>
+                <li>வலைப் பக்கம் ஏற்றப்பட்ட பிறகு</li>
+                <li>படம் ஏற்றப்பட்ட பிறகு</li>
+                <li>சுட்டி ஒரு உறுப்பின் மேல் நகரும் போது</li>
+                <li>உள்ளீட்டுப் புலம் மாற்றப்படும் போது</li>
+                <li>HTML படிவம் சமர்ப்பிக்கப்படும் போது</li>
+                <li>பயனர் விசையை அழுத்தும் போது</li>
+            </ul>
+        </section>
+
+        <!-- Event Examples -->
+        <section class="content-section" id="event-examples">
+            <h2>நிகழ்வு எடுத்துக்காட்டுகள்</h2>
+            
+            <h3>எடுத்துக்காட்டு 1</h3>
+            <p>இந்த எடுத்துக்காட்டில், பயனர் அதைக் கிளிக் செய்யும் போது &lt;h1&gt; உறுப்பின் உள்ளடக்கம் மாறுகிறது:</p>
+            
+            <div class="code-example">
+                <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+
+&lt;h1 onclick="this.innerHTML = 'Ooops!'"&gt;Click on this text!&lt;/h1&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            </div>
+            
+            <h3>எடுத்துக்காட்டு 2</h3>
+            <p>இந்த எடுத்துக்காட்டில், நிகழ்வு கையாளியிலிருந்து ஒரு செயல்பாடு அழைக்கப்படுகிறது:</p>
+            
+            <div class="code-example">
+                <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+
+&lt;h1 onclick="changeText(this)"&gt;Click on this text!&lt;/h1&gt;
+
+&lt;script&gt;
+function changeText(id) {
+  id.innerHTML = "Ooops!";
+}
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            </div>
+        </section>
+
+        <!-- HTML Event Attributes -->
+        <section class="content-section" id="event-attributes">
+            <h2>HTML நிகழ்வு பண்புக்கூறுகள்</h2>
+            
+            <p>HTML உறுப்புகளுக்கு நிகழ்வுகளை ஒதுக்க நீங்கள் நிகழ்வு பண்புக்கூறுகளைப் பயன்படுத்தலாம்.</p>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <p>பட்டன் உறுப்புக்கு onclick நிகழ்வை ஒதுக்கவும்:</p>
+            
+            <div class="code-example">
+                <pre><code>&lt;button onclick="displayDate()"&gt;Try it&lt;/button&gt;</code></pre>
+            </div>
+            
+            <p>மேலே உள்ள எடுத்துக்காட்டில், பட்டன் கிளிக் செய்யப்படும் போது displayDate என்ற செயல்பாடு இயக்கப்படும்.</p>
+        </section>
+
+        <!-- Assign Events Using HTML DOM -->
+        <section class="content-section" id="assign-events">
+            <h2>HTML DOM பயன்படுத்தி நிகழ்வுகளை ஒதுக்குதல்</h2>
+            
+            <p>HTML DOM உங்களை JavaScript ஐப் பயன்படுத்தி HTML உறுப்புகளுக்கு நிகழ்வுகளை ஒதுக்க அனுமதிக்கிறது:</p>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <p>பட்டன் உறுப்புக்கு onclick நிகழ்வை ஒதுக்கவும்:</p>
+            
+            <div class="code-example">
+                <pre><code>&lt;script&gt;
+document.getElementById("myBtn").onclick = displayDate;
+&lt;/script&gt;</code></pre>
+            </div>
+            
+            <p>மேலே உள்ள எடுத்துக்காட்டில், displayDate என்ற செயல்பாடு id="myBtn" உடன் HTML உறுப்புக்கு ஒதுக்கப்பட்டுள்ளது.</p>
+            <p>பட்டன் கிளிக் செய்யப்படும் போது செயல்பாடு இயக்கப்படும்.</p>
+        </section>
+
+        <!-- onload and onunload Events -->
+        <section class="content-section" id="load-unload-events">
+            <h2>onload மற்றும் onunload நிகழ்வுகள்</h2>
+            
+            <p>பயனர் பக்கத்திற்குள் நுழையும் அல்லது வெளியேறும் போது onload மற்றும் onunload நிகழ்வுகள் தூண்டப்படுகின்றன.</p>
+            
+            <p>onload நிகழ்வை பார்வையாளரின் உலாவி வகை மற்றும் உலாவி பதிப்பை சரிபார்க்கவும், தகவலின் அடிப்படையில் வலைப்பக்கத்தின் சரியான பதிப்பை ஏற்றவும் பயன்படுத்தலாம்.</p>
+            
+            <p>onload மற்றும் onunload நிகழ்வுகளை குக்கீகளைக் கையாள பயன்படுத்தலாம்.</p>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <div class="code-example">
+                <pre><code>&lt;body onload="checkCookies()"&gt;</code></pre>
+            </div>
+        </section>
+
+        <!-- oninput Event -->
+        <section class="content-section" id="oninput-event">
+            <h2>oninput நிகழ்வு</h2>
+            
+            <p>பயனர் உள்ளீட்டுத் தரவை உள்ளிடும் போது oninput நிகழ்வு பெரும்பாலும் சில செயல்களுக்குப் பயன்படுத்தப்படுகிறது.</p>
+            
+            <p>oninput ஐப் பயன்படுத்தி உள்ளீட்டுப் புலத்தின் உள்ளடக்கத்தை மாற்றுவது குறித்த எடுத்துக்காட்டு கீழே உள்ளது.</p>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <div class="code-example">
+                <pre><code>&lt;input type="text" id="fname" oninput="upperCase()"&gt;</code></pre>
+            </div>
+        </section>
+
+        <!-- onchange Event -->
+        <section class="content-section" id="onchange-event">
+            <h2>onchange நிகழ்வு</h2>
+            
+            <p>onchange நிகழ்வு பெரும்பாலும் உள்ளீட்டுப் புலங்களின் சரிபார்ப்புடன் இணைந்து பயன்படுத்தப்படுகிறது.</p>
+            
+            <p>onchange ஐப் பயன்படுத்துவதற்கான எடுத்துக்காட்டு கீழே உள்ளது. பயனர் உள்ளீட்டுப் புலத்தின் உள்ளடக்கத்தை மாற்றும் போது upperCase() செயல்பாடு அழைக்கப்படும்.</p>
+            
+            <h3>எடுத்துக்காட்டு</h3>
+            <div class="code-example">
+                <pre><code>&lt;input type="text" id="fname" onchange="upperCase()"&gt;</code></pre>
+            </div>
+        </section>
+
+        <!-- Mouse Events -->
+        <section class="content-section" id="mouse-events">
+            <h2>சுட்டி நிகழ்வுகள்</h2>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">🖱️</span> onmouseover மற்றும் onmouseout நிகழ்வுகள்:</h4>
+                <p>பயனர் ஒரு HTML உறுப்பின் மேல் சுட்டியை நகர்த்தும் போது அல்லது வெளியேறும் போது ஒரு செயல்பாட்டைத் தூண்ட onmouseover மற்றும் onmouseout நிகழ்வுகளைப் பயன்படுத்தலாம்.</p>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">🖱️</span> onmousedown, onmouseup மற்றும் onclick நிகழ்வுகள்:</h4>
+                <p>onmousedown, onmouseup, மற்றும் onclick நிகழ்வுகள் அனைத்தும் சுட்டி-கிளிக்கின் பகுதிகளாகும். முதலில் சுட்டி-பட்டன் கிளிக் செய்யப்படும் போது, onmousedown நிகழ்வு தூண்டப்படுகிறது, பின்னர் சுட்டி-பட்டன் விடுவிக்கப்படும் போது, onmouseup நிகழ்வு தூண்டப்படுகிறது, இறுதியாக, சுட்டி-கிளிக் முடிந்ததும், onclick நிகழ்வு தூண்டப்படுகிறது.</p>
+            </div>
+        </section>
+
+        <!-- More Examples -->
+        <section class="content-section" id="more-examples">
+            <h2>மேலும் எடுத்துக்காட்டுகள்</h2>
+            
+            <div class="examples-grid">
+                <div class="example-card">
+                    <div class="example-icon">
+                        <i class="fas fa-mouse-pointer"></i>
+                    </div>
+                    <h4>onmousedown மற்றும் onmouseup</h4>
+                    <p>பயனர் சுட்டி பொத்தானை அழுத்தி வைத்திருக்கும் போது படத்தை மாற்றவும்.</p>
+                </div>
+                
+                <div class="example-card">
+                    <div class="example-icon">
+                        <i class="fas fa-download"></i>
+                    </div>
+                    <h4>onload</h4>
+                    <p>பக்கம் ஏற்றுதல் முடிந்ததும் எச்சரிக்கை பெட்டியைக் காண்பிக்கவும்.</p>
+                </div>
+                
+                <div class="example-card">
+                    <div class="example-icon">
+                        <i class="fas fa-keyboard"></i>
+                    </div>
+                    <h4>onfocus</h4>
+                    <p>உள்ளீட்டுப் புலம் கவனம் பெறும் போது அதன் பின்புல-நிறத்தை மாற்றவும்.</p>
+                </div>
+                
+                <div class="example-card">
+                    <div class="example-icon">
+                        <i class="fas fa-mouse"></i>
+                    </div>
+                    <h4>சுட்டி நிகழ்வுகள்</h4>
+                    <p>கர்சர் ஒரு உறுப்பின் மேல் நகரும் போது அதன் நிறத்தை மாற்றவும்.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- HTML DOM Event Object Reference -->
+        <section class="content-section" id="event-reference">
+            <h2>HTML DOM நிகழ்வு பொருள் குறிப்பு</h2>
+            
+            <p>அனைத்து HTML DOM நிகழ்வுகளின் பட்டியலுக்கு, எங்கள் முழுமையான HTML DOM நிகழ்வு பொருள் குறிப்பைப் பார்க்கவும்.</p>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">📚</span> Siva Team குறிப்பு:</h4>
+                <p>HTML DOM நிகழ்வுகள் மற்றும் அவற்றின் பயன்பாடுகள் குறித்த விரிவான குறிப்புகளுக்கு எங்கள் ஆவணங்களைப் பார்க்கவும்.</p>
+            </div>
+        </section>
+
+        <!-- Single Exercise -->
+        <section class="content-section" id="exercises">
+            <h2>HTML DOM நிகழ்வுகள் பயிற்சி</h2>
+            
+            <div class="exercise-box">
+                <h4><span class="exercise-icon">❓</span> பட்டன் கிளிக் செய்யப்படும் போது சில செயல்களைச் சேர்க்க பயன்படுத்தப்படும் சட்டபூர்வமான HTML பண்புக்கூறு எது?</h4>
+                
+                <div class="options-grid">
+                    <div class="option-card" data-correct="true">
+                        <div class="option-content">
+                            <div class="option-text">&lt;button onclick='alert(10)'&gt;Click me&lt;/button&gt;</div>
+                            <div class="option-feedback correct">✓ சரி! onclick என்பது பட்டன் கிளிக் செய்யப்படும் போது JavaScript குறியீட்டை இயக்க பயன்படும் சட்டபூர்வமான HTML பண்புக்கூறு</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">&lt;button click='alert(10)'&gt;Click me&lt;/button&gt;</div>
+                            <div class="option-feedback incorrect">✗ தவறு! 'click' என்பது சட்டபூர்வமான HTML நிகழ்வு பண்புக்கூறு அல்ல</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">&lt;button press='alert(10)'&gt;Click me&lt;/button&gt;</div>
+                            <div class="option-feedback incorrect">✗ தவறு! 'press' என்பது சட்டபூர்வமான HTML நிகழ்வு பண்புக்கூறு அல்ல</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bottom Navigation -->
+        <div class="bottom-nav">
+            <a href="JavaScript%20Event%20Management.html" class="nav-tab prev">
+                <i class="fas fa-arrow-left"></i>
+                <span>முந்தைய</span>
+            </a>
+            <a href="JavaScript%20HTML%20DOM%20EventListener.html" class="nav-tab next">
+                <span>அடுத்தது</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Siva Team Institution</h3>
+                <p>Leading educational institution providing quality programming education in Tamil.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#reacting-events">நிகழ்வுகளுக்கு வினைதெரிதல்</a></li>
+                    <li><a href="#event-examples">நிகழ்வு எடுத்துக்காட்டுகள்</a></li>
+                    <li><a href="#event-attributes">HTML நிகழ்வு பண்புக்கூறுகள்</a></li>
+                    <li><a href="#assign-events">HTML DOM மூலம் ஒதுக்குதல்</a></li>
+                    <li><a href="#mouse-events">சுட்டி நிகழ்வுகள்</a></li>
+                    <li><a href="#more-examples">மேலும் எடுத்துக்காட்டுகள்</a></li>
+                    <li><a href="#exercises">பயிற்சி</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Location & Hours</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <ul>
+                    <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Siva Team Institution. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all content sections for animation
+        document.querySelectorAll('.content-section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Exercise interaction
+        document.querySelectorAll('.option-card').forEach(card => {
+            card.addEventListener('click', function() {
+                // Show feedback for all options
+                document.querySelectorAll('.option-card').forEach(c => {
+                    c.querySelector('.option-feedback').style.display = 'block';
+                });
+            });
+        });
+    </script>
+
+    <!-- Home Button -->
+    <a href="index.html" class="home-icon">
+        <i class="fas fa-home"></i>
+    </a>
+</body>
+</html>
+
+

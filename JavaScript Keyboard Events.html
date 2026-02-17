@@ -1,0 +1,939 @@
+﻿<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Keyboard Events - Siva Team</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .content-section p, 
+        .content-section li,
+        .content-section h3,
+        .content-section h4,
+        .comparison-card p {
+            color: #333 !important;
+        }
+        
+        .tip-box p,
+        .tip-box li,
+        .tip-box h4 {
+            color: white !important;
+        }
+        
+        .warning-box p,
+        .warning-box li,
+        .warning-box h4 {
+            color: white !important;
+        }
+        
+        .exercise-box p,
+        .exercise-box h4 {
+            color: white !important;
+        }
+        
+        /* Stable logo styling - NO ANIMATIONS */
+        .logo-icon {
+            animation: none !important; /* Remove pulse animation */
+        }
+        
+        .logo-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            animation: none !important; /* Ensure no animations */
+        }
+        
+        /* Keyboard event demo styles */
+        .keyboard-demo {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--git-color);
+        }
+        
+        .demo-output {
+            background: white;
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+            border: 1px solid #ddd;
+            min-height: 60px;
+        }
+        
+        .demo-btn {
+            background: linear-gradient(135deg, var(--git-color), #e74c3c);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+            margin: 0.5rem 0.5rem 0.5rem 0;
+            font-weight: 600;
+        }
+        
+        .demo-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .keyboard-input {
+            background: white;
+            padding: 1rem;
+            border-radius: 5px;
+            border: 2px solid #ddd;
+            margin: 1rem 0;
+            font-size: 1.2rem;
+            width: 100%;
+            transition: border-color 0.3s;
+        }
+        
+        .keyboard-input:focus {
+            border-color: var(--git-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(240, 80, 51, 0.1);
+        }
+        
+        .event-log {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            max-height: 250px;
+            overflow-y: auto;
+        }
+        
+        .log-entry {
+            margin-bottom: 0.3rem;
+            padding: 0.3rem;
+            border-bottom: 1px solid #444;
+        }
+        
+        .log-entry:last-child {
+            border-bottom: none;
+        }
+        
+        .key-info-box {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+        
+        .key-visual {
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            text-align: center;
+            font-size: 2rem;
+            font-weight: bold;
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .modifier-keys {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+        
+        .modifier-key {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .modifier-key.active {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            transform: scale(1.05);
+        }
+        
+        .keyboard-table {
+            margin: 2rem 0;
+            overflow-x: auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .keyboard-table table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+        
+        .keyboard-table th {
+            background: linear-gradient(135deg, var(--git-color), #e74c3c);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .keyboard-table td {
+            padding: 0.8rem 1rem;
+            border-bottom: 1px solid #f0f0f0;
+            vertical-align: top;
+        }
+        
+        .keyboard-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .keyboard-table tr:hover {
+            background-color: #f0f7ff;
+        }
+        
+        .property-name {
+            color: var(--git-color);
+            font-weight: 600;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .key-example {
+            font-family: 'Courier New', monospace;
+            background: #f0f0f0;
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+            margin: 0 0.2rem;
+        }
+        
+        .demo-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <img src="logo.jpg" alt="Siva Team Logo" class="logo-image">
+                </div>
+                <h1>Siva Team <span>Institution</span></h1>
+            </div>
+        </div>
+    </header>
+
+    <!-- Top Navigation Tabs -->
+    <div class="nav-tabs">
+        <a href="JavaScript%20Mouse%20Events.html" class="nav-tab prev">
+            <i class="fas fa-arrow-left"></i>
+            <span>முந்தைய</span>
+        </a>
+        <a href="JavaScript%20Load%20Events.html" class="nav-tab next">
+            <span>அடுத்தது</span>
+            <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2>JavaScript Keyboard Events</h2>
+            <p>விசைப்பலகை நிகழ்வுகளைக் கற்றுக்கொள்ளுங்கள்</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Introduction -->
+        <section class="content-section" id="introduction">
+            <h2>JavaScript விசைப்பலகை நிகழ்வுகள்</h2>
+            
+            <p>பயனர் விசைப்பலகையில் ஒரு விசையை அழுத்தும் போது விசைப்பலகை நிகழ்வுகள் நடக்கும்:</p>
+            
+            <ul>
+                <li><span class="property-name">keydown</span> (விசை அழுத்தப்படுகிறது)</li>
+                <li><span class="property-name">keyup</span> (விசை விடப்படுகிறது)</li>
+                <li><span class="property-name">keypress</span> (பழையது)</li>
+            </ul>
+            
+            <div class="warning-box">
+                <h4><span class="warning-icon">⚠️</span> குறிப்பு:</h4>
+                <p><span class="property-name">keypress</span> எழுத்து விசைகளுக்கு மட்டுமே (a அல்லது 5) தூண்டுகிறது, கட்டுப்பாட்டு விசைகளுக்கு (alt அல்லது backspace) அல்ல.</p>
+                <p>டெவலப்பர்கள் <span class="property-name">keydown</span> அல்லது <span class="property-name">keyup</span> ஐப் பயன்படுத்த அறிவுறுத்தப்படுகிறார்கள்.</p>
+            </div>
+        </section>
+
+        <!-- The keydown Event -->
+        <section class="content-section" id="keydown-event">
+            <h2>The keydown நிகழ்வு</h2>
+            
+            <h3>event.key ஐப் பயன்படுத்துதல்</h3>
+            
+            <div class="code-example">
+                <h3>எடுத்துக்காட்டு</h3>
+                <p>எந்த விசை அழுத்தப்பட்டது எனக் காட்டு:</p>
+                <pre><code>&lt;input id="k" type="text" placeholder="Press a key"&gt;
+
+&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+const k = document.getElementById("k");
+
+// Let k listen for keydown
+k.addEventListener("keydown", function (event) {
+// Then display the event.key
+  document.getElementById("demo").innerHTML = "You pressed: " + event.key;
+});
+&lt;/script&gt;</code></pre>
+            </div>
+        </section>
+
+        <!-- Interactive Keyboard Demo -->
+        <section class="content-section" id="interactive-demo">
+            <h2>ஊடாடும் விசைப்பலகை ஆர்ப்பாட்டம்</h2>
+            
+            <div class="keyboard-demo">
+                <h4>உங்கள் விசைப்பலகையைச் சோதிக்கவும்:</h4>
+                
+                <input type="text" class="keyboard-input" id="keyboardInput" placeholder="இங்கே தட்டச்சு செய்யவும் அல்லது விசைகளை அழுத்தவும்">
+                
+                <div class="key-visual" id="keyVisual">
+                    ⌨️ அழுத்தப்பட்ட விசை இங்கே தோன்றும்
+                </div>
+                
+                <div class="key-info-box" id="keyInfo">
+                    விசைத் தகவல்: விசையை அழுத்தத் தொடங்கவும்
+                </div>
+                
+                <h4>மாற்றி விசைகள்:</h4>
+                <div class="modifier-keys">
+                    <div class="modifier-key" id="ctrlKey">
+                        <i class="fas fa-keyboard"></i> Ctrl
+                    </div>
+                    <div class="modifier-key" id="shiftKey">
+                        <i class="fas fa-keyboard"></i> Shift
+                    </div>
+                    <div class="modifier-key" id="altKey">
+                        <i class="fas fa-keyboard"></i> Alt
+                    </div>
+                    <div class="modifier-key" id="metaKey">
+                        <i class="fas fa-keyboard"></i> Meta (Cmd/Win)
+                    </div>
+                </div>
+                
+                <div class="event-log" id="keyboardEventLog">
+                    <div class="log-entry">⌨️ விசைப்பலகை நிகழ்வு பதிவு: இங்கே நிகழ்வுகள் தோன்றும்...</div>
+                </div>
+                
+                <div class="demo-controls">
+                    <button class="demo-btn" onclick="startEnterTest()">
+                        <i class="fas fa-enter"></i> Enter சோதனை
+                    </button>
+                    <button class="demo-btn" onclick="testShortcuts()">
+                        <i class="fas fa-bolt"></i> குறுக்குவழி சோதனை
+                    </button>
+                    <button class="demo-btn" onclick="clearKeyboardLog()">
+                        <i class="fas fa-trash"></i> பதிவை அழி
+                    </button>
+                    <button class="demo-btn" onclick="toggleKeypress()">
+                        <i class="fas fa-toggle-on"></i> keypress மாற்று
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Properties -->
+        <section class="content-section" id="key-properties">
+            <h2>விசை பண்புகள்</h2>
+            
+            <p>KeyboardEvent பொருள் நிகழ்வில் எந்த விசை ஈடுபட்டிருந்தது என்பதைத் தீர்மானிக்க பயனுள்ள பண்புகளை வழங்குகிறது:</p>
+            
+            <div class="keyboard-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>பண்பு</th>
+                            <th>விளக்கம்</th>
+                            <th>Z ஐ அழுத்தும்போது</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="property-name">event.key</td>
+                            <td>விசையின் மதிப்பைத் திருப்பித் தருகிறது. மொழி அமைப்புகளைப் பொறுத்து மாறுபடலாம்.</td>
+                            <td class="key-example">z ஐத் திருப்பித் தருகிறது (அல்லது Shift பிடிக்கப்பட்டால் Z)</td>
+                        </tr>
+                        <tr>
+                            <td class="property-name">event.code</td>
+                            <td>விசைக் குறியீட்டைத் திருப்பித் தருகிறது. மொழி அமைப்புகளைப் பொருட்படுத்தாமல் மாறாமல் இருக்கும்.</td>
+                            <td class="key-example">எப்போதும் "KeyZ" ஐத் திருப்பித் தருகிறது</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">💡</span> குறிப்பு:</h4>
+                <p>நீங்கள் <span class="property-name">event.ctrlKey</span>, <span class="property-name">event.shiftKey</span>, <span class="property-name">event.altKey</span>, மற்றும் <span class="property-name">event.metaKey</span> போன்ற பண்புகளைப் பயன்படுத்தி மாற்றி விசைகளைக் கண்டறியலாம், மேலும் விசை சேர்க்கைகளைச் செயல்படுத்தலாம் (எ.கா., Ctrl + S).</p>
+            </div>
+        </section>
+
+        <!-- Detect Enter -->
+        <section class="content-section" id="detect-enter">
+            <h2>Enter ஐக் கண்டறிதல்</h2>
+            
+            <h3>event.code ஐப் பயன்படுத்துதல்</h3>
+            
+            <div class="code-example">
+                <pre><code>&lt;input id="in01" type="text" placeholder="Press Enter"&gt;
+
+&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+const in01 = document.getElementById("in01");
+
+// Let in01 listen for keydown
+in01.addEventListener("keydown", function (event) {
+// If event.code was "enter", then display text
+  if (event.code === "Enter") {
+    document.getElementById("demo").innerHTML = "Enter was pressed!";
+  }
+});
+&lt;/script&gt;</code></pre>
+            </div>
+            
+            <div class="keyboard-demo">
+                <h4>Enter விசை சோதனை:</h4>
+                
+                <input type="text" class="keyboard-input" id="enterTestInput" placeholder="Enter விசையை அழுத்தவும்">
+                
+                <div class="demo-output" id="enterOutput">
+                    Enter விசை வெளியீடு இங்கே தோன்றும்...
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Comparison -->
+        <section class="content-section" id="key-comparison">
+            <h2>event.key vs event.code</h2>
+            
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-language"></i>
+                        <h4>event.key</h4>
+                    </div>
+                    <p>மொழி-சார்ந்தது</p>
+                    <p>உண்மையான எழுத்து/சின்னத்தைத் தருகிறது</p>
+                    <p class="property-name">"a", "A", "अ", "あ"</p>
+                    <p>Shift, CapsLock ஆகியவற்றின் விளைவைக் காட்டுகிறது</p>
+                </div>
+                
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-code"></i>
+                        <h4>event.code</h4>
+                    </div>
+                    <p>மொழி-சார்பற்றது</p>
+                    <p>இயற்பியல் விசை இடத்தைத் தருகிறது</p>
+                    <p class="property-name">"KeyA", "Digit1", "Space"</p>
+                    <p>குறிப்பிட்ட விசைப்பலகை வடிவத்திற்கு சரிசெய்யப்பட்டது</p>
+                </div>
+            </div>
+            
+            <div class="keyboard-demo">
+                <h4>விசை மதிப்புகளின் எடுத்துக்காட்டுகள்:</h4>
+                
+                <div class="demo-output">
+                    <table style="width: 100%; font-family: 'Courier New', monospace;">
+                        <tr>
+                            <th>விசை</th>
+                            <th>event.key</th>
+                            <th>event.code</th>
+                        </tr>
+                        <tr>
+                            <td>A</td>
+                            <td>"a" அல்லது "A"</td>
+                            <td>"KeyA"</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>"1" அல்லது "!"</td>
+                            <td>"Digit1"</td>
+                        </tr>
+                        <tr>
+                            <td>Enter</td>
+                            <td>"Enter"</td>
+                            <td>"Enter"</td>
+                        </tr>
+                        <tr>
+                            <td>Space</td>
+                            <td>" "</td>
+                            <td>"Space"</td>
+                        </tr>
+                        <tr>
+                            <td>Shift</td>
+                            <td>"Shift"</td>
+                            <td>"ShiftLeft" / "ShiftRight"</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Keyboard Shortcuts Demo -->
+        <section class="content-section" id="shortcuts-demo">
+            <h2>விசைப்பலகை குறுக்குவழிகள்</h2>
+            
+            <div class="keyboard-demo">
+                <h4>பொதுவான குறுக்குவழிகளைச் சோதிக்கவும்:</h4>
+                
+                <div class="demo-output" id="shortcutOutput">
+                    குறுக்குவழி வெளியீடு இங்கே தோன்றும்...
+                </div>
+                
+                <div class="demo-controls">
+                    <button class="demo-btn" onclick="simulateCtrlS()">
+                        <i class="fas fa-save"></i> Ctrl+S (சேமி)
+                    </button>
+                    <button class="demo-btn" onclick="simulateCtrlC()">
+                        <i class="fas fa-copy"></i> Ctrl+C (நகலெடு)
+                    </button>
+                    <button class="demo-btn" onclick="simulateCtrlV()">
+                        <i class="fas fa-paste"></i> Ctrl+V (ஒட்டு)
+                    </button>
+                    <button class="demo-btn" onclick="simulateCtrlZ()">
+                        <i class="fas fa-undo"></i> Ctrl+Z (மீளமை)
+                    </button>
+                </div>
+                
+                <div class="tip-box">
+                    <h4><span class="tip-icon">🎮</span> குறுக்குவழி குறிப்புகள்:</h4>
+                    <ul>
+                        <li>Ctrl+C, Ctrl+X, Ctrl+V - நகல், வெட்டு, ஒட்டு</li>
+                        <li>Ctrl+Z, Ctrl+Y - மீளமை, மீண்டும் செய்</li>
+                        <li>Ctrl+S - சேமி</li>
+                        <li>Ctrl+F - கண்டுபிடி</li>
+                        <li>Ctrl+A - அனைத்தையும் தேர்ந்தெடு</li>
+                        <li>Alt+Tab - பயன்பாடுகளுக்கிடையே மாறவும்</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Summary -->
+        <section class="content-section" id="summary">
+            <h2>சுருக்கம்</h2>
+            
+            <p>JavaScript விசைப்பலகை நிகழ்வுகளை வழங்குகிறது, இது விசைப்பலகையிலிருந்து பயனர் உள்ளீட்டைக் கண்டறிந்து கையாள உதவுகிறது, இது படிவ சரிபார்ப்பு, விளையாட்டுக் கட்டுப்பாடுகள் மற்றும் விசைப்பலகை குறுக்குவழிகள் போன்ற ஊடாடும் வலை அனுபவங்களை இயலுமைப்படுத்துகிறது.</p>
+            
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-gamepad"></i>
+                        <h4>விளையாட்டுகள்</h4>
+                    </div>
+                    <p>WASD அல்லது அம்புக்குறி விசைகளைப் பயன்படுத்தி எழுத்துகளை நகர்த்தவும்</p>
+                </div>
+                
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-edit"></i>
+                        <h4>படிவங்கள்</h4>
+                    </div>
+                    <p>Enter விசையை அழுத்தி படிவங்களைச் சமர்ப்பிக்கவும், Tab விசையைப் பயன்படுத்தி புலங்களுக்கு இடையே நகரவும்</p>
+                </div>
+                
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-keyboard"></i>
+                        <h4>குறுக்குவழிகள்</h4>
+                    </div>
+                    <p>பயன்பாட்டு குறுக்குவழிகளைச் செயல்படுத்தவும் (Ctrl+S, Ctrl+C, போன்றவை)</p>
+                </div>
+                
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-search"></i>
+                        <h4>தேடல்</h4>
+                    </div>
+                    <p>Ctrl+F உடன் தேடலைத் தொடங்கவும், Esc உடன் மூடவும்</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Exercise - ONLY ONE EXERCISE -->
+        <section class="content-section" id="exercise">
+            <h2>பயிற்சி</h2>
+            
+            <div class="exercise-box">
+                <h4><span class="exercise-icon">❓</span> பின்வருவனவற்றில் எது பயனர் விசைப்பலகையில் ஒரு விசையை அழுத்தும் போது தூண்டப்படும் சரியான நிகழ்வு?</h4>
+                
+                <div class="options-grid">
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">keypress</div>
+                            <div class="option-feedback incorrect">✗ தவறு! keypress என்பது பழையது மற்றும் எழுத்து விசைகளுக்கு மட்டுமே தூண்டுகிறது, கட்டுப்பாட்டு விசைகளுக்கு அல்ல</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="true">
+                        <div class="option-content">
+                            <div class="option-text">keydown</div>
+                            <div class="option-feedback correct">✓ சரி! keydown என்பது பயனர் விசைப்பலகையில் ஒரு விசையை அழுத்தும் போது தூண்டப்படும் சரியான நிகழ்வாகும்</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">keyhit</div>
+                            <div class="option-feedback incorrect">✗ தவறு! keyhit என்பது JavaScript இல் சட்டபூர்வமான நிகழ்வு அல்ல</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">keytype</div>
+                            <div class="option-feedback incorrect">✗ தவறு! keytype என்பது JavaScript இல் சட்டபூர்வமான நிகழ்வு அல்ல</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bottom Navigation -->
+        <div class="bottom-nav">
+            <a href="JavaScript%20Mouse%20Events.html" class="nav-tab prev">
+                <i class="fas fa-arrow-left"></i>
+                <span>முந்தைய</span>
+            </a>
+            <a href="JavaScript%20Load%20Events.html" class="nav-tab next">
+                <span>அடுத்தது</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Siva Team Institution</h3>
+                <p>Leading educational institution providing quality programming education in Tamil.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#introduction">விசைப்பலகை நிகழ்வுகள்</a></li>
+                    <li><a href="#keydown-event">keydown நிகழ்வு</a></li>
+                    <li><a href="#key-properties">விசை பண்புகள்</a></li>
+                    <li><a href="#detect-enter">Enter ஐக் கண்டறிதல்</a></li>
+                    <li><a href="#shortcuts-demo">குறுக்குவழிகள்</a></li>
+                    <li><a href="#exercise">பயிற்சி</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Location & Hours</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <ul>
+                    <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Siva Team Institution. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all content sections for animation
+        document.querySelectorAll('.content-section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Exercise interaction
+        document.querySelectorAll('.option-card').forEach(card => {
+            card.addEventListener('click', function() {
+                // Show feedback for all options
+                document.querySelectorAll('.option-card').forEach(c => {
+                    c.querySelector('.option-feedback').style.display = 'block';
+                });
+            });
+        });
+
+        // Keyboard event demo functions
+        const keyboardEventLog = document.getElementById('keyboardEventLog');
+        const keyVisual = document.getElementById('keyVisual');
+        const keyInfo = document.getElementById('keyInfo');
+        const keyboardInput = document.getElementById('keyboardInput');
+        const enterTestInput = document.getElementById('enterTestInput');
+        const enterOutput = document.getElementById('enterOutput');
+        const shortcutOutput = document.getElementById('shortcutOutput');
+        let keypressEnabled = false;
+        let enterTestActive = false;
+        
+        function addKeyboardLogEntry(message) {
+            const entry = document.createElement('div');
+            entry.className = 'log-entry';
+            entry.innerHTML = `⌨️ ${new Date().toLocaleTimeString()}: ${message}`;
+            keyboardEventLog.appendChild(entry);
+            keyboardEventLog.scrollTop = keyboardEventLog.scrollHeight;
+        }
+        
+        function clearKeyboardLog() {
+            keyboardEventLog.innerHTML = '<div class="log-entry">🧹 விசைப்பலகை நிகழ்வு பதிவு அழிக்கப்பட்டது...</div>';
+            shortcutOutput.innerHTML = 'குறுக்குவழி வெளியீடு இங்கே தோன்றும்...';
+        }
+        
+        function updateModifierKeys(event) {
+            const ctrlKey = document.getElementById('ctrlKey');
+            const shiftKey = document.getElementById('shiftKey');
+            const altKey = document.getElementById('altKey');
+            const metaKey = document.getElementById('metaKey');
+            
+            ctrlKey.classList.toggle('active', event.ctrlKey);
+            shiftKey.classList.toggle('active', event.shiftKey);
+            altKey.classList.toggle('active', event.altKey);
+            metaKey.classList.toggle('active', event.metaKey);
+        }
+        
+        // Main keyboard input event handling
+        keyboardInput.addEventListener('keydown', function(event) {
+            event.preventDefault(); // Prevent default to avoid cursor movement
+            
+            const key = event.key;
+            const code = event.code;
+            
+            // Update visual display
+            keyVisual.innerHTML = `<div>
+                <div style="font-size: 3rem;">${key === ' ' ? '␣' : key}</div>
+                <small>key: "${key}"</small>
+            </div>`;
+            
+            // Update key info
+            keyInfo.innerHTML = `
+                🔤 key: <strong>"${key}"</strong><br>
+                🔢 code: <strong>"${code}"</strong><br>
+                🔣 keyCode: <strong>${event.keyCode}</strong> (பழையது)
+            `;
+            
+            // Update modifier keys
+            updateModifierKeys(event);
+            
+            // Add to log
+            addKeyboardLogEntry(`keydown - key: "${key}", code: "${code}"`);
+            
+            // Test for shortcuts
+            if (event.ctrlKey && event.key === 's') {
+                event.preventDefault();
+                shortcutOutput.innerHTML = '💾 Ctrl+S அழுத்தப்பட்டது - பக்கம் சேமிக்கப்படும்!';
+                addKeyboardLogEntry('குறுக்குவழி: Ctrl+S (சேமி)');
+            }
+            
+            if (event.ctrlKey && event.key === 'c') {
+                shortcutOutput.innerHTML = '📋 Ctrl+C அழுத்தப்பட்டது - உரை நகலெடுக்கப்படும்!';
+                addKeyboardLogEntry('குறுக்குவழி: Ctrl+C (நகலெடு)');
+            }
+            
+            if (event.ctrlKey && event.key === 'v') {
+                shortcutOutput.innerHTML = '📝 Ctrl+V அழுத்தப்பட்டது - உரை ஒட்டப்படும்!';
+                addKeyboardLogEntry('குறுக்குவழி: Ctrl+V (ஒட்டு)');
+            }
+            
+            if (event.ctrlKey && event.key === 'z') {
+                shortcutOutput.innerHTML = '↩️ Ctrl+Z அழுத்தப்பட்டது - செயல் மீளமைக்கப்படும்!';
+                addKeyboardLogEntry('குறுக்குவழி: Ctrl+Z (மீளமை)');
+            }
+            
+            // Special keys
+            if (key === 'Enter') {
+                shortcutOutput.innerHTML = '↵ Enter அழுத்தப்பட்டது - படிவம் சமர்ப்பிக்கப்படும்!';
+            }
+            
+            if (key === 'Escape') {
+                shortcutOutput.innerHTML = '⎋ Escape அழுத்தப்பட்டது - செயல் ரத்து செய்யப்படும்!';
+            }
+            
+            if (key === 'Tab') {
+                shortcutOutput.innerHTML = '↹ Tab அழுத்தப்பட்டது - அடுத்த புலத்திற்கு நகரும்!';
+            }
+        });
+        
+        keyboardInput.addEventListener('keyup', function(event) {
+            addKeyboardLogEntry(`keyup - key: "${event.key}", code: "${event.code}"`);
+            updateModifierKeys(event);
+        });
+        
+        keyboardInput.addEventListener('keypress', function(event) {
+            if (keypressEnabled) {
+                addKeyboardLogEntry(`keypress - key: "${event.key}", code: "${event.code}"`);
+            }
+        });
+        
+        // Enter key detection test
+        function startEnterTest() {
+            enterTestActive = true;
+            enterTestInput.value = '';
+            enterTestInput.focus();
+            enterOutput.innerHTML = '⌨️ Enter விசை சோதனை: Enter விசையை அழுத்தவும்...';
+            addKeyboardLogEntry('Enter விசை சோதனை தொடங்கப்பட்டது');
+        }
+        
+        enterTestInput.addEventListener('keydown', function(event) {
+            if (event.code === 'Enter') {
+                event.preventDefault();
+                enterOutput.innerHTML = '✅ Enter விசை அழுத்தப்பட்டது! படிவம் சமர்ப்பிக்கப்படும்.';
+                addKeyboardLogEntry('Enter விசை கண்டறியப்பட்டது');
+                
+                // Clear after 2 seconds
+                setTimeout(() => {
+                    if (enterTestActive) {
+                        enterOutput.innerHTML = '⌨️ Enter விசை சோதனை: Enter விசையை அழுத்தவும்...';
+                    }
+                }, 2000);
+            }
+        });
+        
+        // Keyboard shortcuts simulation
+        function simulateCtrlS() {
+            shortcutOutput.innerHTML = '💾 Ctrl+S அழுத்தப்பட்டது - பக்கம் சேமிக்கப்படும்!';
+            addKeyboardLogEntry('குறுக்குவழி சிமுலேஷன்: Ctrl+S (சேமி)');
+            
+            // Visual feedback
+            keyVisual.innerHTML = '<div><div style="font-size: 3rem;">S</div><small>Ctrl + S</small></div>';
+            keyInfo.innerHTML = '🔤 key: "s"<br>🔢 code: "KeyS"<br>✳️ CtrlKey: true';
+            
+            // Highlight Ctrl key
+            const ctrlKey = document.getElementById('ctrlKey');
+            ctrlKey.classList.add('active');
+            setTimeout(() => ctrlKey.classList.remove('active'), 1000);
+        }
+        
+        function simulateCtrlC() {
+            shortcutOutput.innerHTML = '📋 Ctrl+C அழுத்தப்பட்டது - உரை நகலெடுக்கப்படும்!';
+            addKeyboardLogEntry('குறுக்குவழி சிமுலேஷன்: Ctrl+C (நகலெடு)');
+            
+            keyVisual.innerHTML = '<div><div style="font-size: 3rem;">C</div><small>Ctrl + C</small></div>';
+            keyInfo.innerHTML = '🔤 key: "c"<br>🔢 code: "KeyC"<br>✳️ CtrlKey: true';
+        }
+        
+        function simulateCtrlV() {
+            shortcutOutput.innerHTML = '📝 Ctrl+V அழுத்தப்பட்டது - உரை ஒட்டப்படும்!';
+            addKeyboardLogEntry('குறுக்குவழி சிமுலேஷன்: Ctrl+V (ஒட்டு)');
+            
+            keyVisual.innerHTML = '<div><div style="font-size: 3rem;">V</div><small>Ctrl + V</small></div>';
+            keyInfo.innerHTML = '🔤 key: "v"<br>🔢 code: "KeyV"<br>✳️ CtrlKey: true';
+        }
+        
+        function simulateCtrlZ() {
+            shortcutOutput.innerHTML = '↩️ Ctrl+Z அழுத்தப்பட்டது - செயல் மீளமைக்கப்படும்!';
+            addKeyboardLogEntry('குறுக்குவழி சிமுலேஷன்: Ctrl+Z (மீளமை)');
+            
+            keyVisual.innerHTML = '<div><div style="font-size: 3rem;">Z</div><small>Ctrl + Z</small></div>';
+            keyInfo.innerHTML = '🔤 key: "z"<br>🔢 code: "KeyZ"<br>✳️ CtrlKey: true';
+        }
+        
+        function testShortcuts() {
+            shortcutOutput.innerHTML = '⚡ குறுக்குவழி சோதனை தொடங்கப்பட்டது! மேலே உள்ள பொத்தான்களைக் கிளிக் செய்யவும் அல்லது உண்மையான குறுக்குவழிகளை முயற்சிக்கவும்.';
+            addKeyboardLogEntry('குறுக்குவழி சோதனை தொடங்கப்பட்டது');
+        }
+        
+        function toggleKeypress() {
+            keypressEnabled = !keypressEnabled;
+            if (keypressEnabled) {
+                addKeyboardLogEntry('keypress நிகழ்வு செயல்படுத்தப்பட்டது');
+            } else {
+                addKeyboardLogEntry('keypress நிகழ்வு முடக்கப்பட்டது');
+            }
+        }
+        
+        // Document level keyboard events (for global shortcuts)
+        document.addEventListener('keydown', function(event) {
+            // Global Ctrl+Shift+I detection (for demo purposes)
+            if (event.ctrlKey && event.shiftKey && event.key === 'I') {
+                addKeyboardLogEntry('🌍 உலகளாவிய குறுக்குவழி: Ctrl+Shift+I (டெவ்லாபர் கருவிகள்)');
+            }
+            
+            // Global F5 detection
+            if (event.key === 'F5') {
+                addKeyboardLogEntry('🌍 உலகளாவிய குறுக்குவழி: F5 (பக்கம் புதுப்பிக்கவும்)');
+            }
+        });
+        
+        // Initialize
+        startEnterTest();
+    </script>
+
+    <!-- Home Button -->
+    <a href="index.html" class="home-icon">
+        <i class="fas fa-home"></i>
+    </a>
+</body>
+</html>
+
+
