@@ -1,0 +1,523 @@
+﻿<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Functions - Siva Team</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .content-section p, 
+        .content-section li,
+        .content-section h3,
+        .content-section h4,
+        .comparison-card p {
+            color: #333 !important;
+        }
+        
+        .tip-box p,
+        .tip-box li,
+        .tip-box h4 {
+            color: white !important;
+        }
+        
+        .warning-box p,
+        .warning-box li,
+        .warning-box h4 {
+            color: white !important;
+        }
+        
+        .exercise-box p,
+        .exercise-box h4 {
+            color: white !important;
+        }
+        
+        /* Stable logo styling - NO ANIMATIONS */
+        .logo-icon {
+            animation: none !important; /* Remove pulse animation */
+        }
+        
+        .logo-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            animation: none !important; /* Ensure no animations */
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <img src="logo.jpg" alt="Siva Team Logo" class="logo-image">
+                </div>
+                <h1>Siva Team <span>Institution</span></h1>
+            </div>
+        </div>
+    </header>
+
+    <!-- Top Navigation Tabs -->
+    <div class="nav-tabs">
+        <a href="JavaScript Function Learning Path.html" class="nav-tab prev">
+            <i class="fas fa-arrow-left"></i>
+            <span>Previous</span>
+        </a>
+        <a href="Invoking JavaScript Functions.html" class="nav-tab next">
+            <span>Next</span>
+            <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2>JavaScript Functions</h2>
+            <p>மீண்டும் பயன்படுத்தக்கூடிய குறியீட்டு தொகுதிகளைக் கற்றுக்கொள்ளுங்கள்</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Introduction -->
+        <section class="content-section" id="introduction">
+            <h2>Reusable Code Blocks</h2>
+            
+            <p>செயல்பாடுகள் ஒரு குறிப்பிட்ட பணியைச் செய்ய வடிவமைக்கப்பட்ட மீண்டும் பயன்படுத்தக்கூடிய குறியீட்டு தொகுதிகள்.</p>
+            
+            <p>செயல்பாடுகள் அழைக்கப்படும் அல்லது அழைக்கப்படும் போது இயக்கப்படுகின்றன.</p>
+            
+            <p>அனைத்து நிரலாக்கத்திலும் செயல்பாடுகள் அடிப்படையானவை.</p>
+        </section>
+
+        <!-- Why Use Functions -->
+        <section class="content-section" id="why-functions">
+            <h3>Why Use Functions?</h3>
+            <p>செயல்பாடுகள் உதவுகின்றன:</p>
+            
+            <div class="best-practice-list">
+                <div class="practice-item positive">
+                    <i class="fas fa-redo"></i>
+                    <div><strong>குறியீட்டை மீண்டும் பயன்படுத்த:</strong> ஒருமுறை எழுதுங்கள், பல முறை இயக்கவும்</div>
+                </div>
+                
+                <div class="practice-item positive">
+                    <i class="fas fa-sitemap"></i>
+                    <div><strong>குறியீட்டை சிறிய பகுதிகளாக ஒழுங்கமைக்க:</strong> சிக்கலான நிரல்களை நிர்வகிக்க எளிதானதாக்குகிறது</div>
+                </div>
+                
+                <div class="practice-item positive">
+                    <i class="fas fa-book-reader"></i>
+                    <div><strong>குறியீட்டைப் படிக்கவும் பராமரிக்கவும் எளிதாக்க:</strong> ஒவ்வொரு செயல்பாடும் ஒரு குறிப்பிட்ட பணியை மட்டுமே செய்கிறது</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- What Does a Function Look Like -->
+        <section class="content-section" id="function-look">
+            <h3>What Does a Function Look Like?</h3>
+            <p>ஒரு செயல்பாடு function கீவேர்டு, ஒரு பெயர் மற்றும் அடைப்புக்குறிகளுடன் உருவாக்கப்படலாம்.</p>
+            
+            <p>இயக்க வேண்டிய குறியீடு சுருள் அடைப்புக்குள் எழுதப்பட்டுள்ளது.</p>
+            
+            <div class="code-example">
+                <h4>Example: Function Definition</h4>
+                <pre><code>// A one liner:
+function sayHello() { return "Hello World"; }
+
+// or more common:
+function sayHello() {
+  return "Hello World";
+}</code></pre>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">📝</span> குறிப்பு:</h4>
+                <p>மேலே உள்ள செயல்பாடு எதையும் செய்யாது. முதலில் அது அழைக்கப்பட வேண்டும்.</p>
+            </div>
+        </section>
+
+        <!-- Functions Run When You Call Them -->
+        <section class="content-section" id="function-call">
+            <h3>Functions Run When You Call Them</h3>
+            <p>ஒரு செயல்பாட்டை இயக்க, அதன் பெயரைத் தொடர்ந்து அடைப்புக்குறிகளைப் பயன்படுத்தி அழைக்கவும்: <code>sayHello()</code></p>
+            
+            <div class="code-example">
+                <h4>Example: Calling a Function</h4>
+                <pre><code>function sayHello() {
+  return "Hello World";
+}
+
+let message = sayHello();</code></pre>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">🔧</span> தொழில்நுட்ப குறிப்பு:</h4>
+                <p>அரைப்புள்ளிகள் இயக்கக்கூடிய JavaScript அறிக்கைகளைப் பிரிக்கப் பயன்படுத்தப்படுகின்றன.</p>
+                <p>ஒரு செயல்பாட்டு வரையறை ஒரு இயக்கக்கூடிய அறிக்கை அல்ல. ஒரு செயல்பாட்டு வரையறையை அரைப்புள்ளியுடன் முடிப்பது பொதுவானதல்ல.</p>
+            </div>
+        </section>
+
+        <!-- JavaScript Function Syntax -->
+        <section class="content-section" id="function-syntax">
+            <h3>JavaScript Function Syntax</h3>
+            
+            <div class="code-example">
+                <pre><code>function name( p1, p2, ... ) {
+  // code to be executed
+}</code></pre>
+            </div>
+            
+            <p>செயல்பாடுகள் function கீவேர்டுடன் வரையறுக்கப்படுகின்றன:</p>
+            
+            <ol>
+                <li>செயல்பாட்டு பெயரைத் தொடர்ந்து</li>
+                <li>அடைப்புக்குறிகள் ( )</li>
+                <li>அடைப்புக்குறிகள் { }</li>
+            </ol>
+            
+            <p><strong>விருப்ப அளவுருக்கள்</strong> அடைப்புக்குறிக்குள் பட்டியலிடப்படுகின்றன: <code>( p1, p2, ... )</code></p>
+            <p><strong>இயக்கப்பட வேண்டிய குறியீடு</strong> சுருள் அடைப்புக்குள் பட்டியலிடப்படுகிறது: <code>{ }</code></p>
+            <p><strong>செயல்பாடுகள்</strong> அழைப்பவருக்கு ஒரு விருப்ப மதிப்பைத் திருப்பித் தரலாம்.</p>
+            
+            <div class="code-example">
+                <h4>Example: Multiply Function</h4>
+                <pre><code>function multiply(a, b) {
+  return a * b;
+}</code></pre>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">🏷️</span> பெயரிடல் விதிகள்:</h4>
+                <p>செயல்பாட்டுப் பெயர் மாறிகளுக்கான பெயரிடல் விதிகளைப் பின்பற்றுகிறது.</p>
+            </div>
+        </section>
+
+        <!-- A Function Can Be Used Many Times -->
+        <section class="content-section" id="reuse-function">
+            <h3>A Function Can Be Used Many Times</h3>
+            <p>ஒரு பெரிய நன்மை என்னவென்றால், உங்களுக்கு தேவைப்படும்போதெல்லாம் அதே செயல்பாட்டை நீங்கள் அழைக்கலாம்.</p>
+            
+            <div class="code-example">
+                <h4>Example: Reusing a Function</h4>
+                <pre><code>function add(a, b) {
+  return a + b;
+}
+
+let sum1 = add(5, 5);
+let sum2 = add(50, 50);
+let sum3 = add(100, 200);</code></pre>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">💾</span> குறிப்பு:</h4>
+                <p>செயல்பாடுகளிலிருந்து திரும்பிய மதிப்புகள் மாறிகளில் சேமிக்கப்படலாம் என்பதைக் கவனிக்கவும்.</p>
+            </div>
+        </section>
+
+        <!-- Local Variables -->
+        <section class="content-section" id="local-variables">
+            <h3>Local Variables</h3>
+            <p>ஒரு JavaScript செயல்பாட்டிற்குள் அறிவிக்கப்பட்ட மாறிகள், செயல்பாட்டிற்கு LOCAL ஆகின்றன.</p>
+            
+            <p>உள்ளூர் மாறிகள் செயல்பாட்டிற்குள் இருந்து மட்டுமே அணுக முடியும்.</p>
+            
+            <div class="code-example">
+                <h4>Example: Local Variable Scope</h4>
+                <pre><code>// code here can NOT use carName
+
+function myFunction() {
+  let carName = "Volvo";
+  // code here CAN use carName
+}
+
+// code here can NOT use carName</code></pre>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">🔄</span> உள்ளூர் மாறி நன்மைகள்:</h4>
+                <p>உள்ளூர் மாறிகள் அவற்றின் செயல்பாடுகளுக்குள் மட்டுமே அங்கீகரிக்கப்படுவதால், வெவ்வேறு செயல்பாடுகளில் ஒரே பெயரில் மாறிகள் பயன்படுத்தப்படலாம்.</p>
+                <p>உள்ளூர் மாறிகள் ஒரு செயல்பாடு தொடங்கும் போது உருவாக்கப்படுகின்றன, மேலும் செயல்பாடு முடிந்ததும் நீக்கப்படும்.</p>
+            </div>
+        </section>
+
+        <!-- Functions Used as Variables -->
+        <section class="content-section" id="functions-as-variables">
+            <h3>Functions Used as Variables</h3>
+            <p>செயல்பாடுகள் மாறிகளாகப் பயன்படுத்தப்படலாம், அனைத்து வகையான சூத்திரங்கள், வேலைப்பாடுகள் மற்றும் கணக்கீடுகளில்.</p>
+            
+            <div class="code-comparison">
+                <div class="code-column">
+                    <h4>Using Variable to Store Result</h4>
+                    <div class="code-example">
+                        <pre><code>let x = toCelsius(77);
+let text = "The temperature is " + x + " Celsius";</code></pre>
+                    </div>
+                </div>
+                
+                <div class="code-column">
+                    <h4>Using Function Directly</h4>
+                    <div class="code-example">
+                        <pre><code>let text = "The temperature is " + toCelsius(77) + " Celsius";</code></pre>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tip-box">
+                <h4><span class="tip-icon">⚡</span> நடைமுறை உதவிக்குறிப்பு:</h4>
+                <p>நடுத்தர முடிவை சேமிக்கத் தேவையில்லாதபோது, நேரடியாக செயல்பாட்டைப் பயன்படுத்தவும். இது குறியீட்டை சுத்தமாகவும் குறுகியதாகவும் ஆக்குகிறது.</p>
+            </div>
+        </section>
+
+        <!-- Function Input and Output -->
+        <section class="content-section" id="function-io">
+            <h3>Function Input and Output</h3>
+            <p>மிகவும் பயனுள்ள செயல்பாடுகள் இப்படித்தான் வேலை செய்கின்றன:</p>
+            
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-sign-in-alt"></i>
+                        <h4>Parameter Input</h4>
+                    </div>
+                    <p>சில அளவுருக்கள் செயல்பாட்டிற்குள் செல்கின்றன</p>
+                </div>
+                
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-cogs"></i>
+                        <h4>Function Code</h4>
+                    </div>
+                    <p>சில வேலைகள் செயல்பாட்டிற்குள் செய்யப்படுகின்றன</p>
+                </div>
+                
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <h4>Return Output</h4>
+                    </div>
+                    <p>சில மதிப்பு செயல்பாட்டிலிருந்து திரும்பி வருகிறது</p>
+                </div>
+            </div>
+            
+            <p>அடுத்த மூன்று அத்தியாயங்களில், உள்ளீடு மற்றும் திரும்ப மதிப்புகள் பற்றி மேலும் அறிவீர்கள்.</p>
+        </section>
+
+        <!-- Common Mistakes -->
+        <section class="content-section" id="common-mistakes">
+            <h3>Common Mistakes</h3>
+            
+            <div class="warning-box">
+                <h4><span class="warning-icon">❌</span> Forgetting to Call the Function</h4>
+                <p><code>sayHello</code> என்று எழுதுவது செயல்பாட்டை இயக்காது.</p>
+                <p><strong>நீங்கள் <code>sayHello()</code> என்று எழுத வேண்டும்.</strong></p>
+                <div class="code-example">
+                    <pre><code>// Wrong - function not called
+sayHello;
+
+// Correct - function called
+sayHello();</code></pre>
+                </div>
+            </div>
+            
+            <div class="warning-box">
+                <h4><span class="warning-icon">❌</span> Expecting Output</h4>
+                <p>சில செயல்பாடுகள் மதிப்பைத் திருப்பித் தரவில்லை.</p>
+                <p><strong>return அறிக்கை இல்லாத செயல்பாடு <code>undefined</code> ஐத் திருப்பித் தரும்.</strong></p>
+                <div class="code-example">
+                    <pre><code>function greet() {
+  console.log("Hello");
+  // No return statement
+}
+
+let result = greet(); // result = undefined</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Functions Summary -->
+        <section class="content-section" id="why-summary">
+            <h3>Why Functions?</h3>
+            
+            <div class="best-practice-list">
+                <div class="practice-item positive">
+                    <i class="fas fa-layer-group"></i>
+                    <div><strong>சிறந்த குறியீடு ஒழுங்கமைப்பு:</strong> நிரலை தருக்க தொகுதிகளாக உடைக்கவும்</div>
+                </div>
+                
+                <div class="practice-item positive">
+                    <i class="fas fa-sync-alt"></i>
+                    <div><strong>செயல்திறன்:</strong> அதே குறியீட்டை பல முறை மீண்டும் பயன்படுத்தவும்</div>
+                </div>
+                
+                <div class="practice-item positive">
+                    <i class="fas fa-sliders-h"></i>
+                    <div><strong>மாறுபட்ட விளைவுகள்:</strong> வெவ்வேறு உள்ளீடுகளுடன் அதே குறியீடு வெவ்வேறு முடிவுகளை உருவாக்கும்</div>
+                </div>
+                
+                <div class="practice-item positive">
+                    <i class="fas fa-bug"></i>
+                    <div><strong>பிழைத்திருத்தம் எளிது:</strong> ஒவ்வொரு செயல்பாட்டையும் தனித்தனியாக சோதிக்கவும்</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Next Chapter -->
+        <section class="content-section" id="next-chapter">
+            <h3>Next Chapter</h3>
+            <div class="tip-box">
+                <h4><span class="tip-icon">➡️</span> அடுத்து:</h4>
+                <p><strong>Calling JavaScript Functions</strong> - செயல்பாடுகளை எவ்வாறு சரியாக அழைப்பது மற்றும் பயன்படுத்துவது பற்றி கற்றுக்கொள்ளுங்கள்</p>
+            </div>
+        </section>
+
+        <!-- Exercise Section (Only One) -->
+        <section class="content-section" id="exercises">
+            <h2>Exercise</h2>
+            
+            <div class="exercise-box">
+                <h4><span class="exercise-icon">❓</span> JavaScript இல் ஒரு செயல்பாட்டை வரையறுக்க என்ன கீவேர்டு பயன்படுத்தப்படுகிறது?</h4>
+                
+                <div class="options-grid">
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">def</div>
+                            <div class="option-feedback incorrect">✗ தவறு! 'def' என்பது Python மொழியில் செயல்பாடுகளை வரையறுக்கப் பயன்படுகிறது, JavaScript இல் அல்ல</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="false">
+                        <div class="option-content">
+                            <div class="option-text">func</div>
+                            <div class="option-feedback incorrect">✗ தவறு! 'func' என்பது Go மற்றும் Swift போன்ற மொழிகளில் பயன்படுத்தப்படுகிறது, JavaScript இல் அல்ல</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card" data-correct="true">
+                        <div class="option-content">
+                            <div class="option-text">function</div>
+                            <div class="option-feedback correct">✓ சரி! 'function' என்பது JavaScript இல் செயல்பாடுகளை வரையறுக்கப் பயன்படும் சரியான கீவேர்டு</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bottom Navigation -->
+        <div class="bottom-nav">
+            <a href="JavaScript Function Learning Path.html" class="nav-tab prev">
+                <i class="fas fa-arrow-left"></i>
+                <span>Previous</span>
+            </a>
+            <a href="Invoking JavaScript Functions.html" class="nav-tab next">
+                <span>Next</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Siva Team Institution</h3>
+                <p>Leading educational institution providing quality programming education in Tamil.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#introduction">Introduction</a></li>
+                    <li><a href="#why-functions">Why Use Functions</a></li>
+                    <li><a href="#function-look">Function Structure</a></li>
+                    <li><a href="#function-call">Calling Functions</a></li>
+                    <li><a href="#function-syntax">Function Syntax</a></li>
+                    <li><a href="#reuse-function">Reusing Functions</a></li>
+                    <li><a href="#local-variables">Local Variables</a></li>
+                    <li><a href="#common-mistakes">Common Mistakes</a></li>
+                    <li><a href="#exercises">Exercise</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Location & Hours</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <ul>
+                    <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Siva Team Institution. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all content sections for animation
+        document.querySelectorAll('.content-section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Exercise interaction
+        document.querySelectorAll('.option-card').forEach(card => {
+            card.addEventListener('click', function() {
+                // Show feedback for all options
+                document.querySelectorAll('.option-card').forEach(c => {
+                    c.querySelector('.option-feedback').style.display = 'block';
+                });
+            });
+        });
+    </script>
+
+    <!-- Home Button -->
+    <a href="index.html" class="home-icon">
+        <i class="fas fa-home"></i>
+    </a>
+</body>
+</html>
+
+
